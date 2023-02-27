@@ -21,12 +21,13 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	}
+
 	createTable(database)
 	defer database.Close()
 
 	//url of our funcs
-	fs := http.FileServer(http.Dir("./static"))
-	http.Handle("/static/", http.StripPrefix("/static/", fs))
+	fs := http.FileServer(http.Dir("../static/css"))
+	http.Handle("/static/", http.StripPrefix("/css/", fs))
 	fmt.Print("Le Serveur dÃ©marre sur le port 8080\n")
 	//listening on port 8080
 	http.ListenAndServe(":8080", nil)
@@ -36,46 +37,20 @@ func Handler_index(w http.ResponseWriter, r *http.Request) {
 	database, _ := sql.Open("sqlite3", "../forum.db")
 	tmpl1 := template.Must(template.ParseFiles("../static/index.html"))
 
-	//register
-	if r.Method == "POST" {
-		fmt.Println("New POST: ")
-		var checkAll bool
-		username := r.FormValue("input_username")
-		password := r.FormValue("input_password")
-		mail := r.FormValue("input_mail")
-		creationDate := time.Now()
-		birthDay := r.FormValue("input_birthDay")
-		notifications := r.FormValue("input_notifications")
-
-		if len(username) < 5 || len(username) > 14 {
-			fmt.Println("invalid username")
-			checkAll = true
-		}
-
-		if len(password) < 6 {
-			fmt.Println("invalid password")
-			checkAll = true
-		}
-
-		if checkMail(mail) == false {
-			checkAll = true
-		}
-
-		if checkAll == false {
-			addUsers(database, username, hash(password), mail, creationDate, birthDay, notifications)
-		}
-	}
+	//register on specifig button
+	// if button (register)...
+	register(r, database)
 
 	tmpl1.Execute(w, "")
 }
 
-func addUsers(db *sql.DB, username string, password string, email string, creationDate time.Time, birthDate string, notifications string) {
-	usersInfo := `INSERT INTO users(username, password, email, creationDate, birthDate, notifications) VALUES (?, ?, ?, ?, ?, ?)`
+func addUsers(db *sql.DB, username string, password string, email string, creationDate time.Time, birthDate string) {
+	usersInfo := `INSERT INTO users(username, password, email, creationDate, birthDate) VALUES (?, ?, ?, ?, ?)`
 	query, err := db.Prepare(usersInfo)
 	if err != nil {
 		log.Fatal(err)
 	}
-	_, err = query.Exec(username, password, email, creationDate, birthDate, notifications)
+	_, err = query.Exec(username, password, email, creationDate, birthDate)
 	if err != nil {
 		log.Fatal(err)
 	} else {
@@ -90,8 +65,7 @@ func createTable(db *sql.DB) {
 		"password" TEXT,
 		"email" TEXT,
 		"creationDate" TEXT,
-		"birthDate" TEXT,
-		"notifications" TEXT);`
+		"birthDate" TEXT);`
 
 	query, err := db.Prepare(users_table)
 
@@ -118,4 +92,34 @@ func hash(password string) string {
 	hashInBytes := hash.Sum([]byte(password))[:20]
 	return hex.EncodeToString(hashInBytes)
 	//encoding passwords in sha1
+}
+
+func register(r *http.Request, database *sql.DB) {
+	if r.Method == "POST" {
+		fmt.Println("New POST: ")
+		var checkAll bool
+		username := r.FormValue("input_username")
+		password := r.FormValue("input_password")
+		mail := r.FormValue("input_mail")
+		creationDate := time.Now()
+		birthDay := r.FormValue("input_birthDay")
+
+		if len(username) < 5 || len(username) > 14 {
+			fmt.Println("invalid username")
+			checkAll = true
+		}
+
+		if len(password) < 6 {
+			fmt.Println("invalid password")
+			checkAll = true
+		}
+
+		if checkMail(mail) == false {
+			checkAll = true
+		}
+
+		if checkAll == false {
+			addUsers(database, username, hash(password), mail, creationDate, birthDay)
+		}
+	}
 }
