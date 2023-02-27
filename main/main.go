@@ -1,10 +1,13 @@
 package main
 
 import (
+	"crypto/sha1"
 	"database/sql"
+	"encoding/hex"
 	"fmt"
 	"log"
 	"net/http"
+	"net/mail"
 	"text/template"
 	"time"
 
@@ -33,22 +36,40 @@ func Handler_index(w http.ResponseWriter, r *http.Request) {
 	database, _ := sql.Open("sqlite3", "../forum.db")
 	tmpl1 := template.Must(template.ParseFiles("../static/index.html"))
 
+	//register
 	if r.Method == "POST" {
+		fmt.Println("New POST: ")
+		var checkAll bool
 		username := r.FormValue("input_username")
 		password := r.FormValue("input_password")
 		mail := r.FormValue("input_mail")
-		theTime := time.Date(2021, 8, 15, 14, 30, 45, 100, time.Local)
-		creationDate := theTime.Format("2006-1-2 15:4:5")
+		creationDate := time.Now()
 		birthDay := r.FormValue("input_birthDay")
 		notifications := r.FormValue("input_notifications")
 
-		addUsers(database, username, password, mail, creationDate, birthDay, notifications)
+		if len(username) < 5 || len(username) > 14 {
+			fmt.Println("invalid username")
+			checkAll = true
+		}
+
+		if len(password) < 6 {
+			fmt.Println("invalid password")
+			checkAll = true
+		}
+
+		if checkMail(mail) == false {
+			checkAll = true
+		}
+
+		if checkAll == false {
+			addUsers(database, username, hash(password), mail, creationDate, birthDay, notifications)
+		}
 	}
 
 	tmpl1.Execute(w, "")
 }
 
-func addUsers(db *sql.DB, username string, password string, email string, creationDate string, birthDate string, notifications string) {
+func addUsers(db *sql.DB, username string, password string, email string, creationDate time.Time, birthDate string, notifications string) {
 	usersInfo := `INSERT INTO users(username, password, email, creationDate, birthDate, notifications) VALUES (?, ?, ?, ?, ?, ?)`
 	query, err := db.Prepare(usersInfo)
 	if err != nil {
@@ -80,4 +101,21 @@ func createTable(db *sql.DB) {
 		query.Exec()
 		fmt.Println("Table created successfully")
 	}
+}
+
+func checkMail(email string) bool {
+	_, err := mail.ParseAddress(email)
+	if err != nil {
+		fmt.Println(err)
+		return false
+	} else {
+		return true
+	}
+}
+
+func hash(password string) string {
+	hash := sha1.New()
+	hashInBytes := hash.Sum([]byte(password))[:20]
+	return hex.EncodeToString(hashInBytes)
+	//encoding passwords in sha1
 }
