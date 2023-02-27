@@ -29,15 +29,5 @@ func Handler_index(w http.ResponseWriter, r *http.Request) {
 
 	}
 
-	// db, err := sql.Open("sqlite3", ":forum:")
-
-	// if err != nil {
-	// 	log.Fatal(err)
-	// } else {
-
-	// }
-
-	// defer db.Close()
-
 	tmpl1.Execute(w, "babygirl")
 }
