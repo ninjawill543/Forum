@@ -7,12 +7,17 @@ import (
 	"net/http"
 	"text/template"
 	"time"
+
+	_ "github.com/mattn/go-sqlite3"
 )
 
 func main() {
 	http.HandleFunc("/", Handler_index)
 
-	database, _ := sql.Open("sqlite3", "../forum.db")
+	database, err := sql.Open("sqlite3", "../forum.db")
+	if err != nil {
+		fmt.Println(err)
+	}
 	createTable(database)
 	defer database.Close()
 
@@ -32,8 +37,8 @@ func Handler_index(w http.ResponseWriter, r *http.Request) {
 		username := r.FormValue("input_username")
 		password := r.FormValue("input_password")
 		mail := r.FormValue("input_mail")
-		t := time.Now()
-		creationDate := t.Format("20060102150405")
+		theTime := time.Date(2021, 8, 15, 14, 30, 45, 100, time.Local)
+		creationDate := theTime.Format("2006-1-2 15:4:5")
 		birthDay := r.FormValue("input_birthDay")
 		notifications := r.FormValue("input_notifications")
 
@@ -67,11 +72,7 @@ func createTable(db *sql.DB) {
 		"birthDate" TEXT,
 		"notifications" TEXT);`
 
-	fmt.Println("test")
-
 	query, err := db.Prepare(users_table)
-
-	fmt.Println("test2")
 
 	if err != nil {
 		fmt.Println(err)
