@@ -9,9 +9,8 @@ import (
 )
 
 func main() {
-	http.HandleFunc("/", Handler_index)
+	http.HandleFunc("/index", Handler_index)
 }
-
 func Handler_index(w http.ResponseWriter, r *http.Request) {
 	databaseUsers, _ := sql.Open("sqlite3", "../users.db")
 	databaseTopics, _ := sql.Open("sqlite3", "../topic.db")
@@ -21,6 +20,5 @@ func Handler_index(w http.ResponseWriter, r *http.Request) {
 	// if button (register)...
 	t2.Register(r, databaseUsers)
 	t.AddTopic(r, databaseTopics)
-
 	tmpl1.Execute(w, "")
 }
