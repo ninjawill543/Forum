@@ -15,7 +15,7 @@ func main() {
 func Handler_index(w http.ResponseWriter, r *http.Request) {
 	databaseUsers, _ := sql.Open("sqlite3", "../users.db")
 	databaseTopics, _ := sql.Open("sqlite3", "../topic.db")
-	tmpl1 := template.Must(template.ParseFiles("../static/index.html"))
+	tmpl1 := template.Must(template.ParseFiles("../static/html/index.html"))
 
 	//register on specifig button
 	// if button (register)...
