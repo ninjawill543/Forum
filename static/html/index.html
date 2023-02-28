@@ -7,17 +7,39 @@
     <link rel="stylesheet" href="../css/output.css">
     <title>Document</title>
 </head>
-<body class="bg-slate-800">
+<body class="h-screen w-screen overflow-x-hidden bg-slate-800">
 
     <header>
-        <div class="w-full h-16 bg-emerald-700">
-            <div class="flex justify-center"><h1 class="uppercase my-6 font-bold text-center text-blue-100">Dread Forums</h1></div>
+        <div class="flex justify-between w-full h-16 bg-emerald-700">
+                <h1 class="relative uppercase my-[20px] left-7 font-bold text-center text-teal-100">Dread Forums</h1>
+                <div class="grid w-64 grid-cols-3">
+                    <input type="button" class="" value="bouton 1 ">
+                    <input type="button" class="" value="bouton 2 ">
+                    <input type="button" class="" value="bouton 3 ">
+                </div>
+            </div>
         </div>
-
     </header>
 
     <main>
-
+        <p class="uppercase text-xl text-teal-100">register</p>
+        <form method="POST">
+            <p class="font-bold text-teal-100 text-center text-3xl">username</p>
+            <input class="border-2" name="input_username" type="text">
+            <p class="text-teal-100">password</p>
+            <input class="border-2" name="input_password" type="text">
+            <p class="text-teal-100">mail</p>
+            <input name="input_mail" type="text">
+            <p class="text-teal-100">birthDay</p>
+            <input name="input_birthDay" type="text">
+            <input type="submit" value="submit">    
+        </form>
+    
+        <p class="text-teal-100">create topic</p>
+        <form method="POST">
+            <input name="topic_name"type="text">
+            <input type="submit" value="create topic">
+        </form>
     </main>
 
     <footer>
