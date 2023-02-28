@@ -1,14 +1,14 @@
 package main
 
 import (
-	//"database/sql"
+	"database/sql"
 	"fmt"
 	t3 "forum/handlerIndex"
 	t2 "forum/topics"
 	t "forum/users"
 	"net/http"
 
-	//_ "github.com/mattn/go-sqlite3"
+	_ "github.com/mattn/go-sqlite3"
 )
 
 func main() {
