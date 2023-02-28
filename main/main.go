@@ -3,6 +3,7 @@ package main
 import (
 	"database/sql"
 	"fmt"
+	t4 "forum/404"
 	t3 "forum/handlerIndex"
 	t2 "forum/topics"
 	t "forum/users"
@@ -12,6 +13,7 @@ import (
 )
 
 func main() {
+	http.HandleFunc("/", t4.Handler_404)
 	http.HandleFunc("/index", t3.Handler_index)
 
 	//creating DB if not exist
