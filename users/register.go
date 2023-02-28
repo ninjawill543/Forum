@@ -23,8 +23,7 @@ func Register(r *http.Request, database *sql.DB) {
 			checkAll = true
 		}
 
-		if len(password) < 6 {
-			fmt.Println("invalid password")
+		if t.CheckPassword(password) == false {
 			checkAll = true
 		}
 
