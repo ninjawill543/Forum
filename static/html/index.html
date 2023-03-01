@@ -7,24 +7,27 @@
     <link rel="stylesheet" href="../css/output.css">
     <title>Document</title>
 </head>
-<body class="h-screen w-screen overflow-x-hidden bg-slate-800">
+<body class="h-screen w-screen overflow-x-hidden bg-slate-500">
 
     <header>
-        <div class="flex justify-between w-full h-16 bg-emerald-700">
-                <h1 class="relative uppercase my-[20px] left-7 font-bold text-center text-teal-100">Dread Forums</h1>
-                <div class="grid w-64 grid-cols-3">
-                    <input type="button" class="" value="bouton 1 ">
-                    <input type="button" class="" value="bouton 2 ">
-                    <input type="button" class="" value="bouton 3 ">
+        <div class="flex justify-around w-full h-16 shadow-md bg-emerald-700">
+                <h1 class="relative uppercase my-[20px] right-56 font-bold text-center text-teal-100">Dread Forums</h1>
+                <div class="grid w-72 self-center items-center grid-cols-3">
+                    <button id="navButton">1</button>
+                    <button id="navButton">2</button>
+                    <button id="navButton">3</button>
                 </div>
             </div>
         </div>
     </header>
 
     <main>
-        <p class="uppercase text-xl text-teal-100">register</p>
-        <form method="POST">
-            <p class="font-bold text-teal-100 text-center text-3xl">username</p>
+        <div class="uppercase py-11 text-center text-teal-100">
+            <p class="font-bold text-3xl">Welcome to **** Forums</p>
+            <p class="font-bold"> select a category </p>
+        </div>
+        <!-- <form method="POST">
+            <p class="uppercase text-xl text-teal-100">register</p>
             <input class="border-2" name="input_username" type="text">
             <p class="text-teal-100">password</p>
             <input class="border-2" name="input_password" type="text">
@@ -34,12 +37,27 @@
             <input name="input_birthDay" type="text">
             <input type="submit" value="submit">    
         </form>
-    
         <p class="text-teal-100">create topic</p>
         <form method="POST">
             <input name="topic_name"type="text">
             <input type="submit" value="create topic">
-        </form>
+        </form> -->
+        <div class="w-full h-[630px] shadow-sm bg-slate-800">
+
+            <div class="flex flex-wrap overflow-x-auto" style="height: 630px;">
+                <div class="bg-white p-4 text-center text-lg" style="width: 25%;">Sujet 1</div>
+                <div class="bg-white p-8 text-center text-xl" style="width: 50%;">Sujet 2</div>
+                <div class="bg-white p-6 text-center text-lg" style="width: 25%;">Sujet 3</div>
+                <div class="bg-white p-12 text-center text-xl" style="width: 33%;">Sujet 4</div>
+                <div class="bg-white p-4 text-center text-lg" style="width: 33%;">Sujet 5</div>
+                <div class="bg-white p-8 text-center text-xl" style="width: 33%;">Sujet 6</div>
+                <div class="bg-white p-6 text-center text-lg" style="width: 33%;">Sujet 7</div>
+                <div class="bg-white p-12 text-center text-xl" style="width: 33%;">Sujet 8</div>
+                <div class="bg-white p-4 text-center text-lg" style="width: 33%;">Sujet 9</div>
+                <div class="bg-white p-8 text-center text-xl" style="width: 33%;">Sujet 10</div>
+            </div>
+
+        </div>
     </main>
 
     <footer>
