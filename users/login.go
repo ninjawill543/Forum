@@ -37,11 +37,12 @@ func Login(r *http.Request, db *sql.DB) {
 			fmt.Println(err)
 		} else {
 			for row.Next() {
-				err = row.Scan(&username, &email, &password, &creationDate, &birtDate, &uuid)
+				err = row.Scan(&username, &password, &email, &creationDate, &birtDate, &uuid)
+				fmt.Println("email", email)
 				if err != nil {
 					fmt.Println(err)
 				} else {
-					if 1 == 1 {
+					if usernameInput == username || usernameInput == email && passwordInput == password {
 						fmt.Println("LOGIN!")
 						USER.Username = username
 						USER.BirthDate = birtDate
@@ -49,7 +50,6 @@ func Login(r *http.Request, db *sql.DB) {
 						USER.Email = email
 						USER.Uuid = uuid
 					} else {
-						USER.Username = "pierre"
 						fmt.Println("no0b")
 						fmt.Println(username, password, email, usernameInput, passwordInput)
 					}
