@@ -25,6 +25,7 @@ func AddTopic(r *http.Request, database *sql.DB) {
 			if err != nil {
 				log.Fatal(err)
 			}
+
 			_, err = query.Exec(topicName, creationDate, "owner", 0, 0, uuid)
 			if err != nil {
 				log.Fatal(err)

@@ -36,7 +36,6 @@ func DisplayTopic(db *sql.DB) {
 				fmt.Println(nil)
 			} else {
 				topicIndex := len(TOPICS)
-				fmt.Println(id)
 
 				if topicIndex == 0 || topicIndex == id-1 {
 					TOPICS = append(TOPICS, Topics{})

@@ -10,5 +10,35 @@
     TOPIC page
     <br>
     <a href="../index">GO back to index</a>
+    <br>
+    Name:
+    {{ .Name }}
+    <br>
+    Likes:
+    {{ .Likes }}
+    <br>
+    Dislikes:
+    {{ .Dislikes }}
+    <br>
+    CreationDate:
+    {{ .CreationDate }}
+    <br>
+    Owner:
+    {{ .Owner }}
+    <br>
+
+    ADD msg:
+    <br>
+    <form method="POST">
+        <input type="text" name="input_newMessage">
+        <input type="submit" value="submit">
+    </form>
+
+    {{$Topic := .}}
+    {{ range $k, $v := .Messages }}
+    <br>
+    {{ $v }}
+    {{ end }}
+
 </body>
 </html>
