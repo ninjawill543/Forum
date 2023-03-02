@@ -23,15 +23,15 @@ func Register(r *http.Request, database *sql.DB) {
 			checkAll = true
 		}
 
-		if t.CheckPassword(password) == false {
+		if !t.CheckPassword(password) {
 			checkAll = true
 		}
 
-		if t.CheckMail(mail) == false {
+		if !t.CheckMail(mail) {
 			checkAll = true
 		}
 
-		if checkAll == false {
+		if !checkAll {
 			AddUsers(database, username, t.Hash(password), mail, creationDate, birthDay)
 		}
 	}

@@ -17,8 +17,9 @@ func Handler_index(w http.ResponseWriter, r *http.Request) {
 
 	//register on specifig button
 	// if button (register)...
-	t2.Register(r, databaseUsers)
+	t2.Login(r, databaseUsers)
 	t.AddTopic(r, databaseTopics)
+	t2.Register(r, databaseUsers)
 
 	tmpl1.Execute(w, t.TOPICS)
 }

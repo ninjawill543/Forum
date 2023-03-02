@@ -30,7 +30,7 @@ func AddTopic(r *http.Request, database *sql.DB) {
 			if err != nil {
 				log.Fatal(err)
 			} else {
-				fmt.Println("adding new topic :", topicName, "in users")
+				fmt.Println("adding new topic :", topicName, "in TOPICS")
 			}
 		}
 	}
