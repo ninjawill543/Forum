@@ -521,10 +521,6 @@ video {
   right: 14rem;
 }
 
-.row-span-1 {
-  grid-row: span 1 / span 1;
-}
-
 .m-2 {
   margin: 0.5rem;
 }
@@ -572,6 +568,10 @@ video {
 
 .grid-cols-3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-rows-1 {
+  grid-template-rows: repeat(1, minmax(0, 1fr));
 }
 
 .items-center {
@@ -704,8 +704,4 @@ video {
   min-width: 550px;
   max-width: 500px;
   line-height: 300px;
-}
-
-.gridspecs {
-  grid-column: 1 / span 2;
 }
