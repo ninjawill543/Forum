@@ -6,6 +6,8 @@ import (
 	"log"
 	"net/http"
 	"time"
+
+	"github.com/google/uuid"
 )
 
 func AddTopic(r *http.Request, database *sql.DB) {
@@ -17,12 +19,13 @@ func AddTopic(r *http.Request, database *sql.DB) {
 			fmt.Println("Not enough char")
 		} else {
 			creationDate := time.Now()
-			topicInfo := `INSERT INTO topics(name, creationDate, owner, likes, dislikes) VALUES (?, ?, ?, ?, ?)`
+			topicInfo := `INSERT INTO topics(name, creationDate, owner, likes, dislikes, uuid) VALUES (?, ?, ?, ?, ?, ?)`
+			uuid := uuid.New()
 			query, err := database.Prepare(topicInfo)
 			if err != nil {
 				log.Fatal(err)
 			}
-			_, err = query.Exec(topicName, creationDate, "owner", 0, 0)
+			_, err = query.Exec(topicName, creationDate, "owner", 0, 0, uuid)
 			if err != nil {
 				log.Fatal(err)
 			} else {

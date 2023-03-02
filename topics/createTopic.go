@@ -12,7 +12,8 @@ func CreateTableTopics(db *sql.DB) {
 		"creationDate" TEXT,
 		"owner" TEXT,
 		"likes" INT,
-		"dislikes" INT);`
+		"dislikes" INT,
+		"uuid" INT);`
 
 	query, err := db.Prepare(topic_table)
 

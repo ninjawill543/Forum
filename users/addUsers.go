@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"log"
 	"time"
+
+	"github.com/google/uuid"
 )
 
 func AddUsers(db *sql.DB, username string, password string, email string, creationDate time.Time, birthDate string) {
@@ -31,13 +33,16 @@ func AddUsers(db *sql.DB, username string, password string, email string, creati
 			}
 		}
 		rows.Close()
-		if testBool == false {
-			usersInfo := `INSERT INTO users(username, password, email, creationDate, birthDate) VALUES (?, ?, ?, ?, ?)`
+		if !testBool {
+			usersInfo := `INSERT INTO users(username, password, email, creationDate, birthDate, uuid) VALUES (?, ?, ?, ?, ?, ?)`
+			uuid := uuid.New()
+			fmt.Println(uuid)
+
 			query, err := db.Prepare(usersInfo)
 			if err != nil {
 				log.Fatal(err)
 			}
-			_, err = query.Exec(newUsername, password, newEmail, creationDate, birthDate)
+			_, err = query.Exec(newUsername, password, newEmail, creationDate, birthDate, uuid)
 			if err != nil {
 				log.Fatal(err)
 			} else {
