@@ -15,6 +15,7 @@ import (
 func main() {
 	http.HandleFunc("/", t4.Handler_404)
 	http.HandleFunc("/index", t3.Handler_index)
+	http.HandleFunc("/topic/", t2.Handler_topicPage)
 
 	//creating DB if not exist
 	databaseUsers, err := sql.Open("sqlite3", "../users.db")

@@ -12,7 +12,7 @@ type Topics struct {
 	Dislikes     int
 	CreationDate string
 	Owner        string
-	Uuid         int
+	Uuid         string
 }
 
 var TOPICS []Topics
@@ -24,14 +24,14 @@ func DisplayTopic(db *sql.DB) {
 	var creationDate string
 	var owner string
 	var id int
-	var uuid int
+	var uuid string
 
-	row, err := db.Query("SELECT id, name, creationDate, owner, likes, dislikes from topics;")
+	row, err := db.Query("SELECT id, name, creationDate, owner, likes, dislikes, uuid from topics;")
 	if err != nil {
 		fmt.Println(err)
 	} else {
 		for row.Next() {
-			err = row.Scan(&id, &name, &creationDate, &owner, &likes, &dislikes)
+			err = row.Scan(&id, &name, &creationDate, &owner, &likes, &dislikes, &uuid)
 			if err != nil {
 				fmt.Println(nil)
 			} else {
