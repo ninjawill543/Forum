@@ -8,8 +8,8 @@ import (
 type Topics struct {
 	Id           int
 	Name         string
-	Likes        string
-	Dislikes     string
+	Likes        int
+	Dislikes     int
 	CreationDate string
 	Owner        string
 	Uuid         int
@@ -18,12 +18,13 @@ type Topics struct {
 var TOPICS []Topics
 
 func DisplayTopic(db *sql.DB) {
-	name := ""
-	likes := ""
-	dislikes := ""
-	creationDate := ""
-	owner := ""
-	id := 0
+	var name string
+	var likes int
+	var dislikes int
+	var creationDate string
+	var owner string
+	var id int
+	var uuid int
 
 	row, err := db.Query("SELECT id, name, creationDate, owner, likes, dislikes from topics;")
 	if err != nil {
@@ -35,6 +36,7 @@ func DisplayTopic(db *sql.DB) {
 				fmt.Println(nil)
 			} else {
 				topicIndex := len(TOPICS)
+				fmt.Println(id)
 
 				if topicIndex == 0 || topicIndex == id-1 {
 					TOPICS = append(TOPICS, Topics{})
@@ -44,6 +46,7 @@ func DisplayTopic(db *sql.DB) {
 					TOPICS[topicIndex].Dislikes = dislikes
 					TOPICS[topicIndex].CreationDate = creationDate
 					TOPICS[topicIndex].Owner = owner
+					TOPICS[topicIndex].Uuid = uuid
 				}
 			}
 		}
