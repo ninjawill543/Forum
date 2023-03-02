@@ -37,8 +37,19 @@
     {{ $Topic := .}}
     {{ range $k, $v := .Messages }}
     <br>
-    {{ $v }}
-    {{ end }} by: 
+    Message:
+    {{ $v.Message }}
+    Owner:
+    {{ $v.Owner }}
+    CreationDate:
+    {{ $v.CreationDate }}
+    Reports:
+    {{ $v.Report }}
+    Id:
+    {{ $v.Id }}
+    Uuid:
+    {{ $v.Uuid}}
+    {{ end }} 
 
 </body>
 </html>
