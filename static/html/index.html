@@ -26,5 +26,20 @@
         <input name="topic_name" type="text">
         <input type="submit" value="create topic">
     </form>
+
+    TOPICS
+    <br>
+    {{ range $Topics := . }}
+    Name
+    {{ .Name }}
+    Likes/Dislikes
+    {{ .Likes }}
+    {{ .Dislikes }}
+    CreationDate
+    {{ .CreationDate }}
+    Owner
+    {{ .Owner }}
+    <br>
+    {{ end }}
 </body>
 </html>
