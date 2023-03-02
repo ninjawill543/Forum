@@ -24,6 +24,7 @@ func DisplayTopic(db *sql.DB) {
 	creationDate := ""
 	owner := ""
 	id := 0
+
 	row, err := db.Query("SELECT id, name, creationDate, owner, likes, dislikes from topics;")
 	if err != nil {
 		fmt.Println(err)
@@ -35,16 +36,17 @@ func DisplayTopic(db *sql.DB) {
 			} else {
 				topicIndex := len(TOPICS)
 
-				TOPICS = append(TOPICS, Topics{})
-				TOPICS[topicIndex].Id = id
-				TOPICS[topicIndex].Name = name
-				TOPICS[topicIndex].Likes = likes
-				TOPICS[topicIndex].Dislikes = dislikes
-				TOPICS[topicIndex].CreationDate = creationDate
-				TOPICS[topicIndex].Owner = owner
+				if topicIndex == 0 || topicIndex == id-1 {
+					TOPICS = append(TOPICS, Topics{})
+					TOPICS[topicIndex].Id = id
+					TOPICS[topicIndex].Name = name
+					TOPICS[topicIndex].Likes = likes
+					TOPICS[topicIndex].Dislikes = dislikes
+					TOPICS[topicIndex].CreationDate = creationDate
+					TOPICS[topicIndex].Owner = owner
+				}
 			}
 		}
-		fmt.Println(len(TOPICS))
 		row.Close()
 	}
 }

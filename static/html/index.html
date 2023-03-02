@@ -22,7 +22,7 @@
     </form>
 
     <p>create topic</p>
-    <form method="POST">
+    <form method="POST" onsubmit="setTimeout(function(){window.location.reload();},10);">
         <input name="topic_name" type="text">
         <input type="submit" value="create topic">
     </form>
