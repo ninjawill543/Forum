@@ -30,14 +30,14 @@
     TOPICS
     <br>
     {{ range $Topics := . }}
-    Name
+    Name:
     {{ .Name }}
-    Likes/Dislikes
+    Likes/Dislikes:
     {{ .Likes }}
     {{ .Dislikes }}
-    CreationDate
+    CreationDate:
     {{ .CreationDate }}
-    Owner
+    Owner:
     {{ .Owner }}
     <!-- {{ .Uuid }} -->
     <a href="./topic/{{ .Uuid }}">topicLink</a>

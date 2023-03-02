@@ -1,6 +1,7 @@
 package forum
 
 import (
+	"database/sql"
 	"fmt"
 	t "forum/listTopics"
 	"net/http"
@@ -20,7 +21,9 @@ type Topic struct {
 
 var TOPIC Topic
 
-func TopicPageDisplay(r *http.Request) {
+func TopicPageDisplay(db *sql.DB, r *http.Request) {
+	TOPIC.Messages = nil
+	var message string
 	fmt.Println(TOPIC.Messages)
 	uuid := strings.Split(r.URL.Path, "/")
 	for i := 0; i < len(t.TOPICS); i++ {
@@ -32,5 +35,20 @@ func TopicPageDisplay(r *http.Request) {
 			TOPIC.Dislikes = t.TOPICS[i].Dislikes
 			TOPIC.Id = t.TOPICS[i].Id
 		}
+	}
+	querry := fmt.Sprintf("SELECT message from messages WHERE uuid = '%s'", uuid[2])
+	row, err := db.Query(querry)
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		for row.Next() {
+			err = row.Scan(&message)
+			if err != nil {
+				fmt.Println(err)
+			} else {
+				TOPIC.Messages = append(TOPIC.Messages, message)
+			}
+		}
+		row.Close()
 	}
 }
