@@ -1,27 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
+
     <link rel="stylesheet" href="../css/output.css">
-    <title>Document</title>
+    <title>Main page</title>
 </head>
-<body class="h-screen w-screen overflow-x-hidden bg-slate-500">
+
+<body class="h-screen w-screen overflow-x-hidden bg-gray-400">
 
     <header>
-        <div class="flex justify-around w-full h-16 shadow-md bg-emerald-700">
-                <h1 class="relative uppercase my-[20px] right-56 font-bold text-center text-teal-100">Dread Forums</h1>
-                <div class="grid w-72 self-center items-center grid-cols-3">
-                    <button id="navButton">1</button>
-                    <button id="navButton">2</button>
-                    <button id="navButton">3</button>
-                </div>
+        <div class="flex justify-around w-full h-16 shadow-md bg-color5">
+            <h1 id="h1Title"
+                class="relative uppercase my-[20px] right-56 font-bold text-center dark:hover:text-color3 text-color4">
+                Dread Forums</h1>
+            <div class="grid w-96 self-center items-center grid-cols-3">
+
+                <button id="navButton" class="relative w-24 left-72">
+                    <p class="w-fit text-xs uppercase p-3">register</p>
+                    <svg class="relative top-2 right-1" fill="#000000" width="24px" height="24px" viewBox="0 0 16 16"
+                        id="register-16px" xmlns="http://www.w3.org/2000/svg">
+                        <path id="Path_184" data-name="Path 184"
+                            d="M57.5,41a.5.5,0,0,0-.5.5V43H47V31h2v.5a.5.5,0,0,0,.5.5h5a.5.5,0,0,0,.5-.5V31h2v.5a.5.5,0,0,0,1,0v-1a.5.5,0,0,0-.5-.5H55v-.5A1.5,1.5,0,0,0,53.5,28h-3A1.5,1.5,0,0,0,49,29.5V30H46.5a.5.5,0,0,0-.5.5v13a.5.5,0,0,0,.5.5h11a.5.5,0,0,0,.5-.5v-2A.5.5,0,0,0,57.5,41ZM50,29.5a.5.5,0,0,1,.5-.5h3a.5.5,0,0,1,.5.5V31H50Zm11.854,4.646-2-2a.5.5,0,0,0-.708,0l-6,6A.5.5,0,0,0,53,38.5v2a.5.5,0,0,0,.5.5h2a.5.5,0,0,0,.354-.146l6-6A.5.5,0,0,0,61.854,34.146ZM54,40V38.707l5.5-5.5L60.793,34.5l-5.5,5.5Zm-2,.5a.5.5,0,0,1-.5.5h-2a.5.5,0,0,1,0-1h2A.5.5,0,0,1,52,40.5Zm0-3a.5.5,0,0,1-.5.5h-2a.5.5,0,0,1,0-1h2A.5.5,0,0,1,52,37.5ZM54.5,35h-5a.5.5,0,0,1,0-1h5a.5.5,0,0,1,0,1Z"
+                            transform="translate(-46 -28)" />
+                    </svg>
+                </button>
+
+                <button id="navButton" class="relative w-24 left-64">
+                    <p class="w-fit text-xs uppercase p-3">login</p>
+                    <svg class="relative top-2 right-1" fill="#000000" width="24px" height="24px" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M20,21V3H13a1,1,0,0,1,0-2h8a1,1,0,0,1,1,1V22a1,1,0,0,1-1,1H13a1,1,0,0,1,0-2ZM2,12a1,1,0,0,0,1,1H14.586l-2.293,2.293a1,1,0,1,0,1.414,1.414l4-4a1,1,0,0,0,0-1.414l-4-4a1,1,0,1,0-1.414,1.414L14.586,11H3A1,1,0,0,0,2,12Z" />
+                    </svg>
+                </button>
+
+                <button id="dropdownDelayButton" data-dropdown-toggle="dropdownDelay" data-dropdown-delay="500"
+                    data-dropdown-trigger="hover"
+                    class="flex relative w-24 left-[355px] cursor-pointer focus:ring-blue-300 text-sm text-center dark:bg-color2 dark:hover:bg-color3 dark:focus:ring-color3 text-white bg-color2 hover:bg-color3 focus:ring-2 focus:outline-none">
+                    <p class="w-fit text-xs uppercase p-3">profile</p>
+                    <svg class="relative top-2 right-1" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <g id="style=fill">
+                            <g id="profile">
+                                <path id="vector (Stroke)" fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M6.75 6.5C6.75 3.6005 9.1005 1.25 12 1.25C14.8995 1.25 17.25 3.6005 17.25 6.5C17.25 9.3995 14.8995 11.75 12 11.75C9.1005 11.75 6.75 9.3995 6.75 6.5Z"
+                                    fill="#000000" />
+                                <path id="rec (Stroke)" fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M4.25 18.5714C4.25 15.6325 6.63249 13.25 9.57143 13.25H14.4286C17.3675 13.25 19.75 15.6325 19.75 18.5714C19.75 20.8792 17.8792 22.75 15.5714 22.75H8.42857C6.12081 22.75 4.25 20.8792 4.25 18.5714Z"
+                                    fill="#000000" />
+                            </g>
+                        </g>
+                    </svg>
+                    <!-- Dropdown menu -->
+                    <div id="dropdownDelay"
+                        class="z-10 hidden bg-white divide-y divide-gray-100 shadow w-44 dark:bg-gray-700">
+                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDelayButton">
+                            <li>
+                                <a href="#"
+                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Inbox</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign
+                                    out</a>
+                            </li>
+                        </ul>
+                    </div>
+                </button>
+
             </div>
+        </div>
     </header>
 
     <main>
-        <div class="uppercase py-11 text-center text-teal-100">
+        <div class="uppercase py-11 text-center text-color4">
             <p class="font-bold text-3xl">Welcome to **** Forums</p>
             <p class="font-bold"> select a category </p>
         </div>
@@ -41,20 +103,40 @@
             <input name="topic_name"type="text">
             <input type="submit" value="create topic">
         </form> -->
-        <div class="h-[630px] shadow-sm bg-slate-800 overflow-x-auto">
-            <div class="grid w-full h-[630px] gridspecs">
+        <div class="h-[630px] shadow-sm bg-color2 overflow-x-auto">
+            <div class="grid w-full h-[630px]">
                 <div class="wrapper">
-                        <div class=" itemSmall bg-white text-center row-start-1 text-xl m-2 w-52"> Sujet 1</div>
-                        <div class=" itemBig bg-white text-center text-xl m-2 w-72"> Sujet 2</div>
-                        <div class=" itemMed bg-white text-center text-xl m-2 w-72"> Sujet 3</div>
-                        <div class=" itemSmall bg-white text-center text-xl m-2 w-52"> Sujet 4</div>
-                        <div class=" itemMed bg-white text-center text-xl m-2 w-72"> Sujet 5</div>
-                        <div class=" itemNorm bg-white text-center text-xl m-2 w-72"> Sujet 6</div>
-                        <div class=" itemBig bg-white text-center  row-end-1 text-xl m-2 w-52"> Sujet 7</div>
-                        <div class=" itemNorm bg-white text-center row-start-2 text-xl m-2 w-72"> Sujet 8</div>
-                        <div class=" itemSmall bg-white text-center text-xl m-2 w-52"> Sujet 9</div>
-                        <div class=" itemMed bg-white text-center text-xl m-2 w-52"> Sujet 10</div>
-                        <!-- <div class=" itemMed bg-white text-center text-xl m-2 w-72"> Sujet 7</div>
+                    <div class="itemSmall text-center text-xl m-2 w-52" id="frontend">
+                        <div class="labelsText font-medium text-white"> Front-End </div>
+                    </div>
+                    <div class=" itemBig bg-white text-center text-xl m-2 w-72" id="backend">
+                        <div class="labelsText font-medium text-white"> Back-End </div>
+                    </div>
+                    <div class=" itemMed bg-white text-center text-xl m-2 w-72" id="design">
+                        <div class="labelsText font-bold text-color5"> Design </div>
+                    </div>
+                    <div class=" itemSmall bg-white text-center text-xl m-2 w-52" id="network">
+                        <div class="labelsText font-medium text-white"> Network </div>
+                    </div>
+                    <div class=" itemBig bg-white text-center text-xl m-2 w-72" id="pentest">
+                        <div class="labelsText font-medium text-white"> Pentest </div>
+                    </div>
+                    <div class=" itemBig bg-white text-center text-xl m-2 w-72" id="software">
+                        <div class="labelsText font-medium text-white"> Software </div>
+                    </div>
+                    <div class=" itemNorm bg-white text-center row-end-1 text-xl m-2 w-52" id="hardware">
+                        <div class="labelsText font-medium text-white"> Hardware </div>
+                    </div>
+                    <div class=" itemMed bg-white text-center row-start-2 text-xl m-2 w-72" id="marketplace">
+                        <div class="labelsText font-medium text-white"> Marketplace </div>
+                    </div>
+                    <div class=" itemSmall bg-white text-center text-xl m-2 w-52" id="cracking">
+                        <div class="labelsText font-medium text-white"> Cracking </div>
+                    </div>
+                    <div class=" itemEnd bg-white text-center text-xl m-2 w-52" id="cryptomonnaies">
+                        <div class="labelsText font-medium text-white"> Cryptomonnaies </div>
+                    </div>
+                    <!--<div class=" itemMed bg-white text-center text-xl m-2 w-72"> Sujet 7</div>
                         <div class=" itemNorm bg-white text-center text-xl m-2 w-72"> Sujet 8</div>
                         <div class=" itemBig bg-white text-center text-xl m-2 w-72"> Sujet 9</div>
                         <div class=" itemSmall bg-white text-center text-xl m-2 w-52"> Sujet 10</div> -->
@@ -67,6 +149,8 @@
     <footer>
 
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
 
 </body>
+
 </html>
