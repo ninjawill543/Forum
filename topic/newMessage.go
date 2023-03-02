@@ -27,7 +27,7 @@ func NewMessage(db *sql.DB, r *http.Request) {
 				log.Fatal(err)
 			}
 
-			_, err = query.Exec(message, creationDate, "owner", 0, uuid[2])
+			_, err = query.Exec(message, creationDate, t.USER.Username, 0, uuid[2])
 			if err != nil {
 				log.Fatal(err)
 			} else {
