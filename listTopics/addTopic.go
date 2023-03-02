@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"time"
+	t "forum/users"
 
 	"github.com/google/uuid"
 )
@@ -26,7 +27,7 @@ func AddTopic(r *http.Request, database *sql.DB) {
 				log.Fatal(err)
 			}
 
-			_, err = query.Exec(topicName, creationDate, "owner", 0, 0, uuid)
+			_, err = query.Exec(topicName, creationDate, t.USER.Username, 0, 0, uuid)
 			if err != nil {
 				log.Fatal(err)
 			} else {

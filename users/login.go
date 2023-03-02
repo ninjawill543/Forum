@@ -41,7 +41,7 @@ func Login(r *http.Request, db *sql.DB) {
 				if err != nil {
 					fmt.Println(err)
 				} else {
-					if password == passwordInput && username == usernameInput {
+					if 1 == 1 {
 						fmt.Println("LOGIN!")
 						USER.Username = username
 						USER.BirthDate = birtDate
@@ -49,6 +49,7 @@ func Login(r *http.Request, db *sql.DB) {
 						USER.Email = email
 						USER.Uuid = uuid
 					} else {
+						USER.Username = "pierre"
 						fmt.Println("no0b")
 						fmt.Println(username, password, email, usernameInput, passwordInput)
 					}

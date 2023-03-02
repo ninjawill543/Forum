@@ -17,6 +17,7 @@ type Topic struct {
 	Owner        string
 	Uuid         string
 	Messages     []string
+	Users        []string
 }
 
 var TOPIC Topic
