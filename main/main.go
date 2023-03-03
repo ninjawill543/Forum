@@ -14,7 +14,7 @@ func main() {
 
 	http.HandleFunc("/", t3.Handler_404)
 	http.HandleFunc("/index", t3.Handler_index)
-	http.HandleFunc("/topic/", t3.Handler_topicPage)
+	http.HandleFunc("/topics/", t3.Handler_topicPage)
 	http.HandleFunc("/profil", t3.Handler_profil)
 
 	//url of our funcs
