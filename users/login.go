@@ -7,16 +7,6 @@ import (
 	"net/http"
 )
 
-type User struct {
-	Username     string
-	Email        string
-	CreationDate string
-	BirthDate    string
-	Uuid         string
-}
-
-var USER User
-
 func Login(r *http.Request, db *sql.DB) {
 	var email string
 	var username string
