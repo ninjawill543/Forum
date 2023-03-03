@@ -23,7 +23,7 @@ func DeleteMessage(r *http.Request, db *sql.DB) {
 					fmt.Println(err)
 				}
 			}
-			if owner == t.USER.Username {
+			if owner == t.USER.Username || t.USER.Admin == "yes" {
 				query2 := fmt.Sprintf("DELETE FROM messages WHERE uuid = '%s'", r.FormValue("delete"))
 				db.Exec(query2)
 				fmt.Println("message deleted")

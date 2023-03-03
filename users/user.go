@@ -13,6 +13,7 @@ type User struct {
 	CreationDate string
 	BirthDate    string
 	Uuid         string
+	Admin        string
 }
 
 var USER User

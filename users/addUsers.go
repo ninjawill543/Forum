@@ -34,7 +34,7 @@ func AddUsers(db *sql.DB, username string, password string, email string, creati
 		}
 		rows.Close()
 		if !testBool {
-			usersInfo := `INSERT INTO users(username, password, email, creationDate, birthDate, uuid) VALUES (?, ?, ?, ?, ?, ?)`
+			usersInfo := `INSERT INTO users(username, password, email, creationDate, birthDate, admin, uuid) VALUES (?, ?, ?, ?, ?, ?, ?)`
 			uuid := uuid.New()
 			fmt.Println(uuid)
 
@@ -42,7 +42,7 @@ func AddUsers(db *sql.DB, username string, password string, email string, creati
 			if err != nil {
 				log.Fatal(err)
 			}
-			_, err = query.Exec(newUsername, password, newEmail, creationDate, birthDate, uuid)
+			_, err = query.Exec(newUsername, password, newEmail, creationDate, birthDate, "no", uuid)
 			if err != nil {
 				log.Fatal(err)
 			} else {
