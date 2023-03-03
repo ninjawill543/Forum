@@ -9,13 +9,17 @@ import (
 
 func Handler_topicPage(w http.ResponseWriter, r *http.Request) {
 	tmpl := template.Must(template.ParseFiles("../static/html/topicPage.html"))
-	databaseTopics, _ := sql.Open("sqlite3", "../messages.db")
+	databaseMessages, _ := sql.Open("sqlite3", "../messages.db")
 
 	if r.FormValue("input_newMessage") != "" {
-		t.NewMessage(databaseTopics, r)
+		t.NewMessage(databaseMessages, r)
 	}
 
-	t.TopicPageDisplay(databaseTopics, r)
+	if r.FormValue("report") != "" {
+		t.Reports(r, databaseMessages)
+	}
+
+	t.TopicPageDisplay(databaseMessages, r)
 
 	tmpl.Execute(w, t.TOPIC)
 }

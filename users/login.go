@@ -38,7 +38,6 @@ func Login(r *http.Request, db *sql.DB) {
 		} else {
 			for row.Next() {
 				err = row.Scan(&username, &password, &email, &creationDate, &birtDate, &uuid)
-				fmt.Println("email", email)
 				if err != nil {
 					fmt.Println(err)
 				} else {

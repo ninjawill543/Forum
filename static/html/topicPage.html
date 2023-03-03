@@ -49,6 +49,9 @@
     {{ $v.Id }}
     Uuid:
     {{ $v.Uuid}}
+    <form method="POST">
+        <button type="submit" value="{{ .Uuid }}" name="report">report</button>
+    </form>
     {{ end }} 
 
 </body>
