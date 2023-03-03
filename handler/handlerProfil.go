@@ -13,9 +13,9 @@ func Handler_profil(w http.ResponseWriter, r *http.Request) {
 
 	if r.FormValue("logOutButton") == "logout" {
 		t.Logout(r)
-	}
-
-	if r.FormValue("username") != "" || r.FormValue("email") != "" || r.FormValue("password") != "" {
+	} else if r.FormValue("delete") != "" {
+		t.DeleteAccount(r, databaseUsers)
+	} else if r.FormValue("username") != "" || r.FormValue("email") != "" || r.FormValue("password") != "" {
 		t.UserEdit(r, databaseUsers)
 	}
 
