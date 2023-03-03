@@ -22,7 +22,7 @@
     </form>
 
     <p>create topic</p>
-    <form method="POST" onsubmit="setTimeout(function(){window.location.reload();},10);">
+    <form method="POST">
         <input name="topic_name" type="text">
         <input type="submit" value="create topic">
     </form>
@@ -35,10 +35,15 @@
     Likes/Dislikes:
     {{ .Likes }}
     {{ .Dislikes }}
+
     CreationDate:
     {{ .CreationDate }}
     Owner:
     {{ .Owner }}
+    <form method="POST">
+        <button type="submit" value="{{ .Uuid }}" name="like">like</button>
+        <button type="submit" value="{{ .Uuid }}" name="dislike">dislike</button>
+    </form>
     <!-- {{ .Uuid }} -->
     <a href="./topic/{{ .Uuid }}">topicLink</a>
     <br>

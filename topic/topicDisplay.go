@@ -57,10 +57,7 @@ func TopicPageDisplay(db *sql.DB, r *http.Request) {
 			if err != nil {
 				fmt.Println(err)
 			} else {
-				fmt.Println("test")
 				messageIndex := len(TOPIC.Messages)
-				fmt.Println("index", messageIndex)
-				fmt.Println("id", id)
 
 				TOPIC.Messages = append(TOPIC.Messages, Message{})
 				TOPIC.Messages[messageIndex].Id = id
