@@ -35,7 +35,10 @@ func NewMessage(db *sql.DB, r *http.Request) {
 			if err != nil {
 				log.Fatal(err)
 			} else {
-				fmt.Println("new Post")
+				fmt.Println("new message")
+				databaseTopics, _ := sql.Open("sqlite3", "../topics.db")
+				query2 := fmt.Sprintf("UPDATE topics SET nmbPosts = nmbPosts + 1 WHERE uuid = '%s'", uuidPAth[2])
+				databaseTopics.Exec(query2)
 			}
 		}
 	}

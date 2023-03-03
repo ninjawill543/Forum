@@ -43,11 +43,10 @@ func TopicPageDisplay(db *sql.DB, r *http.Request) {
 		TOPIC.Name = t.TOPICS[i].Name
 		TOPIC.Owner = t.TOPICS[i].Owner
 		TOPIC.Likes = t.TOPICS[i].Likes
-		TOPIC.Dislikes = t.TOPICS[i].Dislikes
 		TOPIC.Id = t.TOPICS[i].Id
 	}
-	querry := fmt.Sprintf("SELECT id, message, creationDate, owner, report, uuid from messages WHERE uuidPath = '%s'", uuidPath[2])
-	row, err := db.Query(querry)
+	query := fmt.Sprintf("SELECT id, message, creationDate, owner, report, uuid from messages WHERE uuidPath = '%s'", uuidPath[2])
+	row, err := db.Query(query)
 	if err != nil {
 		fmt.Println(err)
 	} else {

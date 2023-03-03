@@ -14,7 +14,7 @@ func CreatingDatabases() {
 		log.Fatal(err)
 	}
 
-	databaseTopics, err := sql.Open("sqlite3", "../topic.db")
+	databaseTopics, err := sql.Open("sqlite3", "../topics.db")
 	if err != nil {
 		log.Fatal(err)
 	}

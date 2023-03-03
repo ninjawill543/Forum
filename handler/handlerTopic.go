@@ -11,10 +11,12 @@ func Handler_topicPage(w http.ResponseWriter, r *http.Request) {
 	tmpl := template.Must(template.ParseFiles("../static/html/topicPage.html"))
 	databaseMessages, _ := sql.Open("sqlite3", "../messages.db")
 
+	if r.FormValue("delete") != "" {
+		t.DeleteMessage(r, databaseMessages)
+	}
 	if r.FormValue("input_newMessage") != "" {
 		t.NewMessage(databaseMessages, r)
 	}
-
 	if r.FormValue("report") != "" {
 		t.Reports(r, databaseMessages)
 	}

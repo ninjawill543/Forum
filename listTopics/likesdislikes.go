@@ -9,21 +9,21 @@ import (
 
 func LikesDislikes(r *http.Request, db *sql.DB) {
 	if t.USER.Username != "" {
-		var likesordislikes string
+		var likesordislikes int
 		var uuid string
 		fmt.Println(likesordislikes)
 
 		if r.Method == "POST" {
 			if r.FormValue("like") != "" {
-				likesordislikes = "likes"
+				likesordislikes = 1
 				uuid = r.FormValue("like")
 
 			}
 			if r.FormValue("dislike") != "" {
-				likesordislikes = "dislikes"
+				likesordislikes = -1
 				uuid = r.FormValue("dislike")
 			}
-			query := fmt.Sprintf("UPDATE topics SET %s = %s + 1 WHERE uuid = '%s'", likesordislikes, likesordislikes, uuid)
+			query := fmt.Sprintf("UPDATE topics SET likes = likes + %d WHERE uuid = '%s'", likesordislikes, uuid)
 			db.Exec(query)
 		}
 	} else {

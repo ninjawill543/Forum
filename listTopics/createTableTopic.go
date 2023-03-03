@@ -12,7 +12,7 @@ func CreateTableTopics(db *sql.DB) {
 		"creationDate" TEXT,
 		"owner" TEXT,
 		"likes" INTEGER,
-		"dislikes" INTEGER,
+		"nmbPosts" INTEGER,
 		"uuid" TEXT);`
 
 	query, err := db.Prepare(topic_table)
@@ -21,6 +21,6 @@ func CreateTableTopics(db *sql.DB) {
 		fmt.Println(err)
 	} else {
 		query.Exec()
-		fmt.Println("Table Topic created successfully")
+		fmt.Println("Table topics created successfully")
 	}
 }

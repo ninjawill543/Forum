@@ -12,8 +12,8 @@ func DeleteAccount(r *http.Request, db *sql.DB) {
 			uuid := r.FormValue("delete")
 			query := fmt.Sprintf("DELETE FROM users WHERE uuid = '%s'", uuid)
 			fmt.Println("account deleted", USER.Username)
-			db.Exec(query)
 			Logout(r)
+			db.Exec(query)
 		} else {
 			fmt.Println("you need to be login to delete your account")
 		}

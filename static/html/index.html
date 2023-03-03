@@ -32,20 +32,20 @@
     {{ range $Topics := . }}
     Name:
     {{ .Name }}
-    Likes/Dislikes:
+    Likes:
     {{ .Likes }}
-    {{ .Dislikes }}
 
     CreationDate:
     {{ .CreationDate }}
     Owner:
     {{ .Owner }}
+    Posts: 
+    {{ .NmbPosts }}
     <form method="POST">
         <button type="submit" value="{{ .Uuid }}" name="like">like</button>
         <button type="submit" value="{{ .Uuid }}" name="dislike">dislike</button>
     </form>
-    <!-- {{ .Uuid }} -->
-    <a href="./topic/{{ .Uuid }}">topicLink</a>
+    <a href="./topics/{{ .Uuid }}">topicLink</a>
     <br>
     {{ end }}
 

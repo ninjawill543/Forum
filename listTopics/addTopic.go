@@ -22,7 +22,7 @@ func AddTopic(r *http.Request, database *sql.DB) {
 			fmt.Println("you need to be login to post a topic")
 		} else {
 			creationDate := time.Now()
-			topicInfo := `INSERT INTO topics(name, creationDate, owner, likes, dislikes, uuid) VALUES (?, ?, ?, ?, ?, ?)`
+			topicInfo := `INSERT INTO topics(name, creationDate, owner, likes, nmbPosts, uuid) VALUES (?, ?, ?, ?, ?, ?)`
 			uuid := uuid.New()
 			query, err := database.Prepare(topicInfo)
 			if err != nil {
