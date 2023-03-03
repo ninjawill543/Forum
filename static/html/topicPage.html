@@ -41,6 +41,8 @@
     {{ $v.Message }}
     Owner:
     {{ $v.Owner }}
+    Likes:
+    {{ $v.Like }}
     CreationDate:
     {{ $v.CreationDate }}
     Reports:
@@ -52,6 +54,8 @@
     <form method="POST">
         <button type="submit" value="{{ .Uuid }}" name="report">report</button>
         <button type="submit" value="{{ .Uuid }}" name="delete">delete</button>
+        <button type="submit" value="{{ .Uuid }}" name="like">like</button>
+        <button type="sbutmit" value="{{ .Uuid }}" name="dislike">dislike</button>
     </form>
     {{ end }} 
 

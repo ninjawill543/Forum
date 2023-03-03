@@ -13,6 +13,7 @@ func CreateTableMessage(db *sql.DB) {
 		"owner" TEXT,
 		"report" INTEGER,
 		"uuidPath" TEXT,
+		"like" INT,
 		"uuid" TEXT);`
 
 	query, err := db.Prepare(messages_table)

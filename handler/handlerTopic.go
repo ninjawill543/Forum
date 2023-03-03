@@ -20,6 +20,9 @@ func Handler_topicPage(w http.ResponseWriter, r *http.Request) {
 	if r.FormValue("report") != "" {
 		t.Reports(r, databaseMessages)
 	}
+	if r.FormValue("like") != "" || r.FormValue("dislike") != "" {
+		t.LikesDislikes(r, databaseMessages)
+	}
 
 	t.TopicPageDisplay(databaseMessages, r)
 
