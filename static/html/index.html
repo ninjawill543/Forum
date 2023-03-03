@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,7 +32,7 @@
                     </svg>
                 </button>
 
-                <button id="navButton" class="relative w-24 left-64">
+                <button onclick="openLogin()" id="navButton" class="relative w-24 left-64">
                     <p class="w-fit text-xs uppercase p-3">login</p>
                     <svg class="relative top-2 right-1" fill="#000000" width="24px" height="24px" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
@@ -60,7 +61,8 @@
                     <!-- Dropdown menu -->
                     <div id="dropdownDelay"
                         class="z-10 hidden bg-white divide-y divide-gray-100 shadow-md w-44 dark:bg-[#33343a]">
-                        <ul class="py-[10px] text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDelayButton">
+                        <ul class="py-[10px] text-sm text-gray-700 dark:text-gray-200"
+                            aria-labelledby="dropdownDelayButton">
                             <li>
                                 <a href="#"
                                     class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#33343a] dark:hover:text-white">Inbox</a>
@@ -165,10 +167,80 @@
         </div>
     </main>
 
+    <div class="hidden" id="register2">
+        <div
+            class="fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 h-[400px] w-[350px] bg-color3 flex flex-col items-center justify-center  ">
+            <p>Register</p>
+            <form method="post" class="mt-8 mb-4">
+                <div class="mb-4">
+                    <label for="userEmail" class="sr-only">Username</label>
+                    <input class="border-solid border border-gray-400 rounded px-2 py-3" type="Username" id="userName"
+                        placeholder="Username" required />
+                </div>
+                <div class="mb-4">
+                    <label for="userPass" class="sr-only">Password</label>
+                    <input class="border-solid border border-gray-400 rounded px-2 py-3" type="password" id="userPass"
+                        placeholder="Password" required />
+                </div>
+                <div class="mb-4">
+                    <label for="userPass2" class="sr-only">Confirm your password</label>
+                    <input class="border-solid border border-gray-400 rounded px-2 py-3" type="password" id="userPass"
+                        placeholder="Confirm your password" required />
+                </div>
+                <button class="bg-gray-500 hover:bg-gray-600 text-white font-bold w-full py-3" type="submit"
+                    onclick="closeRegister()">Register</button>
+            </form>
+        </div>
+    </div>
+    <div class="hidden" id="login">
+        <div
+            class="fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 h-[400px] w-[350px] bg-color3 flex flex-col items-center justify-center ">
+            <p>Login</p>
+            <form method="post" class="mt-8 mb-4">
+                <div class="mb-4">
+                    <label for="userEmail" class="sr-only">Email address</label>
+                    <input class="border-solid border border-gray-400 rounded px-2 py-3" type="email" id="userEmail"
+                        placeholder="Email address" required />
+                </div>
+                <div>
+                    <label for="userEmail" class="sr-only">Password</label>
+                    <input class="border-solid border border-gray-400 rounded px-2 py-3" type="password" id="userPass"
+                        placeholder="Password" required />
+                </div>
+                <div class="my-4 flex items-center">
+                    <input class="h-4 w-4 mr-2" type="checkbox" id="userRemember" />
+                    <label for="userRemember">Remember me</label>
+                </div>
+                <button class="bg-gray-500 hover:bg-gray-600 text-white font-bold w-full py-3 mb-4" type="submit">Sign
+                    in</button>
+                <button class="bg-gray-500 hover:bg-gray-600 text-white font-bold w-full py-3 " type="submit"
+                    onclick="openRegister()">Click here to register</button>
+            </form>
+            <a href="#" class="self-start pl-4">Forgot the password?</a>
+        </div>
+    </div>
+    <div class="hidden" id="register">
+        <div
+            class="fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 h-[300px] w-[350px] bg-color3 flex flex-col items-center justify-center  ">
+            <p>Register</p>
+            <form method="post" class="mt-8 mb-4">
+                <div class="mb-4">
+                    <label for="userEmail" class="sr-only">Email address</label>
+                    <input class="border-solid border border-gray-400 rounded px-2 py-3" type="email" id="userEmail"
+                        placeholder="Email address" required />
+                </div>
+                <div>
+                    <button class="bg-gray-500 hover:bg-gray-600 text-white font-bold w-full py-3" type="submit"
+                        onclick="openRegister2()">Continue</button>
+            </form>
+        </div>
+    </div>
+
     <footer>
 
     </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script> -->
+    <script src="../css/popups.js"></script>
 
 </body>
 

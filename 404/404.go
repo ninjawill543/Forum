@@ -10,6 +10,6 @@ func main() {
 }
 
 func Handler_404(w http.ResponseWriter, r *http.Request) {
-	tmpl := template.Must(template.ParseFiles("../static/404.html"))
+	tmpl := template.Must(template.ParseFiles("../static/html/notfound.html"))
 	tmpl.Execute(w, "")
 }

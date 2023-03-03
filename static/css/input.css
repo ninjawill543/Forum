@@ -105,3 +105,8 @@
 .labelsText:hover {
     backdrop-filter: blur(1px);
 }
+#zebi {
+        background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fvignette2.wikia.nocookie.net%2Flegouniversearchives%2Fimages%2Fc%2Fcd%2FMRW.png%2Frevision%2Flatest%3Fcb%3D20120606025040&f=1&nofb=1&ipt=59ffdc533f354d387d7c8925649b326a07069dbdefa1bf410ae82f4b15eedb8a&ipo=images');
+        background-size: cover;
+        background-position: center ;
+}
