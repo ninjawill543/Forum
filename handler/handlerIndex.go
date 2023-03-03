@@ -29,6 +29,10 @@ func Handler_index(w http.ResponseWriter, r *http.Request) {
 		t.LikesDislikes(r, databaseTopics)
 	}
 
+	if r.FormValue("delete") != "" {
+		t.DeleteTopic(r, databaseTopics)
+	}
+
 	t.DisplayTopic(databaseTopics)
 
 	tmpl1.Execute(w, t.TOPICS)

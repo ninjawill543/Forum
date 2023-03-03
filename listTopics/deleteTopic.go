@@ -7,25 +7,25 @@ import (
 	"net/http"
 )
 
-func DeleteMessage(r *http.Request, db *sql.DB) {
+func DeleteTopic(r *http.Request, db *sql.DB) {
 	if r.FormValue("delete") != "" {
 		var owner string
-		query := fmt.Sprintf("SELECT owner FROM messages WHERE uuid = '%s'", r.FormValue("delete"))
+		uuid := r.FormValue("delete")
+		query := fmt.Sprintf("SELECT owner FROM topics WHERE uuid = '%s'", uuid)
 		row, err := db.Query(query)
 		if err != nil {
 			fmt.Println(err)
 		} else {
 			for row.Next() {
 				err = row.Scan(&owner)
-				fmt.Println(owner)
 				if err != nil {
 					fmt.Println(err)
 				}
 			}
-			if owner == t.USER.Username {
-				query2 := fmt.Sprintf("DELETE FROM messages WHERE uuid = '%s'", r.FormValue("delete"))
-				db.Exec(query2)
-				fmt.Println("message deleted")
+			if t.USER.Username == owner {
+				query = fmt.Sprintf("DELETE FROM topics WHERE uuid = '%s'", uuid)
+				db.Exec(query)
+				fmt.Println("topic deleted")
 			} else {
 				fmt.Println("you need to be the owner of the topic to delete it")
 			}
