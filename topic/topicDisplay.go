@@ -55,7 +55,6 @@ func TopicPageDisplay(db *sql.DB, r *http.Request) {
 		TOPIC.Messages = nil
 		for row.Next() {
 			err = row.Scan(&id, &message, &creationDate, &owner, &report, &like, &uuid)
-			fmt.Println(message, like, "HERETEST")
 			if err != nil {
 				fmt.Println(err)
 			} else {
