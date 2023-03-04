@@ -10,6 +10,7 @@ import (
 func Handler_topicPage(w http.ResponseWriter, r *http.Request) {
 	tmpl := template.Must(template.ParseFiles("../static/html/topicPage.html"))
 	databaseMessages, _ := sql.Open("sqlite3", "../messages.db")
+	databaseTopics, _ := sql.Open("sqlite3", "../topics.db")
 
 	if r.FormValue("delete") != "" {
 		t.DeleteMessage(r, databaseMessages)
@@ -27,7 +28,7 @@ func Handler_topicPage(w http.ResponseWriter, r *http.Request) {
 		t.EditMessage(r, databaseMessages)
 	}
 
-	t.TopicPageDisplay(databaseMessages, r)
+	t.TopicPageDisplay(databaseMessages, databaseTopics, r)
 
 	tmpl.Execute(w, t.TOPIC)
 }

@@ -13,10 +13,27 @@ import (
 )
 
 func NewMessage(db *sql.DB, r *http.Request) {
-	uuidPAth := strings.Split(r.URL.Path, "/")
+	topicName := strings.Split(r.URL.Path, "/")
 	uuid := uuid.New()
 
 	if r.Method == "POST" {
+		databaseTopics, _ := sql.Open("sqlite3", "../topics.db")
+
+		query := fmt.Sprintf("SELECT uuid FROM topics WHERE name = '%s'", topicName[2])
+		row, err := databaseTopics.Query(query)
+		if err != nil {
+			fmt.Println(err)
+		} else {
+			for row.Next() {
+				err = row.Scan(&uuid)
+				if err != nil {
+					fmt.Println(err)
+				}
+			}
+			row.Close()
+		}
+		uuidPath := uuid
+
 		message := r.FormValue("input_newMessage")
 
 		if len(message) < 10 {
@@ -25,19 +42,19 @@ func NewMessage(db *sql.DB, r *http.Request) {
 			fmt.Println("you need to be login to post a message")
 		} else {
 			creationDate := time.Now()
-			newMessage := `INSERT INTO messages(message, creationDate, owner, report, uuidPath, like, edited, uuid) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`
-			query, err := db.Prepare(newMessage)
+
+			newMessageQuery := `INSERT INTO messages(message, creationDate, owner, report, uuidPath, like, edited, uuid) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`
+			queryMessage, err := db.Prepare(newMessageQuery)
 			if err != nil {
-				log.Fatal(err)
+				fmt.Println(err)
 			}
 
-			_, err = query.Exec(message, creationDate, t.USER.Username, 0, uuidPAth[2], 0, 0, uuid)
+			_, err = queryMessage.Exec(message, creationDate, t.USER.Username, 0, uuidPath, 0, 0, uuid)
 			if err != nil {
 				log.Fatal(err)
 			} else {
 				fmt.Println("new message")
-				databaseTopics, _ := sql.Open("sqlite3", "../topics.db")
-				query2 := fmt.Sprintf("UPDATE topics SET nmbPosts = nmbPosts + 1, lastPost = '%s' WHERE uuid = '%s'", creationDate, uuidPAth[2])
+				query2 := fmt.Sprintf("UPDATE topics SET nmbPosts = nmbPosts + 1, lastPost = '%s' WHERE uuid = '%s'", creationDate, uuidPath)
 				databaseTopics.Exec(query2)
 			}
 		}

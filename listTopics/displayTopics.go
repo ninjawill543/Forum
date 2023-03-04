@@ -23,10 +23,10 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 	var likes int
 	var creationDate string
 	var owner string
-	var id int
 	var uuid string
 	var nmbPosts int
 	var filter string
+	var id int
 
 	filter = r.FormValue("filter")
 	if filter == "" {
@@ -46,13 +46,13 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 				topicIndex := len(TOPICS)
 
 				TOPICS = append(TOPICS, Topics{})
-				TOPICS[topicIndex].Id = id
 				TOPICS[topicIndex].Name = name
 				TOPICS[topicIndex].Likes = likes
 				TOPICS[topicIndex].CreationDate = creationDate
 				TOPICS[topicIndex].Owner = owner
 				TOPICS[topicIndex].NmbPosts = nmbPosts
 				TOPICS[topicIndex].Uuid = uuid
+				TOPICS[topicIndex].Id = id
 			}
 		}
 		row.Close()

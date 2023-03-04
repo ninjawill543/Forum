@@ -16,6 +16,7 @@ type User struct {
 	Admin         int
 	TopicsCreated []string
 	MessagesSend  []string
+	UuidOfTopics  []string
 }
 
 var USER User

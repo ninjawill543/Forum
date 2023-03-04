@@ -16,6 +16,7 @@ type Topic struct {
 	CreationDate string
 	Owner        string
 	Uuid         string
+	UuidPath     string
 	Messages     []Message `Message`
 }
 
@@ -32,7 +33,7 @@ type Message struct {
 
 var TOPIC Topic
 
-func TopicPageDisplay(db *sql.DB, r *http.Request) {
+func TopicPageDisplay(databaseMessages *sql.DB, databaseTopics *sql.DB, r *http.Request) {
 	var creationDate string
 	var owner string
 	var report int
@@ -42,22 +43,38 @@ func TopicPageDisplay(db *sql.DB, r *http.Request) {
 	var like int
 	var filter string
 	var edited int
+	var uuidPath string
 
 	filter = r.FormValue("filter")
 	if filter == "" {
 		filter = "creationDate"
 	}
 
-	uuidPath := strings.Split(r.URL.Path, "/")
+	topicName := strings.Split(r.URL.Path, "/")
+	queryTopicName := fmt.Sprintf("SELECT uuid FROM topics WHERE name = '%s'", topicName[2])
+	row, err := databaseTopics.Query(queryTopicName)
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		for row.Next() {
+			err = row.Scan(&uuid)
+			if err != nil {
+				fmt.Println(err)
+			}
+		}
+		uuidPath = uuid
+	}
+
 	for i := 0; i < len(t.TOPICS); i++ {
 		TOPIC.CreationDate = t.TOPICS[i].CreationDate
 		TOPIC.Name = t.TOPICS[i].Name
 		TOPIC.Owner = t.TOPICS[i].Owner
 		TOPIC.Likes = t.TOPICS[i].Likes
 		TOPIC.Id = t.TOPICS[i].Id
+		TOPIC.UuidPath = t.TOPICS[i].Uuid
 	}
-	query := fmt.Sprintf("SELECT id, message, creationDate, owner, report, like, edited, uuid from messages WHERE uuidPath = '%s' ORDER BY %s DESC", uuidPath[2], filter)
-	row, err := db.Query(query)
+	query := fmt.Sprintf("SELECT id, message, creationDate, owner, report, like, edited, uuid FROM messages WHERE uuidPath = '%s' ORDER BY %s DESC", uuidPath, filter)
+	row, err = databaseMessages.Query(query)
 	if err != nil {
 		fmt.Println(err)
 	} else {

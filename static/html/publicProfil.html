@@ -28,7 +28,7 @@
     {{ $User := .}}
     created topic:
     {{ range $k, $v := .TopicsCreated }}
-    {{ $v }}
+    <a href="../topics/{{ $v }}">{{ $v }}</a>
     <br>
     {{ end }}
     <br>
