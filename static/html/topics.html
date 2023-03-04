@@ -9,37 +9,146 @@
 </head>
 <body class="h-screen w-screen bg-color5">
     <header>
-        <div class="rounded-br-md rounded-bl-md flex justify-around w-full h-16 shadow-md bg-color3">
-                <h1 class="relative uppercase my-[20px] right-56 font-bold text-center text-color1">Dread Forums</h1>
-                <div class="grid w-72 self-center items-center grid-cols-3">
-                    <button id="navButton">1</button>
-                    <button id="navButton">2</button>
-                    <button id="navButton">3</button>
-                </div>
+        <div class="flex justify-around w-full h-16 shadow-md bg-color5">
+            <h1 id="h1Title"
+                class="relative uppercase my-[20px] right-56 font-bold text-center dark:hover:text-color3 text-color1">
+                Dread Forums</h1>
+            <div class="grid w-96 self-center items-center grid-cols-3">
+
+                <button id="navButton" class="relative w-24 left-72">
+                    <p class="w-fit text-xs uppercase p-3">register</p>
+                    <svg class="relative top-2 right-1" fill="#000000" width="24px" height="24px" viewBox="0 0 16 16"
+                        id="register-16px" xmlns="http://www.w3.org/2000/svg">
+                        <path id="Path_184" data-name="Path 184"
+                            d="M57.5,41a.5.5,0,0,0-.5.5V43H47V31h2v.5a.5.5,0,0,0,.5.5h5a.5.5,0,0,0,.5-.5V31h2v.5a.5.5,0,0,0,1,0v-1a.5.5,0,0,0-.5-.5H55v-.5A1.5,1.5,0,0,0,53.5,28h-3A1.5,1.5,0,0,0,49,29.5V30H46.5a.5.5,0,0,0-.5.5v13a.5.5,0,0,0,.5.5h11a.5.5,0,0,0,.5-.5v-2A.5.5,0,0,0,57.5,41ZM50,29.5a.5.5,0,0,1,.5-.5h3a.5.5,0,0,1,.5.5V31H50Zm11.854,4.646-2-2a.5.5,0,0,0-.708,0l-6,6A.5.5,0,0,0,53,38.5v2a.5.5,0,0,0,.5.5h2a.5.5,0,0,0,.354-.146l6-6A.5.5,0,0,0,61.854,34.146ZM54,40V38.707l5.5-5.5L60.793,34.5l-5.5,5.5Zm-2,.5a.5.5,0,0,1-.5.5h-2a.5.5,0,0,1,0-1h2A.5.5,0,0,1,52,40.5Zm0-3a.5.5,0,0,1-.5.5h-2a.5.5,0,0,1,0-1h2A.5.5,0,0,1,52,37.5ZM54.5,35h-5a.5.5,0,0,1,0-1h5a.5.5,0,0,1,0,1Z"
+                            transform="translate(-46 -28)" />
+                    </svg>
+                </button>
+
+                <button onclick="openLogin()" id="navButton" class="relative w-24 left-64">
+                    <p class="w-fit text-xs uppercase p-3">login</p>
+                    <svg class="relative top-2 right-1" fill="#000000" width="24px" height="24px" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M20,21V3H13a1,1,0,0,1,0-2h8a1,1,0,0,1,1,1V22a1,1,0,0,1-1,1H13a1,1,0,0,1,0-2ZM2,12a1,1,0,0,0,1,1H14.586l-2.293,2.293a1,1,0,1,0,1.414,1.414l4-4a1,1,0,0,0,0-1.414l-4-4a1,1,0,1,0-1.414,1.414L14.586,11H3A1,1,0,0,0,2,12Z" />
+                    </svg>
+                </button>
+
+                <button id="dropdownDelayButton" data-dropdown-toggle="dropdownDelay" data-dropdown-delay="500"
+                    data-dropdown-trigger="hover"
+                    class="flex relative w-24 left-[355px] cursor-pointer focus:ring-blue-300 text-sm text-center dark:bg-color2 dark:hover:bg-color3 dark:focus:ring-color3 text-white bg-color2 hover:bg-color3 focus:ring-2 focus:outline-none">
+                    <p class="w-fit text-xs uppercase p-3">profile</p>
+                    <svg class="relative top-2 right-1" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <g id="style=fill">
+                            <g id="profile">
+                                <path id="vector (Stroke)" fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M6.75 6.5C6.75 3.6005 9.1005 1.25 12 1.25C14.8995 1.25 17.25 3.6005 17.25 6.5C17.25 9.3995 14.8995 11.75 12 11.75C9.1005 11.75 6.75 9.3995 6.75 6.5Z"
+                                    fill="#000000" />
+                                <path id="rec (Stroke)" fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M4.25 18.5714C4.25 15.6325 6.63249 13.25 9.57143 13.25H14.4286C17.3675 13.25 19.75 15.6325 19.75 18.5714C19.75 20.8792 17.8792 22.75 15.5714 22.75H8.42857C6.12081 22.75 4.25 20.8792 4.25 18.5714Z"
+                                    fill="#000000" />
+                            </g>
+                        </g>
+                    </svg>
+                    <!-- Dropdown menu -->
+                    <div id="dropdownDelay"
+                        class="z-10 hidden bg-white divide-y divide-gray-100 shadow-md w-44 dark:bg-[#33343a]">
+                        <ul class="py-[10px] text-sm text-gray-700 dark:text-gray-200"
+                            aria-labelledby="dropdownDelayButton">
+                            <li>
+                                <a href="#"
+                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#33343a] dark:hover:text-white">Inbox</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#33343a] dark:hover:text-white">Settings</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#33343a] dark:hover:text-white">Signout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </button>
+
             </div>
         </div>
     </header>
+
+    
+
+
     <main>
-        <nav class="rounded-md fixed top-[100px] right-10 h-[840px] w-60 bg-color1" ></nav>
-        <div class="rounded-tr-md rounded-tl-md fixed right-10 top-[100px] h-[50px] w-60 bg-color2"></div>
-        <p class="fixed right-[220px] top-[100px] h-[50px] pt-4 text-color5 ">Filters</p>
-        <div class="rounded-md fixed bottom-0 left-[200px] h-[800px] w-[1100px] bg-color4">
-            <div class="rounded-md fixed left-[200px] h-[60px] w-[1100px] bg-color1"></div>
-            <p class="pt-4 fixed left-[220px]">Avatar</p>
-            <p class="pt-4 fixed left-[220px] top-[240px]">Fake avatar</p>
-            <p class="pt-4 fixed left-[380px]">Title</p>
-            <p class="pt-4 fixed left-[380px] top-[240px]">Why do i like men</p>
-            <p class="pt-4 fixed left-[900px]">Views</p>
-            <p class="pt-4 fixed left-[900px] top-[240px]">6</p>
-            <p class="pt-4 fixed left-[1000px]">Owner</p>
-            <p class="pt-4 fixed left-[1000px] top-[240px]">Alex</p>
-            <p class="pt-4 fixed left-[1100px]">Date</p>
-            <p class="pt-4 fixed left-[1100px] top-[240px]">11/04/2022</p>
-            <p class="pt-4 fixed left-[1200px]">Posts</p>
-            <p class="pt-4 fixed left-[1200px] top-[240px]">3254</p>
+        <div id="container" class="flex align-start justify-end ">
+
+            <div id="list" class="flex justify-self-center pr-[30vh] h-[90vh] pt-[10vh] pr-[4vh]">
+                <div class="bg-color1 h-[80vh] w-[100vh]">
+                    <div class="flex w-[100vh] bg-color2 h-[5vh]">
+                        <div class="flex flex-row w-[100vh]">
+                            <div class="w-[10vh] h-[100vh] ">
+                                <p class="pt-3 pl-6">Avatar</p>
+                            </div>
+                            <div class="w-[50vh] h-[100vh] ">
+                                <p class="pt-3">Title</p>
+                            </div>
+                            <div class="w-[10vh] h-[100vh] ">
+                                <p class="pt-3">Likes</p>
+                            </div>
+                            <div class="w-[10vh] h-[100vh] ">
+                                <p class="pt-3">Owner</p>
+                            </div>
+                            <div class="w-[10vh] h-[100vh] ">
+                                <p class="pt-3">Date</p>
+                            </div>
+                            <div class="w-[10vh] h-[100vh] ">
+                                <p class="pt-3">Posts</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- this div below will be ranged over to create list of topics -->
+                    <div class="flex flex-row w-[100vh]"> 
+                        <div class="w-[10vh]  ">
+                            <p class="pt-3 pl-6">Fake</p>
+                        </div>
+                        <div class="w-[50vh] ">
+                            <p class="pt-3 truncate">I like men</p>
+                        </div>
+                        <div class="w-[10vh]  ">
+                            <p class="pt-3">1.9 million</p>
+                        </div>
+                        <div class="w-[10vh]  ">
+                            <p class="pt-3">Alex</p>
+                        </div>
+                        <div class="w-[10vh]  ">
+                            <p class="pt-3">11/02/2023</p>
+                        </div>
+                        <div class="w-[10vh] ">
+                            <p class="pt-3">1933</p>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    
+                </div>
+
+            </div>
+            <div id="filter" class="flex h-[90vh] pt-[5vh] pr-[4vh]">
+                <div class=" w-60 bg-color1 h-full">
+                    <div class=" w-60 bg-color2 h-[5vh] ">
+                        <p class="pt-3 pl-6">Filters</p>
+                    </div>
+                </div>
+                
+            </div>
+    
+            
         </div>
         
+        
     </main>
-    </main>
+    <script src="../css/popups.js"></script>
 </body>
+
 </html>
