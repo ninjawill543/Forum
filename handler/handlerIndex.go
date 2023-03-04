@@ -33,7 +33,7 @@ func Handler_index(w http.ResponseWriter, r *http.Request) {
 		t.DeleteTopic(r, databaseTopics)
 	}
 
-	t.DisplayTopic(databaseTopics)
+	t.DisplayTopic(r, databaseTopics)
 
 	tmpl1.Execute(w, t.TOPICS)
 }

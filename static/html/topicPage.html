@@ -31,6 +31,15 @@
         <input type="submit" value="submit">
     </form>
 
+    filter by:
+    <form method="POST">
+        <input type="radio" name="filter" id="creationDate" value="creationDate" checked>
+        <label for="creationDate">creationDate</label>
+        <input type="radio" name="filter" id="like" value="like">
+        <label for="like">likes</label>
+        <input type="submit" name="filter" value="submit">
+    </form>
+
     {{ $Topic := .}}
     {{ range $k, $v := .Messages }}
     <br>

@@ -29,6 +29,17 @@
 
     TOPICS
     <br>
+    filter by:
+    <form method="POST">
+        <input type="radio" name="filter" id="lastPost" value="lastPost" checked>
+        <label for="lastPost">lastPost</label>
+        <input type="radio" name="filter" id="nmbPosts" value="nmbPosts">
+        <label for="nmbPosts">nmbPosts</label>
+        <input type="radio" name="filter" id="likes" value="likes">
+        <label for="likes">likes</label>
+        <input type="submit" name="filter" value="submit">
+    </form>
+    <br>
     {{ range $Topics := . }}
     Name:
     {{ .Name }}

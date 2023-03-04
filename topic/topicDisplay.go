@@ -39,6 +39,13 @@ func TopicPageDisplay(db *sql.DB, r *http.Request) {
 	var message string
 	var id int
 	var like int
+	var filter string
+
+	filter = r.FormValue("filter")
+	if filter == "" {
+		filter = "creationDate"
+	}
+
 	uuidPath := strings.Split(r.URL.Path, "/")
 	for i := 0; i < len(t.TOPICS); i++ {
 		TOPIC.CreationDate = t.TOPICS[i].CreationDate
@@ -47,7 +54,7 @@ func TopicPageDisplay(db *sql.DB, r *http.Request) {
 		TOPIC.Likes = t.TOPICS[i].Likes
 		TOPIC.Id = t.TOPICS[i].Id
 	}
-	query := fmt.Sprintf("SELECT id, message, creationDate, owner, report, like, uuid from messages WHERE uuidPath = '%s'", uuidPath[2])
+	query := fmt.Sprintf("SELECT id, message, creationDate, owner, report, like, uuid from messages WHERE uuidPath = '%s' ORDER BY %s DESC", uuidPath[2], filter)
 	row, err := db.Query(query)
 	if err != nil {
 		fmt.Println(err)

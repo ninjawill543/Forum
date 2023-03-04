@@ -3,6 +3,7 @@ package forum
 import (
 	"database/sql"
 	"fmt"
+	"net/http"
 )
 
 type Topics struct {
@@ -17,7 +18,7 @@ type Topics struct {
 
 var TOPICS []Topics
 
-func DisplayTopic(db *sql.DB) {
+func DisplayTopic(r *http.Request, db *sql.DB) {
 	var name string
 	var likes int
 	var creationDate string
@@ -25,8 +26,14 @@ func DisplayTopic(db *sql.DB) {
 	var id int
 	var uuid string
 	var nmbPosts int
+	var filter string
 
-	row, err := db.Query("SELECT id, name, creationDate, owner, likes, nmbPosts, uuid from topics ORDER BY lastPost DESC")
+	filter = r.FormValue("filter")
+	if filter == "" {
+		filter = "lastPost"
+	}
+	query := fmt.Sprintf("SELECT id, name, creationDate, owner, likes, nmbPosts, uuid from topics ORDER BY %s DESC", filter)
+	row, err := db.Query(query)
 	if err != nil {
 		fmt.Println(err)
 	} else {
