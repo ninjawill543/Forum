@@ -15,7 +15,7 @@ func main() {
 	http.HandleFunc("/", t3.Handler_404)
 	http.HandleFunc("/index", t3.Handler_index)
 	http.HandleFunc("/topics/", t3.Handler_topicPage)
-	http.HandleFunc("/profil", t3.Handler_profil)
+	http.HandleFunc("/profil/", t3.Handler_profil)
 	http.HandleFunc("/edit-topic/", t3.Handler_EditTopic)
 	http.HandleFunc("/edit-message/", t3.Handler_EditMessage)
 

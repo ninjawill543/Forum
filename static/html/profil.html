@@ -41,6 +41,20 @@
         password:
         <input type="text" name="password">
         <input type="submit" value="edit" name="edit">
-    </form>
+    </form> 
+    <br>
+    {{ $User := .}}
+    created topic:
+    {{ range $k, $v := .TopicsCreated }}
+    {{ $v }}
+    <br>
+    {{ end }}
+    <br>
+    last messages:
+    {{ range $k, $v := .MessagesSend }}
+    {{ $v }}
+    <br>
+    {{ end }}
+    <br>
 </body>
 </html>

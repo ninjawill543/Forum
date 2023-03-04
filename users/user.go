@@ -8,12 +8,14 @@ import (
 )
 
 type User struct {
-	Username     string
-	Email        string
-	CreationDate string
-	BirthDate    string
-	Uuid         string
-	Admin        string
+	Username      string
+	Email         string
+	CreationDate  string
+	BirthDate     string
+	Uuid          string
+	Admin         string
+	TopicsCreated []string
+	MessagesSend  []string
 }
 
 var USER User
