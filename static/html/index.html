@@ -51,9 +51,9 @@
     <a href="../profil/{{ .Owner }}">{{ .Owner }}</a>
     Posts: 
     {{ .NmbPosts }} 
-    <form action="../edit-topic/{{ .Uuid }}">
+    <!-- <form action="../edit-topic/{{ .Uuid }}">
         <button type="submit" value="{{ .Uuid }}" name="edit">edit</button>
-    </form>
+    </form> -->
     <form method="POST">
         <button type="submit" value="{{ .Uuid }}" name="like">like</button>
         <button type="submit" value="{{ .Uuid }}" name="dislike">dislike</button>

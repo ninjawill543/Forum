@@ -14,7 +14,7 @@ func Login(r *http.Request, db *sql.DB) {
 	var birtDate string
 	var uuid string
 	var creationDate string
-	var admin string
+	var admin int
 
 	if r.Method == "POST" {
 		fmt.Println("New POSTL (login)")

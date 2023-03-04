@@ -14,6 +14,7 @@ func CreateTableMessage(db *sql.DB) {
 		"report" INTEGER,
 		"uuidPath" TEXT,
 		"like" INT,
+		"edited" INT,
 		"uuid" TEXT);`
 
 	query, err := db.Prepare(messages_table)

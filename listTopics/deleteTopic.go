@@ -22,7 +22,7 @@ func DeleteTopic(r *http.Request, db *sql.DB) {
 					fmt.Println(err)
 				}
 			}
-			if t.USER.Username == owner || t.USER.Admin == "yes" {
+			if t.USER.Username == owner || t.USER.Admin == 1 {
 				query = fmt.Sprintf("DELETE FROM topics WHERE uuid = '%s'", uuid)
 				db.Exec(query)
 				fmt.Println("topic deleted")

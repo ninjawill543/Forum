@@ -42,7 +42,7 @@ func AddUsers(db *sql.DB, username string, password string, email string, creati
 			if err != nil {
 				log.Fatal(err)
 			}
-			_, err = query.Exec(newUsername, password, newEmail, creationDate, birthDate, "no", uuid)
+			_, err = query.Exec(newUsername, password, newEmail, creationDate, birthDate, 0, uuid)
 			if err != nil {
 				log.Fatal(err)
 			} else {

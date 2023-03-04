@@ -27,6 +27,7 @@ type Message struct {
 	Uuid         string
 	Id           int
 	Like         int
+	Edited       int
 }
 
 var TOPIC Topic
@@ -40,6 +41,7 @@ func TopicPageDisplay(db *sql.DB, r *http.Request) {
 	var id int
 	var like int
 	var filter string
+	var edited int
 
 	filter = r.FormValue("filter")
 	if filter == "" {
@@ -54,14 +56,14 @@ func TopicPageDisplay(db *sql.DB, r *http.Request) {
 		TOPIC.Likes = t.TOPICS[i].Likes
 		TOPIC.Id = t.TOPICS[i].Id
 	}
-	query := fmt.Sprintf("SELECT id, message, creationDate, owner, report, like, uuid from messages WHERE uuidPath = '%s' ORDER BY %s DESC", uuidPath[2], filter)
+	query := fmt.Sprintf("SELECT id, message, creationDate, owner, report, like, edited, uuid from messages WHERE uuidPath = '%s' ORDER BY %s DESC", uuidPath[2], filter)
 	row, err := db.Query(query)
 	if err != nil {
 		fmt.Println(err)
 	} else {
 		TOPIC.Messages = nil
 		for row.Next() {
-			err = row.Scan(&id, &message, &creationDate, &owner, &report, &like, &uuid)
+			err = row.Scan(&id, &message, &creationDate, &owner, &report, &like, &edited, &uuid)
 			if err != nil {
 				fmt.Println(err)
 			} else {
@@ -75,6 +77,7 @@ func TopicPageDisplay(db *sql.DB, r *http.Request) {
 				TOPIC.Messages[messageIndex].Report = report
 				TOPIC.Messages[messageIndex].Uuid = uuid
 				TOPIC.Messages[messageIndex].Like = like
+				TOPIC.Messages[messageIndex].Edited = edited
 			}
 		}
 		row.Close()

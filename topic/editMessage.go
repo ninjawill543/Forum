@@ -28,9 +28,9 @@ func EditMessage(r *http.Request, db *sql.DB) {
 					}
 				}
 			}
-			if t.USER.Username == owner {
+			if t.USER.Username == owner || t.USER.Admin == 1 {
 				fmt.Println(newName)
-				query := fmt.Sprintf("UPDATE messages SET message = '%s' WHERE uuid = '%s'", newName, uuid[2])
+				query := fmt.Sprintf("UPDATE messages SET message = '%s', edited = 1 WHERE uuid = '%s'", newName, uuid[2])
 				db.Exec(query)
 			} else {
 				fmt.Println("you need to be the owner of the message to edit it")

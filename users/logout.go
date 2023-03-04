@@ -12,4 +12,5 @@ func Logout(r *http.Request) {
 	USER.Email = ""
 	USER.Username = ""
 	USER.Uuid = ""
+	USER.Admin = 0
 }

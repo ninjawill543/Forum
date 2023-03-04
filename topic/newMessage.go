@@ -25,13 +25,13 @@ func NewMessage(db *sql.DB, r *http.Request) {
 			fmt.Println("you need to be login to post a message")
 		} else {
 			creationDate := time.Now()
-			newMessage := `INSERT INTO messages(message, creationDate, owner, report, uuidPath, like, uuid) VALUES (?, ?, ?, ?, ?, ?, ?)`
+			newMessage := `INSERT INTO messages(message, creationDate, owner, report, uuidPath, like, edited, uuid) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`
 			query, err := db.Prepare(newMessage)
 			if err != nil {
 				log.Fatal(err)
 			}
 
-			_, err = query.Exec(message, creationDate, t.USER.Username, 0, uuidPAth[2], 0, uuid)
+			_, err = query.Exec(message, creationDate, t.USER.Username, 0, uuidPAth[2], 0, 0, uuid)
 			if err != nil {
 				log.Fatal(err)
 			} else {

@@ -13,7 +13,7 @@ type User struct {
 	CreationDate  string
 	BirthDate     string
 	Uuid          string
-	Admin         string
+	Admin         int
 	TopicsCreated []string
 	MessagesSend  []string
 }
