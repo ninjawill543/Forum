@@ -105,9 +105,3 @@
 .labelsText:hover {
     backdrop-filter: blur(1px);
 }
-.zebi {
-    background-image: url('../medias/background.png');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-}
