@@ -13,6 +13,8 @@ import (
 
 func AddTopic(r *http.Request, database *sql.DB) {
 	if r.Method == "POST" {
+		var name string
+		var topicNameTaken bool
 		fmt.Println("New POST: (topic) ")
 		topicName := r.FormValue("topic_name")
 
@@ -21,19 +23,36 @@ func AddTopic(r *http.Request, database *sql.DB) {
 		} else if t.USER.Username == "" {
 			fmt.Println("you need to be login to post a topic")
 		} else {
-			creationDate := time.Now()
-			topicInfo := `INSERT INTO topics(name, creationDate, owner, likes, nmbPosts, lastPost, uuid) VALUES (?, ?, ?, ?, ?, ?, ?)`
-			uuid := uuid.New()
-			query, err := database.Prepare(topicInfo)
+			queryTest := `SELECT name FROM topics`
+			row, err := database.Query(queryTest)
 			if err != nil {
-				log.Fatal(err)
+				fmt.Println(err)
+			} else {
+				for row.Next() {
+					row.Scan(&name)
+					if name == topicName {
+						topicNameTaken = true
+					}
+				}
 			}
 
-			_, err = query.Exec(topicName, creationDate, t.USER.Username, 0, 0, "0", uuid)
-			if err != nil {
-				log.Fatal(err)
+			if !topicNameTaken {
+				creationDate := time.Now()
+				topicInfo := `INSERT INTO topics(name, creationDate, owner, likes, nmbPosts, lastPost, uuid) VALUES (?, ?, ?, ?, ?, ?, ?)`
+				uuid := uuid.New()
+				query, err := database.Prepare(topicInfo)
+				if err != nil {
+					log.Fatal(err)
+				}
+
+				_, err = query.Exec(topicName, creationDate, t.USER.Username, 0, 0, "0", uuid)
+				if err != nil {
+					log.Fatal(err)
+				} else {
+					fmt.Println("adding new topic :", topicName, "in TOPICS")
+				}
 			} else {
-				fmt.Println("adding new topic :", topicName, "in TOPICS")
+				fmt.Println("topic name already taken")
 			}
 		}
 	}
