@@ -11,6 +11,9 @@
     <br>
     Username: 
     {{ .Username }}
+    <form method="POST">
+        <button type="submit" name="report" value="{{ .Username }}">report</button>
+    </form>
     <br>
     CreationDate:
     {{ .CreationDate }}
@@ -20,6 +23,9 @@
     <br>
     Admin:
     {{ .Admin }}
+    <br>
+    Reports:
+    {{ .Reports }}
     <br>
     <br>
     <a href="../index">back to index</a>

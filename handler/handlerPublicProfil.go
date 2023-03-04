@@ -3,6 +3,7 @@ package forum
 import (
 	"database/sql"
 	t "forum/profil"
+	t2 "forum/report"
 	"html/template"
 	"net/http"
 )
@@ -12,6 +13,11 @@ func Handler_publicProfil(w http.ResponseWriter, r *http.Request) {
 	databaseUsers, _ := sql.Open("sqlite3", "../users.db")
 	databaseMessages, _ := sql.Open("sqlite3", "../messages.db")
 	databaseTopics, _ := sql.Open("sqlite3", "../topics.db")
+	databaseReports, _ := sql.Open("sqlite3", "../reports.db")
+
+	if r.FormValue("report") != "" {
+		t2.ReportUser(r, databaseReports, databaseUsers)
+	}
 
 	t.PublicProfil(r, databaseUsers, databaseMessages, databaseTopics)
 

@@ -14,6 +14,7 @@ type PublicUser struct {
 	BirthDate     string
 	Uuid          string
 	Admin         string
+	Reports       int
 	TopicsCreated []string
 	MessagesSend  []string
 }
@@ -25,14 +26,15 @@ func PublicProfil(r *http.Request, dbUsers *sql.DB, dbMessages *sql.DB, dbTopics
 	var creationDate string
 	var admin string
 	var birthDate string
+	var reports int
 	namePublic := strings.Split(r.URL.Path, "/")
-	query := fmt.Sprintf("SELECT username, creationDate, admin, birthDate FROM users WHERE username = '%s'", namePublic[2])
+	query := fmt.Sprintf("SELECT username, creationDate, admin, birthDate, reports FROM users WHERE username = '%s'", namePublic[2])
 	row, err := dbUsers.Query(query)
 	if err != nil {
 		fmt.Println(err)
 	} else {
 		for row.Next() {
-			err = row.Scan(&username, &creationDate, &admin, &birthDate)
+			err = row.Scan(&username, &creationDate, &admin, &birthDate, &reports)
 			if err != nil {
 				fmt.Println(err)
 			}
@@ -41,6 +43,7 @@ func PublicProfil(r *http.Request, dbUsers *sql.DB, dbMessages *sql.DB, dbTopics
 		PUBLICUSER.CreationDate = creationDate
 		PUBLICUSER.Admin = admin
 		PUBLICUSER.BirthDate = birthDate
+		PUBLICUSER.Reports = reports
 	}
 	var message string
 	PUBLICUSER.MessagesSend = nil
