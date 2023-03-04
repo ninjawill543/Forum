@@ -37,7 +37,22 @@ func LikesDislikes(r *http.Request, databaseTopics *sql.DB, databaseLikesFromUse
 					}
 				}
 				if alreadyLiked {
-					fmt.Println("aleardy liked")
+					fmt.Println("already liked")
+					// fmt.Println(likeOrDislike, "previous like")
+					// fmt.Println(likesordislikes, "new like")
+					// if likeOrDislike == 1 && likesordislikes == 1 {
+					// 	query = fmt.Sprintf("UPDATE topics SET likes = likes - 1 WHERE uuid = '%s'", uuid)
+					// 	databaseTopics.Exec(query)
+					// } else if likeOrDislike == 1 && likesordislikes == -1 {
+					// 	query = fmt.Sprintf("UPDATE topics SET likes = likes - 2 WHERE uuid = '%s'", uuid)
+					// 	databaseTopics.Exec(query)
+					// } else if likeOrDislike == -1 && likesordislikes == 1 {
+					// 	query = fmt.Sprintf("UPDATE topics SET likes = likes + 2 WHERE uuid = '%s'", uuid)
+					// 	databaseTopics.Exec(query)
+					// } else if likeOrDislike == -1 && likesordislikes == -1 {
+					// 	query = fmt.Sprintf("UPDATE topics SET likes = likes + 1 WHERE uuid = '%s'", uuid)
+					// 	databaseTopics.Exec(query)
+					// }
 				} else {
 					query = fmt.Sprintf("UPDATE topics SET likes = likes + %d WHERE uuid = '%s'", likesordislikes, uuid)
 					databaseTopics.Exec(query)

@@ -5,6 +5,7 @@ import (
 	t2 "forum/listTopics"
 	t5 "forum/messages"
 	t3 "forum/profil"
+	t4 "forum/report"
 	t "forum/users"
 	"log"
 )
@@ -26,6 +27,11 @@ func CreatingDatabases() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	databaseReports, err := sql.Open("sqlite3", "../reports.db")
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	t.CreateTableUsers(databaseUsers)
 	defer databaseUsers.Close()
 	t2.CreateTableTopics(databaseTopics)
@@ -34,4 +40,6 @@ func CreatingDatabases() {
 	defer databaseMessages.Close()
 	t3.CreateTableLikesFromUser(databaseLikesFromUser)
 	defer databaseLikesFromUser.Close()
+	t4.CreateTableReports(databaseReports)
+	defer databaseReports.Close()
 }

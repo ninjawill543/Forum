@@ -29,6 +29,9 @@ func DeleteMessage(r *http.Request, db *sql.DB) {
 			if owner == t.USER.Username || t.USER.Admin == 1 {
 				query2 := fmt.Sprintf("DELETE FROM messages WHERE uuid = '%s'", r.FormValue("delete"))
 				db.Exec(query2)
+				databaseLikeFromUsers, _ := sql.Open("sqlite3", "../likesFromUser.db")
+				query = fmt.Sprintf("DELETE FROM likesFromUser WHERE uuidLiked = '%s'", r.FormValue("delete"))
+				databaseLikeFromUsers.Exec(query)
 				fmt.Println("message deleted")
 				query3 := fmt.Sprintf("UPDATE topics SET nmbPosts = nmbPosts - 1 WHERE uuid = '%s'", uuidPath)
 				fmt.Println(query3)
