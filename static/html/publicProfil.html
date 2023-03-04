@@ -12,39 +12,18 @@
     Username: 
     {{ .Username }}
     <br>
-    Email:
-    {{ .Email }}
-    <br>
     CreationDate:
     {{ .CreationDate }}
     <br>
     BirthDate:
     {{ .BirthDate }}
     <br>
-    Uuid:
-    {{ .Uuid }}
-    <br>
     Admin:
     {{ .Admin }}
     <br>
     <br>
     <a href="../index">back to index</a>
-    <br>
-    <form method="POST">
-        <input type="submit" value="logout" name="logOutButton">
-        <button type="submit" value="{{ .Uuid }}" name="delete">delete</button>
-        <br>
-        <br>
-        username:
-        <input type="text" name="username">
-        <br>
-        email:
-        <input type="text" name="email">
-        <br>
-        password:
-        <input type="text" name="password">
-        <input type="submit" value="edit" name="edit">
-    </form> 
+
     <br>
     {{ $User := .}}
     created topic:
@@ -58,6 +37,5 @@
     {{ $v }}
     <br>
     {{ end }}
-    <br>
 </body>
 </html>

@@ -48,7 +48,7 @@
     CreationDate:
     {{ .CreationDate }}
     Owner:
-    {{ .Owner }}
+    <a href="../profil/{{ .Owner }}">{{ .Owner }}</a>
     Posts: 
     {{ .NmbPosts }} 
     <form action="../edit-topic/{{ .Uuid }}">
@@ -70,7 +70,7 @@
         <input type="submit" value="submit">
     </form>
 
-    <a href="./profil">profil</a>
+    <a href="./your-profil">profil</a>
 
 
 

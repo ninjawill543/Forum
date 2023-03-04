@@ -32,7 +32,7 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 	if filter == "" {
 		filter = "lastPost"
 	}
-	query := fmt.Sprintf("SELECT id, name, creationDate, owner, likes, nmbPosts, uuid from topics ORDER BY %s DESC", filter)
+	query := fmt.Sprintf("SELECT id, name, creationDate, owner, likes, nmbPosts, uuid FROM topics ORDER BY %s DESC", filter)
 	row, err := db.Query(query)
 	if err != nil {
 		fmt.Println(err)
