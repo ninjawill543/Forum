@@ -15,7 +15,8 @@ func CreateTableUsers(db *sql.DB) {
 		"birthDate" TEXT,
 		"admin" INTEGER,
 		"reports" INTEGER,
-		"uuid" TEXT);`
+		"uuid" TEXT,
+		"ban" INTEGER);`
 
 	query, err := db.Prepare(users_table)
 

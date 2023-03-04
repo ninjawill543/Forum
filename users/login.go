@@ -15,6 +15,7 @@ func Login(r *http.Request, db *sql.DB) {
 	var uuid string
 	var creationDate string
 	var admin int
+	var ban int
 
 	if r.Method == "POST" {
 		fmt.Println("New POSTL (login)")
@@ -22,15 +23,17 @@ func Login(r *http.Request, db *sql.DB) {
 		usernameInput := r.FormValue("input_loginusername")
 		passwordInput := t.Hash(r.FormValue("input_loginpassword"))
 
-		querry := fmt.Sprintf("SELECT username, password, email, creationDate, birthDate, admin, uuid FROM users WHERE password = '%s'", passwordInput)
+		querry := fmt.Sprintf("SELECT username, password, email, creationDate, birthDate, admin, uuid, ban FROM users WHERE password = '%s'", passwordInput)
 		row, err := db.Query(querry)
 		if err != nil {
 			fmt.Println(err)
 		} else {
 			for row.Next() {
-				err = row.Scan(&username, &password, &email, &creationDate, &birtDate, &admin, &uuid)
+				err = row.Scan(&username, &password, &email, &creationDate, &birtDate, &admin, &uuid, &ban)
 				if err != nil {
 					fmt.Println(err)
+				} else if ban == 1 {
+					fmt.Println("you have been banned")
 				} else {
 					if usernameInput == username || usernameInput == email && passwordInput == password {
 						fmt.Println("LOGIN!")
