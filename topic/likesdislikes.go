@@ -22,7 +22,6 @@ func LikesDislikes(r *http.Request, db *sql.DB) {
 				likesordislikes = -1
 				uuid = r.FormValue("dislike")
 			}
-			fmt.Println(likesordislikes)
 			query := fmt.Sprintf("UPDATE messages SET like = like + %d WHERE uuid = '%s'", likesordislikes, uuid)
 			fmt.Println(query)
 			db.Exec(query)

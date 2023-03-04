@@ -13,6 +13,7 @@ func CreateTableTopics(db *sql.DB) {
 		"owner" TEXT,
 		"likes" INTEGER,
 		"nmbPosts" INTEGER,
+		"lastPost" TEXT,
 		"uuid" TEXT);`
 
 	query, err := db.Prepare(topic_table)

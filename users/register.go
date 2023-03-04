@@ -17,6 +17,7 @@ func Register(r *http.Request, database *sql.DB) {
 		mail := r.FormValue("input_mail")
 		creationDate := time.Now()
 		birthDay := r.FormValue("input_birthDay")
+		fmt.Println(birthDay)
 
 		if len(username) < 5 || len(username) > 14 {
 			fmt.Println("invalid username")

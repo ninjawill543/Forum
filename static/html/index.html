@@ -16,8 +16,8 @@
         <input name="input_password" type="text">
         <p>mail</p>
         <input name="input_mail" type="text">
-        <p>birthDay</p>
-        <input name="input_birthDay" type="text">
+        <p>birthDate</p>
+        <input name="input_birthDay" type="date">
         <input type="submit" value="submit">    
     </form>
 
@@ -39,7 +39,10 @@
     Owner:
     {{ .Owner }}
     Posts: 
-    {{ .NmbPosts }}
+    {{ .NmbPosts }} 
+    <form action="../edit-topic/{{ .Uuid }}">
+        <button type="submit" value="{{ .Uuid }}" name="edit">edit</button>
+    </form>
     <form method="POST">
         <button type="submit" value="{{ .Uuid }}" name="like">like</button>
         <button type="submit" value="{{ .Uuid }}" name="dislike">dislike</button>
@@ -55,7 +58,10 @@
         <input name="input_loginpassword" type="text">
         <input type="submit" value="submit">
     </form>
+
     <a href="./profil">profil</a>
+
+
 
 </body>
 </html>

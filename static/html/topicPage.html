@@ -17,9 +17,6 @@
     Likes:
     {{ .Likes }}
     <br>
-    Dislikes:
-    {{ .Dislikes }}
-    <br>
     CreationDate:
     {{ .CreationDate }}
     <br>
@@ -56,6 +53,10 @@
         <button type="submit" value="{{ .Uuid }}" name="delete">delete</button>
         <button type="submit" value="{{ .Uuid }}" name="like">like</button>
         <button type="sbutmit" value="{{ .Uuid }}" name="dislike">dislike</button>
+    </form>
+
+    <form action="../edit-message/{{ .Uuid }}">
+        <button type="submit" value="{{ .Uuid }}" name="edit">edit</button>
     </form>
     {{ end }} 
 

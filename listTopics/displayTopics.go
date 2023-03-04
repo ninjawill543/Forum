@@ -26,7 +26,7 @@ func DisplayTopic(db *sql.DB) {
 	var uuid string
 	var nmbPosts int
 
-	row, err := db.Query("SELECT id, name, creationDate, owner, likes, nmbPosts, uuid from topics;")
+	row, err := db.Query("SELECT id, name, creationDate, owner, likes, nmbPosts, uuid from topics ORDER BY lastPost DESC")
 	if err != nil {
 		fmt.Println(err)
 	} else {
