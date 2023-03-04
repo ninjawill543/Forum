@@ -33,7 +33,7 @@ func Login(r *http.Request, db *sql.DB) {
 				if err != nil {
 					fmt.Println(err)
 				} else if ban == 1 {
-					fmt.Println("you have been banned")
+					fmt.Println("you have been banned ask admin to get unbanned")
 				} else {
 					if usernameInput == username || usernameInput == email && passwordInput == password {
 						fmt.Println("LOGIN!")

@@ -3,6 +3,7 @@ package forum
 import (
 	"database/sql"
 	"fmt"
+	t2 "forum/profil"
 	t "forum/users"
 	"net/http"
 )
@@ -40,6 +41,10 @@ func ReportUser(r *http.Request, databaseReports *sql.DB, databaseUsers *sql.DB)
 		} else {
 			fmt.Println("you need to be login to report a message OR CANT REPORT YOURSELF")
 		}
-		databaseUsers.Exec("DELETE FROM users WHERE reports >= 10")
+
+		if t2.PUBLICUSER.Reports >= 9 {
+			query := fmt.Sprintf("UPDATE users SET ban = 1 WHERE username = '%s'", t2.PUBLICUSER.Username)
+			databaseUsers.Exec(query)
+		}
 	}
 }
