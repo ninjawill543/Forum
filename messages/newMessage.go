@@ -13,8 +13,9 @@ import (
 )
 
 func NewMessage(db *sql.DB, r *http.Request) {
+	uuidMessage := uuid.New()
+	var uuid string
 	topicName := strings.Split(r.URL.Path, "/")
-	uuid := uuid.New()
 
 	if r.Method == "POST" {
 		databaseTopics, _ := sql.Open("sqlite3", "../topics.db")
@@ -49,7 +50,7 @@ func NewMessage(db *sql.DB, r *http.Request) {
 				fmt.Println(err)
 			}
 
-			_, err = queryMessage.Exec(message, creationDate, t.USER.Username, 0, uuidPath, 0, 0, uuid)
+			_, err = queryMessage.Exec(message, creationDate, t.USER.Username, 0, uuidPath, 0, 0, uuidMessage)
 			if err != nil {
 				log.Fatal(err)
 			} else {

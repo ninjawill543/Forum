@@ -3,8 +3,8 @@ package forum
 import (
 	"database/sql"
 	t2 "forum/listTopics"
+	t5 "forum/messages"
 	t3 "forum/profil"
-	t5 "forum/topic"
 	t "forum/users"
 	"log"
 )

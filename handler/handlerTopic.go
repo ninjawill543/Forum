@@ -2,7 +2,8 @@ package forum
 
 import (
 	"database/sql"
-	t "forum/topic"
+	t3 "forum/delete"
+	t "forum/messages"
 	"html/template"
 	"net/http"
 )
@@ -11,9 +12,10 @@ func Handler_topicPage(w http.ResponseWriter, r *http.Request) {
 	tmpl := template.Must(template.ParseFiles("../static/html/topicPage.html"))
 	databaseMessages, _ := sql.Open("sqlite3", "../messages.db")
 	databaseTopics, _ := sql.Open("sqlite3", "../topics.db")
+	databaseLikeFromUsers, _ := sql.Open("sqlite3", "../likesFromUser.db")
 
 	if r.FormValue("delete") != "" {
-		t.DeleteMessage(r, databaseMessages)
+		t3.DeleteMessage(r, databaseMessages)
 	}
 	if r.FormValue("input_newMessage") != "" {
 		t.NewMessage(databaseMessages, r)
@@ -22,7 +24,7 @@ func Handler_topicPage(w http.ResponseWriter, r *http.Request) {
 		t.Reports(r, databaseMessages)
 	}
 	if r.FormValue("like") != "" || r.FormValue("dislike") != "" {
-		t.LikesDislikes(r, databaseMessages)
+		t.LikesDislikes(r, databaseTopics, databaseLikeFromUsers)
 	}
 	if r.FormValue("edit") != "" {
 		t.EditMessage(r, databaseMessages)

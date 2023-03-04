@@ -2,7 +2,7 @@ package forum
 
 import (
 	"database/sql"
-	t "forum/topic"
+	t "forum/messages"
 	"html/template"
 	"net/http"
 )

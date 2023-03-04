@@ -8,7 +8,8 @@ import (
 func CreateTableLikesFromUser(db *sql.DB) {
 	likesFromUser_table := `CREATE TABLE likesFromUser(
 		"uuidUser" TEXT,
-		"uuidLiked" TEXT);`
+		"uuidLiked" TEXT,
+		"likeOrDislike" INTEGER);`
 
 	query, err := db.Prepare(likesFromUser_table)
 	if err != nil {

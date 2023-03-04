@@ -11,7 +11,10 @@ func DeleteMessage(r *http.Request, db *sql.DB) {
 	if r.FormValue("delete") != "" {
 		var owner string
 		var uuidPath string
+
 		query := fmt.Sprintf("SELECT owner, uuidPath FROM messages WHERE uuid = '%s'", r.FormValue("delete"))
+		fmt.Println(query)
+
 		row, err := db.Query(query)
 		if err != nil {
 			fmt.Println(err)

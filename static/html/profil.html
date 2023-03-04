@@ -55,7 +55,7 @@
     <br>
     last messages:
     {{ range $k, $v := .MessagesSend }}
-    <a href="../topics">{{ $v }}</a>
+    {{ $v }}
     <br>
     {{ end }}
     <br>

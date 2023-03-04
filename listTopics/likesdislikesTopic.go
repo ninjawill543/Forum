@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-func LikesDislikes(r *http.Request, db *sql.DB) {
+func LikesDislikes(r *http.Request, databaseTopics *sql.DB, databaseLikesFromUsers *sql.DB) {
 	if t.USER.Username != "" {
 		var likesordislikes int
 		var uuid string
@@ -23,7 +23,10 @@ func LikesDislikes(r *http.Request, db *sql.DB) {
 				uuid = r.FormValue("dislike")
 			}
 			query := fmt.Sprintf("UPDATE topics SET likes = likes + %d WHERE uuid = '%s'", likesordislikes, uuid)
-			db.Exec(query)
+			databaseTopics.Exec(query)
+
+			query2 := fmt.Sprintf("INSERT INTO likesFromUser(uuidUser, uuidLiked, likeOrDislike) VALUES('%s', '%s', '%d')", t.USER.Uuid, uuid, likesordislikes)
+			databaseLikesFromUsers.Exec(query2)
 		}
 	} else {
 		fmt.Println("you need to be login to like or dislike a message")
