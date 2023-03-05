@@ -31,7 +31,7 @@
     <br>
     filter by:
     <form method="POST">
-        <input type="radio" name="filter" id="lastPost" value="lastPost">
+        <input type="radio" name="filter" id="lastPost" value="lastPost" checked>
         <label for="lastPost">lastPost</label>
         <input type="radio" name="filter" id="nmbPosts" value="nmbPosts">
         <label for="nmbPosts">nmbPosts</label>
@@ -40,7 +40,6 @@
         <input type="submit" name="filter" value="submit">
         <br>
         <input type="search" name="searchbar">
-        <input type="submit" value="submit">
     </form>
     <br>
     {{ range $Topics := . }}

@@ -42,7 +42,6 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 		searchName = "%" + r.FormValue("searchbar") + "%"
 		query = fmt.Sprintf("SELECT id, name, creationDate, owner, likes, nmbPosts, uuid FROM topics WHERE name LIKE '%s' ORDER BY %s DESC", searchName, filter)
 	}
-	fmt.Println(query)
 
 	row, err := db.Query(query)
 	if err != nil {
