@@ -5,6 +5,7 @@ import (
 	t3 "forum/delete"
 	t "forum/messages"
 	t2 "forum/report"
+	t4 "forum/users"
 	"html/template"
 	"net/http"
 )
@@ -15,6 +16,8 @@ func Handler_topicPage(w http.ResponseWriter, r *http.Request) {
 	databaseTopics, _ := sql.Open("sqlite3", "../topics.db")
 	databaseLikeFromUsers, _ := sql.Open("sqlite3", "../likesFromUser.db")
 	databaseReports, _ := sql.Open("sqlite3", "../reports.db")
+
+	t4.GetCookieHandler(w, r)
 
 	if r.FormValue("delete") != "" {
 		t3.DeleteMessage(r, databaseMessages)

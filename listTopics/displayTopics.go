@@ -31,7 +31,6 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 	var query string
 
 	filter = r.FormValue("filter")
-	fmt.Println(filter, "test")
 
 	if filter == "" {
 		filter = "lastPost"
@@ -51,7 +50,7 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 		for row.Next() {
 			err = row.Scan(&id, &name, &creationDate, &owner, &likes, &nmbPosts, &uuid)
 			if err != nil {
-				fmt.Println(nil)
+				fmt.Println(err)
 			} else {
 				topicIndex := len(TOPICS)
 				TOPICS = append(TOPICS, Topics{})

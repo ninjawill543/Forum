@@ -15,9 +15,8 @@ func Handler_publicProfil(w http.ResponseWriter, r *http.Request) {
 	databaseTopics, _ := sql.Open("sqlite3", "../topics.db")
 	databaseReports, _ := sql.Open("sqlite3", "../reports.db")
 
-	if r.FormValue("report") != "" {
-		t2.ReportUser(r, databaseReports, databaseUsers)
-	}
+	t2.ReportUser(r, databaseReports, databaseUsers)
+
 	if r.FormValue("ban") != "" {
 		t2.Ban(r, databaseUsers)
 	}

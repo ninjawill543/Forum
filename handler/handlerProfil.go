@@ -13,10 +13,13 @@ func Handler_profil(w http.ResponseWriter, r *http.Request) {
 	databaseMessages, _ := sql.Open("sqlite3", "../messages.db")
 	databaseTopics, _ := sql.Open("sqlite3", "../topics.db")
 
+	t.GetCookieHandler(w, r)
+
 	if r.FormValue("logOutButton") == "logout" {
 		t.Logout(r)
+		t.LogOutCookie(r, w)
 	} else if r.FormValue("delete") != "" {
-		t.DeleteAccount(r, databaseUsers, databaseMessages, databaseTopics)
+		t.DeleteAccount(r, databaseUsers, databaseMessages, databaseTopics, w)
 	} else if r.FormValue("username") != "" || r.FormValue("email") != "" || r.FormValue("password") != "" {
 		t.UserEdit(r, databaseUsers)
 	}

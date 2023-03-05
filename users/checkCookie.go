@@ -5,11 +5,15 @@ import (
 	"net/http"
 )
 
-func CheckCookie(r *http.Request) {
+func CheckCookie(r *http.Request) bool {
 	cookie, err := r.Cookie("session")
 	if err != nil {
 		fmt.Println("cookie doesnt exist")
 	} else {
-		COOKIES.Value = cookie.Value
+		if COOKIES.UuidUser != "" {
+			COOKIES.UuidUser = cookie.Value
+			return true
+		}
 	}
+	return false
 }

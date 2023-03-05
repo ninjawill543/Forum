@@ -2,7 +2,6 @@ package forum
 
 import (
 	"database/sql"
-	t4 "forum/cookies"
 	t3 "forum/delete"
 	t "forum/listTopics"
 	t2 "forum/users"
@@ -16,15 +15,10 @@ func Handler_index(w http.ResponseWriter, r *http.Request) {
 	databaseTopics, _ := sql.Open("sqlite3", "../topics.db")
 	databaseLikeFromUsers, _ := sql.Open("sqlite3", "../likesFromUser.db")
 
-	t4.CheckCookie(r)
-	if t4.COOKIES.Value == "" {
-		t4.SetCookieHandler(w, r)
-	} else {
-		t4.GetCookieHandler(w, r)
-	}
+	t2.GetCookieHandler(w, r)
 
 	if r.FormValue("input_loginusername") != "" && r.FormValue("input_loginpassword") != "" {
-		t2.Login(r, databaseUsers)
+		t2.Login(r, databaseUsers, w)
 	}
 
 	if r.FormValue("topic_name") != "" {

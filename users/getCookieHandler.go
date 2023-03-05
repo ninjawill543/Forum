@@ -1,9 +1,7 @@
 package forum
 
 import (
-	"errors"
 	"fmt"
-	"log"
 	"net/http"
 )
 
@@ -14,17 +12,14 @@ func GetCookieHandler(w http.ResponseWriter, r *http.Request) {
 	// response to the client.
 	cookie, err := r.Cookie("session")
 	if err != nil {
-		switch {
-		case errors.Is(err, http.ErrNoCookie):
-			fmt.Println(w, "cookie not found", http.StatusBadRequest)
-		default:
-			log.Println(err)
-			fmt.Println(w, "server error", http.StatusInternalServerError)
+		// fmt.Println(err)
+	} else {
+		COOKIES.UuidUser = cookie.Value
+		if cookie.Value != "" {
+			if USER.Username == "" {
+				fmt.Println("login with cookie")
+				LoginWithCookie(cookie.Value)
+			}
 		}
-		return
 	}
-
-	// Echo out the cookie value in the response body.
-	// w.Write([]byte(cookie.Value))
-	fmt.Println(cookie.Value)
 }

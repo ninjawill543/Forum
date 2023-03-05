@@ -13,7 +13,6 @@ func DeleteMessage(r *http.Request, db *sql.DB) {
 		var uuidPath string
 
 		query := fmt.Sprintf("SELECT owner, uuidPath FROM messages WHERE uuid = '%s'", r.FormValue("delete"))
-		fmt.Println(query)
 
 		row, err := db.Query(query)
 		if err != nil {
@@ -21,7 +20,6 @@ func DeleteMessage(r *http.Request, db *sql.DB) {
 		} else {
 			for row.Next() {
 				err = row.Scan(&owner, &uuidPath)
-				fmt.Println(owner)
 				if err != nil {
 					fmt.Println(err)
 				}
@@ -34,7 +32,6 @@ func DeleteMessage(r *http.Request, db *sql.DB) {
 				databaseLikeFromUsers.Exec(query)
 				fmt.Println("message deleted")
 				query3 := fmt.Sprintf("UPDATE topics SET nmbPosts = nmbPosts - 1 WHERE uuid = '%s'", uuidPath)
-				fmt.Println(query3)
 				databaseTopics, _ := sql.Open("sqlite3", "../topics.db")
 				databaseTopics.Exec(query3)
 

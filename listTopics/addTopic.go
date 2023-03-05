@@ -23,8 +23,8 @@ func AddTopic(r *http.Request, database *sql.DB) {
 		} else if t.USER.Username == "" {
 			fmt.Println("you need to be login to post a topic")
 		} else {
-			queryTest := `SELECT name FROM topics`
-			row, err := database.Query(queryTest)
+			query := `SELECT name FROM topics`
+			row, err := database.Query(query)
 			if err != nil {
 				fmt.Println(err)
 			} else {

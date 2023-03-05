@@ -29,7 +29,6 @@ func EditTopic(r *http.Request, db *sql.DB) {
 				}
 			}
 			if t.USER.Username == owner {
-				fmt.Println(newName)
 				query := fmt.Sprintf("UPDATE topics SET name = '%s' WHERE uuid = '%s'", newName, uuid[2])
 				db.Exec(query)
 			} else {
