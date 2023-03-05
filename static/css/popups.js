@@ -23,4 +23,16 @@ function closeRegister() {
     document.getElementById("login").style.display = "none";
 } 
 
-console.log("Register");
+function openLoginIf() {
+    let loggedin = 0;
+if (loggedin == 0) {
+    document.getElementById("login").style.display = "block";
+    document.getElementById("register").style.display = "none";
+    document.getElementById("register2").style.display = "none";
+    document.getElementById("lock").disabled = true;
+    document.getElementById("lock1").disabled = true;
+
+}
+    
+}
+
