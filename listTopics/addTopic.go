@@ -4,7 +4,6 @@ import (
 	"database/sql"
 	"fmt"
 	t "forum/users"
-	"log"
 	"net/http"
 	"time"
 
@@ -17,6 +16,7 @@ func AddTopic(r *http.Request, database *sql.DB) {
 		var topicNameTaken bool
 		fmt.Println("New POST: (topic) ")
 		topicName := r.FormValue("topic_name")
+		firstMessage := r.FormValue("firstMessage")
 
 		if len(topicName) < 5 {
 			fmt.Println("Not enough char")
@@ -38,18 +38,23 @@ func AddTopic(r *http.Request, database *sql.DB) {
 
 			if !topicNameTaken {
 				creationDate := time.Now()
-				topicInfo := `INSERT INTO topics(name, creationDate, owner, likes, nmbPosts, lastPost, uuid) VALUES (?, ?, ?, ?, ?, ?, ?)`
+				topicInfo := `INSERT INTO topics(name, firstMessage, creationDate, owner, likes, nmbPosts, lastPost, uuid) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`
 				uuid := uuid.New()
 				query, err := database.Prepare(topicInfo)
 				if err != nil {
-					log.Fatal(err)
+					fmt.Println(err)
 				}
 
-				_, err = query.Exec(topicName, creationDate, t.USER.Username, 0, 0, "0", uuid)
+				_, err = query.Exec(topicName, firstMessage, creationDate, t.USER.Username, 0, 0, "0", uuid)
 				if err != nil {
-					log.Fatal(err)
+					fmt.Println(err)
 				} else {
 					fmt.Println("adding new topic :", topicName, "in TOPICS")
+					if len(firstMessage) < 10 {
+						fmt.Println("not enough char to post the firstmessage")
+					} else {
+						AddFirstMessageInMessages(firstMessage, creationDate, t.USER.Username, uuid)
+					}
 				}
 			} else {
 				fmt.Println("topic name already taken")

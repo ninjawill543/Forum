@@ -14,6 +14,7 @@ type Topics struct {
 	Owner        string
 	Uuid         string
 	NmbPosts     int
+	FirstMessage string
 }
 
 var TOPICS []Topics
@@ -29,17 +30,18 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 	var id int
 	var searchName string
 	var query string
+	var firstMessage string
 
 	filter = r.FormValue("filter")
 
 	if filter == "" {
 		filter = "lastPost"
 	}
-	query = fmt.Sprintf("SELECT id, name, creationDate, owner, likes, nmbPosts, uuid FROM topics ORDER BY %s DESC", filter)
+	query = fmt.Sprintf("SELECT id, name, firstMessage, creationDate, owner, likes, nmbPosts, uuid FROM topics ORDER BY %s DESC", filter)
 
 	if r.FormValue("searchbar") != "" {
 		searchName = "%" + r.FormValue("searchbar") + "%"
-		query = fmt.Sprintf("SELECT id, name, creationDate, owner, likes, nmbPosts, uuid FROM topics WHERE name LIKE '%s' ORDER BY %s DESC", searchName, filter)
+		query = fmt.Sprintf("SELECT id, name, firstMessage, creationDate, owner, likes, nmbPosts, uuid FROM topics WHERE name LIKE '%s' ORDER BY %s DESC", searchName, filter)
 	}
 
 	row, err := db.Query(query)
@@ -48,7 +50,7 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 	} else {
 		TOPICS = nil
 		for row.Next() {
-			err = row.Scan(&id, &name, &creationDate, &owner, &likes, &nmbPosts, &uuid)
+			err = row.Scan(&id, &name, &firstMessage, &creationDate, &owner, &likes, &nmbPosts, &uuid)
 			if err != nil {
 				fmt.Println(err)
 			} else {
@@ -61,6 +63,7 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 				TOPICS[topicIndex].NmbPosts = nmbPosts
 				TOPICS[topicIndex].Uuid = uuid
 				TOPICS[topicIndex].Id = id
+				TOPICS[topicIndex].FirstMessage = firstMessage
 			}
 		}
 		row.Close()

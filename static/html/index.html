@@ -24,6 +24,8 @@
     <p>create topic</p>
     <form method="POST">
         <input name="topic_name" type="text">
+        <br>
+        <input name="firstMessage" type="text">
         <input type="submit" value="create topic">
     </form>
 
@@ -62,6 +64,9 @@
         <button type="submit" value="{{ .Uuid }}" name="delete">delete</button>
     </form>
     <a href="./topics/{{ .Name }}">topicLink</a>
+    <br>
+    MessageFromOwner:
+    {{ .FirstMessage }}
     <br>
     {{ end }}
 

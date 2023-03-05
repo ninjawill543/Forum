@@ -9,6 +9,7 @@ func CreateTableTopics(db *sql.DB) {
 	topic_table := `CREATE TABLE topics(
 		id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 		"name" TEXT,
+		"firstMessage" TEXT,
 		"creationDate" TEXT,
 		"owner" TEXT,
 		"likes" INTEGER,
