@@ -13,7 +13,7 @@ module.exports = {
         'color5': '#676afb',
         'newcolor1': '#ffffff',
         'newcolor2': '#E5E7EB',
-        'newcolor3': '#2D2D2A',
+        'newcolor3': '#C5CAD3',
         'newcolor4': '#DB2955',
       backgroundImage: {
         'frontend': "url('https://i.pinimg.com/originals/14/fc/d1/14fcd189633936157ee354b6a092169d.png')",
