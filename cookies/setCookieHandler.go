@@ -1,21 +1,34 @@
 package forum
 
 import (
+	"fmt"
 	t "forum/users"
 	"net/http"
+	"time"
 )
+
+type cookies struct {
+	Value string
+}
+
+var COOKIES cookies
 
 func SetCookieHandler(w http.ResponseWriter, r *http.Request) {
 	// Initialize a new cookie containing the string "Hello world!" and some
 	// non-default attributes.
 	cookie := http.Cookie{
-		Name:     "exampleCookie",
-		Value:    t.USER.Username,
-		Path:     "/",
-		MaxAge:   9999999,
-		HttpOnly: true,
-		Secure:   false,
-		SameSite: http.SameSiteLaxMode,
+		Name:       "session",
+		Value:      t.USER.Username,
+		Path:       "",
+		Domain:     "",
+		Expires:    time.Time{},
+		RawExpires: "",
+		MaxAge:     99999999999,
+		Secure:     false,
+		HttpOnly:   false,
+		SameSite:   http.SameSiteLaxMode,
+		Raw:        "",
+		Unparsed:   []string{},
 	}
 
 	// Use the http.SetCookie() function to send the cookie to the client.
@@ -24,5 +37,5 @@ func SetCookieHandler(w http.ResponseWriter, r *http.Request) {
 	http.SetCookie(w, &cookie)
 
 	// Write a HTTP response as normal.
-	w.Write([]byte("cookie set!"))
+	fmt.Println("cookie set!")
 }
