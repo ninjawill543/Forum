@@ -27,12 +27,23 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 	var nmbPosts int
 	var filter string
 	var id int
+	var searchName string
+	var query string
 
 	filter = r.FormValue("filter")
+	fmt.Println(filter, "test")
+
 	if filter == "" {
 		filter = "lastPost"
 	}
-	query := fmt.Sprintf("SELECT id, name, creationDate, owner, likes, nmbPosts, uuid FROM topics ORDER BY %s DESC", filter)
+	query = fmt.Sprintf("SELECT id, name, creationDate, owner, likes, nmbPosts, uuid FROM topics ORDER BY %s DESC", filter)
+
+	if r.FormValue("searchbar") != "" {
+		searchName = "%" + r.FormValue("searchbar") + "%"
+		query = fmt.Sprintf("SELECT id, name, creationDate, owner, likes, nmbPosts, uuid FROM topics WHERE name LIKE '%s' ORDER BY %s DESC", searchName, filter)
+	}
+	fmt.Println(query)
+
 	row, err := db.Query(query)
 	if err != nil {
 		fmt.Println(err)
@@ -44,7 +55,6 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 				fmt.Println(nil)
 			} else {
 				topicIndex := len(TOPICS)
-
 				TOPICS = append(TOPICS, Topics{})
 				TOPICS[topicIndex].Name = name
 				TOPICS[topicIndex].Likes = likes

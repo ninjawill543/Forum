@@ -33,7 +33,7 @@ type Message struct {
 
 var TOPIC Topic
 
-func TopicPageDisplay(databaseMessages *sql.DB, databaseTopics *sql.DB, r *http.Request) {
+func MessagesPageDisplay(databaseMessages *sql.DB, databaseTopics *sql.DB, r *http.Request) {
 	var creationDate string
 	var owner string
 	var report int

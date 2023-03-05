@@ -32,7 +32,7 @@ func Handler_topicPage(w http.ResponseWriter, r *http.Request) {
 		t.EditMessage(r, databaseMessages)
 	}
 
-	t.TopicPageDisplay(databaseMessages, databaseTopics, r)
+	t.MessagesPageDisplay(databaseMessages, databaseTopics, r)
 
 	tmpl.Execute(w, t.TOPIC)
 }
