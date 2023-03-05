@@ -15,6 +15,9 @@ func Handler_index(w http.ResponseWriter, r *http.Request) {
 	databaseTopics, _ := sql.Open("sqlite3", "../topics.db")
 	databaseLikeFromUsers, _ := sql.Open("sqlite3", "../likesFromUser.db")
 
+	// t4.SetCookieHandler(w, r)
+	// t4.GetCookieHandler(w, r)
+
 	if r.FormValue("input_loginusername") != "" && r.FormValue("input_loginpassword") != "" {
 		t2.Login(r, databaseUsers)
 	}
