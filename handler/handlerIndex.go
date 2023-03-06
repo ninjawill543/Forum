@@ -11,6 +11,7 @@ import (
 
 func Handler_index(w http.ResponseWriter, r *http.Request) {
 	var tmpl1 *template.Template
+
 	if t2.USER.Username == "" {
 		tmpl1 = template.Must(template.ParseFiles("../static/html/indexnotlogin.html"))
 
