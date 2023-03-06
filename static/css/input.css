@@ -1,6 +1,107 @@
-/* @tailwind base;
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
- */
+#navButton {
+    background-color: #9092fb;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: flex;
+}
+.wrapper {
+    max-height: 630px;
+    display: flex;
+    overflow-x: auto;
+    flex-wrap: wrap;
+} 
+.wrapper .itemSmall {
+    height: 300px;
+    min-width: 180px;
+    max-width: 150px;
+    line-height: 300px;
+}
+.wrapper .itemNorm {
+    height: 300px;
+    min-width: 250px;
+    max-width: 500px;
+    line-height: 300px;
+}
+.wrapper .itemMed {
+    height: 300px;
+    min-width: 360px;
+    max-width: 500px;
+    line-height: 300px;
+}
+.wrapper .itemBig {
+    height: 300px;
+    min-width: 550px;
+    max-width: 500px;
+    line-height: 300px;
+}
+.wrapper .itemEnd {
+    height: 300px;
+    min-width: 480px;
+    max-width: 500px;
+    line-height: 300px;
+}
+#frontend {
+    background-image: url('https://www.hostinger.com/tutorials/wp-content/uploads/sites/2/2021/09/how-to-host-a-website-2.jpg');
+    background-size: cover;
+    background-position: center left 40px;
+}
+#backend {
+    background-image: url('https://www.hostinger.com/blog/wp-content/uploads/sites/4/2021/11/Network-validation-2-engineering-copy-1024x423.jpg');
+    background-size: cover;
+    background-position: center;
+}
+#design {
+    background-image: url('https://www.hostinger.com/blog/wp-content/themes/blogthemeuplift/public/images/no_image.jpg');
+    background-size: cover;
+    background-position: center;
+}
+#network {
+    background-image: url('https://www.hostinger.com/tutorials/wp-content/uploads/sites/2/2022/03/how-to-fix-err-connection-reset-error.jpg');
+    background-size: cover;
+    background-position: center right 2px;
+}
+#pentest {
+    background-image: url('https://www.hostinger.com/blog/wp-content/uploads/sites/4/2022/07/Engineering-DDoS-atacks-1-1024x422.png');
+    background-size: cover;
+    background-position: center;
+}
+#software {
+    background-image: url('https://www.hostinger.com/tutorials/wp-content/uploads/sites/2/2022/04/website-security-audit.jpg');
+    background-size: cover;
+    background-position: center;
+}
+#hardware {
+    background-image: url('https://www.hostinger.com/tutorials/wp-content/uploads/sites/2/2022/05/fail2ban-configuration.jpg');
+    background-size: cover;
+    background-position: center;
+}
+#marketplace {
+    background-image: url('https://www.hostinger.com/tutorials/wp-content/uploads/sites/2/2022/03/core-web-vitals-1-1024x449.jpg');
+    background-size: cover;
+    background-position: center;
+}
+#cracking {
+    background-image: url('https://www.hostinger.com/blog/wp-content/uploads/sites/4/2022/10/E-learning-1024x422.png');
+    background-size: cover;
+    background-position: center;
+}
+#cryptomonnaies {
+    background-image: url('https://media.wired.com/photos/5b3174bb440082328b06c9c7/16:9/w_1839,h_1034,c_limit/AndreessenHorowitz-Crypto-Biz-FINAL.jpg');
+    background-size: cover;
+    background-position: center ;
+}
+.labelsText {
+    backdrop-filter: blur(5px);
+    transition: all 330ms;
+}
+#h1Title {
+    transition: all 330ms;
+}
+.labelsText:hover {
+    backdrop-filter: blur(1px);
+}

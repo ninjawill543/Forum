@@ -24,6 +24,7 @@ func Login(r *http.Request, db *sql.DB, w http.ResponseWriter) {
 			//username will also work with email
 			usernameInput := r.FormValue("input_loginusername")
 			passwordInput := t.Hash(r.FormValue("input_loginpassword"))
+			fmt.Println(usernameInput, passwordInput)
 
 			querry := fmt.Sprintf("SELECT username, password, email, creationDate, birthDate, admin, uuid, ban FROM users WHERE password = '%s'", passwordInput)
 			row, err := db.Query(querry)

@@ -11,7 +11,14 @@ import (
 )
 
 func Handler_topicPage(w http.ResponseWriter, r *http.Request) {
-	tmpl := template.Must(template.ParseFiles("../static/html/topicPage.html"))
+	var tmpl *template.Template
+	if t4.USER.Username == "" {
+		tmpl = template.Must(template.ParseFiles("../static/html/topicPagenotlogin.html"))
+
+	} else {
+		tmpl = template.Must(template.ParseFiles("../static/html/topicPage.html"))
+
+	}
 	databaseForum, _ := sql.Open("sqlite3", "../forum.db")
 
 	t4.GetCookieHandler(w, r)
