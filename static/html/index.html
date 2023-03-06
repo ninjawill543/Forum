@@ -298,7 +298,7 @@
       <div  class="fixed rounded-lg top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 h-[25vh] w-[35vh] bg-newcolor4 flex flex-col items-center justify-center  ">
           <button class="pl-[30vh] pb-2 text-xl font-medium" onclick="closeRegister()">X</button>
           <p>Register</p>
-          <form method="post" class="mt-8 mb-4">
+          <form method="post" onsubmit="return false" class="mt-8 mb-4">
             <div class="mb-4">
               <label for="userEmail" class="sr-only">Email address</label>
               <input name="input_mail" class="border-solid border border-gray-400 rounded px-2 py-3" type="email" id="userEmail" placeholder="Email address" required/>
