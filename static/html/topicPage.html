@@ -7,7 +7,8 @@
         <link rel="stylesheet" href="../css/output.css">
         <title>Document</title>
 </head>
-<body onload="test();" class="h-screen w-screen bg-newcolor2">
+{{ $Topic := .}}
+<body onload="test('{{ .SessionUser }}');" class="h-screen w-screen bg-newcolor2">
   <header >
     <div class="fixed flex justify-around w-full h-16 shadow-md bg-newcolor1">
         <h1 id="h1Title"
@@ -26,23 +27,25 @@
             </div>
            
             <div id="profbutton" class="hidden">
-                <button 
-                class=" font-medium flex rounded-lg relative w-24 left-[60vh] cursor-pointer focus:ring-blue-300 text-sm text-center dark:bg-color2 dark:hover:bg-color3 dark:focus:ring-color3 text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
-                <p class="w-fit text-xs uppercase p-3">profile</p>
-                <svg class="relative top-2 right-1" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <g id="style=fill">
-                        <g id="profile">
-                            <path id="vector (Stroke)" fill-rule="evenodd" clip-rule="evenodd"
-                                d="M6.75 6.5C6.75 3.6005 9.1005 1.25 12 1.25C14.8995 1.25 17.25 3.6005 17.25 6.5C17.25 9.3995 14.8995 11.75 12 11.75C9.1005 11.75 6.75 9.3995 6.75 6.5Z"
-                                fill="#000000" />
-                            <path id="rec (Stroke)" fill-rule="evenodd" clip-rule="evenodd"
-                                d="M4.25 18.5714C4.25 15.6325 6.63249 13.25 9.57143 13.25H14.4286C17.3675 13.25 19.75 15.6325 19.75 18.5714C19.75 20.8792 17.8792 22.75 15.5714 22.75H8.42857C6.12081 22.75 4.25 20.8792 4.25 18.5714Z"
-                                fill="#000000" />
+                <a href="../your-profil">
+                    <button 
+                    class=" font-medium flex rounded-lg relative w-24 left-[60vh] cursor-pointer focus:ring-blue-300 text-sm text-center dark:bg-color2 dark:hover:bg-color3 dark:focus:ring-color3 text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+                    <p class="w-fit text-xs uppercase p-3">profile</p>
+                    <svg class="relative top-2 right-1" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <g id="style=fill">
+                            <g id="profile">
+                                <path id="vector (Stroke)" fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M6.75 6.5C6.75 3.6005 9.1005 1.25 12 1.25C14.8995 1.25 17.25 3.6005 17.25 6.5C17.25 9.3995 14.8995 11.75 12 11.75C9.1005 11.75 6.75 9.3995 6.75 6.5Z"
+                                    fill="#000000" />
+                                <path id="rec (Stroke)" fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M4.25 18.5714C4.25 15.6325 6.63249 13.25 9.57143 13.25H14.4286C17.3675 13.25 19.75 15.6325 19.75 18.5714C19.75 20.8792 17.8792 22.75 15.5714 22.75H8.42857C6.12081 22.75 4.25 20.8792 4.25 18.5714Z"
+                                    fill="#000000" />
+                            </g>
                         </g>
-                    </g>
-                </svg>
-            </button>
+                    </svg>
+                </button>
+                </a>
             </div>
             
         </div>
@@ -101,7 +104,6 @@
 
             </div> -->
             <div id="list" class="flex flex-col justify-start items-center ml-[30vh] w-[100vh] h-[100vh] mt-[10vh] ">
-                {{ $Topic := .}}
                 {{ range $k, $v := .Messages }}
                 <div class='w-[100vh] flex items-center justify-center mb-[3vh]'>  
                     <div class="rounded-xl border p-5 shadow-md w-9/12 bg-white">
@@ -251,7 +253,7 @@
             <form method="post" class="mt-8 mb-4">
               <div class="mb-4">
                 <label for="userEmail" class="sr-only">Email address</label>
-                <input name="input_loginusername" class="border-solid border border-gray-400 rounded px-2 py-3" type="email" id="userEmail" placeholder="Email address" required />
+                <input name="input_loginusername" class="border-solid border border-gray-400 rounded px-2 py-3" type="text" id="userEmail" placeholder="Email address" required />
               </div>
               <div>
                 <label for="userEmail" class="sr-only">Password</label>
