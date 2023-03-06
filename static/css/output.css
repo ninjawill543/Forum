@@ -668,10 +668,6 @@ video {
   top: 25vh;
 }
 
-.top-\[51vh\] {
-  top: 51vh;
-}
-
 .top-\[55vh\] {
   top: 55vh;
 }
@@ -811,10 +807,6 @@ video {
   height: 30vh;
 }
 
-.h-\[35vh\] {
-  height: 35vh;
-}
-
 .h-\[38vh\] {
   height: 38vh;
 }
@@ -911,10 +903,6 @@ video {
   width: 13vh;
 }
 
-.w-\[15vh\] {
-  width: 15vh;
-}
-
 .w-\[350px\] {
   width: 350px;
 }
@@ -1000,10 +988,6 @@ video {
 
 .justify-start {
   justify-content: flex-start;
-}
-
-.justify-end {
-  justify-content: flex-end;
 }
 
 .justify-center {

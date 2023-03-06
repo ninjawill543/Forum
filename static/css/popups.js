@@ -48,3 +48,8 @@ function test() {
 
 } 
 
+
+function refreshPage(){
+    window.location.reload();
+}
+
