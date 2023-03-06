@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="../css/output.css">
         <title>Document</title>
 </head>
-<body  class="h-screen w-screen bg-newcolor2">
+<body onload="test();" class="h-screen w-screen bg-newcolor2">
     <header >
         <div>
             <p><a href="../index">go back</a></p>
@@ -18,28 +18,39 @@
                 class="relative uppercase my-[20px] right-72 font-bold text-center dark:hover:text-color1 text-newcolor4">
                 Dread Forums</h1>
             <div class="grid w-96 self-center items-center grid-cols-3">
-               
-                <div id="profbutton" >
-                  <a href="../your-profil">
-                    <button 
-                    class=" font-medium flex rounded-lg relative w-24 left-[60vh] cursor-pointer focus:ring-blue-300 text-sm text-center text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
-                    <p class="w-fit text-xs uppercase p-3">profile</p>
-                    <svg class="relative top-2 right-1" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <g id="style=fill">
-                            <g id="profile">
-                                <path id="vector (Stroke)" fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M6.75 6.5C6.75 3.6005 9.1005 1.25 12 1.25C14.8995 1.25 17.25 3.6005 17.25 6.5C17.25 9.3995 14.8995 11.75 12 11.75C9.1005 11.75 6.75 9.3995 6.75 6.5Z"
-                                    fill="#000000" />
-                                <path id="rec (Stroke)" fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M4.25 18.5714C4.25 15.6325 6.63249 13.25 9.57143 13.25H14.4286C17.3675 13.25 19.75 15.6325 19.75 18.5714C19.75 20.8792 17.8792 22.75 15.5714 22.75H8.42857C6.12081 22.75 4.25 20.8792 4.25 18.5714Z"
-                                    fill="#000000" />
+                <div class="hidden" id="logbutton" >
+                    <button  onclick="openLogin()" class=" font-medium rounded-lg shadow-xl flex relative w-24 left-[60vh] cursor-pointer focus:ring-blue-300 text-sm text-center text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+                        <p class="w-fit text-xs uppercase p-3">login</p>
+                        <svg class="relative top-2 right-1" fill="#000000" width="24px" height="24px" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M20,21V3H13a1,1,0,0,1,0-2h8a1,1,0,0,1,1,1V22a1,1,0,0,1-1,1H13a1,1,0,0,1,0-2ZM2,12a1,1,0,0,0,1,1H14.586l-2.293,2.293a1,1,0,1,0,1.414,1.414l4-4a1,1,0,0,0,0-1.414l-4-4a1,1,0,1,0-1.414,1.414L14.586,11H3A1,1,0,0,0,2,12Z" />
+                        </svg>
+                    </button>
+                    <div class="hidden" id="profbutton" >
+                      <a href="../your-profil">
+                        <button 
+                        class=" font-medium flex rounded-lg relative w-24 left-[60vh] cursor-pointer focus:ring-blue-300 text-sm text-center text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+                        <p class="w-fit text-xs uppercase p-3">profile</p>
+                        <svg class="relative top-2 right-1" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <g id="style=fill">
+                                <g id="profile">
+                                    <path id="vector (Stroke)" fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M6.75 6.5C6.75 3.6005 9.1005 1.25 12 1.25C14.8995 1.25 17.25 3.6005 17.25 6.5C17.25 9.3995 14.8995 11.75 12 11.75C9.1005 11.75 6.75 9.3995 6.75 6.5Z"
+                                        fill="#000000" />
+                                    <path id="rec (Stroke)" fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M4.25 18.5714C4.25 15.6325 6.63249 13.25 9.57143 13.25H14.4286C17.3675 13.25 19.75 15.6325 19.75 18.5714C19.75 20.8792 17.8792 22.75 15.5714 22.75H8.42857C6.12081 22.75 4.25 20.8792 4.25 18.5714Z"
+                                        fill="#000000" />
+                                </g>
                             </g>
-                        </g>
-                    </svg>
-                </button>
-                  </a>
+                        </svg>
+                    </button>
+                      </a>
+                    </div>
                 </div>
+               
+            
                 
             </div>
         </div>
@@ -183,7 +194,7 @@
                 </div> -->
                 <div class="max-w-2xl mx-auto">
 
-                    <form method="POST">
+                    <form>
                     <div class="shadow-lg mb-4 w-full bg-gray-50 rounded-lg border border-gray-200 ">
                         <div class="flex rounded-t-lg justify-between items-center py-2 px-3 bg-newcolor3">
                             <div class="flex flex-wrap items-center bg-newcolor3">
@@ -198,7 +209,7 @@
                             </div>
                         </div>
                         <div class="py-2 px-3 bg-white rounded-b-lg ">
-                            <textarea name="input_newMessage" id="lock" rows="8" class="block px-0 w-full text-sm text-gray-800 bg-white border-0 focus:ring-0 " placeholder="Write a comment..." required></textarea>
+                            <textarea disabled onfocus="openLoginIf()" id="lock" rows="8" class="block px-0 w-full text-sm text-gray-800 bg-white border-0  focus:ring-0" placeholder="Write a comment..." required></textarea>
                         </div>
                     </div>
                     <button type="submit" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-newcolor4 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-color3">
@@ -216,7 +227,68 @@
         
     </main>
 
+    <div class="hidden" id="register2">
+        <div class="fixed rounded-lg top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 h-[42vh] w-[35vh] bg-newcolor4 flex flex-col items-center justify-center  ">
+            <button class="pl-[30vh] pb-2 text-xl font-medium" onclick="closeRegister()">X</button>
+            <p>Register</p>
+            <form method="post" class="mt-8 mb-4">
+              <div class="mb-4">
+                <label for="userEmail" class="sr-only">Username</label>
+                <input class="border-solid border border-gray-400 rounded px-2 py-3" type="Username" id="userName" placeholder="Username" required />
+              </div>
+              <div class="flex mb-4 justify-center">
+                <label for="userEmail" class="sr-only">Birthday</label>
+                <input type="date" id="birthday" name="birthday" required>
+              </div>
+              <div class="mb-4">
+                <label for="userPass" class="sr-only">Password</label>
+                <input class="border-solid border border-gray-400 rounded px-2 py-3" type="password" id="userPass" placeholder="Password" required />
+              </div>
+              <div class="mb-4">
+                <label for="userPass2" class="sr-only">Confirm your password</label>
+                <input class="border-solid border border-gray-400 rounded px-2 py-3" type="password" id="userPass" placeholder="Confirm your password" required />
+              </div>
+              <button class="bg-newcolor3 rounded-lg hover:bg-gray-600 text-white font-bold w-full py-3" type="submit"  onclick="closeRegister()">Register</button>
+            </form>
+          </div>
+    </div>
+    <div class="hidden" id="login">
+        <div class="fixed rounded-lg top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 h-[45vh] w-[35vh] bg-newcolor4 flex flex-col items-center justify-center ">
+            <button class="pl-[30vh] pb-2 text-xl font-medium" onclick="closeRegister()">X</button>
+            <p>Login</p>
+            <form method="post" class="mt-8 mb-4">
+              <div class="mb-4">
+                <label for="userEmail" class="sr-only">Email address</label>
+                <input name="input_loginusername" class="border-solid border border-gray-400 rounded px-2 py-3" type="email" id="userEmail" placeholder="Email address" required />
+              </div>
+              <div>
+                <label for="userEmail" class="sr-only">Password</label>
+                <input name="input_loginpassword" class="border-solid border border-gray-400 rounded px-2 py-3" type="password" id="userPass" placeholder="Password" required />
+              </div>
+              <div class="my-4 flex items-center">
+                <input class="h-4 w-4 mr-2" type="checkbox" id="userRemember" />
+                <label for="userRemember">Remember me</label>
+              </div>
+              <button onClick="refreshPage()" class="rounded-lg bg-newcolor3 hover:bg-gray-600 text-white font-bold w-full py-3 mb-4" type="submit">Sign in</button>
+              <button class="rounded-lg bg-newcolor3 hover:bg-gray-600 text-white font-bold w-full py-3 " type="submit"  onclick="openRegister()">Click here to register</button>
+            </form>
+            <a href="#" class="self-start pl-4">Forgot the password?</a>
+          </div>
+    </div>
     
+    <div class="hidden" id="register">
+        <div  class="fixed rounded-lg top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 h-[25vh] w-[35vh] bg-newcolor4 flex flex-col items-center justify-center  ">
+            <button class="pl-[30vh] pb-2 text-xl font-medium" onclick="closeRegister()">X</button>
+            <p>Register</p>
+            <form method="post" class="mt-8 mb-4">
+              <div class="mb-4">
+                <label for="userEmail" class="sr-only">Email address</label>
+                <input class="border-solid border border-gray-400 rounded px-2 py-3" type="email" id="userEmail" placeholder="Email address" required />
+              </div>
+              <div>
+              <button class="rounded-lg bg-newcolor3 hover:bg-gray-600 text-white font-bold w-full py-3" type="submit"  onclick="openRegister2()">Continue</button>
+            </form>
+          </div>
     </div>
 
     <script src="../css/popups.js">

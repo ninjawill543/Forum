@@ -3,6 +3,7 @@ package forum
 import (
 	"database/sql"
 	"fmt"
+	t "forum/users"
 	"net/http"
 )
 
@@ -15,6 +16,7 @@ type Topics struct {
 	Uuid         string
 	NmbPosts     int
 	FirstMessage string
+	SessionUser  string
 	// LastPost     string
 }
 
@@ -66,6 +68,7 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 				TOPICS[topicIndex].Uuid = uuid
 				TOPICS[topicIndex].Id = id
 				TOPICS[topicIndex].FirstMessage = firstMessage
+				TOPICS[topicIndex].SessionUser = t.USER.Username
 				// TOPICS[topicIndex].LastPost = lastPost
 			}
 		}

@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 	t "forum/listTopics"
+	t2 "forum/users"
 	"net/http"
 	"strings"
 )
@@ -17,6 +18,7 @@ type Topic struct {
 	Owner        string
 	Uuid         string
 	UuidPath     string
+	SessionUser  string
 	Messages     []Message `Message`
 }
 
@@ -34,6 +36,7 @@ type Message struct {
 var TOPIC Topic
 
 func MessagesPageDisplay(db *sql.DB, r *http.Request) {
+	TOPIC.SessionUser = t2.USER.Username
 	var creationDate string
 	var owner string
 	var report int

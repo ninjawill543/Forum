@@ -10,14 +10,9 @@ import (
 )
 
 func Handler_index(w http.ResponseWriter, r *http.Request) {
-	var tmpl1 *template.Template
 
-	if t2.USER.Username == "" {
-		tmpl1 = template.Must(template.ParseFiles("../static/html/indexnotlogin.html"))
+	tmpl1 := template.Must(template.ParseFiles("../static/html/index.html"))
 
-	} else {
-		tmpl1 = template.Must(template.ParseFiles("../static/html/index.html"))
-	}
 	databaseForum, _ := sql.Open("sqlite3", "../forum.db")
 
 	t2.GetCookieHandler(w, r)
