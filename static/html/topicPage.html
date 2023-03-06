@@ -8,54 +8,46 @@
         <title>Document</title>
 </head>
 <body onload="test();" class="h-screen w-screen bg-newcolor2">
-    <header >
-        <div>
-            <p><a href="../index">go back</a></p>
-        </div>
-
-        <div class="fixed flex justify-around w-full h-16 shadow-md bg-newcolor1">
-            <h1 id="h1Title"
-                class="relative uppercase my-[20px] right-72 font-bold text-center dark:hover:text-color1 text-newcolor4">
-                Dread Forums</h1>
-            <div class="grid w-96 self-center items-center grid-cols-3">
-                <div class="hidden" id="logbutton" >
-                    <button  onclick="openLogin()" class=" font-medium rounded-lg shadow-xl flex relative w-24 left-[60vh] cursor-pointer focus:ring-blue-300 text-sm text-center text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
-                        <p class="w-fit text-xs uppercase p-3">login</p>
-                        <svg class="relative top-2 right-1" fill="#000000" width="24px" height="24px" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M20,21V3H13a1,1,0,0,1,0-2h8a1,1,0,0,1,1,1V22a1,1,0,0,1-1,1H13a1,1,0,0,1,0-2ZM2,12a1,1,0,0,0,1,1H14.586l-2.293,2.293a1,1,0,1,0,1.414,1.414l4-4a1,1,0,0,0,0-1.414l-4-4a1,1,0,1,0-1.414,1.414L14.586,11H3A1,1,0,0,0,2,12Z" />
-                        </svg>
-                    </button>
-                    <div class="hidden" id="profbutton" >
-                      <a href="../your-profil">
-                        <button 
-                        class=" font-medium flex rounded-lg relative w-24 left-[60vh] cursor-pointer focus:ring-blue-300 text-sm text-center text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
-                        <p class="w-fit text-xs uppercase p-3">profile</p>
-                        <svg class="relative top-2 right-1" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <g id="style=fill">
-                                <g id="profile">
-                                    <path id="vector (Stroke)" fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M6.75 6.5C6.75 3.6005 9.1005 1.25 12 1.25C14.8995 1.25 17.25 3.6005 17.25 6.5C17.25 9.3995 14.8995 11.75 12 11.75C9.1005 11.75 6.75 9.3995 6.75 6.5Z"
-                                        fill="#000000" />
-                                    <path id="rec (Stroke)" fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M4.25 18.5714C4.25 15.6325 6.63249 13.25 9.57143 13.25H14.4286C17.3675 13.25 19.75 15.6325 19.75 18.5714C19.75 20.8792 17.8792 22.75 15.5714 22.75H8.42857C6.12081 22.75 4.25 20.8792 4.25 18.5714Z"
-                                        fill="#000000" />
-                                </g>
-                            </g>
-                        </svg>
-                    </button>
-                      </a>
-                    </div>
-                </div>
-               
-            
-                
+  <header >
+    <div class="fixed flex justify-around w-full h-16 shadow-md bg-newcolor1">
+        <h1 id="h1Title"
+            class="relative uppercase my-[20px] right-72 font-bold text-center dark:hover:text-color1 text-newcolor4">
+            Dread Forums</h1>
+        <div class="grid w-96 self-center items-center grid-cols-3">
+            <div id="logbutton" class="hidden">
+                <button  onclick="openLogin()" class=" font-medium rounded-lg shadow-xl flex relative w-24 left-[60vh] cursor-pointer focus:ring-blue-300 text-sm text-center dark:bg-color2 dark:hover:bg-color3 dark:focus:ring-color3 text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+                    <p class="w-fit text-xs uppercase p-3">login</p>
+                    <svg class="relative top-2 right-1" fill="#000000" width="24px" height="24px" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M20,21V3H13a1,1,0,0,1,0-2h8a1,1,0,0,1,1,1V22a1,1,0,0,1-1,1H13a1,1,0,0,1,0-2ZM2,12a1,1,0,0,0,1,1H14.586l-2.293,2.293a1,1,0,1,0,1.414,1.414l4-4a1,1,0,0,0,0-1.414l-4-4a1,1,0,1,0-1.414,1.414L14.586,11H3A1,1,0,0,0,2,12Z" />
+                    </svg>
+                </button>
             </div>
+           
+            <div id="profbutton" class="hidden">
+                <button 
+                class=" font-medium flex rounded-lg relative w-24 left-[60vh] cursor-pointer focus:ring-blue-300 text-sm text-center dark:bg-color2 dark:hover:bg-color3 dark:focus:ring-color3 text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+                <p class="w-fit text-xs uppercase p-3">profile</p>
+                <svg class="relative top-2 right-1" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <g id="style=fill">
+                        <g id="profile">
+                            <path id="vector (Stroke)" fill-rule="evenodd" clip-rule="evenodd"
+                                d="M6.75 6.5C6.75 3.6005 9.1005 1.25 12 1.25C14.8995 1.25 17.25 3.6005 17.25 6.5C17.25 9.3995 14.8995 11.75 12 11.75C9.1005 11.75 6.75 9.3995 6.75 6.5Z"
+                                fill="#000000" />
+                            <path id="rec (Stroke)" fill-rule="evenodd" clip-rule="evenodd"
+                                d="M4.25 18.5714C4.25 15.6325 6.63249 13.25 9.57143 13.25H14.4286C17.3675 13.25 19.75 15.6325 19.75 18.5714C19.75 20.8792 17.8792 22.75 15.5714 22.75H8.42857C6.12081 22.75 4.25 20.8792 4.25 18.5714Z"
+                                fill="#000000" />
+                        </g>
+                    </g>
+                </svg>
+            </button>
+            </div>
+            
         </div>
-    </header>
-
+    </div>
+</header>     
     
 
 
