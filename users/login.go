@@ -48,7 +48,9 @@ func Login(r *http.Request, db *sql.DB, w http.ResponseWriter) {
 							USER.Uuid = uuid
 							USER.Admin = admin
 
-							SetCookieHandler(w, r)
+							if r.FormValue("input_rememberMe") != "" {
+								SetCookieHandler(w, r)
+							}
 						} else {
 							fmt.Println("no0b")
 							fmt.Println(username, password, email, usernameInput, passwordInput)
