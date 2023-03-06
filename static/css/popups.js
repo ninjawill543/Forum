@@ -30,7 +30,7 @@ if (loggedin == 0) {
     
 }
 function test() {
-    let loggedin = 1;
+    let loggedin = 0;
     if (loggedin == 0) {
         document.getElementById("logbutton").style.display = "block";
         document.getElementById("profbutton").style.display = "none";
