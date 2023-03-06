@@ -7,7 +7,6 @@
         <link rel="stylesheet" href="../css/output.css">
         <title>Document</title>
 </head>
-
 {{ range $Topics := . }}
 <body onload="test('{{ .SessionUser}}');" class="h-screen w-screen bg-newcolor2">
   {{ end }}
@@ -30,7 +29,6 @@
            
             <div id="profbutton" class="hidden">
                 <a href="../your-profil">
-
                     <button 
                     class=" font-medium flex rounded-lg relative w-24 left-[60vh] cursor-pointer focus:ring-blue-300 text-sm text-center dark:bg-color2 dark:hover:bg-color3 dark:focus:ring-color3 text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
                     <p class="w-fit text-xs uppercase p-3">profile</p>
@@ -54,13 +52,9 @@
         </div>
     </div>
 </header>
-
     
-
-
     <main>
         <div id="container" class="flex align-start  ">
-
             <!-- <div id="list" class="flex justify-self-center pr-[70vh] h-[90vh] pt-[10vh] ">
                 <div class="shadow-xl bg-newcolor1 h-[80vh] w-[100vh]">
                     <div class="flex w-[100vh] bg-newcolor3 h-[5vh]">
@@ -105,7 +99,6 @@
                     
                     
                 </div>
-
             </div> -->
             
             
@@ -160,7 +153,6 @@
                     </div>
                   </div>
                 </div>
-
                 {{ end }}
                 
                 
@@ -168,26 +160,18 @@
                     
                 </div>
                 <div class="shadow-lg w-[90vh] h-[12vh] bg-newcolor1 mt-[3vh] rounded-md">
-
                 </div>
                 <div class="shadow-lg w-[90vh] h-[12vh] bg-newcolor1 mt-[3vh] rounded-md">
-
                 </div>
                 <div class="shadow-lg w-[90vh] h-[12vh] bg-newcolor1 mt-[3vh] rounded-md">
-
                 </div>
                 <div class="shadow-lg w-[90vh] h-[12vh] bg-newcolor1 mt-[3vh] rounded-md">
-
                 </div>
                 <div class="shadow-lg w-[90vh] h-[12vh] bg-newcolor1 mt-[3vh] rounded-md">
-
                 </div>
                 <div class="shadow-lg w-[90vh] h-[12vh] bg-newcolor1 mt-[3vh] rounded-md">
-
                 </div> -->
-
             </div>
-
             <div id="filter" class="fixed top-[15vh] right-[18vh]  h-[5vh] w-[40vh] ">
                 <form>   
                     <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300">Search</label>
@@ -200,8 +184,6 @@
                     </div>
                 </form>
             </div>
-
-
             <div id="filter" class="fixed top-[25vh] right-[12vh]  h-[90vh] ">
                 <!-- <div class="flex flex-col align-center w-[45vh] bg-color1 h-[38vh]">
                     <div class="shadow-xl flex w-[45vh] bg-newcolor3 h-[5vh] ">
@@ -213,13 +195,11 @@
                     <button class="shadow-md rounded-lg w-24 h-[5vh] bg-newcolor4 fixed top-[55vh] right-[14vh] text-white hover:bg-color3 font-medium">Submit</button>
                 </div> -->
                 <div class="max-w-2xl mx-auto">
-
                     <form>
                     <div class="shadow-lg mb-4 w-full bg-gray-50 rounded-lg border border-gray-200 ">
                         <div class="flex rounded-t-lg justify-between items-center py-2 px-3 bg-newcolor3">
                             <div class="flex flex-wrap items-center bg-newcolor3">
                                 <div class="flex items-center space-x-1 sm:pr-4 w-[50vh]" >
-
                                     <textarea id="lock" onfocus="openLoginIf()"  rows="1" class="block px-0 w-full text-sm text-gray-800 bg-newcolor3 border-0 " placeholder="Title" required></textarea>
                                     <button type="button" class="p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600">
                                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"></path></svg>
@@ -237,7 +217,6 @@
                         Publish post
                     </button>
                     </form>
-
                 </div>
                 
             </div>
@@ -247,70 +226,70 @@
         
         
     </main>
-    <div class="hidden" id="register2">
-      <div class="fixed rounded-lg top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 h-[42vh] w-[35vh] bg-newcolor4 flex flex-col items-center justify-center  ">
-          <button class="pl-[30vh] pb-2 text-xl font-medium" onclick="closeRegister()">X</button>
-          <p>Register</p>
-          <form method="post" class="mt-8 mb-4">
-            <div class="mb-4">
-              <label for="userEmail" class="sr-only">Username</label>
-              <input name="input_username" class="border-solid border border-gray-400 rounded px-2 py-3" type="Username" id="userName" placeholder="Username" required />
-            </div>
-            <div class="flex mb-4 justify-center">
-              <label for="userEmail" class="sr-only">Birthday</label>
-              <input name="input_birthDay" type="date" id="birthday" name="birthday" required>
-            </div>
-            <div class="mb-4">
-              <label for="userPass" class="sr-only">Password</label>
-              <input name="input_password" class="border-solid border border-gray-400 rounded px-2 py-3" type="password" id="userPass" placeholder="Password" required />
-            </div>
-            <div class="mb-4">
-              <label for="userPass2" class="sr-only">Confirm your password</label>
-              <input name="input_password2" class="border-solid border border-gray-400 rounded px-2 py-3" type="password" id="userPass" placeholder="Confirm your password" required />
-            </div>
-            <button class="bg-newcolor3 rounded-lg hover:bg-gray-600 text-white font-bold w-full py-3" type="submit"  onclick="closeRegister()">Register</button>
-          </form>
-        </div>
-  </div>
-  <div class="hidden" id="login">
+    <div class="hidden" id="login">
       <div class="fixed rounded-lg top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 h-[45vh] w-[35vh] bg-newcolor4 flex flex-col items-center justify-center ">
           <button class="pl-[30vh] pb-2 text-xl font-medium" onclick="closeRegister()">X</button>
           <p>Login</p>
           <form method="post" class="mt-8 mb-4">
-            <div class="mb-4">
-              <label for="userEmail" class="sr-only">Email address</label>
-              <input name="input_loginusername" class="border-solid border border-gray-400 rounded px-2 py-3" type="text" id="userEmail" placeholder="Email address" required />
-            </div>
-            <div>
-              <label for="userEmail" class="sr-only">Password</label>
-              <input name="input_loginpassword" class="border-solid border border-gray-400 rounded px-2 py-3" type="password" id="userPass" placeholder="Password" required />
-            </div>
-            <div class="my-4 flex items-center">
-              <input name="input_rememberMe" class="h-4 w-4 mr-2" type="checkbox" id="userRemember" />
-              <label for="userRemember">Remember me</label>
-            </div>
-            <button onClick="refreshPage()" class="rounded-lg bg-newcolor3 hover:bg-gray-600 text-white font-bold w-full py-3 mb-4" type="submit">Sign in</button>
-            <button class="rounded-lg bg-newcolor3 hover:bg-gray-600 text-white font-bold w-full py-3 " type="submit"  onclick="openRegister()">Click here to register</button>
+          <div class="mb-4">
+            <label for="userEmail" class="sr-only">Email address</label>
+            <input name="input_loginusername" class="border-solid border border-gray-400 rounded px-2 py-3" type="text" id="userEmail" placeholder="Email address" required />
+          </div>
+        <div>
+          <label for="userEmail" class="sr-only">Password</label>
+          <input name="input_loginpassword" class="border-solid border border-gray-400 rounded px-2 py-3" type="password" id="userPass" placeholder="Password" required />
+      </div>
+        <div class="my-4 flex items-center">
+          <input name="input_rememberMe" class="h-4 w-4 mr-2" type="checkbox" id="userRemember" />
+          <label for="userRemember">Remember me</label>
+        </div>
+          <button onClick="refreshPage()" class="rounded-lg bg-newcolor3 hover:bg-gray-600 text-white font-bold w-full py-3 mb-4" type="submit">Sign in</button>
+          <button class="rounded-lg bg-newcolor3 hover:bg-gray-600 text-white font-bold w-full py-3 " type="submit" onclick="openRegister()">Click here to register</button>
           </form>
           <a href="#" class="self-start pl-4">Forgot the password?</a>
+      </div>
+    </div>
+
+        <div class="hidden" id="register">
+          <div class="fixed rounded-lg top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 h-[25vh] w-[35vh] bg-newcolor4 flex flex-col items-center justify-center  ">
+            <button class="pl-[30vh] pb-2 text-xl font-medium" onclick="closeRegister()">X</button>
+            <p>Register</p>
+            <form method="POST" class="mt-8 mb-4">
+              <div class="mb-4">
+                <label for="userEmail" class="sr-only">Email address</label>
+                <input name="input_mail" class="border-solid border border-gray-400 rounded px-2 py-3" type="email" id="userEmail" placeholder="Email address" required/>
+              </div>
+              <div>
+                <p onclick="openRegister2()">Continue</p>
+                <!-- <button class="rounded-lg bg-newcolor3 hover:bg-gray-600 text-white font-bold w-full py-3" onclick="openRegister2()">Continue</button> -->
+              </div>
+          </div>
         </div>
-  </div>
-  
-  <div class="hidden" id="register">
-      <div  class="fixed rounded-lg top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 h-[25vh] w-[35vh] bg-newcolor4 flex flex-col items-center justify-center  ">
-          <button class="pl-[30vh] pb-2 text-xl font-medium" onclick="closeRegister()">X</button>
-          <p>Register</p>
-          <form method="post" onsubmit="return false" class="mt-8 mb-4">
+
+        <div class="hidden" id="register2">
+          <div class="fixed rounded-lg top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 h-[42vh] w-[35vh] bg-newcolor4 flex flex-col items-center justify-center  ">
+            <button class="pl-[30vh] pb-2 text-xl font-medium" onclick="closeRegister()">X</button>
+            <p>Register</p>
             <div class="mb-4">
-              <label for="userEmail" class="sr-only">Email address</label>
-              <input name="input_mail" class="border-solid border border-gray-400 rounded px-2 py-3" type="email" id="userEmail" placeholder="Email address" required/>
+              <label for="userEmail" class="sr-only">Username</label>
+              <input name="input_username" class="border-solid border border-gray-400 rounded px-2 py-3" type="Username" id="userName" placeholder="Username" required />
             </div>
-            <div>
-            <button class="rounded-lg bg-newcolor3 hover:bg-gray-600 text-white font-bold w-full py-3" type="submit" onclick="openRegister2()">Continue</button>
-          </form>
+              <div class="flex mb-4 justify-center">
+                <label for="userEmail" class="sr-only">Birthday</label>
+                <input name="input_birthDay" type="date" id="birthday" name="birthday" required>
+              </div>
+                <div class="mb-4">
+                  <label for="userPass" class="sr-only">Password</label>
+                  <input name="input_password" class="border-solid border border-gray-400 rounded px-2 py-3" type="password" id="userPass" placeholder="Password" required />
+                </div>
+                  <div class="mb-4">
+                    <label for="userPass2" class="sr-only">Confirm your password</label>
+                    <input name="input_password2" class="border-solid border border-gray-400 rounded px-2 py-3" type="password" id="userPass" placeholder="Confirm your password" required />
+                  </div>
+                    <button class="bg-newcolor3 rounded-lg hover:bg-gray-600 text-white font-bold w-full py-3" type="submit" onclick="closeRegister()">Register</button>
+              </form>
+            </div>
         </div>
-  </div>
     <script src="../css/popups.js"></script>
 </body>
-
 </html>

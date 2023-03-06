@@ -719,16 +719,12 @@ video {
   margin-bottom: 1vh;
 }
 
-.ml-\[10vh\] {
-  margin-left: 10vh;
+.ml-\[24vh\] {
+  margin-left: 24vh;
 }
 
 .ml-\[6vh\] {
   margin-left: 6vh;
-}
-
-.ml-\[24vh\] {
-  margin-left: 24vh;
 }
 
 .block {
@@ -809,10 +805,6 @@ video {
 
 .h-screen {
   height: 100vh;
-}
-
-.h-\[10vh\] {
-  height: 10vh;
 }
 
 .h-12 {
@@ -926,10 +918,6 @@ video {
   flex-wrap: wrap;
 }
 
-.flex-nowrap {
-  flex-wrap: nowrap;
-}
-
 .items-center {
   align-items: center;
 }
@@ -990,10 +978,6 @@ video {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-.text-ellipsis {
-  text-overflow: ellipsis;
 }
 
 .rounded {

@@ -30,6 +30,10 @@ func UserEdit(r *http.Request, db *sql.DB) {
 				} else {
 					query := fmt.Sprintf("UPDATE users SET username = '%s' WHERE uuid = '%s'", r.FormValue("username"), USER.Uuid)
 					db.Exec(query)
+					query = fmt.Sprintf("UPDATE messages SET owner = '%s' WHERE owner = '%s'", r.FormValue("username"), USER.Username)
+					db.Exec(query)
+					query = fmt.Sprintf("UPDATE topics SET owner = '%s' WHERE owner = '%s'", r.FormValue("username"), USER.Username)
+					db.Exec(query)
 				}
 			}
 			if r.FormValue("password") != "" {
