@@ -25,7 +25,11 @@ func Handler_index(w http.ResponseWriter, r *http.Request) {
 		t.AddTopic(r, databaseForum)
 	}
 
-	if r.FormValue("input_username") != "" && r.FormValue("input_password") != "" && r.FormValue("input_mail") != "" && r.FormValue("input_birthDay") != "" {
+	if r.FormValue("input_mail") != "" {
+		t2.EmailStorage(r)
+	}
+
+	if r.FormValue("input_username") != "" && r.FormValue("input_password") != "" && r.FormValue("input_birthDay") != "" {
 		t2.Register(r, databaseForum)
 	}
 

@@ -6,7 +6,7 @@ function openLogin() {
 function openRegister() {
     document.getElementById("login").style.display = "none";
     document.getElementById("register").style.display = "block";
-    document.getElementById("register2").style.display = "none";
+    document.getElementById("register2").style.display = "block";
 }
 function openRegister2() {
     document.getElementById("register").style.display = "none";

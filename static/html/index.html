@@ -252,19 +252,19 @@
           <form method="post" class="mt-8 mb-4">
             <div class="mb-4">
               <label for="userEmail" class="sr-only">Username</label>
-              <input class="border-solid border border-gray-400 rounded px-2 py-3" type="Username" id="userName" placeholder="Username" required />
+              <input name="input_username" class="border-solid border border-gray-400 rounded px-2 py-3" type="Username" id="userName" placeholder="Username" required />
             </div>
             <div class="flex mb-4 justify-center">
               <label for="userEmail" class="sr-only">Birthday</label>
-              <input type="date" id="birthday" name="birthday" required>
+              <input name="input_birthDay" type="date" id="birthday" name="birthday" required>
             </div>
             <div class="mb-4">
               <label for="userPass" class="sr-only">Password</label>
-              <input class="border-solid border border-gray-400 rounded px-2 py-3" type="password" id="userPass" placeholder="Password" required />
+              <input name="input_password" class="border-solid border border-gray-400 rounded px-2 py-3" type="password" id="userPass" placeholder="Password" required />
             </div>
             <div class="mb-4">
               <label for="userPass2" class="sr-only">Confirm your password</label>
-              <input class="border-solid border border-gray-400 rounded px-2 py-3" type="password" id="userPass" placeholder="Confirm your password" required />
+              <input name="input_password2" class="border-solid border border-gray-400 rounded px-2 py-3" type="password" id="userPass" placeholder="Confirm your password" required />
             </div>
             <button class="bg-newcolor3 rounded-lg hover:bg-gray-600 text-white font-bold w-full py-3" type="submit"  onclick="closeRegister()">Register</button>
           </form>
@@ -301,10 +301,10 @@
           <form method="post" class="mt-8 mb-4">
             <div class="mb-4">
               <label for="userEmail" class="sr-only">Email address</label>
-              <input class="border-solid border border-gray-400 rounded px-2 py-3" type="email" id="userEmail" placeholder="Email address" required />
+              <input name="input_mail" class="border-solid border border-gray-400 rounded px-2 py-3" type="email" id="userEmail" placeholder="Email address" required />
             </div>
             <div>
-            <button class="rounded-lg bg-newcolor3 hover:bg-gray-600 text-white font-bold w-full py-3" type="submit"  onclick="openRegister2()">Continue</button>
+            <button class="rounded-lg bg-newcolor3 hover:bg-gray-600 text-white font-bold w-full py-3" type="submit" onclick="openRegister2()">Continue</button>
           </form>
         </div>
   </div>
