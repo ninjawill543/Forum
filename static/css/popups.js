@@ -24,7 +24,7 @@ function closeRegister() {
 } 
 
 function openLoginIf() {
-    let loggedin = 0;
+    let loggedin = 1;
 if (loggedin == 0) {
     document.getElementById("login").style.display = "block";
     document.getElementById("register").style.display = "none";
