@@ -107,13 +107,15 @@
                 </div>
 
             </div> -->
+            
+            
             <div id="list" class="flex flex-col justify-start items-center ml-[30vh] w-[100vh] h-[100vh] mt-[10vh] ">
                 {{ range $Topics := . }}
-                <div class='w-[100vh] flex items-center justify-center mb-[3vh]'>  
+                <div class='w-[100vh] flex items-center justify-center mb-[1vh]'>  
                     <div class="rounded-xl border p-5 shadow-md w-9/12 bg-white">
                     <div class="flex w-full items-center justify-between border-b pb-3">
                       <div class="flex items-center space-x-3">
-                        <div class="text-lg font-bold text-slate-700"><a href="../profil/{{ .Owner }}">{{ .Owner }}</a></div>
+                        <div class="text-md font-bold text-slate-700"><a href="../profil/{{ .Owner }}">{{ .Owner }}</a></div>
                       </div>
                       <div class="flex items-center space-x-8">
                         <div class="text-xs text-neutral-500">{{ .CreationDate }}</div>
@@ -122,7 +124,7 @@
                 
                     <div class="mt-4 mb-6">
                       <div class="mb-3 text-xl font-bold"><a href="./topics/{{ .Name }}">{{ .Name }}</a></div>
-                      <div class="text-sm text-neutral-600"><a href="/topics/{{ .Name }}">{{ .FirstMessage }}</a></div>
+                      <div class="flex text-base text-neutral-600 "><a href="/topics/{{ .Name }}">{{ .FirstMessage }}</a></div>
                     </div>
                 
                     <div>
