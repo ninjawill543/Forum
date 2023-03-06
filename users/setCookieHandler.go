@@ -15,7 +15,7 @@ func SetCookieHandler(w http.ResponseWriter, r *http.Request) {
 	cookie := http.Cookie{
 		Name:   "session",
 		Value:  USER.Uuid,
-		Path:   "",
+		Path:   "/",
 		Domain: "",
 		// Expires:    time.Time{},
 		// RawExpires: "",

@@ -16,6 +16,7 @@ func Login(r *http.Request, db *sql.DB, w http.ResponseWriter) {
 	var creationDate string
 	var admin int
 	var ban int
+	fmt.Println("big test")
 
 	if r.Method == "POST" {
 		if USER.Username != "" {

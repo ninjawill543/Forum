@@ -36,6 +36,7 @@ type Message struct {
 var TOPIC Topic
 
 func MessagesPageDisplay(db *sql.DB, r *http.Request) {
+	fmt.Println(TOPIC.SessionUser)
 	TOPIC.SessionUser = t2.USER.Username
 	var creationDate string
 	var owner string

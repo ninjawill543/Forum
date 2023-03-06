@@ -9,7 +9,7 @@ import (
 
 func Handler_EditMessage(w http.ResponseWriter, r *http.Request) {
 	tmpl1 := template.Must(template.ParseFiles("../static/html/editMessage.html"))
-	databaseMessages, _ := sql.Open("sqlite3", "../messages.db")
-	t.EditMessage(r, databaseMessages)
+	databaseForum, _ := sql.Open("sqlite3", "../forum.db")
+	t.EditMessage(r, databaseForum)
 	tmpl1.Execute(w, "")
 }

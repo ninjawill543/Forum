@@ -2,6 +2,7 @@ package forum
 
 import (
 	"database/sql"
+	t2 "forum/logOutSessionHtml"
 	t "forum/users"
 	"html/template"
 	"net/http"
@@ -16,6 +17,7 @@ func Handler_profil(w http.ResponseWriter, r *http.Request) {
 	if r.FormValue("logOutButton") == "logout" {
 		t.Logout(r)
 		t.LogOutCookie(r, w)
+		t2.LogOutSession()
 	} else if r.FormValue("delete") != "" {
 		t.DeleteAccount(r, databaseForum, w)
 	} else if r.FormValue("username") != "" || r.FormValue("email") != "" || r.FormValue("password") != "" {
