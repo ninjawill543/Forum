@@ -9,9 +9,7 @@ import (
 
 func Handler_profil(w http.ResponseWriter, r *http.Request) {
 	tmpl := template.Must(template.ParseFiles("../static/html/profil.html"))
-	databaseUsers, _ := sql.Open("sqlite3", "../users.db")
-	databaseMessages, _ := sql.Open("sqlite3", "../messages.db")
-	databaseTopics, _ := sql.Open("sqlite3", "../topics.db")
+	databaseForum, _ := sql.Open("sqlite3", "../forum.db")
 
 	t.GetCookieHandler(w, r)
 
@@ -19,12 +17,12 @@ func Handler_profil(w http.ResponseWriter, r *http.Request) {
 		t.Logout(r)
 		t.LogOutCookie(r, w)
 	} else if r.FormValue("delete") != "" {
-		t.DeleteAccount(r, databaseUsers, databaseMessages, databaseTopics, w)
+		t.DeleteAccount(r, databaseForum, w)
 	} else if r.FormValue("username") != "" || r.FormValue("email") != "" || r.FormValue("password") != "" {
-		t.UserEdit(r, databaseUsers)
+		t.UserEdit(r, databaseForum)
 	}
-	t.MessagesSendByUser(databaseMessages)
-	t.TopicCreatedByUser(databaseTopics)
+	t.MessagesSendByUser(databaseForum)
+	t.TopicCreatedByUser(databaseForum)
 
 	tmpl.Execute(w, t.USER)
 }

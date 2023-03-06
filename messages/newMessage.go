@@ -18,10 +18,9 @@ func NewMessage(db *sql.DB, r *http.Request) {
 	topicName := strings.Split(r.URL.Path, "/")
 
 	if r.Method == "POST" {
-		databaseTopics, _ := sql.Open("sqlite3", "../topics.db")
 
 		query := fmt.Sprintf("SELECT uuid FROM topics WHERE name = '%s'", topicName[2])
-		row, err := databaseTopics.Query(query)
+		row, err := db.Query(query)
 		if err != nil {
 			fmt.Println(err)
 		} else {
@@ -56,7 +55,7 @@ func NewMessage(db *sql.DB, r *http.Request) {
 			} else {
 				fmt.Println("new message")
 				query2 := fmt.Sprintf("UPDATE topics SET nmbPosts = nmbPosts + 1, lastPost = '%s' WHERE uuid = '%s'", creationDate, uuidPath)
-				databaseTopics.Exec(query2)
+				db.Exec(query2)
 			}
 		}
 	}

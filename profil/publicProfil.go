@@ -22,7 +22,7 @@ type PublicUser struct {
 
 var PUBLICUSER PublicUser
 
-func PublicProfil(r *http.Request, dbUsers *sql.DB, dbMessages *sql.DB, dbTopics *sql.DB) {
+func PublicProfil(r *http.Request, db *sql.DB) {
 	var username string
 	var creationDate string
 	var admin string
@@ -31,7 +31,7 @@ func PublicProfil(r *http.Request, dbUsers *sql.DB, dbMessages *sql.DB, dbTopics
 	var ban int
 	namePublic := strings.Split(r.URL.Path, "/")
 	query := fmt.Sprintf("SELECT username, creationDate, admin, birthDate, reports, ban FROM users WHERE username = '%s'", namePublic[2])
-	row, err := dbUsers.Query(query)
+	row, err := db.Query(query)
 	if err != nil {
 		fmt.Println(err)
 	} else {
@@ -51,7 +51,7 @@ func PublicProfil(r *http.Request, dbUsers *sql.DB, dbMessages *sql.DB, dbTopics
 	var message string
 	PUBLICUSER.MessagesSend = nil
 	query = fmt.Sprintf("SELECT message FROM messages WHERE owner = '%s'", PUBLICUSER.Username)
-	row, err = dbMessages.Query(query)
+	row, err = db.Query(query)
 	if err != nil {
 		fmt.Println(err)
 	} else {
@@ -68,7 +68,7 @@ func PublicProfil(r *http.Request, dbUsers *sql.DB, dbMessages *sql.DB, dbTopics
 	var name string
 	PUBLICUSER.TopicsCreated = nil
 	query = fmt.Sprintf("SELECT name FROM topics WHERE owner = '%s'", PUBLICUSER.Username)
-	row, err = dbTopics.Query(query)
+	row, err = db.Query(query)
 	if err != nil {
 		fmt.Println(err)
 	} else {

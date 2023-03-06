@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-func LikesDislikes(r *http.Request, databaseTopics *sql.DB, databaseLikesFromUsers *sql.DB) {
+func LikesDislikes(r *http.Request, db *sql.DB) {
 	if t.USER.Username != "" {
 		var newLike int
 		var uuid string
@@ -26,7 +26,7 @@ func LikesDislikes(r *http.Request, databaseTopics *sql.DB, databaseLikesFromUse
 				uuid = r.FormValue("dislike")
 			}
 			query := fmt.Sprintf("SELECT uuidLiked, likeOrDislike FROM likesFromUser WHERE uuidUser = '%s'", t.USER.Uuid)
-			row, err := databaseLikesFromUsers.Query(query)
+			row, err := db.Query(query)
 			if err != nil {
 				fmt.Println(err)
 			} else {
@@ -38,27 +38,27 @@ func LikesDislikes(r *http.Request, databaseTopics *sql.DB, databaseLikesFromUse
 				}
 				if alreadyLiked {
 					fmt.Println("already liked")
-					// fmt.Println(previousLike, "previous like")
-					// fmt.Println(newLike, "new like")
+					fmt.Println(previousLike, "previous like")
+					fmt.Println(newLike, "new like")
 					// if previousLike == 1 && newLike == 1 {
 					// 	query = fmt.Sprintf("UPDATE topics SET likes = likes - 1 WHERE uuid = '%s'", uuid)
-					// 	databaseTopics.Exec(query)
+					// 	db.Exec(query)
 					// } else if previousLike == 1 && newLike == -1 {
 					// 	query = fmt.Sprintf("UPDATE topics SET likes = likes - 2 WHERE uuid = '%s'", uuid)
-					// 	databaseTopics.Exec(query)
+					// 	db.Exec(query)
 					// } else if previousLike == -1 && newLike == 1 {
 					// 	query = fmt.Sprintf("UPDATE topics SET likes = likes + 2 WHERE uuid = '%s'", uuid)
-					// 	databaseTopics.Exec(query)
+					// 	db.Exec(query)
 					// } else if previousLike == -1 && newLike == -1 {
 					// 	query = fmt.Sprintf("UPDATE topics SET likes = likes + 1 WHERE uuid = '%s'", uuid)
-					// 	databaseTopics.Exec(query)
+					// 	db.Exec(query)
 					// }
 				} else {
 					query = fmt.Sprintf("UPDATE topics SET likes = likes + %d WHERE uuid = '%s'", newLike, uuid)
-					databaseTopics.Exec(query)
+					db.Exec(query)
 
 					query2 := fmt.Sprintf("INSERT INTO likesFromUser(uuidUser, uuidLiked, likeOrDislike) VALUES('%s', '%s', '%d')", t.USER.Uuid, uuid, newLike)
-					databaseLikesFromUsers.Exec(query2)
+					db.Exec(query2)
 				}
 			}
 		}

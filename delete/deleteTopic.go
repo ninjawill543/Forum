@@ -26,12 +26,10 @@ func DeleteTopic(r *http.Request, db *sql.DB) {
 				query = fmt.Sprintf("DELETE FROM topics WHERE uuid = '%s'", uuid)
 				db.Exec(query)
 				fmt.Println("topic deleted")
-				databaseMessages, _ := sql.Open("sqlite3", "../messages.db")
 				query = fmt.Sprintf("DELETE FROM messages WHERE uuidPath = '%s'", uuid)
-				databaseMessages.Exec(query)
-				databaseLikeFromUsers, _ := sql.Open("sqlite3", "../likesFromUser.db")
+				db.Exec(query)
 				query = fmt.Sprintf("DELETE FROM likesFromUser WHERE uuidLiked = '%s'", uuid)
-				databaseLikeFromUsers.Exec(query)
+				db.Exec(query)
 			} else {
 				fmt.Println("you need to be the owner of the topic to delete it")
 			}

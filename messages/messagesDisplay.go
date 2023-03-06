@@ -33,7 +33,7 @@ type Message struct {
 
 var TOPIC Topic
 
-func MessagesPageDisplay(databaseMessages *sql.DB, databaseTopics *sql.DB, r *http.Request) {
+func MessagesPageDisplay(db *sql.DB, r *http.Request) {
 	var creationDate string
 	var owner string
 	var report int
@@ -52,7 +52,7 @@ func MessagesPageDisplay(databaseMessages *sql.DB, databaseTopics *sql.DB, r *ht
 
 	topicName := strings.Split(r.URL.Path, "/")
 	queryTopicName := fmt.Sprintf("SELECT uuid FROM topics WHERE name = '%s'", topicName[2])
-	row, err := databaseTopics.Query(queryTopicName)
+	row, err := db.Query(queryTopicName)
 	if err != nil {
 		fmt.Println(err)
 	} else {
@@ -74,7 +74,7 @@ func MessagesPageDisplay(databaseMessages *sql.DB, databaseTopics *sql.DB, r *ht
 		TOPIC.UuidPath = t.TOPICS[i].Uuid
 	}
 	query := fmt.Sprintf("SELECT id, message, creationDate, owner, report, like, edited, uuid FROM messages WHERE uuidPath = '%s' ORDER BY %s DESC", uuidPath, filter)
-	row, err = databaseMessages.Query(query)
+	row, err = db.Query(query)
 	if err != nil {
 		fmt.Println(err)
 	} else {

@@ -12,30 +12,27 @@ import (
 
 func Handler_topicPage(w http.ResponseWriter, r *http.Request) {
 	tmpl := template.Must(template.ParseFiles("../static/html/topicPage.html"))
-	databaseMessages, _ := sql.Open("sqlite3", "../messages.db")
-	databaseTopics, _ := sql.Open("sqlite3", "../topics.db")
-	databaseLikeFromUsers, _ := sql.Open("sqlite3", "../likesFromUser.db")
-	databaseReports, _ := sql.Open("sqlite3", "../reports.db")
+	databaseForum, _ := sql.Open("sqlite3", "../forum.db")
 
 	t4.GetCookieHandler(w, r)
 
 	if r.FormValue("delete") != "" {
-		t3.DeleteMessage(r, databaseMessages)
+		t3.DeleteMessage(r, databaseForum)
 	}
 	if r.FormValue("input_newMessage") != "" {
-		t.NewMessage(databaseMessages, r)
+		t.NewMessage(databaseForum, r)
 	}
 	if r.FormValue("report") != "" {
-		t2.ReportMessage(r, databaseMessages, databaseReports)
+		t2.ReportMessage(r, databaseForum)
 	}
 	if r.FormValue("like") != "" || r.FormValue("dislike") != "" {
-		t.LikesDislikes(r, databaseTopics, databaseLikeFromUsers)
+		t.LikesDislikes(r, databaseForum)
 	}
 	if r.FormValue("edit") != "" {
-		t.EditMessage(r, databaseMessages)
+		t.EditMessage(r, databaseForum)
 	}
 
-	t.MessagesPageDisplay(databaseMessages, databaseTopics, r)
+	t.MessagesPageDisplay(databaseForum, r)
 
 	tmpl.Execute(w, t.TOPIC)
 }

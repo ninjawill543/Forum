@@ -15,6 +15,7 @@ type Topics struct {
 	Uuid         string
 	NmbPosts     int
 	FirstMessage string
+	// LastPost     string
 }
 
 var TOPICS []Topics
@@ -31,6 +32,7 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 	var searchName string
 	var query string
 	var firstMessage string
+	// var lastPost string
 
 	filter = r.FormValue("filter")
 
@@ -64,6 +66,7 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 				TOPICS[topicIndex].Uuid = uuid
 				TOPICS[topicIndex].Id = id
 				TOPICS[topicIndex].FirstMessage = firstMessage
+				// TOPICS[topicIndex].LastPost = lastPost
 			}
 		}
 		row.Close()

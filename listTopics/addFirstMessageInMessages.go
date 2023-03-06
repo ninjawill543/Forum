@@ -8,9 +8,8 @@ import (
 	"github.com/google/uuid"
 )
 
-func AddFirstMessageInMessages(firstMessage string, creationDate time.Time, owner string, uuidPath uuid.UUID) {
+func AddFirstMessageInMessages(firstMessage string, creationDate time.Time, owner string, uuidPath uuid.UUID, db *sql.DB) {
 	uuid := uuid.New()
-	db, _ := sql.Open("sqlite3", "../messages.db")
 	addInMessages := `INSERT INTO messages(message, creationDate, owner, report, uuidPath, like, edited, uuid) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`
 	query, err := db.Prepare(addInMessages)
 	if err != nil {

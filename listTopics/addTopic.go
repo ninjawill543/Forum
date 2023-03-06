@@ -18,7 +18,7 @@ func AddTopic(r *http.Request, database *sql.DB) {
 		topicName := r.FormValue("topic_name")
 		firstMessage := r.FormValue("firstMessage")
 
-		if len(topicName) < 5 {
+		if len(topicName) < 3 {
 			fmt.Println("Not enough char")
 		} else if t.USER.Username == "" {
 			fmt.Println("you need to be login to post a topic")
@@ -53,7 +53,9 @@ func AddTopic(r *http.Request, database *sql.DB) {
 					if len(firstMessage) < 10 {
 						fmt.Println("not enough char to post the firstmessage")
 					} else {
-						AddFirstMessageInMessages(firstMessage, creationDate, t.USER.Username, uuid)
+						if firstMessage != "" {
+							AddFirstMessageInMessages(firstMessage, creationDate, t.USER.Username, uuid, database)
+						}
 					}
 				}
 			} else {
