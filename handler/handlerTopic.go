@@ -25,6 +25,10 @@ func Handler_topicPage(w http.ResponseWriter, r *http.Request) {
 		t4.Login(r, databaseForum, w)
 	}
 
+	if r.FormValue("input_username") != "" && r.FormValue("input_password") != "" && r.FormValue("input_birthDay") != "" {
+		t4.Register(r, databaseForum)
+	}
+
 	if r.FormValue("delete") != "" {
 		t3.DeleteMessage(r, databaseForum)
 	}

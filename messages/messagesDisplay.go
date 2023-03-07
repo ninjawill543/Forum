@@ -69,13 +69,13 @@ func MessagesPageDisplay(db *sql.DB, r *http.Request) {
 		uuidPath = uuid
 	}
 
-	for i := 0; i < len(t.TOPICS); i++ {
-		TOPIC.CreationDate = t.TOPICS[i].CreationDate
-		TOPIC.Name = t.TOPICS[i].Name
-		TOPIC.Owner = t.TOPICS[i].Owner
-		TOPIC.Likes = t.TOPICS[i].Likes
-		TOPIC.Id = t.TOPICS[i].Id
-		TOPIC.UuidPath = t.TOPICS[i].Uuid
+	for i := 0; i < len(t.TOPICSANDSESSION.Topics); i++ {
+		TOPIC.CreationDate = t.TOPICSANDSESSION.Topics[i].CreationDate
+		TOPIC.Name = t.TOPICSANDSESSION.Topics[i].Name
+		TOPIC.Owner = t.TOPICSANDSESSION.Topics[i].Owner
+		TOPIC.Likes = t.TOPICSANDSESSION.Topics[i].Likes
+		TOPIC.Id = t.TOPICSANDSESSION.Topics[i].Id
+		TOPIC.UuidPath = t.TOPICSANDSESSION.Topics[i].Uuid
 	}
 	query := fmt.Sprintf("SELECT id, message, creationDate, owner, report, like, edited, uuid FROM messages WHERE uuidPath = '%s' ORDER BY %s DESC", uuidPath, filter)
 	row, err = db.Query(query)

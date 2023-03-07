@@ -19,6 +19,7 @@ func main() {
 	http.HandleFunc("/profil/", t3.Handler_publicProfil)
 	http.HandleFunc("/edit-topic/", t3.Handler_EditTopic)
 	http.HandleFunc("/edit-message/", t3.Handler_EditMessage)
+	http.HandleFunc("/private-message/", t3.Handler_Mp)
 
 	//url of our funcs
 	fs := http.FileServer(http.Dir("../static/css"))

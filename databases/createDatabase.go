@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	t2 "forum/listTopics"
 	t5 "forum/messages"
+	t6 "forum/mp"
 	t3 "forum/profil"
 	t4 "forum/report"
 	t "forum/users"
@@ -20,6 +21,7 @@ func CreatingDatabases() {
 		t5.CreateTableMessage(databaseForum)
 		t3.CreateTableLikesFromUser(databaseForum)
 		t4.CreateTableReports(databaseForum)
+		t6.CreateTableMp(databaseForum)
 	}
 	// databaseUsers, err := sql.Open("sqlite3", "../users.db")
 	// if err != nil {

@@ -7,7 +7,12 @@ import (
 	"net/http"
 )
 
-type Topics struct {
+type TopicsAndSession struct {
+	SessionUser string
+	Topics      []Topic `Topic`
+}
+
+type Topic struct {
 	Id           int
 	Name         string
 	Likes        int
@@ -16,11 +21,10 @@ type Topics struct {
 	Uuid         string
 	NmbPosts     int
 	FirstMessage string
-	SessionUser  string
 	// LastPost     string
 }
 
-var TOPICS []Topics
+var TOPICSANDSESSION TopicsAndSession
 
 func DisplayTopic(r *http.Request, db *sql.DB) {
 	var name string
@@ -41,6 +45,7 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 	if filter == "" {
 		filter = "lastPost"
 	}
+
 	query = fmt.Sprintf("SELECT id, name, firstMessage, creationDate, owner, likes, nmbPosts, uuid FROM topics ORDER BY %s DESC", filter)
 
 	if r.FormValue("searchbar") != "" {
@@ -48,28 +53,29 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 		query = fmt.Sprintf("SELECT id, name, firstMessage, creationDate, owner, likes, nmbPosts, uuid FROM topics WHERE name LIKE '%s' ORDER BY %s DESC", searchName, filter)
 	}
 
+	TOPICSANDSESSION.SessionUser = t.USER.Username
+
 	row, err := db.Query(query)
 	if err != nil {
 		fmt.Println(err)
 	} else {
-		TOPICS = nil
+		TOPICSANDSESSION.Topics = nil
 		for row.Next() {
 			err = row.Scan(&id, &name, &firstMessage, &creationDate, &owner, &likes, &nmbPosts, &uuid)
 			if err != nil {
 				fmt.Println(err)
 			} else {
-				topicIndex := len(TOPICS)
-				TOPICS = append(TOPICS, Topics{})
-				TOPICS[topicIndex].Name = name
-				TOPICS[topicIndex].Likes = likes
-				TOPICS[topicIndex].CreationDate = creationDate
-				TOPICS[topicIndex].Owner = owner
-				TOPICS[topicIndex].NmbPosts = nmbPosts
-				TOPICS[topicIndex].Uuid = uuid
-				TOPICS[topicIndex].Id = id
-				TOPICS[topicIndex].FirstMessage = firstMessage
-				TOPICS[topicIndex].SessionUser = t.USER.Username
-				// TOPICS[topicIndex].LastPost = lastPost
+				topicIndex := len(TOPICSANDSESSION.Topics)
+				TOPICSANDSESSION.Topics = append(TOPICSANDSESSION.Topics, Topic{})
+				TOPICSANDSESSION.Topics[topicIndex].Name = name
+				TOPICSANDSESSION.Topics[topicIndex].Likes = likes
+				TOPICSANDSESSION.Topics[topicIndex].CreationDate = creationDate
+				TOPICSANDSESSION.Topics[topicIndex].Owner = owner
+				TOPICSANDSESSION.Topics[topicIndex].NmbPosts = nmbPosts
+				TOPICSANDSESSION.Topics[topicIndex].Uuid = uuid
+				TOPICSANDSESSION.Topics[topicIndex].Id = id
+				TOPICSANDSESSION.Topics[topicIndex].FirstMessage = firstMessage
+				// TOPICSANDSESSION.Topics[topicIndex].LastPost = lastPost
 			}
 		}
 		row.Close()

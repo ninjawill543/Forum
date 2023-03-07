@@ -17,16 +17,16 @@ func Handler_index(w http.ResponseWriter, r *http.Request) {
 
 	t2.GetCookieHandler(w, r)
 
+	if r.FormValue("topic_name") != "" {
+		t.AddTopic(r, databaseForum)
+	}
+
 	if r.FormValue("input_mail") != "" {
 		t2.EmailStorage(r)
 	}
 
 	if r.FormValue("input_loginusername") != "" && r.FormValue("input_loginpassword") != "" {
 		t2.Login(r, databaseForum, w)
-	}
-
-	if r.FormValue("topic_name") != "" {
-		t.AddTopic(r, databaseForum)
 	}
 
 	if r.FormValue("input_username") != "" && r.FormValue("input_password") != "" && r.FormValue("input_birthDay") != "" {
@@ -43,5 +43,5 @@ func Handler_index(w http.ResponseWriter, r *http.Request) {
 
 	t.DisplayTopic(r, databaseForum)
 
-	tmpl1.Execute(w, t.TOPICS)
+	tmpl1.Execute(w, t.TOPICSANDSESSION)
 }
