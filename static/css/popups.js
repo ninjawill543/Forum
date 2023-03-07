@@ -42,3 +42,26 @@ function test(userName) {
 function refreshPage(){
     window.location.reload();
 }
+
+function edit(){
+    document.getElementById("edit").style.display = "block";
+    document.getElementById("toedit").style.display = "none";
+
+    var input = document.getElementById("enter");
+
+// Execute a function when the user presses a key on the keyboard
+input.addEventListener("keypress", function(event) {
+  // If the user presses the "Enter" key on the keyboard
+  if (event.key === "Enter") {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    document.getElementById("edit").style.display = "none";
+    document.getElementById("toedit").style.display = "block";
+  }
+}); 
+}
+
+function editClose(){
+    document.getElementById("edit").style.display = "block";
+}

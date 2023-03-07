@@ -15,6 +15,7 @@ module.exports = {
         'newcolor2': '#E5E7EB',
         'newcolor3': '#C5CAD3',
         'newcolor4': '#DB2955',
+        'newcolor5': '#E5E7EB',
       backgroundImage: {
         'frontend': "url('https://i.pinimg.com/originals/14/fc/d1/14fcd189633936157ee354b6a092169d.png')",
         'footer-texture': "url('/img/footer-texture.png')",
