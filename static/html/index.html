@@ -118,7 +118,7 @@
                     <div class="mt-4 mb-6">
                       <div class="mb-3 text-xl font-bold"><a href="./topics/{{ .Name }}">{{ $v.Name }}</a></div>
 
-                      <div id="toedit" class=" flex text-base text-neutral-600 "><a  href="/topics/{{ .Name }}">{{ $v.FirstMessage }}</a></div>
+                      <div id="toedit{{ $k }}" class=" flex text-base text-neutral-600 "><a  href="/topics/{{ .Name }}">{{ $v.FirstMessage }}</a></div>
                       <div id="edit" class="hidden">
                         <div  class="bg-newcolor5 flex text-base text-neutral-600 "><a id="enter" contenteditable="true" href="/topics/{{ .Name }}">{{ $v.FirstMessage }}</a></div>
                       </div>
