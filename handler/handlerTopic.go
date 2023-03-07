@@ -17,6 +17,10 @@ func Handler_topicPage(w http.ResponseWriter, r *http.Request) {
 
 	t4.GetCookieHandler(w, r)
 
+	if r.FormValue("input_mail") != "" {
+		t4.EmailStorage(r)
+	}
+
 	if r.FormValue("input_loginusername") != "" && r.FormValue("input_loginpassword") != "" {
 		t4.Login(r, databaseForum, w)
 	}
