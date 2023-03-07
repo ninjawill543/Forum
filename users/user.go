@@ -8,15 +8,21 @@ import (
 )
 
 type User struct {
-	Username      string
-	Email         string
-	CreationDate  string
-	BirthDate     string
-	Uuid          string
-	Admin         int
-	TopicsCreated []string
-	MessagesSend  []string
-	UuidOfTopics  []string
+	Username        string
+	Email           string
+	CreationDate    string
+	BirthDate       string
+	Uuid            string
+	Admin           int
+	TopicsCreated   []string
+	MessagesSend    []string
+	UuidOfTopics    []string
+	PrivateMessages []PrivateMessage `PrivateMessage`
+}
+
+type PrivateMessage struct {
+	PrivateMessage        string
+	PrivateMessage2ndUser string
 }
 
 var USER User

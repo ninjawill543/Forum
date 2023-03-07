@@ -59,5 +59,12 @@
     <br>
     {{ end }}
     <br>
+    mp:
+    <br>
+    {{ range $k, $v := .PrivateMessages }}
+    <a href="../private-message/{{ $v.PrivateMessage2ndUser }}">{{ $v.PrivateMessage }}</a> <a>with - {{ $v.PrivateMessage2ndUser }}</a> 
+    <br>
+    {{ end }}
+    <br>
 </body>
 </html>

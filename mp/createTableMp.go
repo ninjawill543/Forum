@@ -9,6 +9,7 @@ func CreateTableMp(db *sql.DB) {
 	mp_table := `CREATE TABLE mp(
 		"user1" TEXT,
 		"user2" TEXT,
+		"creationDate" TEXT,
 		"message" TEXT);`
 
 	query, err := db.Prepare(mp_table)

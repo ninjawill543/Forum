@@ -23,6 +23,7 @@ func Handler_profil(w http.ResponseWriter, r *http.Request) {
 	} else if r.FormValue("username") != "" || r.FormValue("email") != "" || r.FormValue("password") != "" {
 		t.UserEdit(r, databaseForum)
 	}
+	t.MpSendOrReceivedByUser(databaseForum)
 	t.MessagesSendByUser(databaseForum)
 	t.TopicCreatedByUser(databaseForum)
 

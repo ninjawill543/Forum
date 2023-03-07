@@ -13,8 +13,10 @@ func Handler_Mp(w http.ResponseWriter, r *http.Request) {
 	databaseForum, _ := sql.Open("sqlite3", "../forum.db")
 
 	if r.FormValue("mpMessage") != "" {
-		t.Mp(r, databaseForum)
+		t.AddMp(r, databaseForum)
 	}
 
-	tmpl.Execute(w, "")
+	t.DisplayMp(r, databaseForum)
+
+	tmpl.Execute(w, t.MPS)
 }
