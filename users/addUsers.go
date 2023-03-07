@@ -18,7 +18,6 @@ func AddUsers(db *sql.DB, username string, password string, email string, creati
 		fmt.Println(err)
 	} else {
 		for rows.Next() {
-			defer rows.Close()
 			err = rows.Scan(&username, &email)
 			if err != nil {
 				fmt.Println(err)

@@ -40,6 +40,7 @@ func DisplayMp(r *http.Request, db *sql.DB) {
 				MPS[mpIndex].User1 = user1
 			}
 		}
+		row.Close()
 	}
 	fmt.Println(MPS)
 }

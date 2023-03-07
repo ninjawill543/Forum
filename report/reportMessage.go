@@ -27,6 +27,7 @@ func ReportMessage(r *http.Request, db *sql.DB) {
 						alreadyReported = true
 					}
 				}
+				row.Close()
 			}
 			if alreadyReported {
 				fmt.Println("arleady reported")

@@ -30,5 +30,6 @@ func MpSendOrReceivedByUser(db *sql.DB) {
 				}
 			}
 		}
+		row.Close()
 	}
 }

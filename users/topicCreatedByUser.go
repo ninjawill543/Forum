@@ -21,5 +21,6 @@ func TopicCreatedByUser(db *sql.DB) {
 				USER.TopicsCreated = append(USER.TopicsCreated, name)
 			}
 		}
+		row.Close()
 	}
 }

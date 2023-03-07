@@ -20,6 +20,7 @@ func LoginWithCookie(uuidUser string) {
 		for row.Next() {
 			row.Scan(&username, &email, &creationDate, &birthDate, &admin)
 		}
+		row.Close()
 
 		USER.Username = username
 		USER.Uuid = uuidUser

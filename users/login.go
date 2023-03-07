@@ -57,6 +57,7 @@ func Login(r *http.Request, db *sql.DB, w http.ResponseWriter) {
 						}
 					}
 				}
+				row.Close()
 			}
 		}
 	}

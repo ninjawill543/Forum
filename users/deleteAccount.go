@@ -11,12 +11,15 @@ func DeleteAccount(r *http.Request, db *sql.DB, w http.ResponseWriter) {
 		if USER.Username != "" {
 			fmt.Println("account deleted", USER.Username)
 			query2 := fmt.Sprintf("DELETE FROM messages WHERE owner = '%s'", USER.Username)
-			db.Exec(query2)
+			fmt.Println(query2)
 			query3 := fmt.Sprintf("DELETE FROM topics WHERE owner = '%s'", USER.Username)
-			db.Exec(query3)
 
 			query := fmt.Sprintf("DELETE FROM users WHERE username = '%s'", USER.Username)
+			query4 := fmt.Sprintf("DELETE FROM mp WHERE user1 ='%s' OR user2 = '%s'", USER.Username, USER.Username)
 			db.Exec(query)
+			db.Exec(query2)
+			db.Exec(query3)
+			db.Exec(query4)
 			Logout(r)
 			LogOutCookie(r, w)
 			log := fmt.Sprintf("Account %s deleted same for all your messages and topics", USER.Username)

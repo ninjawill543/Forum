@@ -36,6 +36,7 @@ func LikesDislikes(r *http.Request, db *sql.DB) {
 						alreadyLiked = true
 					}
 				}
+				row.Close()
 				if alreadyLiked {
 					fmt.Println("already liked")
 					fmt.Println(previousLike, "previous like")

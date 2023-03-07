@@ -34,6 +34,7 @@ func AddTopic(r *http.Request, database *sql.DB) {
 						topicNameTaken = true
 					}
 				}
+				row.Close()
 			}
 
 			if !topicNameTaken {
