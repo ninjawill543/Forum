@@ -55,14 +55,14 @@
     <br>
     last messages:
     {{ range $k, $v := .MessagesSend }}
-    {{ $v }}
+    {{ $v.MessageSendByUser }} in - <a href="../topics/{{ $v.TopicSentInName }}">{{ $v.TopicSentInName }}</a>
     <br>
     {{ end }}
     <br>
     mp:
     <br>
     {{ range $k, $v := .PrivateMessages }}
-    <a href="../private-message/{{ $v.PrivateMessage2ndUser }}">{{ $v.PrivateMessage }}</a> <a>with - {{ $v.PrivateMessage2ndUser }}</a> 
+    <a href="../private-message/{{ $v.PrivateMessage2ndUser }}">{{ $v.PrivateMessage }}</a> with - <a href="../profil/{{ $v.PrivateMessage2ndUser }}">{{ $v.PrivateMessage2ndUser }}</a> 
     <br>
     {{ end }}
     <br>

@@ -34,9 +34,9 @@
     <br>
     <br>
     <a href="../index">back to index</a>
-
     <br>
-    {{ $User := .}}
+
+    {{ $PublicUser := .}}
     created topic:
     {{ range $k, $v := .TopicsCreated }}
     <a href="../topics/{{ $v }}">{{ $v }}</a>
@@ -45,8 +45,9 @@
     <br>
     last messages:
     {{ range $k, $v := .MessagesSend }}
-    {{ $v }}
+    {{ $v.MessageSendByUser }} in - <a href="../topics/{{ $v.TopicSentInName }}">{{ $v.TopicSentInName }}</a>
     <br>
     {{ end }}
+    <br>
 </body>
 </html>

@@ -15,7 +15,7 @@ type User struct {
 	Uuid            string
 	Admin           int
 	TopicsCreated   []string
-	MessagesSend    []string
+	MessagesSend    []MessageSend `MessageSend`
 	UuidOfTopics    []string
 	PrivateMessages []PrivateMessage `PrivateMessage`
 }
@@ -23,6 +23,11 @@ type User struct {
 type PrivateMessage struct {
 	PrivateMessage        string
 	PrivateMessage2ndUser string
+}
+
+type MessageSend struct {
+	MessageSendByUser string
+	TopicSentInName   string
 }
 
 var USER User
