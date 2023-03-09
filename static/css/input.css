@@ -105,3 +105,13 @@
 .labelsText:hover {
     backdrop-filter: blur(1px);
 }
+
+.message{
+    white-space: -moz-pre-wrap !important;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: normal;
+}

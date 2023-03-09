@@ -44,10 +44,10 @@ function refreshPage(){
 }
 
 function edit(){
-    document.getElementById("edit").style.display = "block";
-    document.getElementById("toedit").style.display = "none";
+    document.getElementById("edit{{ $k }}").style.display = "block";
+    document.getElementById("toedit{{ $k }}").style.display = "none";
 
-    var input = document.getElementById("enter");
+    var input = document.getElementById("enter{{ $k }}");
 
 // Execute a function when the user presses a key on the keyboard
 input.addEventListener("keypress", function(event) {
@@ -56,8 +56,8 @@ input.addEventListener("keypress", function(event) {
     // Cancel the default action, if needed
     event.preventDefault();
     // Trigger the button element with a click
-    document.getElementById("edit").style.display = "none";
-    document.getElementById("toedit").style.display = "block";
+    document.getElementById("edit{{ $k }}").style.display = "none";
+    document.getElementById("toedit{{ $k }}").style.display = "block";
   }
 }); 
 }

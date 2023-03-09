@@ -7,7 +7,152 @@
     <title>Document</title>
 </head>
 <body>
-    profil
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/output.css">
+
+    <title>Document</title>
+</head>
+<body class="h-screen w-screen bg-newcolor2">
+
+    <header >
+        <div class="fixed flex justify-around w-full h-16 shadow-md bg-newcolor1">
+            <h1 id="h1Title"
+                class="relative uppercase my-[20px] right-72 font-bold text-center dark:hover:text-color1 text-newcolor4">
+                Dread Forums</h1>
+            <div class="grid w-96 self-center items-center grid-cols-3">
+                <a href="/your-profil/">
+                    <button  value="psd"  class=" font-medium rounded-lg shadow-xl flex relative w-20 left-[50vh] cursor-pointer focus:ring-blue-300 text-sm text-center dark:bg-color2 dark:hover:bg-color3 dark:focus:ring-color3 text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+                        <p  class="w-fit text-xs uppercase p-3">Profile</p>
+                    </button> 
+                </a>
+                
+                <form>
+                    <button type="submit" value="logout" name="logOutButton" class=" font-medium rounded-lg shadow-xl flex relative w-24 left-[47vh] cursor-pointer focus:ring-blue-300 text-sm text-center dark:bg-color2 dark:hover:bg-color3 dark:focus:ring-color3 text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+                        <p class="w-fit text-xs uppercase p-3">LogOut</p>
+                        <svg class="relative top-2 right-1" fill="#000000" width="24px" height="24px" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M20,21V3H13a1,1,0,0,1,0-2h8a1,1,0,0,1,1,1V22a1,1,0,0,1-1,1H13a1,1,0,0,1,0-2ZM2,12a1,1,0,0,0,1,1H14.586l-2.293,2.293a1,1,0,1,0,1.414,1.414l4-4a1,1,0,0,0,0-1.414l-4-4a1,1,0,1,0-1.414,1.414L14.586,11H3A1,1,0,0,0,2,12Z" />
+                        </svg>
+                    </button>
+                </form>
+                  
+            
+                
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="flex">
+               <!-- <form method="POST">
+                            <input placeholder="Enter a new username and hit edit" class="font-normal mt-4 text-lg ml-4 bg-newcolor3 w-[30vh]" type="text" name="username">
+                            <input placeholder="Enter a new email and hit edit" class="font-normal mt-4 text-lg ml-4 bg-newcolor3 w-[30vh]" type="text" name="email">
+                            <input placeholder="Enter a new password and hit edit" class="font-normal mt-4 text-lg ml-4 bg-newcolor3 w-[30vh]"  type="text" name="password">
+                            <input type="submit" value="edit" name="edit">
+                        </form>  -->
+
+            <div id="container" class="flex align-start  ">
+
+        
+                    <a href="/index">
+                        <img src="https://img.icons8.com/ios/50/null/circled-left-2.png" class="h-12 w-12 ml-[6vh]  mt-[10vh] "/>
+                      </a>
+        
+        
+                    <div  class="flex rounded-xl shadow-md flex-col justify-start ml-[5vh] w-[45vh] h-[32vh] mt-[10vh] bg-newcolor1">
+                        <div class="rounded-t-md h-[6vh] w-full  ">
+                            <p class="font-medium mt-4 text-2xl text-center align-middle">Profile</p>
+                        </div>
+                        <p class="font-medium mt-4 text-xl ml-4">Username </p>
+                        <p class="font-light text-sm ml-4"> {{ .Username }}</p>
+                        <p class="font-medium mt-4 text-xl ml-4">Member since: </p>
+                        <p class="font-light text-sm ml-4"> {{ .CreationDate }}</p>
+                        <button onclick="" value="psd"  class=" font-medium rounded-lg shadow-xl flex relative w-24 left-[5vh] top-[5vh] cursor-pointer focus:ring-blue-300 text-sm text-center dark:bg-color2 dark:hover:bg-color3 dark:focus:ring-color3 text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+                            <p class="w-fit text-xs uppercase p-3">Report</p>
+                        </button> 
+                        <button onclick="" value="psd"  class=" font-medium rounded-lg shadow-xl flex relative w-24 left-[25vh] top-[1vh] cursor-pointer focus:ring-blue-300 text-sm text-center dark:bg-color2 dark:hover:bg-color3 dark:focus:ring-color3 text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+                            <p class="w-fit text-xs uppercase p-3">Ban</p>
+                        </button> 
+                        <!-- <button onclick="" value="psd"  class=" font-medium rounded-lg shadow-xl flex relative w-24 left-[10vh] cursor-pointer focus:ring-blue-300 text-sm text-center dark:bg-color2 dark:hover:bg-color3 dark:focus:ring-color3 text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+                            <p class="w-fit text-xs uppercase p-3">Report</p>
+                        </button> -->
+                        <!-- <button onclick="openDelete()" class="font-medium rounded-lg shadow-xl flex relative w-44 left-[15vh] mt-[5vh] cursor-pointer focus:ring-blue-300 text-sm text-center dark:bg-color2 dark:hover:bg-color3 dark:focus:ring-color3 text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+                            <p class="w-fit text-xs uppercase p-3 ml-[0.5vh]">DELETE YOUR ACCOUNT</p>
+                        </button>  -->
+
+                     
+        
+                        <!-- <img class="ml-[40vh] mt-[26vh]" src="https://img.icons8.com/ios-filled/50/null/circled-right-2.png"/> -->
+                    </div>
+        
+                    <div  class="flex rounded-xl shadow-md flex-col justify-start items-center ml-[-45vh] w-[45vh] h-[50vh] mt-[45vh] bg-newcolor1">
+                        <div class="rounded-t-md h-[6vh] w-full ">
+                            <p class="font-medium mt-4 text-2xl text-center align-middle">Send {{ .Username }} a message</p>
+                        </div>
+                        <!-- <div class="flex items-start"> -->
+                            <textarea class="bg-newcolor6 w-[35vh] ml-[-7vh] h-[35vh] rounded-md"></textarea>
+                            <a href="../private-message/{{ .Username }}">
+                                <button  value="psd"  class=" font-medium rounded-lg shadow-xl ml-[25vh] mt-[3vh] cursor-pointer focus:ring-blue-300 text-sm text-center dark:bg-color2 dark:hover:bg-color3 dark:focus:ring-color3 text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+                                    <p  class="w-fit text-xs uppercase p-3">Send</p>
+                                </button> 
+                            </a>
+                            
+                        <!-- </div> -->
+                        
+
+                        
+
+                    
+                       
+                    </div>
+        
+                    <div  class="flex rounded-xl shadow-md flex-col justify-start items-center ml-[10vh] w-[55vh] h-[85vh] mt-[10vh] bg-newcolor1">
+                        <div class="rounded-t-md h-[6vh] w-full ">
+                            <p class="font-medium mt-4 text-2xl text-center align-middle">{{ .Username }}'s comments</p>
+                        </div>
+                        {{ $User := .}}
+                        <ul class="mt-[2vh] overflow-y-auto whitespace-nowrap flex-col w-[55vh]">
+                            {{ range $k, $v := .MessagesSend }}
+                            <p class="ml-[2vh] mb-[1vh] w-[51vh] h-[6vh] bg-newcolor6 rounded-md text-center align-center truncate">{{ $v }}</p>
+                            {{ end }}
+                          </ul>
+                        
+                    </div>
+        
+                    <div  class="flex rounded-xl shadow-md flex-col justify-start items-center ml-[10vh] w-[50vh] h-[85vh] mt-[10vh] bg-newcolor1">
+                        <div class="rounded-t-md h-[6vh] w-full ">
+                            <p class="font-medium mt-4 text-2xl text-center align-middle">{{ .Username }}'s topics</p>
+                        </div>
+                        
+                        <ul class=" mt-[2vh] overflow-y-auto whitespace-nowrap flex-col w-[55vh]">
+                            {{ range $k, $v := .TopicsCreated }}
+                            <p class="ml-[6vh] mb-[1vh] w-[44vh] h-[6vh] bg-newcolor6 rounded-md text-center align-center truncate"><a href="../topics/{{ $v }}">{{ $v }}</a> </p>
+                            {{ end }}
+                          </ul>
+                        
+                    </div>
+                </div>
+        </div>
+       
+        
+
+        
+
+    </main>
+
+    
+    
+
+    <script src="../css/popups2.js"></script>
+</body>
+</html>
+    <!-- profil
     <br>
     Username: 
     {{ .Username }}
@@ -47,6 +192,6 @@
     {{ range $k, $v := .MessagesSend }}
     {{ $v }}
     <br>
-    {{ end }}
+    {{ end }} -->
 </body>
 </html>

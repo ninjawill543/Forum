@@ -197,9 +197,9 @@
                             <p class="font-medium mt-4 text-2xl text-center align-middle">Your messages</p>
                         </div>
                         
-                        <ul class=" overflow-y-auto whitespace-nowrap flex-col w-[45vh] ">
+                        <ul class="mt-[2vh] overflow-y-auto whitespace-nowrap flex-col w-[45vh]">
                             {{ range $k, $v := .PrivateMessages }}
-                            <p class="ml-[2vh] mb-[1vh] w-[51vh] h-[6vh] bg-newcolor6 rounded-md text-center align-center truncate"><a href="../private-message/{{ $v.PrivateMessage2ndUser }}">{{ $v.PrivateMessage }}</a> <a>with - {{ $v.PrivateMessage2ndUser }}</a> </p>
+                            <p class=" mb-[1vh] w-[45vh] h-[6vh] bg-newcolor6 rounded-md text-center align-center truncate"><a href="../private-message/{{ $v.PrivateMessage2ndUser }}">{{ $v.PrivateMessage }}</a> <a>with - {{ $v.PrivateMessage2ndUser }}</a> </p>
                             {{ end }}
                           </ul>
                         
@@ -214,28 +214,7 @@
     </main>
 
     
-        
     
-    <!-- {{ $User := .}}
-    created topic:
-    {{ range $k, $v := .TopicsCreated }}
-    <a href="../topics/{{ $v }}">{{ $v }}</a>
-    <br>
-    {{ end }}
-    <br>
-    last messages:
-    {{ range $k, $v := .MessagesSend }}
-    {{ $v }}
-    <br>
-    {{ end }}
-    <br>
-    mp:
-    <br>
-    {{ range $k, $v := .PrivateMessages }}
-    <a href="../private-message/{{ $v.PrivateMessage2ndUser }}">{{ $v.PrivateMessage }}</a> <a>with - {{ $v.PrivateMessage2ndUser }}</a> 
-    <br>
-    {{ end }}
-    <br> --> 
 
     <script src="../css/popups2.js"></script>
 </body>

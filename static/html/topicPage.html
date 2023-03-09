@@ -47,6 +47,7 @@
                 </button>
                 </a>
             </div>
+
             
         </div>
     </div>
@@ -119,8 +120,9 @@
                       </div>
                     </div>
                 
-                    <div class="mt-4 mb-6">
-                      <div class="text-base text-neutral-600">{{ $v.Message }}</div>
+                    <div class="whitespace-normal break-all mt-4 mb-6" >
+                      <!-- <p class=" text-base text-neutral-600 ">{{ $v.Message }}</p> -->
+                      <div class="text-neutral-600 ">{{ $v.Message }}</div>
                     </div>
                     <div>
                       <div class="flex items-center justify-between text-slate-500">
@@ -236,22 +238,18 @@
         
     </main>
     <div class="hidden" id="login">
-      <div class="fixed rounded-lg top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 h-[45vh] w-[35vh] bg-newcolor4 flex flex-col items-center justify-center ">
+      <div class="fixed rounded-lg top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 h-[40vh] w-[35vh] bg-newcolor4 flex flex-col items-center justify-center ">
           <button class="pl-[30vh] pb-2 text-xl font-medium" onclick="closeRegister()">X</button>
           <p>Login</p>
           <form method="post" class="mt-8 mb-4">
           <div class="mb-4">
             <label for="userEmail" class="sr-only">Email address</label>
-            <input name="input_loginusername" class="border-solid border border-gray-400 rounded px-2 py-3" type="text" id="userEmail" placeholder="Email address" required />
+            <input name="input_loginusername" class="border-solid border border-gray-400 rounded px-2 py-3" type="text" id="userEmail" placeholder="Email address / Username" required />
           </div>
-        <div>
+        <div class="mb-[5vh]">
           <label for="userEmail" class="sr-only">Password</label>
           <input name="input_loginpassword" class="border-solid border border-gray-400 rounded px-2 py-3" type="password" id="userPass" placeholder="Password" required />
       </div>
-        <div class="my-4 flex items-center">
-          <input name="input_rememberMe" class="h-4 w-4 mr-2" type="checkbox" id="userRemember" />
-          <label for="userRemember">Remember me</label>
-        </div>
           <button onClick="refreshPage()" class="rounded-lg bg-newcolor3 hover:bg-gray-600 text-white font-bold w-full py-3 mb-4" type="submit">Sign in</button>
           <p class="text-center rounded-lg bg-newcolor3 hover:bg-gray-600 text-white font-bold w-full py-3 " onclick="openRegister()">Register</p>
           <!-- <button class="rounded-lg bg-newcolor3 hover:bg-gray-600 text-white font-bold w-full py-3 " type="submit" onclick="openRegister()">Click here to register</button> -->
@@ -300,7 +298,7 @@
             </div>
         </div>
 
-    <script src="../js/popups.js">
+    <script src="../css/popups.js">
         // const struct = {{ . }};
     </script>
 </body>
