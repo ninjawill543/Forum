@@ -5,5 +5,5 @@ import (
 )
 
 func LogOutSession() {
-	t.TOPIC.SessionUser = ""
+	t.Messages.SessionUser = ""
 }

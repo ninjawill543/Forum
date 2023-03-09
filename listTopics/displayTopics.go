@@ -3,27 +3,11 @@ package forum
 import (
 	"database/sql"
 	"fmt"
+	t "forum/structs"
 	"net/http"
 )
 
-type TopicsAndSession struct {
-	SessionUser string
-	Topics      []Topic `Topic`
-}
-
-type Topic struct {
-	Id           int
-	Name         string
-	Likes        int
-	CreationDate string
-	Owner        string
-	Uuid         string
-	NmbPosts     int
-	FirstMessage string
-	// LastPost     string
-}
-
-var TOPICSANDSESSION TopicsAndSession
+var TOPICSANDSESSION t.TopicsAndSession
 
 func DisplayTopic(r *http.Request, db *sql.DB) {
 	var name string
@@ -83,7 +67,7 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 				fmt.Println(err)
 			} else {
 				topicIndex := len(TOPICSANDSESSION.Topics)
-				TOPICSANDSESSION.Topics = append(TOPICSANDSESSION.Topics, Topic{})
+				TOPICSANDSESSION.Topics = append(TOPICSANDSESSION.Topics, t.Topic{})
 				TOPICSANDSESSION.Topics[topicIndex].Name = name
 				TOPICSANDSESSION.Topics[topicIndex].Likes = likes
 				TOPICSANDSESSION.Topics[topicIndex].CreationDate = creationDate

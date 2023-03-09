@@ -4,35 +4,12 @@ import (
 	"database/sql"
 	"fmt"
 	t "forum/listTopics"
+	t2 "forum/structs"
 	"net/http"
 	"strings"
 )
 
-type Topic struct {
-	Id           int
-	Name         string
-	Likes        int
-	Dislikes     int
-	CreationDate string
-	Owner        string
-	Uuid         string
-	UuidPath     string
-	SessionUser  string
-	Messages     []Message `Message`
-}
-
-type Message struct {
-	Message      string
-	CreationDate string
-	Owner        string
-	Report       int
-	Uuid         string
-	Id           int
-	Like         int
-	Edited       int
-}
-
-var TOPIC Topic
+var Messages t2.Messages
 
 func MessagesPageDisplay(db *sql.DB, r *http.Request) {
 	var username string
@@ -40,7 +17,7 @@ func MessagesPageDisplay(db *sql.DB, r *http.Request) {
 	cookie, err := r.Cookie("session")
 	if err != nil {
 		// fmt.Println(err)
-		TOPIC.SessionUser = ""
+		Messages.SessionUser = ""
 	} else {
 		queryGetName := fmt.Sprintf("SELECT username FROM users WHERE uuid = '%s'", cookie.Value)
 		row3, err := db.Query(queryGetName)
@@ -51,7 +28,7 @@ func MessagesPageDisplay(db *sql.DB, r *http.Request) {
 				defer row3.Close()
 				row3.Scan(&username)
 			}
-			TOPIC.SessionUser = username
+			Messages.SessionUser = username
 		}
 	}
 
@@ -92,36 +69,36 @@ func MessagesPageDisplay(db *sql.DB, r *http.Request) {
 	}
 
 	for i := 0; i < len(t.TOPICSANDSESSION.Topics); i++ {
-		TOPIC.CreationDate = t.TOPICSANDSESSION.Topics[i].CreationDate
-		TOPIC.Name = t.TOPICSANDSESSION.Topics[i].Name
-		TOPIC.Owner = t.TOPICSANDSESSION.Topics[i].Owner
-		TOPIC.Likes = t.TOPICSANDSESSION.Topics[i].Likes
-		TOPIC.Id = t.TOPICSANDSESSION.Topics[i].Id
-		TOPIC.UuidPath = t.TOPICSANDSESSION.Topics[i].Uuid
+		Messages.CreationDate = t.TOPICSANDSESSION.Topics[i].CreationDate
+		Messages.Name = t.TOPICSANDSESSION.Topics[i].Name
+		Messages.Owner = t.TOPICSANDSESSION.Topics[i].Owner
+		Messages.Likes = t.TOPICSANDSESSION.Topics[i].Likes
+		Messages.Id = t.TOPICSANDSESSION.Topics[i].Id
+		Messages.UuidPath = t.TOPICSANDSESSION.Topics[i].Uuid
 	}
 	query := fmt.Sprintf("SELECT id, message, creationDate, owner, report, like, edited, uuid FROM messages WHERE uuidPath = '%s' ORDER BY %s %s", uuidPath, filter, ascDesc)
 	row2, err := db.Query(query)
 	if err != nil {
 		fmt.Println(err)
 	} else {
-		TOPIC.Messages = nil
+		Messages.Messages = nil
 		for row2.Next() {
 			defer row2.Close()
 			err = row2.Scan(&id, &message, &creationDate, &owner, &report, &like, &edited, &uuid)
 			if err != nil {
 				fmt.Println(err)
 			} else {
-				messageIndex := len(TOPIC.Messages)
+				messageIndex := len(Messages.Messages)
 
-				TOPIC.Messages = append(TOPIC.Messages, Message{})
-				TOPIC.Messages[messageIndex].Id = id
-				TOPIC.Messages[messageIndex].Message = message
-				TOPIC.Messages[messageIndex].CreationDate = creationDate
-				TOPIC.Messages[messageIndex].Owner = owner
-				TOPIC.Messages[messageIndex].Report = report
-				TOPIC.Messages[messageIndex].Uuid = uuid
-				TOPIC.Messages[messageIndex].Like = like
-				TOPIC.Messages[messageIndex].Edited = edited
+				Messages.Messages = append(Messages.Messages, t2.Message{})
+				Messages.Messages[messageIndex].Id = id
+				Messages.Messages[messageIndex].Message = message
+				Messages.Messages[messageIndex].CreationDate = creationDate
+				Messages.Messages[messageIndex].Owner = owner
+				Messages.Messages[messageIndex].Report = report
+				Messages.Messages[messageIndex].Uuid = uuid
+				Messages.Messages[messageIndex].Like = like
+				Messages.Messages[messageIndex].Edited = edited
 			}
 		}
 	}

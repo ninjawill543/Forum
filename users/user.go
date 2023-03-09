@@ -3,34 +3,12 @@ package forum
 import (
 	"database/sql"
 	"fmt"
+	t2 "forum/structs"
 	t "forum/views"
 	"net/http"
 )
 
-type User struct {
-	Username        string
-	Email           string
-	CreationDate    string
-	BirthDate       string
-	Uuid            string
-	Admin           int
-	TopicsCreated   []string
-	MessagesSend    []MessageSend `MessageSend`
-	UuidOfTopics    []string
-	PrivateMessages []PrivateMessage `PrivateMessage`
-}
-
-type PrivateMessage struct {
-	PrivateMessage        string
-	PrivateMessage2ndUser string
-}
-
-type MessageSend struct {
-	MessageSendByUser string
-	TopicSentInName   string
-}
-
-var USER User
+var USER t2.User
 
 func UserEdit(r *http.Request, db *sql.DB) {
 	if r.Method == "POST" {

@@ -3,6 +3,7 @@ package forum
 import (
 	"database/sql"
 	"fmt"
+	t "forum/structs"
 )
 
 func MessagesSendByUser(db *sql.DB) {
@@ -23,7 +24,7 @@ func MessagesSendByUser(db *sql.DB) {
 				fmt.Println(err)
 			} else {
 				indexMessagesSend := len(USER.MessagesSend)
-				USER.MessagesSend = append(USER.MessagesSend, MessageSend{})
+				USER.MessagesSend = append(USER.MessagesSend, t.MessageSend{})
 				USER.MessagesSend[indexMessagesSend].MessageSendByUser = message
 
 				query2 := fmt.Sprintf("SELECT name FROM topics WHERE uuid = '%s'", uuidPath)

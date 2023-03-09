@@ -3,6 +3,7 @@ package forum
 import (
 	"database/sql"
 	"fmt"
+	t "forum/structs"
 )
 
 func MpSendOrReceivedByUser(db *sql.DB) {
@@ -22,7 +23,7 @@ func MpSendOrReceivedByUser(db *sql.DB) {
 				fmt.Println(err)
 			} else {
 				msgPrivateIndex := len(USER.PrivateMessages)
-				USER.PrivateMessages = append(USER.PrivateMessages, PrivateMessage{})
+				USER.PrivateMessages = append(USER.PrivateMessages, t.PrivateMessage{})
 				USER.PrivateMessages[msgPrivateIndex].PrivateMessage = message
 				if user2 != USER.Username {
 					USER.PrivateMessages[msgPrivateIndex].PrivateMessage2ndUser = user2

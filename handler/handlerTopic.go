@@ -48,5 +48,5 @@ func Handler_topicPage(w http.ResponseWriter, r *http.Request) {
 
 	t.MessagesPageDisplay(databaseForum, r)
 
-	tmpl.Execute(w, t.TOPIC)
+	tmpl.Execute(w, t.Messages)
 }
