@@ -14,6 +14,9 @@ func LikesDislikes(r *http.Request, db *sql.DB) {
 		var uuidLiked string
 		var alreadyLiked bool
 		var previousLike int
+		var likeOrDislike int
+		var allLikes int
+		var query string
 
 		if r.Method == "POST" {
 			if r.FormValue("like") != "" {
@@ -25,7 +28,7 @@ func LikesDislikes(r *http.Request, db *sql.DB) {
 				newLike = -1
 				uuid = r.FormValue("dislike")
 			}
-			query := fmt.Sprintf("SELECT uuidLiked, likeOrDislike FROM likesFromUser WHERE uuidUser = '%s'", t.USER.Uuid)
+			query = fmt.Sprintf("SELECT uuidLiked, likeOrDislike FROM likesFromUser WHERE uuidUser = '%s'", t.USER.Uuid)
 			row, err := db.Query(query)
 			if err != nil {
 				fmt.Println(err)
@@ -38,28 +41,27 @@ func LikesDislikes(r *http.Request, db *sql.DB) {
 					}
 				}
 				if alreadyLiked {
-					fmt.Println("already liked")
-					fmt.Println(previousLike, "previous like")
-					fmt.Println(newLike, "new like")
-					// if previousLike == 1 && newLike == 1 {
-					// 	query = fmt.Sprintf("UPDATE topics SET likes = likes - 1 WHERE uuid = '%s'", uuid)
-					// 	db.Exec(query)
-					// } else if previousLike == 1 && newLike == -1 {
-					// 	query = fmt.Sprintf("UPDATE topics SET likes = likes - 2 WHERE uuid = '%s'", uuid)
-					// 	db.Exec(query)
-					// } else if previousLike == -1 && newLike == 1 {
-					// 	query = fmt.Sprintf("UPDATE topics SET likes = likes + 2 WHERE uuid = '%s'", uuid)
-					// 	db.Exec(query)
-					// } else if previousLike == -1 && newLike == -1 {
-					// 	query = fmt.Sprintf("UPDATE topics SET likes = likes + 1 WHERE uuid = '%s'", uuid)
-					// 	db.Exec(query)
-					// }
+					if previousLike == newLike {
+						query = fmt.Sprintf("DELETE FROM likesFromUser WHERE uuidLiked = '%s' AND uuidUser = '%s'", uuidLiked, t.USER.Uuid)
+					} else {
+						query = fmt.Sprintf("UPDATE likesFromUser SET likeOrDislike = '%d' WHERE uuidLiked = '%s' AND uuidUser = '%s'", newLike, uuid, t.USER.Uuid)
+					}
 				} else {
-					query = fmt.Sprintf("UPDATE topics SET likes = likes + %d WHERE uuid = '%s'", newLike, uuid)
-					db.Exec(query)
-
-					query2 := fmt.Sprintf("INSERT INTO likesFromUser(uuidUser, uuidLiked, likeOrDislike) VALUES('%s', '%s', '%d')", t.USER.Uuid, uuid, newLike)
-					db.Exec(query2)
+					query = fmt.Sprintf("INSERT INTO likesFromUser(uuidUser, uuidLiked, likeOrDislike) VALUES('%s', '%s', '%d')", t.USER.Uuid, uuid, newLike)
+				}
+				db.Exec(query)
+				queryCheckLikes := fmt.Sprintf("SELECT likeOrDislike FROM likesFromUser WHERE uuidLiked = '%s'", uuid)
+				row, err := db.Query(queryCheckLikes)
+				if err != nil {
+					fmt.Println(err)
+				} else {
+					for row.Next() {
+						defer row.Close()
+						row.Scan(&likeOrDislike)
+						allLikes += likeOrDislike
+					}
+					queryUpdateTopic := fmt.Sprintf("UPDATE topics SET likes = '%d' WHERE uuid = '%s'", allLikes, uuid)
+					db.Exec(queryUpdateTopic)
 				}
 			}
 		}

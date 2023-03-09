@@ -8,26 +8,62 @@ import (
 )
 
 func LikesDislikes(r *http.Request, db *sql.DB) {
-	fmt.Println("try later error")
 	if t.USER.Username != "" {
-		var likesordislikes int
+		var newLike int
 		var uuid string
+		var uuidLiked string
+		var alreadyLiked bool
+		var previousLike int
+		var likeOrDislike int
+		var allLikes int
+		var query string
 
 		if r.Method == "POST" {
 			if r.FormValue("like") != "" {
-				likesordislikes = 1
+				newLike = 1
 				uuid = r.FormValue("like")
 
 			}
 			if r.FormValue("dislike") != "" {
-				likesordislikes = -1
+				newLike = -1
 				uuid = r.FormValue("dislike")
 			}
-			query := fmt.Sprintf("UPDATE messages SET like = like + %d WHERE uuid = '%s'", likesordislikes, uuid)
-			db.Exec(query)
-
-			query2 := fmt.Sprintf("INSERT INTO likesFromUser(uuidUser, uuidLiked, likeOrDislike) VALUES('%s', '%s', '%d')", t.USER.Uuid, uuid, likesordislikes)
-			db.Exec(query2)
+			query = fmt.Sprintf("SELECT uuidLiked, likeOrDislike FROM likesFromUser WHERE uuidUser = '%s'", t.USER.Uuid)
+			row, err := db.Query(query)
+			if err != nil {
+				fmt.Println(err)
+			} else {
+				for row.Next() {
+					defer row.Close()
+					row.Scan(&uuidLiked, &previousLike)
+					if uuidLiked == uuid {
+						alreadyLiked = true
+					}
+				}
+				if alreadyLiked {
+					if previousLike == newLike {
+						query = fmt.Sprintf("DELETE FROM likesFromUser WHERE uuidLiked = '%s' AND uuidUser = '%s'", uuidLiked, t.USER.Uuid)
+					} else {
+						query = fmt.Sprintf("UPDATE likesFromUser SET likeOrDislike = '%d' WHERE uuidLiked = '%s' AND uuidUser = '%s'", newLike, uuid, t.USER.Uuid)
+					}
+				} else {
+					query = fmt.Sprintf("INSERT INTO likesFromUser(uuidUser, uuidLiked, likeOrDislike) VALUES('%s', '%s', '%d')", t.USER.Uuid, uuid, newLike)
+				}
+				db.Exec(query)
+				queryCheckLikes := fmt.Sprintf("SELECT likeOrDislike FROM likesFromUser WHERE uuidLiked = '%s'", uuid)
+				row, err := db.Query(queryCheckLikes)
+				if err != nil {
+					fmt.Println(err)
+				} else {
+					for row.Next() {
+						defer row.Close()
+						row.Scan(&likeOrDislike)
+						allLikes += likeOrDislike
+					}
+					queryUpdateMsg := fmt.Sprintf("UPDATE messages SET like = '%d' WHERE uuid = '%s'", allLikes, uuid)
+					db.Exec(queryUpdateMsg)
+				}
+			}
 		}
 	} else {
 		fmt.Println("you need to be login to like or dislike a message")
