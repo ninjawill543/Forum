@@ -4,7 +4,6 @@ import (
 	"database/sql"
 	"fmt"
 	t "forum/listTopics"
-	t2 "forum/users"
 	"net/http"
 	"strings"
 )
@@ -36,8 +35,26 @@ type Message struct {
 var TOPIC Topic
 
 func MessagesPageDisplay(db *sql.DB, r *http.Request) {
-	fmt.Println(TOPIC.SessionUser)
-	TOPIC.SessionUser = t2.USER.Username
+	var username string
+
+	cookie, err := r.Cookie("session")
+	if err != nil {
+		// fmt.Println(err)
+		TOPIC.SessionUser = ""
+	} else {
+		queryGetName := fmt.Sprintf("SELECT username FROM users WHERE uuid = '%s'", cookie.Value)
+		row, err := db.Query(queryGetName)
+		if err != nil {
+			fmt.Println(err)
+		} else {
+			for row.Next() {
+				row.Scan(&username)
+			}
+			row.Close()
+			TOPIC.SessionUser = username
+		}
+	}
+
 	var creationDate string
 	var owner string
 	var report int

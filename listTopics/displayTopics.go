@@ -3,7 +3,6 @@ package forum
 import (
 	"database/sql"
 	"fmt"
-	t "forum/users"
 	"net/http"
 )
 
@@ -38,6 +37,7 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 	var searchName string
 	var query string
 	var firstMessage string
+	var username string
 	// var lastPost string
 
 	filter = r.FormValue("filter")
@@ -53,7 +53,23 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 		query = fmt.Sprintf("SELECT id, name, firstMessage, creationDate, owner, likes, nmbPosts, uuid FROM topics WHERE name LIKE '%s' ORDER BY %s DESC", searchName, filter)
 	}
 
-	TOPICSANDSESSION.SessionUser = t.USER.Username
+	cookie, err := r.Cookie("session")
+	if err != nil {
+		// fmt.Println(err)
+		TOPICSANDSESSION.SessionUser = ""
+	} else {
+		queryGetName := fmt.Sprintf("SELECT username FROM users WHERE uuid = '%s'", cookie.Value)
+		row, err := db.Query(queryGetName)
+		if err != nil {
+			fmt.Println(err)
+		} else {
+			for row.Next() {
+				row.Scan(&username)
+			}
+			row.Close()
+			TOPICSANDSESSION.SessionUser = username
+		}
+	}
 
 	row, err := db.Query(query)
 	if err != nil {

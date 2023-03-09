@@ -12,14 +12,19 @@ func GetCookieHandler(w http.ResponseWriter, r *http.Request) {
 	// response to the client.
 	cookie, err := r.Cookie("session")
 	if err != nil {
-		// fmt.Println(err)
+		fmt.Println(err)
+		USER.Username = ""
+		USER.Uuid = ""
+		USER.Email = ""
+		USER.CreationDate = ""
+		USER.Admin = 0
+		USER.BirthDate = ""
 	} else {
 		COOKIES.UuidUser = cookie.Value
+		fmt.Println(cookie.Value, "cookie value")
 		if cookie.Value != "" {
-			if USER.Username == "" {
-				fmt.Println("login with cookie")
-				LoginWithCookie(cookie.Value)
-			}
+			fmt.Println("login with cookie")
+			LoginWithCookie(cookie.Value)
 		}
 	}
 }
