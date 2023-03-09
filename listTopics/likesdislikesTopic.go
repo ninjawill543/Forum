@@ -31,12 +31,12 @@ func LikesDislikes(r *http.Request, db *sql.DB) {
 				fmt.Println(err)
 			} else {
 				for row.Next() {
+					defer row.Close()
 					row.Scan(&uuidLiked, &previousLike)
 					if uuidLiked == uuid {
 						alreadyLiked = true
 					}
 				}
-				row.Close()
 				if alreadyLiked {
 					fmt.Println("already liked")
 					fmt.Println(previousLike, "previous like")

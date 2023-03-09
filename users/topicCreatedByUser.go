@@ -14,6 +14,7 @@ func TopicCreatedByUser(db *sql.DB) {
 		fmt.Println(err)
 	} else {
 		for row.Next() {
+			defer row.Close()
 			err = row.Scan(&name)
 			if err != nil {
 				fmt.Println(err)
@@ -21,6 +22,5 @@ func TopicCreatedByUser(db *sql.DB) {
 				USER.TopicsCreated = append(USER.TopicsCreated, name)
 			}
 		}
-		row.Close()
 	}
 }

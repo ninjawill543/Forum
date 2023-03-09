@@ -43,14 +43,14 @@ func MessagesPageDisplay(db *sql.DB, r *http.Request) {
 		TOPIC.SessionUser = ""
 	} else {
 		queryGetName := fmt.Sprintf("SELECT username FROM users WHERE uuid = '%s'", cookie.Value)
-		row, err := db.Query(queryGetName)
+		row3, err := db.Query(queryGetName)
 		if err != nil {
 			fmt.Println(err)
 		} else {
-			for row.Next() {
-				row.Scan(&username)
+			for row3.Next() {
+				defer row3.Close()
+				row3.Scan(&username)
 			}
-			row.Close()
 			TOPIC.SessionUser = username
 		}
 	}
@@ -82,12 +82,12 @@ func MessagesPageDisplay(db *sql.DB, r *http.Request) {
 		fmt.Println(err)
 	} else {
 		for row.Next() {
+			defer row.Close()
 			err = row.Scan(&uuid)
 			if err != nil {
 				fmt.Println(err)
 			}
 		}
-		row.Close()
 		uuidPath = uuid
 	}
 
@@ -100,13 +100,14 @@ func MessagesPageDisplay(db *sql.DB, r *http.Request) {
 		TOPIC.UuidPath = t.TOPICSANDSESSION.Topics[i].Uuid
 	}
 	query := fmt.Sprintf("SELECT id, message, creationDate, owner, report, like, edited, uuid FROM messages WHERE uuidPath = '%s' ORDER BY %s %s", uuidPath, filter, ascDesc)
-	row, err = db.Query(query)
+	row2, err := db.Query(query)
 	if err != nil {
 		fmt.Println(err)
 	} else {
 		TOPIC.Messages = nil
-		for row.Next() {
-			err = row.Scan(&id, &message, &creationDate, &owner, &report, &like, &edited, &uuid)
+		for row2.Next() {
+			defer row2.Close()
+			err = row2.Scan(&id, &message, &creationDate, &owner, &report, &like, &edited, &uuid)
 			if err != nil {
 				fmt.Println(err)
 			} else {
@@ -123,6 +124,5 @@ func MessagesPageDisplay(db *sql.DB, r *http.Request) {
 				TOPIC.Messages[messageIndex].Edited = edited
 			}
 		}
-		row.Close()
 	}
 }

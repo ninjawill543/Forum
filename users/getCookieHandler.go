@@ -21,9 +21,7 @@ func GetCookieHandler(w http.ResponseWriter, r *http.Request) {
 		USER.BirthDate = ""
 	} else {
 		COOKIES.UuidUser = cookie.Value
-		fmt.Println(cookie.Value, "cookie value")
 		if cookie.Value != "" {
-			fmt.Println("login with cookie")
 			LoginWithCookie(cookie.Value)
 		}
 	}

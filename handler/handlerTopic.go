@@ -3,6 +3,7 @@ package forum
 import (
 	"database/sql"
 	t3 "forum/delete"
+	t5 "forum/login"
 	t "forum/messages"
 	t2 "forum/report"
 	t4 "forum/users"
@@ -22,7 +23,7 @@ func Handler_topicPage(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if r.FormValue("input_loginusername") != "" && r.FormValue("input_loginpassword") != "" {
-		t4.Login(r, databaseForum, w)
+		t5.Login(r, databaseForum, w)
 	}
 
 	if r.FormValue("input_username") != "" && r.FormValue("input_password") != "" && r.FormValue("input_birthDay") != "" {

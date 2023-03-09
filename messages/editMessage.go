@@ -22,12 +22,12 @@ func EditMessage(r *http.Request, db *sql.DB) {
 				fmt.Println(err)
 			} else {
 				for row.Next() {
+					defer row.Close()
 					err = row.Scan(&owner)
 					if err != nil {
 						fmt.Println(err)
 					}
 				}
-				row.Close()
 			}
 			if t.USER.Username == owner || t.USER.Admin == 1 {
 				query := fmt.Sprintf("UPDATE messages SET message = '%s', edited = 1 WHERE uuid = '%s'", newName, uuid[2])

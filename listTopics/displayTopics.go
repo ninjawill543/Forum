@@ -43,7 +43,7 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 	filter = r.FormValue("filter")
 
 	if filter == "" {
-		filter = "lastPost"
+		filter = "creationDate"
 	}
 
 	query = fmt.Sprintf("SELECT id, name, firstMessage, creationDate, owner, likes, nmbPosts, uuid FROM topics ORDER BY %s DESC", filter)
@@ -64,20 +64,21 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 			fmt.Println(err)
 		} else {
 			for row.Next() {
+				defer row.Close()
 				row.Scan(&username)
 			}
-			row.Close()
 			TOPICSANDSESSION.SessionUser = username
 		}
 	}
 
-	row, err := db.Query(query)
+	row2, err := db.Query(query)
 	if err != nil {
 		fmt.Println(err)
 	} else {
 		TOPICSANDSESSION.Topics = nil
-		for row.Next() {
-			err = row.Scan(&id, &name, &firstMessage, &creationDate, &owner, &likes, &nmbPosts, &uuid)
+		for row2.Next() {
+			defer row2.Close()
+			err = row2.Scan(&id, &name, &firstMessage, &creationDate, &owner, &likes, &nmbPosts, &uuid)
 			if err != nil {
 				fmt.Println(err)
 			} else {
@@ -94,6 +95,5 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 				// TOPICSANDSESSION.Topics[topicIndex].LastPost = lastPost
 			}
 		}
-		row.Close()
 	}
 }

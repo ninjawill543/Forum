@@ -29,12 +29,12 @@ func AddTopic(r *http.Request, database *sql.DB) {
 				fmt.Println(err)
 			} else {
 				for row.Next() {
+					defer row.Close()
 					row.Scan(&name)
 					if name == topicName {
 						topicNameTaken = true
 					}
 				}
-				row.Close()
 			}
 
 			if !topicNameTaken {

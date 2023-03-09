@@ -25,12 +25,12 @@ func NewMessage(db *sql.DB, r *http.Request) {
 			fmt.Println(err)
 		} else {
 			for row.Next() {
+				defer row.Close()
 				err = row.Scan(&uuid)
 				if err != nil {
 					fmt.Println(err)
 				}
 			}
-			row.Close()
 		}
 		uuidPath := uuid
 

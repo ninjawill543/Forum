@@ -3,6 +3,7 @@ package forum
 import (
 	"database/sql"
 	"fmt"
+	t2 "forum/users"
 	t "forum/views"
 	"net/http"
 )
@@ -19,7 +20,7 @@ func Login(r *http.Request, db *sql.DB, w http.ResponseWriter) {
 	fmt.Println("big test")
 
 	if r.Method == "POST" {
-		if USER.Username != "" {
+		if t2.USER.Username != "" {
 			fmt.Println("you're already login")
 		} else {
 			//username will also work with email
@@ -33,6 +34,7 @@ func Login(r *http.Request, db *sql.DB, w http.ResponseWriter) {
 				fmt.Println(err)
 			} else {
 				for row.Next() {
+					defer row.Close()
 					err = row.Scan(&username, &password, &email, &creationDate, &birtDate, &admin, &uuid, &ban)
 					if err != nil {
 						fmt.Println(err)
@@ -41,21 +43,20 @@ func Login(r *http.Request, db *sql.DB, w http.ResponseWriter) {
 					} else {
 						if usernameInput == username || usernameInput == email && passwordInput == password {
 							fmt.Println("LOGIN!")
-							USER.Username = username
-							USER.BirthDate = birtDate
-							USER.CreationDate = creationDate
-							USER.Email = email
-							USER.Uuid = uuid
-							USER.Admin = admin
+							t2.USER.Username = username
+							t2.USER.BirthDate = birtDate
+							t2.USER.CreationDate = creationDate
+							t2.USER.Email = email
+							t2.USER.Uuid = uuid
+							t2.USER.Admin = admin
 
-							SetCookieHandler(w, r)
+							t2.SetCookieHandler(w, r)
 						} else {
 							fmt.Println("no0b")
 							fmt.Println(username, password, email, usernameInput, passwordInput)
 						}
 					}
 				}
-				row.Close()
 			}
 		}
 	}

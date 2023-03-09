@@ -43,12 +43,12 @@ func PublicProfil(r *http.Request, db *sql.DB) {
 		fmt.Println(err)
 	} else {
 		for row.Next() {
+			defer row.Close()
 			err = row.Scan(&username, &creationDate, &admin, &birthDate, &reports, &ban)
 			if err != nil {
 				fmt.Println(err)
 			}
 		}
-		row.Close()
 		PUBLICUSER.Username = username
 		PUBLICUSER.CreationDate = creationDate
 		PUBLICUSER.Admin = admin
@@ -60,12 +60,13 @@ func PublicProfil(r *http.Request, db *sql.DB) {
 	PUBLICUSER.MessagesSend = nil
 	query = fmt.Sprintf("SELECT message, uuidPath FROM messages WHERE owner = '%s'", PUBLICUSER.Username)
 	fmt.Println("test messagesSent", PUBLICUSER.MessagesSend)
-	row, err = db.Query(query)
+	row2, err := db.Query(query)
 	if err != nil {
 		fmt.Println(err)
 	} else {
-		for row.Next() {
-			err = row.Scan(&message, &uuidPath)
+		for row2.Next() {
+			defer row2.Close()
+			err = row2.Scan(&message, &uuidPath)
 			if err != nil {
 				fmt.Println(err)
 			} else {
@@ -74,38 +75,37 @@ func PublicProfil(r *http.Request, db *sql.DB) {
 				PUBLICUSER.MessagesSend[indexMessagesSend].MessageSendByUser = message
 
 				query2 := fmt.Sprintf("SELECT name FROM topics WHERE uuid = '%s'", uuidPath)
-				row, err = db.Query(query2)
+				row3, err := db.Query(query2)
 				if err != nil {
 					fmt.Println(err)
 				} else {
-					for row.Next() {
-						err = row.Scan(&name)
+					defer row3.Close()
+					for row3.Next() {
+						err = row3.Scan(&name)
 						if err != nil {
 							fmt.Println(err)
 						}
 					}
-					row.Close()
 					PUBLICUSER.MessagesSend[indexMessagesSend].TopicSentInName = name
 				}
 			}
 		}
-		row.Close()
 	}
 
 	PUBLICUSER.TopicsCreated = nil
 	query = fmt.Sprintf("SELECT name FROM topics WHERE owner = '%s'", PUBLICUSER.Username)
-	row, err = db.Query(query)
+	row4, err := db.Query(query)
 	if err != nil {
 		fmt.Println(err)
 	} else {
-		for row.Next() {
-			err = row.Scan(&name)
+		for row4.Next() {
+			defer row4.Close()
+			err = row4.Scan(&name)
 			if err != nil {
 				fmt.Println(err)
 			} else {
 				PUBLICUSER.TopicsCreated = append(PUBLICUSER.TopicsCreated, name)
 			}
 		}
-		row.Close()
 	}
 }

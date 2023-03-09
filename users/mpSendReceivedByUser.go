@@ -16,6 +16,7 @@ func MpSendOrReceivedByUser(db *sql.DB) {
 		fmt.Println(err)
 	} else {
 		for row.Next() {
+			defer row.Close()
 			err = row.Scan(&message, &user1, &user2)
 			if err != nil {
 				fmt.Println(err)
@@ -30,6 +31,5 @@ func MpSendOrReceivedByUser(db *sql.DB) {
 				}
 			}
 		}
-		row.Close()
 	}
 }

@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	t3 "forum/delete"
 	t "forum/listTopics"
+	t4 "forum/login"
 	t2 "forum/users"
 	"html/template"
 	"net/http"
@@ -26,7 +27,7 @@ func Handler_index(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if r.FormValue("input_loginusername") != "" && r.FormValue("input_loginpassword") != "" {
-		t2.Login(r, databaseForum, w)
+		t4.Login(r, databaseForum, w)
 	}
 
 	if r.FormValue("input_username") != "" && r.FormValue("input_password") != "" && r.FormValue("input_birthDay") != "" {

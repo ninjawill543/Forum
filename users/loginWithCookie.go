@@ -18,9 +18,9 @@ func LoginWithCookie(uuidUser string) {
 		fmt.Println(err)
 	} else {
 		for row.Next() {
+			defer row.Close()
 			row.Scan(&username, &email, &creationDate, &birthDate, &admin)
 		}
-		row.Close()
 
 		USER.Username = username
 		USER.Uuid = uuidUser

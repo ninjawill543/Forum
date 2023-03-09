@@ -22,12 +22,12 @@ func EditTopic(r *http.Request, db *sql.DB) {
 				fmt.Println(err)
 			} else {
 				for row.Next() {
+					defer row.Close()
 					err = row.Scan(&owner)
 					if err != nil {
 						fmt.Println(err)
 					}
 				}
-				row.Close()
 			}
 			if t.USER.Username == owner {
 				query := fmt.Sprintf("UPDATE topics SET name = '%s' WHERE uuid = '%s'", newName, uuid[2])

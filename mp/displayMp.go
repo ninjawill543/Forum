@@ -23,12 +23,14 @@ func DisplayMp(r *http.Request, db *sql.DB) {
 	var user1 string
 	user2 := strings.Split(r.URL.Path, "/")
 	query := fmt.Sprintf("SELECT user1, message, creationDate FROM mp WHERE user1 = '%s' AND user2 = '%s' OR user1 = '%s' AND user2 = '%s' ORDER BY creationDate DESC", t.USER.Username, user2[2], user2[2], t.USER.Username)
+	fmt.Println(query)
 	row, err := db.Query(query)
 	if err != nil {
 		fmt.Println(err)
 	} else {
 		MPS = nil
 		for row.Next() {
+			defer row.Close()
 			err := row.Scan(&user1, &message, &creationDate)
 			if err != nil {
 				fmt.Println(err)
@@ -40,7 +42,5 @@ func DisplayMp(r *http.Request, db *sql.DB) {
 				MPS[mpIndex].User1 = user1
 			}
 		}
-		row.Close()
 	}
-	fmt.Println(MPS)
 }

@@ -20,6 +20,7 @@ func ReportMessage(r *http.Request, db *sql.DB) {
 				fmt.Println(err)
 			} else {
 				for row.Next() {
+					defer row.Close()
 					err = row.Scan(&uuidReported)
 					if err != nil {
 						fmt.Println(err)
@@ -27,7 +28,6 @@ func ReportMessage(r *http.Request, db *sql.DB) {
 						alreadyReported = true
 					}
 				}
-				row.Close()
 			}
 			if alreadyReported {
 				fmt.Println("arleady reported")
