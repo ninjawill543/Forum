@@ -33,7 +33,7 @@ function openDelete() {
 
 
 
-function close() {
+function closeAll() {
     document.getElementById("eChange").style.display = "none";
     document.getElementById("pChange").style.display = "none";
     document.getElementById("uChange").style.display = "none";

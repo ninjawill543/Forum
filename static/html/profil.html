@@ -38,61 +38,76 @@
 
     <main>
         <div class="flex">
+               <!-- <form method="POST">
+                            <input placeholder="Enter a new username and hit edit" class="font-normal mt-4 text-lg ml-4 bg-newcolor3 w-[30vh]" type="text" name="username">
+                            <input placeholder="Enter a new email and hit edit" class="font-normal mt-4 text-lg ml-4 bg-newcolor3 w-[30vh]" type="text" name="email">
+                            <input placeholder="Enter a new password and hit edit" class="font-normal mt-4 text-lg ml-4 bg-newcolor3 w-[30vh]"  type="text" name="password">
+                            <input type="submit" value="edit" name="edit">
+                        </form>  -->
 
             <div class="hidden" id="pChange">
                 <div class="fixed rounded-lg top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 h-[38vh] w-[35vh] bg-newcolor1 flex flex-col items-center   ">
-                  <button class="pl-[30vh] text-xl font-medium" onclick="close()" >X</button>
+                  <button class="pl-[30vh] text-xl font-medium" onclick="closeAll()" >X</button>
                   <p class="font-medium ml-4 text-2xl text-left align-middle">Hey, {{ .Username }}. Wanna change your password?</p>
                   <div class="flex flex-col align-center mt-8">
                     <div class="mb-8 flex justify-center" >
                         <input  class="w-[30vh] rounded-md px-2 py-3 bg-newcolor6"  placeholder="New password" required/>
                       </div>
-                      <div class="mb-8 flex justify-center">
-                          <input class="w-[30vh] rounded-md px-2 py-3 bg-newcolor6"  placeholder="Confirm new password" required/>
+                      <form method="POST">
+                        <div class="mb-8 flex justify-center">
+                            <input type="text" name="password" class="w-[30vh] rounded-md px-2 py-3 bg-newcolor6"  placeholder="Confirm new password" required/>
+                          </div>
+                        <div class="flex justify-center">
+                          <button type="submit" value="edit" name="edit" class=" text-center rounded-lg bg-newcolor4 hover:bg-color3 text-white font-bold w-[25vh] py-3" >Reset Password</button>
+                          
                         </div>
-                      <div class="flex justify-center">
-                        <button class=" text-center rounded-lg bg-newcolor4 hover:bg-color3 text-white font-bold w-[25vh] py-3" >Reset Password</button>
-                        
-                      </div>
+                      </form>
+                      
                   </div>
                     
                 </div>
               </div>
               <div class="hidden" id="eChange">
                 <div class="fixed rounded-lg top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 h-[33vh] w-[35vh] bg-newcolor1 flex flex-col items-center   ">
-                  <button class="pl-[30vh] text-xl font-medium" onclick="close()" >X</button>
+                  <button class="pl-[30vh] text-xl font-medium" onclick="closeAll()" >X</button>
                   <p class="font-medium ml-4 text-2xl text-left align-middle">Hey, {{ .Username }}. Wanna change your email address?</p>
                   <div class="flex flex-col align-center mt-12">
-                    <div class="mb-8 flex justify-center" >
-                        <input  class="w-[30vh] rounded-md px-2 py-3 bg-newcolor6"  placeholder="New email address" required/>
-                      </div>
-                      <div class="flex justify-center">
-                        <button class=" text-center rounded-lg bg-newcolor4 hover:bg-color3 text-white font-bold w-[25vh] py-3" >Change Email</button>
-                        
-                      </div>
+                    <form method="POST">
+                        <div class="mb-8 flex justify-center" >
+                            <input  class="w-[30vh] rounded-md px-2 py-3 bg-newcolor6"  placeholder="New email address" required/>
+                          </div>
+                          <div class="flex justify-center">
+                            <button type="submit" value="edit" name="edit" class=" text-center rounded-lg bg-newcolor4 hover:bg-color3 text-white font-bold w-[25vh] py-3" >Change Email</button>
+                            
+                          </div>
+                    </form>
+                    
                   </div>
                     
                 </div>
               </div>
               <div class="hidden" id="uChange">
                 <div class="fixed rounded-lg top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 h-[33vh] w-[35vh] bg-newcolor1 flex flex-col items-center   ">
-                  <button class="pl-[30vh] text-xl font-medium" onclick="close()" >X</button>
-                  <p class="font-medium ml-4 text-2xl text-left align-middle">Hey, {{ .Username }}. Wanna change your email username?</p>
+                  <button class="pl-[30vh] text-xl font-medium" onclick="closeAll()" >X</button>
+                  <p class="font-medium ml-4 text-2xl text-left align-middle">Hey, {{ .Username }}. Wanna change your username?</p>
                   <div class="flex flex-col align-center mt-12">
-                    <div class="mb-8 flex justify-center" >
-                        <input  class="w-[30vh] rounded-md px-2 py-3 bg-newcolor6"  placeholder="New username" required/>
-                      </div>
-                      <div class="flex justify-center">
-                        <button class=" text-center rounded-lg bg-newcolor4 hover:bg-color3 text-white font-bold w-[25vh] py-3" >Change Username</button>
-                        
-                      </div>
+                    <form method="POST">
+                        <div class="mb-8 flex justify-center" >
+                            <input  class="w-[30vh] rounded-md px-2 py-3 bg-newcolor6"  placeholder="New username" required/>
+                          </div>
+                          <div class="flex justify-center">
+                            <button type="submit" value="edit" name="edit" class=" text-center rounded-lg bg-newcolor4 hover:bg-color3 text-white font-bold w-[25vh] py-3" >Change Username</button>
+                            
+                          </div>
+                    </form>
+                    
                   </div>
                     
                 </div>
               </div>
               <div class="hidden" id="DELETE">
                 <div class="fixed rounded-lg top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 h-[38vh] w-[35vh] bg-newcolor1 flex flex-col items-center   ">
-                  <button onclick="close()" class="pl-[30vh] text-xl font-medium"  >X</button>
+                  <button onclick="closeAll()" class="pl-[30vh] text-xl font-medium"  >X</button>
                   <div class="flex flex-col align-center text-center">
                     <p class="font-medium text-2xl ">Are you sure you would like to delete your account?</p>
                   <p class="font-medium mt-2 text-2xl ">THIS CANNOT BE UNDONE!</p>
@@ -104,11 +119,11 @@
                       </div>
 
                       <div class="flex justify-center">
-                        <button class=" text-center rounded-lg bg-newcolor4 hover:bg-color3 text-white font-bold w-[25vh] py-3" onclick="close()">Cancel</button>
+                        <button class=" text-center rounded-lg bg-newcolor4 hover:bg-color3 text-white font-bold w-[25vh] py-3" onclick="closeAll()">Cancel</button>
                         
                       </div>
                       <div class="flex justify-center mt-8">
-                        <button class=" text-center rounded-lg bg-newcolor4 hover:bg-color3 text-white font-medium w-[15vh] h-[2vh]" onclick="openRegister2()">DELETE ACCOUNT</button>
+                        <button class=" text-center rounded-lg bg-newcolor4 hover:bg-color3 text-white font-medium w-[15vh] h-[2vh]" >DELETE ACCOUNT</button>
                         
                       </div>
                   </div>
@@ -144,12 +159,7 @@
                             <p class="w-fit text-xs uppercase p-3">Change</p>
                         </button> 
         
-                        <!-- <form method="POST">
-                            <input placeholder="Enter a new username and hit edit" class="font-normal mt-4 text-lg ml-4 bg-newcolor3 w-[30vh]" type="text" name="username">
-                            <input placeholder="Enter a new email and hit edit" class="font-normal mt-4 text-lg ml-4 bg-newcolor3 w-[30vh]" type="text" name="email">
-                            <input placeholder="Enter a new password and hit edit" class="font-normal mt-4 text-lg ml-4 bg-newcolor3 w-[30vh]"  type="text" name="password">
-                            <input type="submit" value="edit" name="edit">
-                        </form>  -->
+                     
         
                         <!-- <img class="ml-[40vh] mt-[26vh]" src="https://img.icons8.com/ios-filled/50/null/circled-right-2.png"/> -->
                     </div>
