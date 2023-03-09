@@ -13,13 +13,14 @@ func main() {
 	t1.CreatingDatabases()
 
 	http.HandleFunc("/", t3.Handler_404)
-	http.HandleFunc("/index", t3.Handler_index)
-	http.HandleFunc("/topics/", t3.Handler_topicPage)
+	http.HandleFunc("/topics/", t3.Handler_topics)
+	http.HandleFunc("/messages/", t3.Handler_Messages)
 	http.HandleFunc("/your-profil/", t3.Handler_profil)
 	http.HandleFunc("/profil/", t3.Handler_publicProfil)
 	http.HandleFunc("/edit-topic/", t3.Handler_EditTopic)
 	http.HandleFunc("/edit-message/", t3.Handler_EditMessage)
 	http.HandleFunc("/private-message/", t3.Handler_Mp)
+	http.HandleFunc("/categories", t3.Handler_Home)
 
 	//url of our funcs
 	fs := http.FileServer(http.Dir("../static/css"))

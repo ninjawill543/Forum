@@ -11,8 +11,8 @@ import (
 	"net/http"
 )
 
-func Handler_topicPage(w http.ResponseWriter, r *http.Request) {
-	tmpl := template.Must(template.ParseFiles("../static/html/topicPage.html"))
+func Handler_Messages(w http.ResponseWriter, r *http.Request) {
+	tmpl := template.Must(template.ParseFiles("../static/html/messages.html"))
 
 	databaseForum, _ := sql.Open("sqlite3", "../forum.db")
 

@@ -15,6 +15,7 @@ func CreateTableTopics(db *sql.DB) {
 		"likes" INTEGER,
 		"nmbPosts" INTEGER,
 		"lastPost" TEXT,
+		"category" TEXT,
 		"uuid" TEXT);`
 
 	query, err := db.Prepare(topic_table)

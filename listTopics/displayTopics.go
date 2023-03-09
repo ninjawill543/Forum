@@ -5,6 +5,7 @@ import (
 	"fmt"
 	t "forum/structs"
 	"net/http"
+	"strings"
 )
 
 var TOPICSANDSESSION t.TopicsAndSession
@@ -26,15 +27,18 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 
 	filter = r.FormValue("filter")
 
-	if filter == "" {
-		filter = "creationDate"
-	}
+	// if filter == "" {
+	filter = "creationDate"
+	// }
 
-	query = fmt.Sprintf("SELECT id, name, firstMessage, creationDate, owner, likes, nmbPosts, uuid FROM topics ORDER BY %s DESC", filter)
+	category := strings.Split(r.URL.Path, "/")
+	category = strings.Split(category[2], "=")
+
+	query = fmt.Sprintf("SELECT id, name, firstMessage, creationDate, owner, likes, nmbPosts, uuid FROM topics WHERE category = '%s' ORDER BY %s DESC ", category[1], filter)
 
 	if r.FormValue("searchbar") != "" {
 		searchName = "%" + r.FormValue("searchbar") + "%"
-		query = fmt.Sprintf("SELECT id, name, firstMessage, creationDate, owner, likes, nmbPosts, uuid FROM topics WHERE name LIKE '%s' ORDER BY %s DESC", searchName, filter)
+		query = fmt.Sprintf("SELECT id, name, firstMessage, creationDate, owner, likes, nmbPosts, uuid FROM topics WHERE name LIKE '%s' AND category = '%s' ORDER BY %s DESC", searchName, category[1], filter)
 	}
 
 	cookie, err := r.Cookie("session")
@@ -76,6 +80,10 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 				TOPICSANDSESSION.Topics[topicIndex].Uuid = uuid
 				TOPICSANDSESSION.Topics[topicIndex].Id = id
 				TOPICSANDSESSION.Topics[topicIndex].FirstMessage = firstMessage
+
+				// if lastPost == "" {
+				// 	lastPost = creationDate
+				// }
 				// TOPICSANDSESSION.Topics[topicIndex].LastPost = lastPost
 			}
 		}

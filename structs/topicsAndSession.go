@@ -14,5 +14,5 @@ type Topic struct {
 	Uuid         string
 	FirstMessage string
 	NmbPosts     int
-	// LastPost     string
+	LastPost     string
 }

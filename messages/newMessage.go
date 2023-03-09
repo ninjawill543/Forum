@@ -36,7 +36,7 @@ func NewMessage(db *sql.DB, r *http.Request) {
 
 		message := r.FormValue("input_newMessage")
 
-		if len(message) < 10 {
+		if len(message) < 2 {
 			fmt.Println("not enough char to post a message")
 		} else if t.USER.Username == "" {
 			fmt.Println("you need to be login to post a message")

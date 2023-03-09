@@ -5,6 +5,7 @@ import (
 	"fmt"
 	t "forum/users"
 	"net/http"
+	"strings"
 	"time"
 
 	"github.com/google/uuid"
@@ -14,11 +15,14 @@ func AddTopic(r *http.Request, database *sql.DB) {
 	if r.Method == "POST" {
 		var name string
 		var topicNameTaken bool
+		category := strings.Split(r.URL.Path, "/")
+		category = strings.Split(category[2], "=")
+
 		fmt.Println("New POST: (topic) ")
 		topicName := r.FormValue("topic_name")
 		firstMessage := r.FormValue("firstMessage")
 
-		if len(topicName) < 3 {
+		if len(topicName) < 4 {
 			fmt.Println("Not enough char")
 		} else if t.USER.Username == "" {
 			fmt.Println("you need to be login to post a topic")
@@ -39,19 +43,19 @@ func AddTopic(r *http.Request, database *sql.DB) {
 
 			if !topicNameTaken {
 				creationDate := time.Now()
-				topicInfo := `INSERT INTO topics(name, firstMessage, creationDate, owner, likes, nmbPosts, lastPost, uuid) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`
+				topicInfo := `INSERT INTO topics(name, firstMessage, creationDate, owner, likes, nmbPosts, lastPost, category, uuid) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`
 				uuid := uuid.New()
 				query, err := database.Prepare(topicInfo)
 				if err != nil {
 					fmt.Println(err)
 				}
 
-				_, err = query.Exec(topicName, firstMessage, creationDate, t.USER.Username, 0, 0, "0", uuid)
+				_, err = query.Exec(topicName, firstMessage, creationDate, t.USER.Username, 0, 0, "0", category[1], uuid)
 				if err != nil {
 					fmt.Println(err)
 				} else {
 					fmt.Println("adding new topic :", topicName, "in TOPICS")
-					if len(firstMessage) < 10 {
+					if len(firstMessage) < 2 {
 						fmt.Println("not enough char to post the firstmessage")
 					} else {
 						if firstMessage != "" {

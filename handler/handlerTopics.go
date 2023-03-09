@@ -10,9 +10,9 @@ import (
 	"net/http"
 )
 
-func Handler_index(w http.ResponseWriter, r *http.Request) {
+func Handler_topics(w http.ResponseWriter, r *http.Request) {
 
-	tmpl1 := template.Must(template.ParseFiles("../static/html/index.html"))
+	tmpl1 := template.Must(template.ParseFiles("../static/html/topics.html"))
 
 	databaseForum, _ := sql.Open("sqlite3", "../forum.db")
 
