@@ -42,14 +42,10 @@ func MessagesPageDisplay(db *sql.DB, r *http.Request) {
 	var filter string
 	var edited int
 	var uuidPath string
-	var ascDesc string
 
 	filter = r.FormValue("filter")
 	if filter == "" {
 		filter = "creationDate"
-		ascDesc = "ASC"
-	} else {
-		ascDesc = "DESC"
 	}
 
 	topicName := strings.Split(r.URL.Path, "/")
@@ -76,7 +72,7 @@ func MessagesPageDisplay(db *sql.DB, r *http.Request) {
 		Messages.Id = t.TOPICSANDSESSION.Topics[i].Id
 		Messages.UuidPath = t.TOPICSANDSESSION.Topics[i].Uuid
 	}
-	query := fmt.Sprintf("SELECT id, message, creationDate, owner, report, like, edited, uuid FROM messages WHERE uuidPath = '%s' ORDER BY %s %s", uuidPath, filter, ascDesc)
+	query := fmt.Sprintf("SELECT id, message, creationDate, owner, report, like, edited, uuid FROM messages WHERE uuidPath = '%s' ORDER BY %s DESC", uuidPath, filter)
 	row2, err := db.Query(query)
 	if err != nil {
 		fmt.Println(err)
@@ -88,6 +84,8 @@ func MessagesPageDisplay(db *sql.DB, r *http.Request) {
 			if err != nil {
 				fmt.Println(err)
 			} else {
+				fmt.Println(creationDate)
+
 				messageIndex := len(Messages.Messages)
 
 				Messages.Messages = append(Messages.Messages, t2.Message{})

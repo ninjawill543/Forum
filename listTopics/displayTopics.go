@@ -26,10 +26,11 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 	// var lastPost string
 
 	filter = r.FormValue("filter")
+	fmt.Println(filter)
 
-	// if filter == "" {
-	filter = "creationDate"
-	// }
+	if filter == "" {
+		filter = "creationDate"
+	}
 
 	category := strings.Split(r.URL.Path, "/")
 	category = strings.Split(category[2], "=")
