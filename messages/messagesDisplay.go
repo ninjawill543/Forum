@@ -42,6 +42,7 @@ func MessagesPageDisplay(db *sql.DB, r *http.Request) {
 	var filter string
 	var edited int
 	var uuidPath string
+	var likeOrDislike int
 
 	filter = r.FormValue("filter")
 	if filter == "" {
@@ -97,6 +98,26 @@ func MessagesPageDisplay(db *sql.DB, r *http.Request) {
 				Messages.Messages[messageIndex].Uuid = uuid
 				Messages.Messages[messageIndex].Like = like
 				Messages.Messages[messageIndex].Edited = edited
+
+				checkIfLiked := fmt.Sprintf("SELECT likeOrDislike FROM likesFromUser WHERE uuidUser = '%s' AND uuidLiked = '%s'", cookie.Value, uuid)
+				row, err := db.Query(checkIfLiked)
+				if err != nil {
+					fmt.Println(err)
+				} else {
+					for row.Next() {
+						defer row.Close()
+						err = row.Scan(&likeOrDislike)
+						if err != nil {
+							fmt.Println(err)
+						} else {
+							if likeOrDislike == 1 {
+								Messages.Messages[messageIndex].IsLiked = likeOrDislike
+							} else if likeOrDislike == -1 {
+								Messages.Messages[messageIndex].IsDisliked = likeOrDislike
+							}
+						}
+					}
+				}
 			}
 		}
 	}

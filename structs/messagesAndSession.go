@@ -22,4 +22,6 @@ type Message struct {
 	Id           int
 	Like         int
 	Edited       int
+	IsLiked      int
+	IsDisliked   int
 }

@@ -127,19 +127,28 @@
                     <div>
                       <div class="flex items-center justify-between text-slate-500">
                         <div class="flex ">
-                            <form class="flex" method="POST">
-                                <button class="mr-2" type="submit" value="{{ .Uuid }}" name="like">
-                                  <div class="flex cursor-pointer items-center transition hover:text-slate-600">
-                                    <img src="../css/videPlan de travail 1.svg" width="21" height="21">
-                                    <span class="text-slate-900">{{ $v.Like }}</span>
-                                  </div>
-                                </button>
-                                <button class="mr-2" type="submit" value="{{ .Uuid }}" name="dislike">
-                                  <div class="flex cursor-pointer items-center transition hover:text-slate-600">
-                                    <img src="../css/dislike_vide.svg" width="21" height="21">                                 
-                                  </div>
-                                </button>
-                              </form>
+                          <form class="flex" method="POST">
+                            <button class="mr-2" type="submit" value="{{ .Uuid }}" name="like">
+                              <div class="flex cursor-pointer items-center transition hover:text-slate-600">
+                                {{ if $v.IsLiked }}
+                                  <img src="../css/like_plein.svg" width="21px" height="21px">
+                                {{ else }}
+                                  <img src="../css/videPlan de travail 1.svg" width="21px" height="21px">
+                                {{ end }}
+                                <span class="text-slate-900">{{ $v.Like }}</span>
+                              </div>
+                            </button>
+
+                            <button type="submit" value="{{ .Uuid }}" name="dislike">
+                              <div class="flex cursor-pointer items-center transition hover:text-slate-600">
+                                {{ if $v.IsDisliked }}
+                                  <img src="../css/dislike_plein.svg" width="21px" height="21px">
+                                {{ else }}
+                                <img src="../css/dislike_vide.svg" width="21px" height="21px">
+                                {{ end }}
+                              </div>
+                            </button>
+                          </form>
                               <a>
                                 <div class="flex cursor-pointer items-center transition hover:text-slate-600 ml-[54vh]">
                                   <img src="../css/edit.svg" width="21" height="21">                                 
