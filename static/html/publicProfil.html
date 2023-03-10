@@ -127,7 +127,7 @@
                         {{ $User := .}}
                         <ul class="mt-[2vh] overflow-y-auto whitespace-nowrap flex-col w-[55vh]">
                             {{ range $k, $v := .MessagesSend }}
-                            <p class="ml-[2vh] mb-[1vh] w-[51vh] h-[6vh] bg-newcolor6 rounded-md text-center align-center truncate">{{ $v }}</p>
+                            <p class="ml-[2vh] mb-[1vh] w-[51vh] h-[6vh] bg-newcolor6 rounded-md text-center align-center truncate">{{ $v.MessageSendByUser }} in - <a href="../{{ $v.TopicSentInName}}">{{ $v.TopicSentInName }}</a></p>
                             {{ end }}
                           </ul>
                         

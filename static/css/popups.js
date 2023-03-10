@@ -26,9 +26,9 @@ if (loggedin == 0) {
     document.getElementById("register2").style.display = "none";
     document.getElementById("lock").disabled = true;
     document.getElementById("lock1").disabled = true;
+    }   
 }
-    
-}
+
 function test(userName) {
     if (userName == "") {
         document.getElementById("logbutton").style.display = "block";
@@ -39,6 +39,6 @@ function test(userName) {
     }
 } 
 
-function refreshPage(){
+function refreshPage() {
     window.location.reload();
 }

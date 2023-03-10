@@ -18,7 +18,7 @@
             <div id="logbutton" class="hidden">
                 <button  onclick="openLogin()" class=" font-medium rounded-lg shadow-xl flex relative w-24 left-[60vh] cursor-pointer focus:ring-blue-300 text-sm text-center text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
                     <p class="w-fit text-xs uppercase p-3">login</p>
-                    <svg class="relative top-2 right-1" fill="#000000" width="24px" height="24px" viewBox="0 0 24 24"
+                    <svg class="relative top-2 right-1" fill="#000000" width="21px" height="21px" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M20,21V3H13a1,1,0,0,1,0-2h8a1,1,0,0,1,1,1V22a1,1,0,0,1-1,1H13a1,1,0,0,1,0-2ZM2,12a1,1,0,0,0,1,1H14.586l-2.293,2.293a1,1,0,1,0,1.414,1.414l4-4a1,1,0,0,0,0-1.414l-4-4a1,1,0,1,0-1.414,1.414L14.586,11H3A1,1,0,0,0,2,12Z" />
@@ -31,7 +31,7 @@
                     <button 
                     class=" font-medium flex rounded-lg relative w-24 left-[60vh] cursor-pointer focus:ring-blue-300 text-sm text-center text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
                     <p class="w-fit text-xs uppercase p-3 text-white">{{ .SessionUser }}</p>
-                    <svg class="relative top-2 right-1" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
+                    <svg class="relative top-2 right-1" width="21px" height="21px" viewBox="0 0 24 24" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <g id="style=fill">
                             <g id="profile">
@@ -130,24 +130,24 @@
                             <form class="flex" method="POST">
                                 <button class="mr-2" type="submit" value="{{ .Uuid }}" name="like">
                                   <div class="flex cursor-pointer items-center transition hover:text-slate-600">
-                                    <object data="../css/videPlan de travail 1.svg" type="image/svg+xml" width="25"></object>
+                                    <img src="../css/videPlan de travail 1.svg" width="21" height="21">
                                     <span class="text-slate-900">{{ $v.Like }}</span>
                                   </div>
                                 </button>
                                 <button class="mr-2" type="submit" value="{{ .Uuid }}" name="dislike">
                                   <div class="flex cursor-pointer items-center transition hover:text-slate-600">
-                                    <object data="../css/dislike_vide.svg" type="image/svg+xml" width="25"></object>
+                                    <img src="../css/dislike_vide.svg" width="21" height="21">                                 
                                   </div>
                                 </button>
                               </form>
                               <a>
                                 <div class="flex cursor-pointer items-center transition hover:text-slate-600 ml-[54vh]">
-                                  <object data="../css/edit.svg" type="image/svg+xml" width="25"></object>
+                                  <img src="../css/edit.svg" width="21" height="21">                                 
                                 </div>
                               </a>
                               <a>
                                 <div class="flex cursor-pointer items-center transition hover:text-slate-600 ml-[2vh]">
-                                  <object data="../css/corbeille.svg" type="image/svg+xml" width="25"></object>
+                                  <img src="../css/corbeille.svg" width="21" height="21">                                 
                                 </div>
                               </a>
                         </div>

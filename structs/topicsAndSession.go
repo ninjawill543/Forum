@@ -15,4 +15,6 @@ type Topic struct {
 	FirstMessage string
 	NmbPosts     int
 	LastPost     string
+	IsLiked      int
+	IsDisliked   int
 }

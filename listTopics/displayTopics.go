@@ -23,6 +23,7 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 	var query string
 	var firstMessage string
 	var username string
+	var likeOrDislike int
 	// var lastPost string
 
 	filter = r.FormValue("filter")
@@ -81,6 +82,26 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 				TOPICSANDSESSION.Topics[topicIndex].Uuid = uuid
 				TOPICSANDSESSION.Topics[topicIndex].Id = id
 				TOPICSANDSESSION.Topics[topicIndex].FirstMessage = firstMessage
+
+				checkIfLiked := fmt.Sprintf("SELECT likeOrDislike FROM likesFromUser WHERE uuidUser = '%s' AND uuidLiked = '%s'", cookie.Value, uuid)
+				row, err := db.Query(checkIfLiked)
+				if err != nil {
+					fmt.Println(err)
+				} else {
+					for row.Next() {
+						defer row.Close()
+						err = row.Scan(&likeOrDislike)
+						if err != nil {
+							fmt.Println(err)
+						} else {
+							if likeOrDislike == 1 {
+								TOPICSANDSESSION.Topics[topicIndex].IsLiked = likeOrDislike
+							} else if likeOrDislike == -1 {
+								TOPICSANDSESSION.Topics[topicIndex].IsDisliked = likeOrDislike
+							}
+						}
+					}
+				}
 
 				// if lastPost == "" {
 				// 	lastPost = creationDate

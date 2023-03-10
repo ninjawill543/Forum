@@ -181,12 +181,12 @@
         
                     <div  class="flex rounded-xl shadow-md flex-col justify-start items-center ml-[10vh] w-[55vh] h-[85vh] mt-[10vh] bg-newcolor1">
                         <div class="rounded-t-md h-[6vh] w-full ">
-                            <p class="font-medium mt-4 text-2xl text-center align-middle">Your comments</p>
+                            <p class="font-medium mt-4 text-2xl text-center align-middle">Your  s</p>
                         </div>
                         
                         <ul class="mt-[2vh] overflow-y-auto whitespace-nowrap flex-col w-[55vh]">
                             {{ range $k, $v := .MessagesSend }}
-                            <p class="ml-[2vh] mb-[1vh] w-[51vh] h-[6vh] bg-newcolor6 rounded-md text-center align-center truncate">{{ $v }}</p>
+                            <p class="ml-[2vh] mb-[1vh] w-[51vh] h-[6vh] bg-newcolor6 rounded-md text-center align-center truncate">{{ $v.MessageSendByUser }} in - <a href="../{{ $v.TopicSentInName}}">{{ $v.TopicSentInName }}</a></p>
                             {{ end }}
                           </ul>
                         
