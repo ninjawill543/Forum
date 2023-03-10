@@ -12,11 +12,11 @@
   <header >
     <div class="fixed flex justify-around w-full h-16 shadow-md bg-newcolor1">
         <h1 id="h1Title"
-            class="relative uppercase my-[20px] right-72 font-bold text-center dark:hover:text-color1 text-newcolor4">
+            class="relative uppercase my-[20px] right-72 font-bold text-center text-newcolor4">
             Dread Forums</h1>
         <div class="grid w-96 self-center items-center grid-cols-3">
             <div id="logbutton" class="hidden">
-                <button  onclick="openLogin()" class=" font-medium rounded-lg shadow-xl flex relative w-24 left-[60vh] cursor-pointer focus:ring-blue-300 text-sm text-center dark:bg-color2 dark:hover:bg-color3 dark:focus:ring-color3 text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+                <button  onclick="openLogin()" class=" font-medium rounded-lg shadow-xl flex relative w-24 left-[60vh] cursor-pointer focus:ring-blue-300 text-sm text-center text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
                     <p class="w-fit text-xs uppercase p-3">login</p>
                     <svg class="relative top-2 right-1" fill="#000000" width="24px" height="24px" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
@@ -29,8 +29,8 @@
             <div id="profbutton" class="hidden">
                 <a href="../your-profil">
                     <button 
-                    class=" font-medium flex rounded-lg relative w-24 left-[60vh] cursor-pointer focus:ring-blue-300 text-sm text-center dark:bg-color2 dark:hover:bg-color3 dark:focus:ring-color3 text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
-                    <p class="w-fit text-xs uppercase p-3">{{ .SessionUser }}</p>
+                    class=" font-medium flex rounded-lg relative w-24 left-[60vh] cursor-pointer focus:ring-blue-300 text-sm text-center text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+                    <p class="w-fit text-xs uppercase p-3 text-white">{{ .SessionUser }}</p>
                     <svg class="relative top-2 right-1" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <g id="style=fill">
@@ -130,24 +130,24 @@
                             <form class="flex" method="POST">
                                 <button class="mr-2" type="submit" value="{{ .Uuid }}" name="like">
                                   <div class="flex cursor-pointer items-center transition hover:text-slate-600">
-                                    <img src="https://img.icons8.com/ios/25/null/thumb-up--v1.png"/>
+                                    <object data="../css/videPlan de travail 1.svg" type="image/svg+xml" width="25"></object>
                                     <span class="text-slate-900">{{ $v.Like }}</span>
                                   </div>
                                 </button>
                                 <button class="mr-2" type="submit" value="{{ .Uuid }}" name="dislike">
                                   <div class="flex cursor-pointer items-center transition hover:text-slate-600">
-                                    <img src="https://img.icons8.com/ios/25/null/thumbs-down.png"/>
+                                    <object data="../css/dislike_vide.svg" type="image/svg+xml" width="25"></object>
                                   </div>
                                 </button>
                               </form>
                               <a>
                                 <div class="flex cursor-pointer items-center transition hover:text-slate-600 ml-[54vh]">
-                                  <img src="https://img.icons8.com/ios/25/null/pencil-tip.png"/>
+                                  <object data="../css/edit.svg" type="image/svg+xml" width="25"></object>
                                 </div>
                               </a>
                               <a>
                                 <div class="flex cursor-pointer items-center transition hover:text-slate-600 ml-[2vh]">
-                                  <img src="https://img.icons8.com/ios/25/null/delete--v1.png"/>
+                                  <object data="../css/corbeille.svg" type="image/svg+xml" width="25"></object>
                                 </div>
                               </a>
                         </div>
@@ -204,7 +204,7 @@
                       <div class="flex flex-wrap items-center bg-newcolor3">
                         <div class="flex items-center space-x-1 sm:pr-4 w-[50vh]" >
                           
-                          <button type="button" class="p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600">
+                          <button type="button" class="p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 ">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"></path></svg>
                           </button>
                           
@@ -217,7 +217,7 @@
                             <textarea name="input_newMessage" onfocus="openLoginIf()" id="lock" rows="8" class="block px-0 w-full text-sm text-gray-800 bg-white border-0  focus:ring-0" placeholder="Write a comment..." required></textarea>
                         </div>
                     </div>
-                    <button type="submit" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-newcolor4 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-color3">
+                    <button type="submit" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-newcolor4 rounded-lg focus:ring-4 focus:ring-blue-200  hover:bg-color3">
                         Publish comment
                     </button>
                     </form>

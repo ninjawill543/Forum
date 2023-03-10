@@ -22,17 +22,17 @@
     <header >
         <div class="fixed flex justify-around w-full h-16 shadow-md bg-newcolor1">
             <h1 id="h1Title"
-                class="relative uppercase my-[20px] right-72 font-bold text-center dark:hover:text-color1 text-newcolor4">
+                class="relative uppercase my-[20px] right-72 font-bold text-center text-newcolor4">
                 Dread Forums</h1>
             <div class="grid w-96 self-center items-center grid-cols-3">
                 <a href="/your-profil/">
-                    <button  value="psd"  class=" font-medium rounded-lg shadow-xl flex relative w-20 left-[50vh] cursor-pointer focus:ring-blue-300 text-sm text-center dark:bg-color2 dark:hover:bg-color3 dark:focus:ring-color3 text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+                    <button  value="psd"  class=" font-medium rounded-lg shadow-xl flex relative w-20 left-[50vh] cursor-pointer focus:ring-blue-300 text-sm text-center  text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
                         <p  class="w-fit text-xs uppercase p-3">Profile</p>
                     </button> 
                 </a>
                 
                 <form>
-                    <button type="submit" value="logout" name="logOutButton" class=" font-medium rounded-lg shadow-xl flex relative w-24 left-[47vh] cursor-pointer focus:ring-blue-300 text-sm text-center dark:bg-color2 dark:hover:bg-color3 dark:focus:ring-color3 text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+                    <button type="submit" value="logout" name="logOutButton" class=" font-medium rounded-lg shadow-xl flex relative w-24 left-[47vh] cursor-pointer focus:ring-blue-300 text-sm text-center text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
                         <p class="w-fit text-xs uppercase p-3">LogOut</p>
                         <svg class="relative top-2 right-1" fill="#000000" width="24px" height="24px" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
@@ -73,16 +73,16 @@
                         <p class="font-light text-sm ml-4"> {{ .Username }}</p>
                         <p class="font-medium mt-4 text-xl ml-4">Member since: </p>
                         <p class="font-light text-sm ml-4"> {{ .CreationDate }}</p>
-                        <button onclick="" value="psd"  class=" font-medium rounded-lg shadow-xl flex relative w-24 left-[5vh] top-[5vh] cursor-pointer focus:ring-blue-300 text-sm text-center dark:bg-color2 dark:hover:bg-color3 dark:focus:ring-color3 text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+                        <button onclick="" value="psd"  class=" font-medium rounded-lg shadow-xl flex relative w-24 left-[16vh] top-[5vh] cursor-pointer focus:ring-blue-300 text-sm text-center text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
                             <p class="w-fit text-xs uppercase p-3">Report</p>
                         </button> 
-                        <button onclick="" value="psd"  class=" font-medium rounded-lg shadow-xl flex relative w-24 left-[25vh] top-[1vh] cursor-pointer focus:ring-blue-300 text-sm text-center dark:bg-color2 dark:hover:bg-color3 dark:focus:ring-color3 text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+                        <!-- <button onclick="" value="psd"  class=" font-medium rounded-lg shadow-xl flex relative w-24 left-[25vh] top-[1vh] cursor-pointer focus:ring-blue-300 text-sm text-center  text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
                             <p class="w-fit text-xs uppercase p-3">Ban</p>
-                        </button> 
-                        <!-- <button onclick="" value="psd"  class=" font-medium rounded-lg shadow-xl flex relative w-24 left-[10vh] cursor-pointer focus:ring-blue-300 text-sm text-center dark:bg-color2 dark:hover:bg-color3 dark:focus:ring-color3 text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+                        </button>  -->
+                        <!-- <button onclick="" value="psd"  class=" font-medium rounded-lg shadow-xl flex relative w-24 left-[10vh] cursor-pointer focus:ring-blue-300 text-sm text-center  text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
                             <p class="w-fit text-xs uppercase p-3">Report</p>
                         </button> -->
-                        <!-- <button onclick="openDelete()" class="font-medium rounded-lg shadow-xl flex relative w-44 left-[15vh] mt-[5vh] cursor-pointer focus:ring-blue-300 text-sm text-center dark:bg-color2 dark:hover:bg-color3 dark:focus:ring-color3 text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+                        <!-- <button onclick="openDelete()" class="font-medium rounded-lg shadow-xl flex relative w-44 left-[15vh] mt-[5vh] cursor-pointer focus:ring-blue-300 text-sm text-center  text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
                             <p class="w-fit text-xs uppercase p-3 ml-[0.5vh]">DELETE YOUR ACCOUNT</p>
                         </button>  -->
 
@@ -96,12 +96,20 @@
                             <p class="font-medium mt-4 text-2xl text-center align-middle">Send {{ .Username }} a message</p>
                         </div>
                         <!-- <div class="flex items-start"> -->
-                            <textarea class="bg-newcolor6 w-[35vh] ml-[-7vh] h-[35vh] rounded-md"></textarea>
-                            <a href="../private-message/{{ .Username }}">
-                                <button  value="psd"  class=" font-medium rounded-lg shadow-xl ml-[25vh] mt-[3vh] cursor-pointer focus:ring-blue-300 text-sm text-center dark:bg-color2 dark:hover:bg-color3 dark:focus:ring-color3 text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
-                                    <p  class="w-fit text-xs uppercase p-3">Send</p>
-                                </button> 
-                            </a>
+                            <textarea class="bg-newcolor6 w-[43vh] ml-[vh] h-[35vh] rounded-md"></textarea>
+                            <div class="flex">
+                                <a href="../private-message/{{ .Username }}">
+                                    <button  value="psd"  class=" font-medium rounded-lg shadow-xl w-[15vh] mt-[3vh] ml-[-2vh] cursor-pointer focus:ring-blue-300 text-sm text-center  text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+                                        <p  class="w-fit text-xs uppercase p-3 ">View Conversation</p>
+                                    </button> 
+                                </a>
+                                <a href="../private-message/{{ .Username }}">
+                                    <button  value="psd"  class=" font-medium rounded-lg shadow-xl ml-[20vh] mt-[3vh] cursor-pointer focus:ring-blue-300 text-sm text-center  text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+                                        <p  class="w-fit text-xs uppercase p-3">Send</p>
+                                    </button> 
+                                </a>
+                            </div>
+                            
                             
                         <!-- </div> -->
                         
