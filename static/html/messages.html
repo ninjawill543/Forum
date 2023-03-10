@@ -26,7 +26,7 @@
                 </button>
             </div>
            
-            <a>{{ .Category }}</a>
+            <a href="../topics/category={{ .Category }}">{{ .Category }}</a>
             <div id="profbutton" class="hidden">
                 <a href="../your-profil">
                     <button 
@@ -105,9 +105,6 @@
                 </div>
 
             </div> -->
-            <a href="/index">
-              <img src="https://img.icons8.com/ios/50/null/circled-left-2.png" class="h-12 w-12 ml-[6vh]  mt-[10vh] "/>
-            </a>
             <div id="list" class="flex flex-col justify-start items-center ml-[24vh] w-[100vh] h-[100vh] mt-[10vh] ">
                 {{ range $k, $v := .Messages }}
                 <div class='w-[100vh] flex items-center justify-center mb-[1vh]'>  
