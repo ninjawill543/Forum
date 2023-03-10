@@ -24,6 +24,7 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 	var firstMessage string
 	var username string
 	var likeOrDislike int
+	var category string
 	// var lastPost string
 
 	filter = r.FormValue("filter")
@@ -33,14 +34,14 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 		filter = "creationDate"
 	}
 
-	category := strings.Split(r.URL.Path, "/")
-	category = strings.Split(category[2], "=")
+	categoryUrl := strings.Split(r.URL.Path, "/")
+	categoryUrl = strings.Split(categoryUrl[2], "=")
 
-	query = fmt.Sprintf("SELECT id, name, firstMessage, creationDate, owner, likes, nmbPosts, uuid FROM topics WHERE category = '%s' ORDER BY %s DESC ", category[1], filter)
+	query = fmt.Sprintf("SELECT id, name, firstMessage, creationDate, owner, likes, nmbPosts, category, uuid FROM topics WHERE category = '%s' ORDER BY %s DESC ", categoryUrl[1], filter)
 
 	if r.FormValue("searchbar") != "" {
 		searchName = "%" + r.FormValue("searchbar") + "%"
-		query = fmt.Sprintf("SELECT id, name, firstMessage, creationDate, owner, likes, nmbPosts, uuid FROM topics WHERE name LIKE '%s' AND category = '%s' ORDER BY %s DESC", searchName, category[1], filter)
+		query = fmt.Sprintf("SELECT id, name, firstMessage, creationDate, owner, likes, nmbPosts, category, uuid FROM topics WHERE name LIKE '%s' AND category = '%s' ORDER BY %s DESC", searchName, categoryUrl[1], filter)
 	}
 
 	cookie, err := r.Cookie("session")
@@ -68,7 +69,7 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 		TOPICSANDSESSION.Topics = nil
 		for row2.Next() {
 			defer row2.Close()
-			err = row2.Scan(&id, &name, &firstMessage, &creationDate, &owner, &likes, &nmbPosts, &uuid)
+			err = row2.Scan(&id, &name, &firstMessage, &creationDate, &owner, &likes, &nmbPosts, &category, &uuid)
 			if err != nil {
 				fmt.Println(err)
 			} else {
@@ -82,7 +83,8 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 				TOPICSANDSESSION.Topics[topicIndex].Uuid = uuid
 				TOPICSANDSESSION.Topics[topicIndex].Id = id
 				TOPICSANDSESSION.Topics[topicIndex].FirstMessage = firstMessage
-
+				TOPICSANDSESSION.Category = category
+				fmt.Println(TOPICSANDSESSION.Category)
 				checkIfLiked := fmt.Sprintf("SELECT likeOrDislike FROM likesFromUser WHERE uuidUser = '%s' AND uuidLiked = '%s'", cookie.Value, uuid)
 				row, err := db.Query(checkIfLiked)
 				if err != nil {

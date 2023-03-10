@@ -55,81 +55,104 @@
 </header>
     
     <main>
-        <div id="container" class="flex align-start  ">
-
-                      
-                <div id="list" class="flex flex-col justify-start items-center ml-[10vh] w-[100vh] h-[100vh] mt-[20vh] ">
-                    <p class="text-4xl font-bold mt-[-8vh] mb-[12vh]">Welcome to CS Forums</p>  
-                    
-                    <div class='flex items-center justify-center mb-[3vh]'>  
-                        <div class="rounded-xl border p-5 shadow-md w-9/12 bg-white">
-                        <div class="flex w-full items-center justify-between border-b pb-3">
-                          <div class="flex items-center space-x-3">
-                            <div class="text-lg font-bold text-slate-700">Juan</div>
-                          </div>
-                          <div class="flex items-center space-x-3 ml-[-35vh]">
-                            <div class="text-lg font-bold text-slate-700">Sneakers</div>
-                          </div>
-                          <div class="flex items-center space-x-8">
-                            <div class="text-xs text-neutral-500">2 hours ago</div>
-                          </div>
-                        </div>
-                    
-                        <div class="mt-4 mb-6">
-                          <div class="mb-3 text-xl font-bold">Nulla sed leo tempus, feugiat velit vel, rhoncus neque?</div>
-                          <div class="text-sm text-neutral-600">Aliquam a tristique sapien, nec bibendum urna. Maecenas convallis dignissim turpis, non suscipit mauris interdum at. Morbi sed gravida nisl, a pharetra nulla. Etiam tincidunt turpis leo, ut mollis ipsum consectetur quis. Etiam faucibus est risus, ac condimentum mauris consequat nec. Curabitur eget feugiat massa</div>
-                        </div>
-                    
-                        <div>
-                          <div class="flex items-center justify-between text-slate-500">
-                            <div class="flex">
-                                <!-- <a class="mr-2" href="../messages/{{ .Name }}"> -->
-                                  <div class="flex cursor-pointer items-center transition hover:text-slate-600">
-                                    <object data="../css/comments.svg" type="image/svg+xml" width="25"></object>
-      
-                                    <span class="text-slate-900">3</span>
-                                  </div>
-                                <!-- </a> -->
-                                <!-- <form class="flex" method="POST"> -->
-                                  <button class="mr-2" type="submit" value="{{ .Uuid }}" name="like">
-                                    <div class="flex cursor-pointer items-center transition hover:text-slate-600">
-                                      <object data="../css/videPlan de travail 1.svg" type="image/svg+xml" width="25"></object>
-                                      <span class="text-slate-900">4</span>
-                                    </div>
-                                  </button>
-                                  <button type="submit" name="dislike">
-                                    <div class="flex cursor-pointer items-center transition hover:text-slate-600">
-                                      <object data="../css/dislike_vide.svg" type="image/svg+xml" width="25"></object>
-                                    </div>
-                                  </button>
-                                <!-- </form> -->
-                                
-                              </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    
-
-
-
-            <div  class="fixed top-[20vh] right-[25vh]">
-              <form method="POST">
-                <select id="filter" onchange="javascript: if(this.value != '0') this.form.submit();" name="filter" class="w-[30vh] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 ">
-                    <option selected>Catégories:</option>
-                    <option value="">Informatique</option>
-                    <option value="">Dinosaures</option>
-                    <option value="">Montres</option>
-                    <option value="">Sneakers</option>
-                    <option value="">Jardinage</option>
-                    <option value="">Jeux-vidéos</option>
-                    <option value="">Escalade</option>
-                  <input type="submit" value="submit" name="filter" hidden="true">
-                </select>
+      {{ $TopicsAndSession := . }}
+      <div id="container" class="flex align-start  ">
+        
+        
+        <div id="list" class="flex flex-col justify-start items-center ml-[10vh] w-[100vh] h-[100vh] mt-[20vh] ">
+          <p class="text-4xl font-bold mt-[-8vh] mb-[12vh]">Welcome to CS Forums</p>  
+          
+          {{ range $k, $v := .Topics }}
+          <div class='w-[100vh] flex items-center justify-center mb-[1vh]'>  
+              <div class="rounded-xl border p-5 shadow-md w-9/12 bg-white">
+              <div class="flex w-full items-center justify-between border-b pb-3">
+                <div class="flex items-center space-x-3">
+                  <div class="text-md font-bold text-slate-700"><a href="../profil/{{ .Owner }}">{{ $v.Owner }}</a></div>
+                  <a href="/topics/category={{ $v.Category }}">c/{{ $v.Category }}</a>
+                </div>
+                <div class="flex items-center space-x-8">
+                  <div class="text-xs text-neutral-500">{{ $v.CreationDate }}</div>
+                </div>
               </div>
-            </form>
-    
-            
+          
+              <div class="mt-4 mb-6">
+                <div class="mb-3 text-xl font-bold truncate"><a href="../messages/{{ .Name }}">{{ $v.Name }}</a></div>
+
+                <div id="toedit{{ $k }}" class="truncate flex text-base text-neutral-600 "><a href="../messages/{{ .Name }}">{{ $v.FirstMessage }}</a></div>
+                <div id="edit{{ $k }}" class="hidden">
+                  <div class="bg-newcolor5 flex text-base text-neutral-600 "><a id="enter{{ $k }}" contenteditable="true" href="/topics/{{ .Name }}">{{ $v.FirstMessage }}</a></div>
+                </div>
+                
+               
+              </div>
+          
+              <div>
+                <div class="flex items-center justify-between text-slate-500">
+                  <div class="flex">
+                    <a class="mr-2 z-50" href="../messages/{{ .Name }}">
+                      <div class="flex cursor-pointer items-center transition hover:text-slate-600">
+                          <span class="text-slate-900 inline-flex relative">
+                            <img src="../css/comments.svg" width="21px" height="21px">
+                            {{ $v.NmbPosts }}
+                          </span>
+                      </div>
+                    </a>
+                    <form class="flex" method="POST">
+                      <button class="mr-2" type="submit" value="{{ .Uuid }}" name="like">
+                        <div class="flex cursor-pointer items-center transition hover:text-slate-600">
+                          {{ if $v.IsLiked }}
+                            <img src="../css/like_plein.svg" width="21px" height="21px">
+                          {{ else }}
+                            <img src="../css/videPlan de travail 1.svg" width="21px" height="21px">
+                          {{ end }}
+                          <span class="text-slate-900">{{ $v.Likes }}</span>
+                        </div>
+                      </button>
+
+                      <button type="submit" value="{{ .Uuid }}" name="dislike">
+                        <div class="flex cursor-pointer items-center transition hover:text-slate-600">
+                          {{ if $v.IsDisliked }}
+                            <img src="../css/dislike_plein.svg" width="21px" height="21px">
+                          {{ else }}
+                          <img src="../css/dislike_vide.svg" width="21px" height="21px">
+                          {{ end }}
+                        </div>
+                      </button>
+                    </form>
+                    <a>
+                      <div onclick="edit()" class="flex cursor-pointer items-center transition hover:text-slate-600 ml-[52vh]">
+                        <img src="../css/edit.svg" width="21px" height="21px">
+                        
+                      </div>
+                    </a>
+                    <a>
+                      <div  class="flex cursor-pointer items-center transition hover:text-slate-600 ml-[2vh]">
+                        <img src="../css/corbeille.svg" width="21px" height="21px">
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {{ end }}
+                    
+
+
+
+            <div class="fixed top-[20vh] right-[25vh]">
+              <div class="bg-black text-white hover:bg-black">
+                categories
+                <div class="bg-black text-white">
+                  <a href="topics/category=blabla">blabla</a>
+                  <br>
+                  <a href="test1">TEST2</a>
+                  <br>
+                  <a href="test1">TEST3</a>
+                  <br>
+                  <a href="test1">TEST4</a>
+                </div>
+              </div>
         </div>
         
         

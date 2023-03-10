@@ -2,6 +2,7 @@ package forum
 
 type TopicsAndSession struct {
 	SessionUser string
+	Category    string
 	Topics      []Topic `Topic`
 }
 
@@ -17,4 +18,5 @@ type Topic struct {
 	LastPost     string
 	IsLiked      int
 	IsDisliked   int
+	Category     string
 }

@@ -44,6 +44,7 @@ func MessagesPageDisplay(db *sql.DB, r *http.Request) {
 	var uuidPath string
 	var likeOrDislike int
 	var asc string
+	var category string
 
 	filter = r.FormValue("filter")
 	if filter == "" || filter == "oldest" {
@@ -54,19 +55,20 @@ func MessagesPageDisplay(db *sql.DB, r *http.Request) {
 	}
 
 	topicName := strings.Split(r.URL.Path, "/")
-	queryTopicName := fmt.Sprintf("SELECT uuid FROM topics WHERE name = '%s'", topicName[2])
+	queryTopicName := fmt.Sprintf("SELECT uuid, category FROM topics WHERE name = '%s'", topicName[2])
 	row, err := db.Query(queryTopicName)
 	if err != nil {
 		fmt.Println(err)
 	} else {
 		for row.Next() {
 			defer row.Close()
-			err = row.Scan(&uuid)
+			err = row.Scan(&uuid, &category)
 			if err != nil {
 				fmt.Println(err)
 			}
 		}
 		uuidPath = uuid
+		Messages.Category = category
 	}
 
 	for i := 0; i < len(t.TOPICSANDSESSION.Topics); i++ {
@@ -78,7 +80,6 @@ func MessagesPageDisplay(db *sql.DB, r *http.Request) {
 		Messages.UuidPath = t.TOPICSANDSESSION.Topics[i].Uuid
 	}
 	query := fmt.Sprintf("SELECT id, message, creationDate, owner, report, like, edited, uuid FROM messages WHERE uuidPath = '%s' ORDER BY %s %s", uuidPath, filter, asc)
-	fmt.Println(query)
 	row2, err := db.Query(query)
 	if err != nil {
 		fmt.Println(err)

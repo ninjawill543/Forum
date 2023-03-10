@@ -10,6 +10,7 @@ type Messages struct {
 	Uuid         string
 	UuidPath     string
 	SessionUser  string
+	Category     string
 	Messages     []Message `Message`
 }
 

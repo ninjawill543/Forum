@@ -27,6 +27,7 @@
                 </button>
             </div>
            
+            <p>{{ .Category }}</p>
             <div id="profbutton" class="hidden">
                 <a href="../your-profil">
                     <button 
@@ -110,6 +111,7 @@
                     <div class="flex w-full items-center justify-between border-b pb-3">
                       <div class="flex items-center space-x-3">
                         <div class="text-md font-bold text-slate-700"><a href="../profil/{{ .Owner }}">{{ $v.Owner }}</a></div>
+                        <!-- <a href="/topics/category={{ $v.Category }}">c/{{ $v.Category }}</a> -->
                       </div>
                       <div class="flex items-center space-x-8">
                         <div class="text-xs text-neutral-500">{{ $v.CreationDate }}</div>
