@@ -41,4 +41,8 @@ function test(userName) {
 
 function refreshPage() {
     window.location.reload();
+}   
+
+function edit(nmb) {
+    console.log(nmb);
 }

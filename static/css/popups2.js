@@ -40,17 +40,7 @@ function closeAll() {
     document.getElementById("DELETE").style.display = "none";
 }
 
-function checkIfLiked(likeOrDislike) {
-    console.log(likeOrDislike);
-    let likeOrDislike = 1
-    emptyLike = document.getElementById('emptyLike');
-    like = document.getElementById('like');
-
-    if (likeOrDislike == 1) {
-        like.style.display = "block"
-        emptyLike.style.display = "none"
-    } else {
-        like.style.display = "none"
-        emptyLike.style.display = "block"
-    }
-}
+// function edit(nmb) {
+//     console.log(nmb);
+    
+// }

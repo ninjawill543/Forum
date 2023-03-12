@@ -158,24 +158,19 @@
                                   <img src="../css/dislike_plein.svg" width="21px" height="21px">
                                 {{ else }}
                                 <img src="../css/dislike_vide.svg" width="21px" height="21px">
-                                {{ end }}
                               </div>
                             </button>
                           </form>
-                          <a>
-                            <div onclick="edit()" class="flex cursor-pointer items-center transition hover:text-slate-600 ml-[52vh]">
-                              <img src="../css/edit.svg" width="21px" height="21px">
-                              
-                            </div>
-                          </a>
+                          <div id="edit{{ $k }}" onclick="edit('{{ $k }}')" class="flex cursor-pointer items-center transition hover:text-slate-600 ml-[52vh]">
+                            <img src="../css/edit.svg" width="21px" height="21px">
+                          </div>
                           <form method="POST">
-                            <a>
-                              <div  class="flex cursor-pointer items-center transition hover:text-slate-600 ml-[2vh]">
-                                <button type="submit" name="delete" value="{{ $v.Uuid }}">
-                                  <img src="../css/corbeille.svg" width="21px" height="21px">
-                                </div>
-                              </a>
-                          </form>
+                            <div  class="flex cursor-pointer items-center transition hover:text-slate-600 ml-[2vh]">
+                              <button type="submit" name="delete" value="{{ $v.Uuid }}">
+                                <img src="../css/corbeille.svg" width="21px" height="21px">
+                              </div>
+                            </form>
+                            {{ end }}
                         </div>
                       </div>
                     </div>

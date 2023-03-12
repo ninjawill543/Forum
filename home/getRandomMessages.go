@@ -4,11 +4,12 @@ import (
 	"database/sql"
 	"fmt"
 	t "forum/structs"
+	"net/http"
 )
 
 var TOPICSANDSESSION t.TopicsAndSession
 
-func GetRandomMessages(db *sql.DB) {
+func GetRandomMessages(db *sql.DB, r *http.Request) {
 	var name string
 	var firstMessage string
 	var creationDate string
@@ -18,9 +19,28 @@ func GetRandomMessages(db *sql.DB) {
 	var category string
 	var allTopics []string
 	var alreadyUsed bool
+	var username string
 
 	TOPICSANDSESSION.Topics = nil
 	allTopics = nil
+
+	cookie, err := r.Cookie("session")
+	if err != nil {
+		fmt.Println(err)
+		TOPICSANDSESSION.SessionUser = ""
+	} else {
+		queryGetName := fmt.Sprintf("SELECT username FROM users WHERE uuid = '%s'", cookie.Value)
+		row, err := db.Query(queryGetName)
+		if err != nil {
+			fmt.Println(err)
+		} else {
+			for row.Next() {
+				defer row.Close()
+				row.Scan(&username)
+			}
+			TOPICSANDSESSION.SessionUser = username
+		}
+	}
 
 	for i := 0; i < 10; i++ {
 		query := "SELECT name, firstMessage, creationDate, owner, likes, category FROM topics ORDER BY RANDOM() LIMIT 1"
