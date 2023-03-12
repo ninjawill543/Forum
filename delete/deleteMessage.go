@@ -9,6 +9,7 @@ import (
 
 func DeleteMessage(r *http.Request, db *sql.DB) {
 	if r.FormValue("delete") != "" {
+		fmt.Println("test")
 		var owner string
 		var uuidPath string
 

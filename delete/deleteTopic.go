@@ -9,6 +9,7 @@ import (
 
 func DeleteTopic(r *http.Request, db *sql.DB) {
 	if r.FormValue("delete") != "" {
+		fmt.Println(r.FormValue("delete"))
 		var owner string
 		uuid := r.FormValue("delete")
 		query := fmt.Sprintf("SELECT owner FROM topics WHERE uuid = '%s'", uuid)
