@@ -46,7 +46,7 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 
 	cookie, err := r.Cookie("session")
 	if err != nil {
-		// fmt.Println(err)
+		fmt.Println(err)
 		TOPICSANDSESSION.SessionUser = ""
 	} else {
 		queryGetName := fmt.Sprintf("SELECT username FROM users WHERE uuid = '%s'", cookie.Value)
