@@ -2,21 +2,25 @@ function openLogin() {
     document.getElementById("login").style.display = "block";
     document.getElementById("register").style.display = "none";
     document.getElementById("register2").style.display = "none";
+    blur();
 }
 function openRegister() {
     document.getElementById("login").style.display = "none";
     document.getElementById("register").style.display = "block";
     document.getElementById("register2").style.display = "none";
+    blur();
 }
 function openRegister2() {
     document.getElementById("register").style.display = "none";
     document.getElementById("register").style.display = "none";
     document.getElementById("register2").style.display = "block";
+    blur();
 }
 function closeRegister() {
     document.getElementById("register2").style.display = "none";
     document.getElementById("register").style.display = "none";
     document.getElementById("login").style.display = "none";
+    unblur();
 } 
 function openLoginIf() {
     let loggedin = 1;
@@ -45,4 +49,16 @@ function refreshPage() {
 
 function edit(nmb) {
     console.log(nmb);
+}
+
+function blur(){
+    document.getElementById("blurrr").style.display = "block";
+    document.getElementById("filter").style.filter = "blur(4px)";
+    document.getElementById("search").style.filter = "blur(4px)";
+}
+
+function unblur(){
+    document.getElementById("blurrr").style.display = "none";
+    document.getElementById("filter").style.filter = "blur(0px)";
+    document.getElementById("search").style.filter = "blur(0px)";
 }

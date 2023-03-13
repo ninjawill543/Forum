@@ -15,9 +15,11 @@
         <h1 id="h1Title"
             class="relative uppercase my-[20px] right-72 font-bold text-center text-newcolor4">
             Dread Forums</h1>
+            
         <div class="grid w-96 self-center items-center grid-cols-3">
+          <p class="font-bold text-center relative left-[-85vh]">c/{{ .Category }}</p>
             <div id="logbutton" class="hidden">
-                <button onclick="openLogin()" class=" font-medium rounded-lg shadow-xl flex relative w-24 left-[60vh] cursor-pointer focus:ring-blue-300 text-sm text-center  text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+                <button onclick="openLogin()" class=" font-medium rounded-lg shadow-xl flex relative w-24 left-[45vh] cursor-pointer focus:ring-blue-300 text-sm text-center  text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
                     <p class="w-fit text-xs uppercase p-3">login</p>
                     <svg class="relative top-2 right-1" fill="#000000" width="24px" height="24px" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
@@ -27,11 +29,11 @@
                 </button>
             </div>
            
-            <p>{{ .Category }}</p>
+            
             <div id="profbutton" class="hidden">
                 <a href="../your-profil">
                     <button 
-                    class=" font-medium flex rounded-lg relative w-24 left-[60vh] cursor-pointer focus:ring-blue-300 text-sm text-center ext-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+                    class=" font-medium flex rounded-lg relative w-24 left-[45vh] cursor-pointer focus:ring-blue-300 text-sm text-center ext-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
                     <p class="w-fit text-xs uppercase p-3 text-white">{{ .SessionUser }}</p>
                     <svg class="relative top-2 right-1" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
@@ -49,6 +51,7 @@
                 </button>
                 </a>
             </div>
+            
 
             
         </div>
@@ -57,6 +60,7 @@
     
     <main>
         <div id="container" class="flex align-start  ">
+          <div id="blurrr" class="hidden backdrop-blur-sm  fixed top-0 left-0 w-[10000px] h-[10000px]"></div>
             <!-- <div id="list" class="flex justify-self-center pr-[70vh] h-[90vh] pt-[10vh] ">
                 <div class="shadow-xl bg-newcolor1 h-[80vh] w-[100vh]">
                     <div class="flex w-[100vh] bg-newcolor3 h-[5vh]">
@@ -207,7 +211,7 @@
                     </div>
                 </form>
             </div>
-            <div id="filter" class="fixed top-[25vh] right-[12vh]  h-[90vh] ">
+            <div id="search" class="fixed top-[25vh] right-[12vh]  h-[90vh] ">
                 <!-- <div class="flex flex-col align-center w-[45vh] bg-color1 h-[38vh]">
                     <div class="shadow-xl flex w-[45vh] bg-newcolor3 h-[5vh] ">
                         <p class="pt-3 pl-6 text-newcolor1">Add new topic</p>
@@ -217,7 +221,7 @@
                     <textarea class=" shadow-xl h-[30vh] bg-newcolor2 placeholder:text-slate-900" rows='10' placeholder='  Write your comment here (Optional):'></textarea>
                     <button class="shadow-md rounded-lg w-24 h-[5vh] bg-newcolor4 fixed top-[55vh] right-[14vh] text-white hover:bg-color3 font-medium">Submit</button>
                 </div> -->
-                <div class="max-w-2xl mx-auto">
+                <div  class="max-w-2xl mx-auto">
                     <form method="POST">
                     <div class="shadow-lg mb-4 w-full bg-gray-50 rounded-lg border border-gray-200 ">
                         <div class="flex rounded-t-lg justify-between items-center py-2 px-3 bg-newcolor3">
