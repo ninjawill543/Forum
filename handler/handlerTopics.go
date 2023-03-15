@@ -2,6 +2,7 @@ package forum
 
 import (
 	"database/sql"
+	"fmt"
 	t3 "forum/delete"
 	t "forum/listTopics"
 	t4 "forum/login"
@@ -42,7 +43,10 @@ func Handler_topics(w http.ResponseWriter, r *http.Request) {
 		t3.DeleteTopic(r, databaseForum)
 	}
 
-	t.DisplayTopic(r, databaseForum)
-
-	tmpl1.Execute(w, t.TOPICSANDSESSION)
+	if r.URL.Path != "/topics/category=blabla" {
+		fmt.Println("this category doesnt exist")
+	} else {
+		t.DisplayTopic(r, databaseForum)
+		tmpl1.Execute(w, t.TOPICSANDSESSION)
+	}
 }
