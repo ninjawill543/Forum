@@ -22,6 +22,9 @@ module.exports = {
         'footer-texture': "url('/img/footer-texture.png')",
         }
       },
+      screens: {
+        'big': '1920px',
+      }
     },
   },
   plugins: [],

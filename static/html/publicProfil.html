@@ -22,7 +22,7 @@
     <header >
         <div class="fixed flex justify-around w-full h-16 shadow-md bg-newcolor1">
             <h1 id="h1Title"
-                class="relative uppercase my-[20px] right-72 font-bold text-center text-newcolor4">
+                class="relative uppercase my-[20px] big:right-72 2xl:right-60 font-bold text-center text-newcolor4">
                 Dread Forums</h1>
             <div class="grid w-96 self-center items-center grid-cols-3">
                 <a href="/your-profil/">
@@ -99,12 +99,12 @@
                             <textarea class="resize-none bg-newcolor6 w-[43vh] ml-[vh] h-[35vh] rounded-md"></textarea>
                             <div class="flex">
                                 <a href="../private-message/{{ .Username }}">
-                                    <button  value="psd"  class=" font-medium rounded-lg shadow-xl w-[15vh] mt-[3vh] ml-[-2vh] cursor-pointer focus:ring-blue-300 text-sm text-center  text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+                                    <button  value="psd"  class=" font-medium rounded-lg shadow-xl w-[15vh] big:mt-[3vh] 2xl:mt-[1vh] ml-[-2vh] cursor-pointer focus:ring-blue-300 text-sm text-center  text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
                                         <p  class="w-fit text-xs uppercase p-3 ">View Conversation</p>
                                     </button> 
                                 </a>
                                 <a href="../private-message/{{ .Username }}">
-                                    <button  value="psd"  class=" font-medium rounded-lg shadow-xl ml-[20vh] mt-[3vh] cursor-pointer focus:ring-blue-300 text-sm text-center  text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+                                    <button  value="psd"  class=" font-medium rounded-lg shadow-xl ml-[20vh] big:mt-[3vh] 2xl:mt-[2vh] cursor-pointer focus:ring-blue-300 text-sm text-center  text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
                                         <p  class="w-fit text-xs uppercase p-3">Send</p>
                                     </button> 
                                 </a>
@@ -120,7 +120,7 @@
                        
                     </div>
         
-                    <div  class="flex rounded-xl shadow-md flex-col justify-start items-center ml-[10vh] w-[55vh] h-[85vh] mt-[10vh] bg-newcolor1">
+                    <div  class="flex rounded-xl shadow-md flex-col justify-start items-center big:ml-[10vh] 2xl:ml-[5vh] w-[55vh] h-[85vh] mt-[10vh] bg-newcolor1">
                         <div class="rounded-t-md h-[6vh] w-full ">
                             <p class="font-medium mt-4 text-2xl text-center align-middle">{{ .Username }}'s comments</p>
                         </div>
@@ -133,7 +133,7 @@
                         
                     </div>
         
-                    <div  class="flex rounded-xl shadow-md flex-col justify-start items-center ml-[10vh] w-[50vh] h-[85vh] mt-[10vh] bg-newcolor1">
+                    <div  class="flex rounded-xl shadow-md flex-col justify-start items-center big:ml-[10vh] 2xl:ml-[5vh] w-[50vh] h-[85vh] mt-[10vh] bg-newcolor1">
                         <div class="rounded-t-md h-[6vh] w-full ">
                             <p class="font-medium mt-4 text-2xl text-center align-middle">{{ .Username }}'s topics</p>
                         </div>

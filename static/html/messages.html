@@ -12,7 +12,7 @@
   <header >
     <div class="fixed flex justify-around w-full h-16 shadow-md bg-newcolor1">
         <h1 id="h1Title"
-            class="relative uppercase my-[20px] right-72 font-bold text-center text-newcolor4">
+            class="relative uppercase my-[20px] big:right-72 2xl:right-60 font-bold text-center text-newcolor4">
             Dread Forums</h1>
         <div class="grid w-96 self-center items-center grid-cols-3">
           <a href="../topics/category={{ .Category }}">
@@ -108,7 +108,7 @@
                 </div>
 
             </div> -->
-            <div id="list" class="flex flex-col justify-start items-center ml-[24vh] w-[100vh] h-[100vh] mt-[10vh] ">
+            <div id="list" class="flex flex-col justify-start items-center big:ml-[24vh] big:w-[100vh] 2xl:ml-[16vh] 2xl:w-[90vh] h-[100vh] mt-[10vh] ">
                 {{ range $k, $v := .Messages }}
                 <div class='w-[100vh] flex items-center justify-center mb-[1vh]'>  
                     <div class="rounded-xl border p-5 shadow-md w-9/12 bg-white">
@@ -238,7 +238,7 @@
                 </div>
                 
             </div>
-            <div id="filter" class="fixed top-[11vh] left-[18vh] ">
+            <div id="filter" class="fixed top-[11vh] big:left-[18vh] 2xl:left-[10vh]">
               <form method="POST">
                 <select id="filter" onchange="javascript: if(this.value != '0') this.form.submit();" name="filter" class="w-[20vh] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                   <option selected>Filter by</option>
@@ -255,7 +255,7 @@
         
     </main>
     <div class="hidden" id="login">
-      <div class="fixed rounded-lg top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 h-[40vh] w-[35vh] bg-newcolor4 flex flex-col items-center justify-center ">
+      <div class="fixed rounded-lg top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 big:h-[40vh] 2xl:h-[44vh] w-[35vh] bg-newcolor4 flex flex-col items-center justify-center ">
           <button class="pl-[30vh] pb-2 text-xl font-medium" onclick="closeRegister()">X</button>
           <p>Login</p>
           <form method="post" class="mt-8 mb-4">
