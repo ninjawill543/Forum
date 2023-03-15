@@ -85,7 +85,7 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 				TOPICSANDSESSION.Topics[topicIndex].FirstMessage = firstMessage
 				TOPICSANDSESSION.Category = category
 				fmt.Println(TOPICSANDSESSION.Category)
-				checkIfLiked := fmt.Sprintf("SELECT likeOrDislike FROM likesFromUser WHERE uuidUser = '%s' AND uuidLiked = '%s'", cookie.Value, uuid)
+				checkIfLiked := fmt.Sprintf("SELECT likeOrDislike FROM likesFromUser WHERE uuidUser = '%s' AND uuidLiked = '%s'", "", uuid)
 				row, err := db.Query(checkIfLiked)
 				if err != nil {
 					fmt.Println(err)

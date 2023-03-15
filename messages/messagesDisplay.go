@@ -16,9 +16,10 @@ func MessagesPageDisplay(db *sql.DB, r *http.Request) {
 
 	cookie, err := r.Cookie("session")
 	if err != nil {
-		// fmt.Println(err)
+		fmt.Println(err)
 		Messages.SessionUser = ""
 	} else {
+		fmt.Println(cookie.Value)
 		queryGetName := fmt.Sprintf("SELECT username FROM users WHERE uuid = '%s'", cookie.Value)
 		row3, err := db.Query(queryGetName)
 		if err != nil {
@@ -30,6 +31,7 @@ func MessagesPageDisplay(db *sql.DB, r *http.Request) {
 			}
 			Messages.SessionUser = username
 		}
+		fmt.Println(cookie.Value)
 	}
 
 	var creationDate string
@@ -105,7 +107,7 @@ func MessagesPageDisplay(db *sql.DB, r *http.Request) {
 				Messages.Messages[messageIndex].Like = like
 				Messages.Messages[messageIndex].Edited = edited
 
-				checkIfLiked := fmt.Sprintf("SELECT likeOrDislike FROM likesFromUser WHERE uuidUser = '%s' AND uuidLiked = '%s'", cookie.Value, uuid)
+				checkIfLiked := fmt.Sprintf("SELECT likeOrDislike FROM likesFromUser WHERE uuidUser = '%s' AND uuidLiked = '%s'", "cookie.Value", uuid)
 				row, err := db.Query(checkIfLiked)
 				if err != nil {
 					fmt.Println(err)
