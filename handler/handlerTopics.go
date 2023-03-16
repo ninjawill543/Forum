@@ -2,7 +2,6 @@ package forum
 
 import (
 	"database/sql"
-	"fmt"
 	t3 "forum/delete"
 	t "forum/listTopics"
 	t4 "forum/login"
@@ -14,6 +13,7 @@ import (
 func Handler_topics(w http.ResponseWriter, r *http.Request) {
 
 	tmpl1 := template.Must(template.ParseFiles("../static/html/topics.html"))
+	tmpl2 := template.Must(template.ParseFiles("../static/html/404.html"))
 
 	databaseForum, _ := sql.Open("sqlite3", "../forum.db")
 
@@ -43,10 +43,10 @@ func Handler_topics(w http.ResponseWriter, r *http.Request) {
 		t3.DeleteTopic(r, databaseForum)
 	}
 
-	if r.URL.Path != "/topics/category=blabla" {
-		fmt.Println("this category doesnt exist")
-	} else {
+	if r.URL.Path == "/topics/category=tech" || r.URL.Path == "/topics/category=dinosaurs" || r.URL.Path == "/topics/category=watches" || r.URL.Path == "/topics/category=sneakers" || r.URL.Path == "/topics/category=gardening" || r.URL.Path == "/topics/category=video-games" || r.URL.Path == "/topics/category=climbing" {
 		t.DisplayTopic(r, databaseForum)
 		tmpl1.Execute(w, t.TOPICSANDSESSION)
+	} else {
+		tmpl2.Execute(w, t.TOPICSANDSESSION)
 	}
 }

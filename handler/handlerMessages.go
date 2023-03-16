@@ -2,6 +2,7 @@ package forum
 
 import (
 	"database/sql"
+	"fmt"
 	t3 "forum/delete"
 	t5 "forum/login"
 	t "forum/messages"
@@ -9,10 +10,12 @@ import (
 	t4 "forum/users"
 	"html/template"
 	"net/http"
+	"strings"
 )
 
 func Handler_Messages(w http.ResponseWriter, r *http.Request) {
 	tmpl := template.Must(template.ParseFiles("../static/html/messages.html"))
+	tmpl2 := template.Must(template.ParseFiles("../static/html/404.html"))
 
 	databaseForum, _ := sql.Open("sqlite3", "../forum.db")
 
@@ -48,5 +51,35 @@ func Handler_Messages(w http.ResponseWriter, r *http.Request) {
 
 	t.MessagesPageDisplay(databaseForum, r)
 
-	tmpl.Execute(w, t.Messages)
+	query := `SELECT name FROM topics`
+
+	var name string
+	var exists bool
+	urlName := strings.Split(r.URL.Path, "/")
+	newUrlName := strings.TrimSpace(urlName[2])
+
+	row, err := databaseForum.Query(query)
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		for row.Next() {
+			defer row.Close()
+			err = row.Scan(&name)
+			if err != nil {
+				fmt.Println(err)
+			} else {
+				fmt.Println(name)
+				fmt.Println(newUrlName)
+				if name == string(newUrlName) {
+					exists = true
+				}
+			}
+		}
+	}
+
+	if exists {
+		tmpl.Execute(w, t.Messages)
+	} else {
+		tmpl2.Execute(w, nil)
+	}
 }

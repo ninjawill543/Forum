@@ -12,7 +12,7 @@ import (
 func main() {
 	t1.CreatingDatabases()
 
-	http.HandleFunc("/", t3.Handler_404)
+	http.HandleFunc("/404", t3.Handler_404)
 	http.HandleFunc("/topics/", t3.Handler_topics)
 	http.HandleFunc("/messages/", t3.Handler_Messages)
 	http.HandleFunc("/your-profil/", t3.Handler_profil)
@@ -20,7 +20,7 @@ func main() {
 	http.HandleFunc("/edit-topic/", t3.Handler_EditTopic)
 	http.HandleFunc("/edit-message/", t3.Handler_EditMessage)
 	http.HandleFunc("/private-message/", t3.Handler_Mp)
-	http.HandleFunc("/categories", t3.Handler_Home)
+	http.HandleFunc("/", t3.Handler_Home)
 
 	//url of our funcs
 	fs := http.FileServer(http.Dir("../static/css"))
