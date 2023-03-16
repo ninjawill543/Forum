@@ -13,11 +13,11 @@
   <header >
     <div class="fixed flex justify-around w-full h-16 shadow-md bg-newcolor1">
         <h1 id="h1Title"
-            class="relative uppercase my-[20px] big:right-72 2xl:right-60 xl:right-44 font-bold text-center text-newcolor4">
+            class="relative uppercase my-[20px] big:left-[-15vw] 2xl:left-[-15vw] xl:left-[-12vw]  font-bold text-center text-newcolor4">
             CS forums</h1>
         <div class="grid w-96 self-center items-center grid-cols-3">
             <div id="logbutton" class="hidden">
-                <button  onclick="openLogin()" class=" font-medium rounded-lg shadow-xl flex relative w-24 left-[60vh] cursor-pointer focus:ring-blue-300 text-sm text-center  text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+                <button  onclick="openLogin()" class=" font-medium rounded-lg shadow-xl flex relative w-24 big:right-[-30vw] 2xl:right-[-35vw] xl:right-[-35vw] sm:right-[-36vw] right-[-36vw] cursor-pointer focus:ring-blue-300 text-sm text-center  text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
                     <p class="w-fit text-xs uppercase p-3">login</p>
                     <svg class="relative top-2 right-1" fill="#000000" width="24px" height="24px" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
@@ -30,7 +30,7 @@
             <div id="profbutton" class="hidden">
                 <a href="../your-profil">
                     <button 
-                    class=" font-medium flex rounded-lg relative w-24 left-[60vh] cursor-pointer focus:ring-blue-300 text-sm text-center ext-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+                    class=" font-medium flex rounded-lg relative w-24 right-[-30vw] cursor-pointer focus:ring-blue-300 text-sm text-center ext-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
                     <p class="w-fit text-xs uppercase p-3 text-white">{{ .SessionUser }}</p>
                     <svg class="relative top-2 right-1" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
@@ -40,31 +40,61 @@
                                     d="M6.75 6.5C6.75 3.6005 9.1005 1.25 12 1.25C14.8995 1.25 17.25 3.6005 17.25 6.5C17.25 9.3995 14.8995 11.75 12 11.75C9.1005 11.75 6.75 9.3995 6.75 6.5Z"
                                     fill="#000000" />
                                 <path id="rec (Stroke)" fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M4.25 18.5714C4.25 15.6325 6.63249 13.25 9.57143 13.25H14.4286C17.3675 13.25 19.75 15.6325 19.75 18.5714C19.75 20.8792 17.8792 22.75 15.5714 22.75H8.42857C6.12081 22.75 4.25 20.8792 4.25 18.5714Z"
-                                    fill="#000000" />
+                                d="M4.25 18.5714C4.25 15.6325 6.63249 13.25 9.57143 13.25H14.4286C17.3675 13.25 19.75 15.6325 19.75 18.5714C19.75 20.8792 17.8792 22.75 15.5714 22.75H8.42857C6.12081 22.75 4.25 20.8792 4.25 18.5714Z"
+                                fill="#000000" />
+                              </g>
                             </g>
-                        </g>
-                    </svg>
-                </button>
-                </a>
-            </div>
+                          </svg>
+                        </button>
+                      </a>
+                    </div>
+                    
+                    
+                  </div>
+                </div>
+              </header>
+              
+              <main>
+                {{ $TopicsAndSession := . }}
+                <div id="container" class="flex ">
+                  
 
-            
-        </div>
-    </div>
-</header>
-    
-    <main>
-      {{ $TopicsAndSession := . }}
-      <div id="container" class="flex align-start  ">
         
-        
-        <div id="list" class="flex flex-col justify-start items-center ml-[10vh] w-[100vh] h-[100vh] mt-[20vh] ">
-          <p class="text-4xl font-bold mt-[-8vh] mb-[12vh]">Welcome to CS Forums</p>  
+        <div id="list" class="flex flex-col justify-start items-center sm:ml-[-20vw] w-[100vw] h-[100vw] mt-[20vh] ">
+          <p class="text-4xl font-bold mt-[-8vh] sm:mb-[12vh] mb-[5vh] max-sm:text-center">Welcome to CS Forums</p> 
+
+          <div class="sm:fixed sm:top-[20vh] sm:right-[15vw] max-sm:mb-[15vh]">
+            <div class="justify-center bg-newcolor6 text-black sm:w-[15vw] w-[70vw] text-center font-semibold text-2xl rounded-lg h-[30vh] ">
+              Categories
+              <div class="bg-newcolor6 text-black flex flex-col font-normal text-xl w-full ">
+                <div class="bg-newcolor5 rounded-lg w-5/6 self-center mb-2">
+                  <a href="topics/category=blabla">blabla</a>
+                </div>
+                <div class="bg-newcolor5 rounded-lg w-5/6 self-center mb-2">
+                  <a href="test1">Dinosaurs</a>
+                </div>
+                <div class="bg-newcolor5 rounded-lg w-5/6 self-center mb-2">
+                  <a href="test1">Watches</a>
+                </div>
+                <div class="bg-newcolor5 rounded-lg w-5/6 self-center mb-2">
+                  <a href="test1">Sneakers</a>
+                </div>
+                <div class="bg-newcolor5 rounded-lg w-5/6 self-center mb-2">
+                  <a href="test1">Gardening</a>
+                </div>
+                <div class="bg-newcolor5 rounded-lg w-5/6 self-center mb-2">
+                  <a href="test1">Video Games</a>
+                </div>
+                <div class="bg-newcolor5 rounded-lg w-5/6 self-center mb-2">
+                  <a href="test1">Climbing</a>
+                </div>
+              </div>
+            </div>
+          </div> 
           
           {{ range $k, $v := .Topics }}
-          <div class='w-[100vh] flex items-center justify-center mb-[1vh]'>  
-              <div class="rounded-xl border p-5 shadow-md w-9/12 bg-white">
+          <div class='w-[50vw] flex items-center justify-center mb-[1vh]'>  
+              <div class="rounded-xl border p-5 shadow-md sm:w-9/12 w-[90vw] bg-white">
               <div class="flex w-full items-center justify-between border-b pb-3">
                 <div class="flex items-center space-x-3">
                   <div class="text-md font-bold text-slate-700"><a href="../profil/{{ .Owner }}">{{ $v.Owner }}</a></div>
@@ -140,20 +170,6 @@
 
 
 
-            <div class="fixed top-[20vh] right-[25vh]">
-              <div class="bg-black text-white hover:bg-black">
-                categories
-                <div class="bg-black text-white">
-                  <a href="topics/category=blabla">blabla</a>
-                  <br>
-                  <a href="test1">TEST2</a>
-                  <br>
-                  <a href="test1">TEST3</a>
-                  <br>
-                  <a href="test1">TEST4</a>
-                </div>
-              </div>
-        </div>
         
         
     </main>
