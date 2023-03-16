@@ -55,10 +55,12 @@ function blur(){
     document.getElementById("blurrr").style.display = "block";
     document.getElementById("filter").style.filter = "blur(4px)";
     document.getElementById("search").style.filter = "blur(4px)";
+    document.getElementById("post").style.filter = "blur(4px)";
 }
 
 function unblur(){
     document.getElementById("blurrr").style.display = "none";
     document.getElementById("filter").style.filter = "blur(0px)";
     document.getElementById("search").style.filter = "blur(0px)";
+    document.getElementById("post").style.filter = "blur(0px)";
 }

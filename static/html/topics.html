@@ -13,12 +13,12 @@
 <header >
   <div class="fixed flex justify-around w-full h-16 shadow-md bg-newcolor1">
       <h1 id="h1Title"
-          class="relative uppercase my-[20px] big:left-[-15vw] 2xl:left-[-15vw] xl:left-[-12vw] font-bold text-center text-newcolor4">
+          class="relative uppercase my-[20px] big:left-[-15vw] 2xl:left-[-15vw] xl:left-[-12vw]  font-bold text-center text-newcolor4">
           CS forums</h1>
       <div class="grid w-96 self-center items-center grid-cols-3">
-        <!-- <p class="font-bold text-center relative 2xl:left-[-85vh] xl:left-[-70vh]">c/{{ .Category }}</p> -->
+          <p class="font-bold text-center relative 2xl:left-[-50vw] xl:left-[-40vw] lg:left-[-30vw]">c/{{ .Category }}</p>
           <div id="logbutton" class="hidden">
-              <button  onclick="openLogin()" class=" font-medium rounded-lg shadow-xl flex relative w-24 big:right-[-30vw] 2xl:right-[-35vw] xl:right-[-35vw] sm:right-[-36vw] right-[-36vw] cursor-pointer focus:ring-blue-300 text-sm text-center  text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+              <button  onclick="openLogin()" class=" font-medium rounded-lg shadow-xl flex relative w-24 big:right-[-25vw] 2xl:right-[-25vw] xl:right-[-25vw] sm:right-[-25vw]  cursor-pointer focus:ring-blue-300 text-sm text-center  text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
                   <p class="w-fit text-xs uppercase p-3">login</p>
                   <svg class="relative top-2 right-1" fill="#000000" width="24px" height="24px" viewBox="0 0 24 24"
                       xmlns="http://www.w3.org/2000/svg">
@@ -41,22 +41,23 @@
                                   d="M6.75 6.5C6.75 3.6005 9.1005 1.25 12 1.25C14.8995 1.25 17.25 3.6005 17.25 6.5C17.25 9.3995 14.8995 11.75 12 11.75C9.1005 11.75 6.75 9.3995 6.75 6.5Z"
                                   fill="#000000" />
                               <path id="rec (Stroke)" fill-rule="evenodd" clip-rule="evenodd"
-                                  d="M4.25 18.5714C4.25 15.6325 6.63249 13.25 9.57143 13.25H14.4286C17.3675 13.25 19.75 15.6325 19.75 18.5714C19.75 20.8792 17.8792 22.75 15.5714 22.75H8.42857C6.12081 22.75 4.25 20.8792 4.25 18.5714Z"
-                                  fill="#000000" />
+                              d="M4.25 18.5714C4.25 15.6325 6.63249 13.25 9.57143 13.25H14.4286C17.3675 13.25 19.75 15.6325 19.75 18.5714C19.75 20.8792 17.8792 22.75 15.5714 22.75H8.42857C6.12081 22.75 4.25 20.8792 4.25 18.5714Z"
+                              fill="#000000" />
+                            </g>
                           </g>
-                      </g>
-                  </svg>
-              </button>
-              </a>
-          </div>
+                        </svg>
+                      </button>
+                    </a>
+                  </div>
+                  
+                  
+                </div>
+              </div>
+            </header>
 
-          
-      </div>
-  </div>
-</header>
     
     <main>
-        <div id="container" class="flex align-start  ">
+        <div id="container" class="flex align-start">
           <div id="blurrr" class="hidden backdrop-blur-sm  fixed top-0 left-0 w-[10000px] h-[10000px]"></div>
             <!-- <div id="list" class="flex justify-self-center pr-[70vh] h-[90vh] pt-[10vh] ">
                 <div class="shadow-xl bg-newcolor1 h-[80vh] w-[100vh]">
@@ -103,11 +104,75 @@
                     
                 </div>
             </div> -->
+
+
+            <div id="search" class=" fixed sm:top-[15vh] lg:right-[10vw] sm:right-[5vw] h-[5vh] xl:w-[40vh] lg:w-[35vh] sm:w-[28vh] max-sm:left-[10vw] top-[8vh] w-[80vw]">
+              <form>   
+                  <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only :">Search</label>
+                  <div class="relative">
+                      <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                          <svg class="w-5 h-5 text-gray-500 " fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                      </div>
+                      <input name="searchbar" type="search" id="default-search" class="block p-4 pl-10 w-full text-sm text-gray-900 bg-newcolor1 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 " placeholder="Search for topics" required>
+                      <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-newcolor4 hover:bg-color3 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">Search</button>
+                  </div>
+              </form>
+          </div>
             
-            
-            <div id="list" class="flex flex-col justify-start items-center big:ml-[30vh] 2xl:ml-[20vh] xl:ml-[20vh] big:w-[100vh] 2xl:w-[90vh] h-[100vh] mt-[10vh] ">
+            <div id="filter" class="fixed sm:top-[11vh] top-[16vh] big:left-[5vw] 2xl:left-[5vw] xl:left-[2vw] sm:left-[2vw] left-[30vw]">
+              <form method="POST">
+                <select id="filter" onchange="javascript: if(this.value != '0') this.form.submit();" name="filter" class="w-[20vh] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                  <option selected>Filter by</option>
+                  <option value="lastPost">Last Post</option>
+                  <option value="nmbPosts">Number of posts</option>
+                  <option value="likes">Likes</option>
+                  <input type="submit" value="submit" name="filter" hidden="true">
+                </select>
+              </div>
+            </form>
+
+
+            <div id="post" class="fixed sm:top-[25vh] sm:right-[6vw] max-sm:left-[15vw] h-[90vh] top-[22vh]">
+              <!-- <div class="flex flex-col align-center w-[45vh] bg-color1 h-[38vh]">
+                  <div class="shadow-xl flex w-[45vh] bg-newcolor3 h-[5vh] ">
+                      <p class="pt-3 pl-6 text-newcolor1">Add new topic</p>
+                     
+                  </div>
+                  <textarea class="shadow-xl h-[4vh] bg-newcolor2 placeholder:text-slate-900" rows='2' placeholder='  Title:'></textarea>
+                  <textarea class=" shadow-xl h-[30vh] bg-newcolor2 placeholder:text-slate-900" rows='10' placeholder='  Write your comment here (Optional):'></textarea>
+                  <button class="shadow-md rounded-lg w-24 h-[5vh] bg-newcolor4 fixed top-[55vh] right-[14vh] text-white hover:bg-color3 font-medium">Submit</button>
+              </div> -->
+              <div  class="max-w-2xl mx-auto">
+                  <form method="POST">
+                  <div class="shadow-lg mb-4 w-full bg-gray-50 rounded-lg border border-gray-200 ">
+                      <div class="flex rounded-t-lg justify-between items-center py-2 px-3 bg-newcolor3">
+                          <div class="flex flex-wrap items-center bg-newcolor3">
+                              <div class="flex items-center space-x-1 sm:pr-4 sm:w-[30vw] w-[60vw]" >
+                                  <textarea name="topic_name" id="lock" onfocus="openLoginIf()"  rows="1" class="resize-none block px-0 w-full text-sm text-gray-800 bg-newcolor3 border-0 " placeholder="Title" required></textarea>
+                                  <button type="button" class="p-2  text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100">
+                                      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"></path></svg>
+                                  </button>
+                                  
+                              </div>
+                              
+                          </div>
+                      </div>
+                      <div class="py-2 px-3 bg-white rounded-b-lg ">
+                          <textarea  name="firstMessage" id="lock1" onfocus="openLoginIf()"  rows="" class="sm:h-[15vh] h-[8vh] resize-none block px-0 w-full text-sm text-gray-800 bg-white border-0 focus:ring-0" placeholder="Write an article..."></textarea>
+                      </div>
+                  </div>
+                  <button type="submit" class="max-sm:ml-[18vw] max-sm:h-[3vh] inline-flex items-center px-5 sm:py-2.5 text-sm font-medium text-center text-white bg-newcolor4 rounded-lg focus:ring-4 focus:ring-blue-200  hover:bg-color3">
+                      Publish post
+                  </button>
+                  </form>
+              </div>
+              
+          </div>
+
+
+            <div id="list" class="max-sm:w-full flex flex-col justify-start items-center big:ml-[-10vw] 2xl:ml-[-8vw] sm:ml-[15vw] big:w-[100vw] 2xl:w-[90vw] h-[100vh] sm:mt-[10vh] mt-[70vh]">
               {{ range $k, $v := .Topics }}
-                <div class='w-[100vh] flex items-center justify-center mb-[1vh]'>  
+                <div class='sm:w-[50vw] w-[100vw] flex items-center justify-center mb-[1vh]'>  
                     <div class="rounded-xl border p-5 shadow-md w-9/12 bg-white">
                     <div class="flex w-full items-center justify-between border-b pb-3">
                       <div class="flex items-center space-x-3">
@@ -196,66 +261,10 @@
                 <div class="shadow-lg w-[90vh] h-[12vh] bg-newcolor1 mt-[3vh] rounded-md">
                 </div> -->
             </div>
-            <div id="filter" class="fixed top-[15vh] right-[18vh]  h-[5vh] w-[40vh] ">
-                <form>   
-                    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only :">Search</label>
-                    <div class="relative">
-                        <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                            <svg class="w-5 h-5 text-gray-500 " fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                        </div>
-                        <input name="searchbar" type="search" id="default-search" class="block p-4 pl-10 w-full text-sm text-gray-900 bg-newcolor1 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 " placeholder="Search for topics" required>
-                        <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-newcolor4 hover:bg-color3 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">Search</button>
-                    </div>
-                </form>
-            </div>
-            <div id="search" class="fixed top-[25vh] right-[12vh]  h-[90vh] ">
-                <!-- <div class="flex flex-col align-center w-[45vh] bg-color1 h-[38vh]">
-                    <div class="shadow-xl flex w-[45vh] bg-newcolor3 h-[5vh] ">
-                        <p class="pt-3 pl-6 text-newcolor1">Add new topic</p>
-                       
-                    </div>
-                    <textarea class="shadow-xl h-[4vh] bg-newcolor2 placeholder:text-slate-900" rows='2' placeholder='  Title:'></textarea>
-                    <textarea class=" shadow-xl h-[30vh] bg-newcolor2 placeholder:text-slate-900" rows='10' placeholder='  Write your comment here (Optional):'></textarea>
-                    <button class="shadow-md rounded-lg w-24 h-[5vh] bg-newcolor4 fixed top-[55vh] right-[14vh] text-white hover:bg-color3 font-medium">Submit</button>
-                </div> -->
-                <div  class="max-w-2xl mx-auto">
-                    <form method="POST">
-                    <div class="shadow-lg mb-4 w-full bg-gray-50 rounded-lg border border-gray-200 ">
-                        <div class="flex rounded-t-lg justify-between items-center py-2 px-3 bg-newcolor3">
-                            <div class="flex flex-wrap items-center bg-newcolor3">
-                                <div class="flex items-center space-x-1 sm:pr-4 w-[50vh]" >
-                                    <textarea name="topic_name" id="lock" onfocus="openLoginIf()"  rows="1" class="resize-none block px-0 w-full text-sm text-gray-800 bg-newcolor3 border-0 " placeholder="Title" required></textarea>
-                                    <button type="button" class="p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100">
-                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"></path></svg>
-                                    </button>
-                                    
-                                </div>
-                                
-                            </div>
-                        </div>
-                        <div class="py-2 px-3 bg-white rounded-b-lg ">
-                            <textarea  name="firstMessage" id="lock1" onfocus="openLoginIf()"  rows="8" class="resize-none block px-0 w-full text-sm text-gray-800 bg-white border-0 focus:ring-0" placeholder="Write an article..."></textarea>
-                        </div>
-                    </div>
-                    <button type="submit" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-newcolor4 rounded-lg focus:ring-4 focus:ring-blue-200  hover:bg-color3">
-                        Publish post
-                    </button>
-                    </form>
-                </div>
-                
-            </div>
 
-            <div  class="fixed top-[11vh] big:left-[18vh] 2xl:left-[5vh] xl:left-[5vh]">
-              <form method="POST">
-                <select id="filter" onchange="javascript: if(this.value != '0') this.form.submit();" name="filter" class="w-[20vh] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                  <option selected>Filter by</option>
-                  <option value="lastPost">Last Post</option>
-                  <option value="nmbPosts">Number of posts</option>
-                  <option value="likes">Likes</option>
-                  <input type="submit" value="submit" name="filter" hidden="true">
-                </select>
-              </div>
-            </form>
+
+
+
     
             
         </div>
