@@ -20,7 +20,7 @@ func Handler_profil(w http.ResponseWriter, r *http.Request) {
 		t2.LogOutSession()
 	} else if r.FormValue("delete") != "" {
 		t.DeleteAccount(r, databaseForum, w)
-	} else if r.FormValue("username") != "" || r.FormValue("email") != "" || r.FormValue("password") != "" {
+	} else if r.FormValue("username") != "" || r.FormValue("email") != "" {
 		t.UserEdit(r, databaseForum)
 	}
 	t.MpSendOrReceivedByUser(databaseForum)
