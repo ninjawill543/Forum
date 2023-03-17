@@ -78,6 +78,7 @@ func Handler_Messages(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if exists {
+		t.Messages.SessionUser = t4.USER.Username
 		tmpl.Execute(w, t.Messages)
 	} else {
 		tmpl2.Execute(w, nil)

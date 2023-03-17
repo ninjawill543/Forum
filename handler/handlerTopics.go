@@ -45,6 +45,7 @@ func Handler_topics(w http.ResponseWriter, r *http.Request) {
 
 	if r.URL.Path == "/topics/category=tech" || r.URL.Path == "/topics/category=dinosaurs" || r.URL.Path == "/topics/category=watches" || r.URL.Path == "/topics/category=sneakers" || r.URL.Path == "/topics/category=gardening" || r.URL.Path == "/topics/category=video-games" || r.URL.Path == "/topics/category=climbing" {
 		t.DisplayTopic(r, databaseForum)
+		t.TOPICSANDSESSION.SessionUser = t2.USER.Username
 		tmpl1.Execute(w, t.TOPICSANDSESSION)
 	} else {
 		tmpl2.Execute(w, t.TOPICSANDSESSION)

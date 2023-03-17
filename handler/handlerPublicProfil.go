@@ -5,6 +5,7 @@ import (
 	"fmt"
 	t "forum/profil"
 	t2 "forum/report"
+	t3 "forum/users"
 	"html/template"
 	"net/http"
 	"strings"
@@ -49,6 +50,7 @@ func Handler_publicProfil(w http.ResponseWriter, r *http.Request) {
 
 	if exists {
 		t.PublicProfil(r, databaseForum)
+		t.PUBLICUSER.Username = t3.USER.Username
 		tmpl.Execute(w, t.PUBLICUSER)
 	} else {
 		tmpl2.Execute(w, nil)
