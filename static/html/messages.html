@@ -54,8 +54,6 @@
                 </div>
               </header>
     
-
-
     <main>
         <div id="container" class="flex align-start  ">
           <div id="blurrr" class="hidden backdrop-blur-sm  fixed top-0 left-0 w-[10000px] h-[10000px]"></div>
@@ -103,11 +101,10 @@
                     
                     
                 </div>
-
             </div> -->
             <div id="filter" class="fixed sm:top-[11vh] top-[10vh] big:left-[5vw] 2xl:left-[5vw] xl:left-[2vw] sm:left-[2vw] left-[35vw]">
               <form method="POST">
-                <select id="filter" onchange="javascript: if(this.value != '0') this.form.submit();" name="filter" class="w-[20vh] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 ">
+                <select id="filter" onchange="javascript: if(this.value != '0') this.form.submit();" name="filter" class="w-[20vh] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                   <option selected>Filter by</option>
                   <option value="creationDate">Last Post</option>
                   <option value="like">Likes</option>
@@ -118,9 +115,6 @@
             </form>
             
         </div>
-
-
-
         <div id="search" class="fixed sm:top-[25vh] sm:right-[6vw] max-sm:left-[15vw] h-[90vh] top-[18vh]">
           <!-- <div class="flex flex-col align-center w-[45vh] bg-color1 h-[38vh]">
               <div class="shadow-xl flex w-[45vh] bg-newcolor3 h-[5vh] ">
@@ -132,7 +126,6 @@
               <button class="shadow-md rounded-lg w-24 h-[5vh] bg-newcolor4 fixed top-[55vh] right-[14vh] text-white hover:bg-color3 font-medium">Submit</button>
           </div> -->
           <div class="max-w-2xl mx-auto">
-
             <div class="shadow-lg mb-4 w-full bg-gray-50 rounded-lg border border-gray-200 ">
               <div class="flex rounded-t-lg justify-between items-center py-2 px-3 bg-newcolor3">
                 <div class="flex flex-wrap items-center bg-newcolor3">
@@ -155,15 +148,9 @@
                   Publish comment
               </button>
               </form>
-
           </div>
           
       </div>
-
-
-
-
-
             <div id="list" class="max-sm:w-full flex flex-col justify-start items-center big:ml-[-10vw] 2xl:ml-[-8vw] sm:ml-[15vw] big:w-[100vw] 2xl:w-[90vw] h-[100vh] sm:mt-[10vh] mt-[50vh] sm:ml-[-30vw]">
                 {{ range $k, $v := .Messages }}
                 <div class="sm:w-[50vw] w-[100vw] flex items-center justify-center mb-[1vh]">  
@@ -195,7 +182,6 @@
                                 <span class="text-slate-900">{{ $v.Like }}</span>
                               </div>
                             </button>
-
                             <button type="submit" value="{{ .Uuid }}" name="dislike">
                               <div class="flex cursor-pointer items-center transition hover:text-slate-600">
                                 {{ if $v.IsDisliked }}
@@ -227,35 +213,24 @@
                 {{ end }}
                
                 
-
                 
                 
                 <!-- <div class="shadow-lg w-[90vh] h-[12vh] bg-newcolor1 mt-[3vh] rounded-md">
                     
                 </div>
                 <div class="shadow-lg w-[90vh] h-[12vh] bg-newcolor1 mt-[3vh] rounded-md">
-
                 </div>
                 <div class="shadow-lg w-[90vh] h-[12vh] bg-newcolor1 mt-[3vh] rounded-md">
-
                 </div>
                 <div class="shadow-lg w-[90vh] h-[12vh] bg-newcolor1 mt-[3vh] rounded-md">
-
                 </div>
                 <div class="shadow-lg w-[90vh] h-[12vh] bg-newcolor1 mt-[3vh] rounded-md">
-
                 </div>
                 <div class="shadow-lg w-[90vh] h-[12vh] bg-newcolor1 mt-[3vh] rounded-md">
-
                 </div>
                 <div class="shadow-lg w-[90vh] h-[12vh] bg-newcolor1 mt-[3vh] rounded-md">
-
                 </div> -->
-
             </div>
-
-
-
             
             
         
@@ -280,7 +255,6 @@
           </form>
       </div>
     </div>
-
         <div class="hidden" id="register">
           <div class="fixed rounded-lg sm:top-1/2 sm:left-1/2 sm:-translate-y-1/2 sm:-translate-x-1/2 top-[15vh] left-[12vw] big:h-[300px] 2xl:h-[300px] 2xl:w-[18vw] xl:w-[22vw] lg:w-[28vw] max-sm:w-[80vw] bg-newcolor4 flex flex-col items-center justify-center ">
             <button class="pl-[30vh] pb-2 text-xl font-medium" onclick="closeRegister()">X</button>
@@ -296,7 +270,6 @@
               </div>
           </div>
         </div>
-
         <div class="hidden" id="register2">
           <div class="fixed rounded-lg sm:top-1/2 sm:left-1/2 sm:-translate-y-1/2 sm:-translate-x-1/2 top-[15vh] left-[12vw] big:h-[400px] 2xl:h-[400px] 2xl:w-[18vw] xl:w-[22vw] lg:w-[28vw] max-sm:w-[80vw] max-sm:h-[420px] bg-newcolor4 flex flex-col items-center justify-center ">
             <button class="pl-[30vh] pb-2 text-xl font-medium" onclick="closeRegister()">X</button>
@@ -321,10 +294,8 @@
               </form>
             </div>
         </div>
-
     <script src="../css/popups.js">
         // const struct = {{ . }};
     </script>
 </body>
-
 </html>

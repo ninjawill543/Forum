@@ -26,7 +26,7 @@
                     </svg>
                 </button>
             </div>
-
+           
             <div id="profbutton" class="hidden">
                 <a href="../your-profil">
                     <button 
@@ -58,12 +58,9 @@
                 {{ $TopicsAndSession := . }}
                 <div id="container" class="flex ">
                   
-
         
         <div id="list" class="flex flex-col justify-start items-center sm:ml-[-20vw] w-[100vw] h-[100vw] mt-[20vh] ">
           <p class="text-4xl font-bold mt-[-8vh] sm:mb-[12vh] mb-[5vh] max-sm:text-center">Welcome to CS Forums</p> 
-          <p class="font-thin mt-[-8vh] text-xs text-gray-500 sm:mb-[12vh] mb-[5vh] max-sm:text-center"> u can see below a list of the most recents / actives topics </p>
-
           <div class="sm:fixed sm:top-[20vh] sm:right-[15vw] max-sm:mb-[15vh]">
             <div class="justify-center bg-newcolor6 text-black sm:w-[15vw] w-[70vw] text-center font-semibold text-2xl rounded-lg h-[30vh] ">
               Categories
@@ -108,7 +105,6 @@
           
               <div class="mt-4 mb-6">
                 <div class="mb-3 text-xl font-bold truncate"><a href="../messages/{{ .Name }}">{{ $v.Name }}</a></div>
-
                 <div id="toedit{{ $k }}" class="truncate flex text-base text-neutral-600 "><a href="../messages/{{ .Name }}">{{ $v.FirstMessage }}</a></div>
                 <div id="edit{{ $k }}" class="hidden">
                   <div class="bg-newcolor5 flex text-base text-neutral-600 "><a id="enter{{ $k }}" contenteditable="true" href="/topics/{{ .Name }}">{{ $v.FirstMessage }}</a></div>
@@ -123,7 +119,7 @@
                     <a class="mr-2 z-50" href="../messages/{{ .Name }}">
                       <div class="flex cursor-pointer items-center transition hover:text-slate-600">
                           <span class="text-slate-900 inline-flex relative">
-                            <img src="../css/comments.svg" width="34px" height="34px">
+                            <img src="../css/comments.svg" width="21px" height="21px">
                             {{ $v.NmbPosts }}
                           </span>
                       </div>
@@ -132,33 +128,32 @@
                       <button class="mr-2" type="submit" value="{{ .Uuid }}" name="like">
                         <div class="flex cursor-pointer items-center transition hover:text-slate-600">
                           {{ if $v.IsLiked }}
-                            <img src="../css/like_plein.svg" width="48px" height="48px">
+                            <img src="../css/like_plein.svg" width="21px" height="21px">
                           {{ else }}
-                            <img src="../css/videPlan de travail 1.svg" width="36px" height="36px">
+                            <img src="../css/videPlan de travail 1.svg" width="21px" height="21px">
                           {{ end }}
                           <span class="text-slate-900">{{ $v.Likes }}</span>
                         </div>
                       </button>
-
                       <button type="submit" value="{{ .Uuid }}" name="dislike">
                         <div class="flex cursor-pointer items-center transition hover:text-slate-600">
                           {{ if $v.IsDisliked }}
-                            <img src="../css/dislike_plein.svg" width="50px" height="50px">
+                            <img src="../css/dislike_plein.svg" width="21px" height="21px">
                           {{ else }}
-                          <img src="../css/dislike_vide.svg" width="52px" height="52px">
+                          <img src="../css/dislike_vide.svg" width="21px" height="21px">
                           {{ end }}
                         </div>
                       </button>
                     </form>
                     <a>
                       <div onclick="edit()" class="flex cursor-pointer items-center transition hover:text-slate-600 ml-[52vh]">
-                        <img src="../css/edit.svg" width="64px" height="64px">
+                        <img src="../css/edit.svg" width="21px" height="21px">
                         
                       </div>
                     </a>
                     <a>
                       <div  class="flex cursor-pointer items-center transition hover:text-slate-600 ml-[2vh]">
-                        <img src="../css/corbeille.svg" width="64px" height="64px">
+                        <img src="../css/corbeille.svg" width="21px" height="21px">
                       </div>
                     </a>
                   </div>
@@ -168,9 +163,6 @@
           </div>
         {{ end }}
                     
-
-
-
         
         
     </main>
@@ -193,7 +185,6 @@
           </form>
       </div>
     </div>
-
         <div class="hidden" id="register">
           <div class="fixed rounded-lg sm:top-1/2 sm:left-1/2 sm:-translate-y-1/2 sm:-translate-x-1/2 top-[15vh] left-[12vw] big:h-[300px] 2xl:h-[300px] 2xl:w-[18vw] xl:w-[22vw] lg:w-[28vw] max-sm:w-[80vw] bg-newcolor4 flex flex-col items-center justify-center ">
             <button class="pl-[30vh] pb-2 text-xl font-medium" onclick="closeRegister()">X</button>
@@ -209,7 +200,6 @@
               </div>
           </div>
         </div>
-
         <div class="hidden" id="register2">
           <div class="fixed rounded-lg sm:top-1/2 sm:left-1/2 sm:-translate-y-1/2 sm:-translate-x-1/2 top-[15vh] left-[12vw] big:h-[400px] 2xl:h-[400px] 2xl:w-[18vw] xl:w-[22vw] lg:w-[28vw] max-sm:w-[80vw] max-sm:h-[420px] bg-newcolor4 flex flex-col items-center justify-center ">
             <button class="pl-[30vh] pb-2 text-xl font-medium" onclick="closeRegister()">X</button>
@@ -234,12 +224,9 @@
               </form>
             </div>
         </div>
-
     <script src="../css/popups.js"></script>
 </body>
 </html>
-
-
 <!-- <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -253,5 +240,4 @@
     <a href="/topics/category=blabla">blabla</a>
 </body>
 </html> -->
-
 <script src="../css/popups.js"></script>
