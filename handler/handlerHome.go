@@ -25,5 +25,7 @@ func Handler_Home(w http.ResponseWriter, r *http.Request) {
 
 	t.GetRandomMessages(databaseForum, r)
 
+	t.TOPICSANDSESSION.SessionUser = t4.USER.Username
+
 	tmpl1.Execute(w, t.TOPICSANDSESSION)
 }
