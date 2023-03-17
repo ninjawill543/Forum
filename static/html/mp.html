@@ -10,63 +10,69 @@
 
 <body>
     <div class="min-h-screen h-screen flex flex-col">
-        <header class="bg-indigo-50 border-b border-indigo-300 p-2">Header</header>
+        <header>
+            <div class="flex sticky justify-around w-full h-16 shadow-md bg-newcolor2">
+                <h1 id="h1Title"
+                class="relative uppercase my-[20px] big:left-[-15vw] 2xl:left-[-15vw] xl:left-[-12vw]  font-bold text-center text-newcolor4">
+                CS forums</h1>
+            </div>
+        </header>
 
         <!-- main container -->
         <div class="flex-1 flex flex-row overflow-y-hidden">
             <main class="flex-1 bg-indigo-50 border-l border-r border-indigo-300 text-xs p-2 overflow-y-auto">
-                <div class="flex-1 p:2 sm:p-6 justify-between flex flex-col h-screen">
-                    <div class="flex fixed sm:items-center w-5/6 justify-between py-3 border-b-2 bg-gray-200 rounded-xl border-gray-200">
-
-                        <div class="relative flex items-center space-x-4">
-                            <div class="relative left-2">
-                                <span class="absolute text-green-500 right-0 bottom-0">
-                                    <svg width="20" height="20">
-                                        <circle cx="8" cy="8" r="8" fill="currentColor"></circle>
-                                    </svg>
-                                </span>
-                                <img src="https://media.tenor.com/92ZJaLJZ6GoAAAAC/godjira-starvinmarvin.gif"
-                                    alt="" class="w-10 sm:w-16 h-10 sm:h-16 rounded-full">
-                            </div>
-                            <div class="flex flex-col leading-tight">
-                                <div class="text-2xl mt-1 flex items-center">
-                                    <span class="text-gray-700 mr-3">ogb4n</span>
-                                </div>
-                                <span class="text-lg text-gray-600">Ynov Student</span>
-                            </div>
+                <div class="flex fixed sm:items-center w-5/6 justify-between py-3 border-b-2 bg-gray-200 rounded-xl border-gray-200">
+                    <div class="relative flex items-center space-x-4">
+                        <div class="relative left-2">
+                            <span class="absolute text-green-500 right-0 bottom-0">
+                                <svg width="20" height="20">
+                                    <circle cx="8" cy="8" r="8" fill="currentColor"></circle>
+                                </svg>
+                            </span>
+                            <img src="https://media.tenor.com/92ZJaLJZ6GoAAAAC/godjira-starvinmarvin.gif" alt=""
+                                class="w-10 sm:w-16 h-10 sm:h-16 rounded-full">
                         </div>
-
-                        <div class="flex items-center space-x-2">
-                            <button type="button"
-                                class="inline-flex items-center justify-center rounded-lg border h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor" class="h-6 w-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                                </svg>
-                            </button>
-
-                            <button type="button"
-                                class="inline-flex items-center justify-center rounded-lg border h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor" class="h-6 w-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
-                                    </path>
-                                </svg>
-                            </button>
-
-                            <button type="button"
-                                class="inline-flex items-center justify-center rounded-lg border h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor" class="h-6 w-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9">
-                                    </path>
-                                </svg>
-                            </button>
+                        <div class="flex flex-col leading-tight">
+                            <div class="text-2xl mt-1 flex items-center">
+                                <span class="text-gray-700 mr-3">ogb4n</span>
+                            </div>
+                            <span class="text-lg text-gray-600">Ynov Student</span>
                         </div>
                     </div>
+
+                    <div class="flex items-center space-x-2">
+                        <button type="button"
+                            class="inline-flex items-center justify-center rounded-lg border h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" class="h-6 w-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </button>
+
+                        <button type="button"
+                            class="inline-flex items-center justify-center rounded-lg border h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" class="h-6 w-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                                </path>
+                            </svg>
+                        </button>
+
+                        <button type="button"
+                            class="inline-flex items-center justify-center rounded-lg border h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" class="h-6 w-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="flex-1 p:2 sm:p-6 justify-between flex flex-col h-screen">
+
 
 
                     <div id="messages"
@@ -122,57 +128,83 @@
                             </div>
                         </div>
                     </div>
-
-
-                    <div class="border-t-2 border-gray-200 px-4 pt-4 mb-2 sm:mb-0">
-                        <div class="flex relative">
-                            <span class="absolute inset-y-0 flex items-center">
-                                <button type="button"
-                                    class="inline-flex items-center justify-center rounded-full h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor" class="h-6 w-6 text-gray-600">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13">
-                                        </path>
-                                    </svg>
-                                </button>
-                            </span>
-                            <input type="text" placeholder="Write your message!"
-                                class="w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-12 bg-gray-200 rounded-md py-3">
-                            <div class="absolute right-0 items-center inset-y-0 hidden sm:flex">
-                                <button type="button"
-                                    class="inline-flex items-center justify-center rounded-full h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor" class="h-6 w-6 text-gray-600">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
-                                        </path>
-                                    </svg>
-                                </button>
-                                <button type="button"
-                                    class="inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-newcolor4 hover:bg-orange-800 focus:outline-none">
-                                    <span class="font-bold">Send</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                        class="h-6 w-6 ml-2 transform rotate-90">
-                                        <path
-                                            d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z">
-                                        </path>
-                                    </svg>
-                                </button>
-                            </div>
+                </div>
+                <div class="border-t-2 border-gray-200 px-4 pt-4 mb-2 sm:mb-0">
+                    <div class="flex relative">
+                        <span class="absolute inset-y-0 flex items-center">
+                            <button type="button"
+                                class="inline-flex items-center justify-center rounded-full h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" class="h-6 w-6 text-gray-600">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13">
+                                    </path>
+                                </svg>
+                            </button>
+                        </span>
+                        <input type="text" placeholder="Write your message!"
+                            class="w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-12 bg-gray-200 rounded-md py-3">
+                        <div class="absolute right-0 items-center inset-y-0 hidden sm:flex">
+                            <button type="button"
+                                class="inline-flex items-center justify-center rounded-full h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" class="h-6 w-6 text-gray-600">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                                    </path>
+                                </svg>
+                            </button>
+                            <button type="button"
+                                class="inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-newcolor4 hover:bg-orange-800 focus:outline-none">
+                                <span class="font-bold">Send</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                    class="h-6 w-6 ml-2 transform rotate-90">
+                                    <path
+                                        d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z">
+                                    </path>
+                                </svg>
+                            </button>
                         </div>
                     </div>
                 </div>
-
             </main>
 
             <nav class="order-first w-56 sm:w-56 bg-indigo-50 p-2 overflow-y-auto">
-                <ul class="text-xs underline">
-                    <li><a class="block bg-gray-200 border-gray-500 transition duration-500 hover:bg-opacity-70 hover:bg-orange-800 border-b-2 py-2 h-28 px-2 ">ogb4n</a></li>
-                    <li><a class="block bg-gray-200 border-gray-500 transition duration-500 hover:bg-opacity-70 hover:bg-orange-800 border-b-2 py-2 h-28 px-2">plswork</a></li>
-                    <li><a class="block bg-gray-200 border-gray-500 transition duration-500 hover:bg-opacity-70 hover:bg-orange-800 border-b-2 py-2 h-28 px-2">telos</a></li>
-                    <li><a class="block bg-gray-200 border-gray-500 transition duration-500 hover:bg-opacity-70 hover:bg-orange-800 border-b-2 py-2 h-28 px-2">sn0wden</a></li>
-                    <li><a class="block bg-gray-200 border-gray-500 transition duration-500 hover:bg-opacity-70 hover:bg-orange-800 border-b-2 py-2 h-28 px-2">n1el</a></li>
+                <ul class="text-xs">
+
+                    <div class="flex justify-center">
+                        <div class="block w-full rounded-sm mb-2 bg-orange-300 bg-opacity-30 transition duration-500 hover:bg-orange-400 p-6 shadow-lg ">
+                            <div class="relative bottom-3">
+                                <img src="https://media.tenor.com/92ZJaLJZ6GoAAAAC/godjira-starvinmarvin.gif"
+                                        alt="My profile" class="w-6 h-6 flex relative top-6 left-4 rounded-full order-1">
+                                <h4 class="mb-2 relative text-xl px-2 left-11 font-medium w-fit leading-tight">
+                                    ogb4n
+                                </h4>
+                            </div>
+                            <button type="button"
+                                class="inline-block rounded bg-primary bg-amber-300 opacity-50 hover:opacity-100 hover:bg-amber-800 hover:text-white transition duration-500 px-4 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal shadow-[0_4px_9px_-4px_#3b71ca] ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]"
+                                data-te-ripple-init data-te-ripple-color="light">
+                                open the chat
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center">
+                        <div class="block w-full rounded-sm mb-2 bg-orange-300 bg-opacity-30 transition duration-500 hover:bg-orange-400 p-6 shadow-lg ">
+                            <div class="relative bottom-3">
+                                <img src="https://media.tenor.com/92ZJaLJZ6GoAAAAC/godjira-starvinmarvin.gif"
+                                        alt="My profile" class="w-6 h-6 flex relative top-6 left-4 rounded-full order-1">
+                                <h4 class="mb-2 relative text-xl px-2 left-11 font-medium w-fit leading-tight">
+                                    plswork
+                                </h4>
+                            </div>
+                            <button type="button"
+                                class="inline-block rounded bg-primary bg-amber-300 opacity-50 hover:opacity-100 hover:bg-amber-800 hover:text-white transition duration-500 px-4 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal shadow-[0_4px_9px_-4px_#3b71ca] ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]"
+                                data-te-ripple-init data-te-ripple-color="light">
+                                open the chat
+                            </button>
+                        </div>
+                    </div>
                 </ul>
                 </aside>
         </div>

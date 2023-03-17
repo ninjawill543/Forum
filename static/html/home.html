@@ -26,7 +26,7 @@
                     </svg>
                 </button>
             </div>
-           
+
             <div id="profbutton" class="hidden">
                 <a href="../your-profil">
                     <button 
@@ -62,6 +62,7 @@
         
         <div id="list" class="flex flex-col justify-start items-center sm:ml-[-20vw] w-[100vw] h-[100vw] mt-[20vh] ">
           <p class="text-4xl font-bold mt-[-8vh] sm:mb-[12vh] mb-[5vh] max-sm:text-center">Welcome to CS Forums</p> 
+          <p class="font-thin mt-[-8vh] text-xs text-gray-500 sm:mb-[12vh] mb-[5vh] max-sm:text-center"> u can see below a list of the most recents / actives topics </p>
 
           <div class="sm:fixed sm:top-[20vh] sm:right-[15vw] max-sm:mb-[15vh]">
             <div class="justify-center bg-newcolor6 text-black sm:w-[15vw] w-[70vw] text-center font-semibold text-2xl rounded-lg h-[30vh] ">
@@ -122,7 +123,7 @@
                     <a class="mr-2 z-50" href="../messages/{{ .Name }}">
                       <div class="flex cursor-pointer items-center transition hover:text-slate-600">
                           <span class="text-slate-900 inline-flex relative">
-                            <img src="../css/comments.svg" width="21px" height="21px">
+                            <img src="../css/comments.svg" width="34px" height="34px">
                             {{ $v.NmbPosts }}
                           </span>
                       </div>
@@ -131,9 +132,9 @@
                       <button class="mr-2" type="submit" value="{{ .Uuid }}" name="like">
                         <div class="flex cursor-pointer items-center transition hover:text-slate-600">
                           {{ if $v.IsLiked }}
-                            <img src="../css/like_plein.svg" width="21px" height="21px">
+                            <img src="../css/like_plein.svg" width="48px" height="48px">
                           {{ else }}
-                            <img src="../css/videPlan de travail 1.svg" width="21px" height="21px">
+                            <img src="../css/videPlan de travail 1.svg" width="36px" height="36px">
                           {{ end }}
                           <span class="text-slate-900">{{ $v.Likes }}</span>
                         </div>
@@ -142,22 +143,22 @@
                       <button type="submit" value="{{ .Uuid }}" name="dislike">
                         <div class="flex cursor-pointer items-center transition hover:text-slate-600">
                           {{ if $v.IsDisliked }}
-                            <img src="../css/dislike_plein.svg" width="21px" height="21px">
+                            <img src="../css/dislike_plein.svg" width="50px" height="50px">
                           {{ else }}
-                          <img src="../css/dislike_vide.svg" width="21px" height="21px">
+                          <img src="../css/dislike_vide.svg" width="52px" height="52px">
                           {{ end }}
                         </div>
                       </button>
                     </form>
                     <a>
                       <div onclick="edit()" class="flex cursor-pointer items-center transition hover:text-slate-600 ml-[52vh]">
-                        <img src="../css/edit.svg" width="21px" height="21px">
+                        <img src="../css/edit.svg" width="64px" height="64px">
                         
                       </div>
                     </a>
                     <a>
                       <div  class="flex cursor-pointer items-center transition hover:text-slate-600 ml-[2vh]">
-                        <img src="../css/corbeille.svg" width="21px" height="21px">
+                        <img src="../css/corbeille.svg" width="64px" height="64px">
                       </div>
                     </a>
                   </div>
