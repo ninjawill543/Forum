@@ -55,7 +55,7 @@
             <div id="container" class="flex align-start  ">
 
 
-                <a href="/index">
+                <a href="/">
                     <img src="https://img.icons8.com/ios/50/null/circled-left-2.png"
                         class="relative ipad:top-0 ipad:left-0 iphone:top-3 iphone:left-[15vh] laptop:right-2 laptop:top-2 h-12 w-12 ml-[6vh] mt-[10vh] " />
                 </a>
@@ -133,7 +133,7 @@
                         {{ range $k, $v := .MessagesSend }}
                         <p
                             class="relative ml-[2vh] mb-[1vh] big:w-[40vh] big:left-[60px] iphone:left-[45px] laptop:w-[40vh] laptop:left-[40px] ipad:w-[40vh] iphone:w-[40vh] h-[6vh] bg-newcolor6 rounded-md text-center align-center truncate">
-                            {{ $v.MessageSendByUser }} in - <a href="../{{ $v.TopicSentInName}}">{{ $v.TopicSentInName
+                            {{ $v.MessageSendByUser }} in - <a href="../messages/{{ $v.TopicSentInName}}">{{ $v.TopicSentInName
                                 }}</a></p>
                         {{ end }}
                     </ul>
@@ -150,7 +150,7 @@
                         {{ range $k, $v := .TopicsCreated }}
                         <p
                             class="relative ml-[2vh] mb-[1vh] big:w-[40vh] big:left-[60px] iphone:left-[45px] laptop:w-[40vh] laptop:left-[40px] ipad:w-[40vh] iphone:w-[40vh] h-[6vh] bg-newcolor6 rounded-md text-center align-center truncat">
-                            <a href="../topics/{{ $v }}">{{ $v }}</a> </p>
+                            <a href="../messages/{{ $v }}">{{ $v }}</a> </p>
                         {{ end }}
                     </ul>
 
