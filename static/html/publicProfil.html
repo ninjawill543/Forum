@@ -61,19 +61,19 @@
 
         
                     <a href="/index">
-                        <img src="https://img.icons8.com/ios/50/null/circled-left-2.png" class="h-12 w-12 ml-[6vh]  mt-[10vh] "/>
-                      </a>
+                        <img src="https://img.icons8.com/ios/50/null/circled-left-2.png" class="relative ipad:top-0 ipad:left-0 iphone:top-3 iphone:left-[15vh] laptop:right-2 laptop:top-2 h-12 w-12 ml-[6vh] mt-[10vh] "/>
+                    </a>
         
         
-                    <div  class="flex rounded-xl shadow-md flex-col justify-start ml-[5vh] w-[45vh] h-[32vh] mt-[10vh] bg-newcolor1">
-                        <div class="rounded-t-md h-[6vh] w-full  ">
+                    <div class="flex relative rounded-xl ipad:left-12 iphone:mt-[22vh] iphone:h-[25vh] iphone:right-[7vh] iphone:w-[42vh] laptop:left-0 big:left-0 shadow-md flex-col justify-start ipad:w-[46vh] ipad:h-[32vh] big:h-[32vh] laptop:mt-[10vh] ipad:mt-[10vh] big:mt-[10vh] bg-newcolor1">
+                        <div class="rounded-t-md h-[6vh] w-full">
                             <p class="font-medium mt-4 text-2xl text-center align-middle">Profile</p>
                         </div>
                         <p class="font-medium mt-4 text-xl ml-4">Username </p>
-                        <p class="font-light text-sm ml-4"> {{ .Username }}</p>
+                        <p class="font-light text-sm ml-4"> {{ .Username }} </p>
                         <p class="font-medium mt-4 text-xl ml-4">Member since: </p>
                         <p class="font-light text-sm ml-4"> {{ .CreationDate }}</p>
-                        <button onclick="" value="psd"  class=" font-medium rounded-lg shadow-xl flex relative w-24 left-[16vh] 2xl:top-[5vh] xl:top-[1vh] cursor-pointer focus:ring-blue-300 text-sm text-center text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+                        <button onclick="" value="psd"  class="laptop:bottom-20 iphone:bottom-24 iphone:left-[26vh] ipad:bottom-24 ipad:left-[26vh] laptop:left-[26vh] font-medium rounded-lg shadow-xl flex relative w-24 big:left-[32vh] big:top-[5vh] cursor-pointer focus:ring-blue-300 text-sm text-center text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
                             <p class="w-fit relative text-xs top-1 uppercase p-3">Report</p>
                             <svg class="relative right-1" width="48px" height="48px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#323232" stroke-width="2"/>
@@ -91,25 +91,25 @@
                             <p class="w-fit text-xs uppercase p-3 ml-[0.5vh]">DELETE YOUR ACCOUNT</p>
                         </button>  -->
 
-                     
+                    
         
                         <!-- <img class="ml-[40vh] mt-[26vh]" src="https://img.icons8.com/ios-filled/50/null/circled-right-2.png"/> -->
                     </div>
         
-                    <div  class="flex rounded-xl shadow-md flex-col justify-start items-center ml-[-45vh] w-[45vh] h-[50vh] mt-[45vh] bg-newcolor1">
+                    <div  class="flex relative laptop:h-[50vh] iphone:right-[26px] laptop:right-0 big:right-0 ipad:right-0 iphone:top-[7vh] iphone:h-[31vh] ipad:h-[47vh] big:left-0 laptop:top-0 laptop:left-0 ipad:left-[8vh] big:top-0 ipad:top-[1vh] rounded-xl shadow-md flex-col justify-start items-center lg:w-[30] ml-[-45vh] w-[45vh] big:h-[50vh] mt-[45vh] bg-newcolor1">
                         <div class="rounded-t-md h-[6vh] w-full ">
                             <p class="font-medium mt-4 text-2xl text-center align-middle">Send {{ .Username }} a message</p>
                         </div>
                         <!-- <div class="flex items-start"> -->
-                            <textarea class="resize-none bg-newcolor6 w-[43vh] 2xl:h-[35vh] xl:h-[30vh] 2xl:mt-0 xl:mt-2 rounded-md"></textarea>
+                            <textarea class="relative resize-none bg-newcolor6 w-[43vh] ipad:h-[20vh] iphone:top-4 ipad:top-10 laptop:top-4 iphone:h-[10vh] laptop:h-[22vh] big:h-[35vh] big:mt-0 laptop:mt-2 rounded-md"></textarea>
                             <div class="flex">
                                 <a href="../private-message/{{ .Username }}">
-                                    <button  value="psd"  class=" font-medium rounded-lg shadow-xl w-[15vh] big:mt-[3vh] 2xl:mt-[1vh] xl:mt-[3vh] 2xl:ml-[-2vh] xl:ml-[vh] cursor-pointer focus:ring-blue-300 text-sm text-center  text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+                                    <button  value="psd"  class="relative font-medium rounded-lg big:top-0 shadow-xl iphone:top-[6vh] ipad:top-[10vh] ipad:left-[2vh] laptop:left-[2vh] laptop:w-[17vh] w-[15vh] big:mt-[3vh] laptop:mt-[3vh] big:ml-[-2vh] xl:ml-[vh] cursor-pointer focus:ring-blue-300 text-center  text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
                                         <p  class="w-fit text-xs uppercase p-3 ">View Conversation</p>
                                     </button> 
                                 </a>
                                 <a href="../private-message/{{ .Username }}">
-                                    <button  value="psd"  class=" font-medium rounded-lg shadow-xl ml-[20vh] big:mt-[3vh] 2xl:mt-[2vh] xl:mt-[4vh] cursor-pointer focus:ring-blue-300 text-sm text-center  text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+                                    <button  value="psd"  class="relative laptop:right-6 big:top-0 ipad:right-6 iphone:top-[6vh] ipad:top-[10vh] font-medium rounded-lg shadow-xl ml-[20vh] big:mt-[3vh] xl:mt-[4vh] cursor-pointer focus:ring-blue-300 text-sm text-center  text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
                                         <p  class="w-fit text-xs uppercase p-3">Send</p>
                                     </button> 
                                 </a>
@@ -122,37 +122,37 @@
                         
 
                     
-                       
+                    
                     </div>
         
-                    <div  class="flex rounded-xl shadow-md flex-col justify-start items-center big:ml-[10vh] 2xl:ml-[5vh] xl:ml-[3vh] w-[55vh] h-[85vh] mt-[10vh] bg-newcolor1">
-                        <div class="rounded-t-md h-[6vh] w-full ">
+                    <div class="flex relative rounded-xl shadow-md flex-col justify-start iphone:h-[35vh] items-center iphone:top-[78vh] iphone:right-[370px] iphone:w-[42vh] ipad:w-[55vh] big:w-[52vh] laptop:w-[52vh] ipad:right-0 big:right-0 laptop:right-0 big:top-0 laptop:top-0 ipad:top-0 big:ml-[3vh] laptop:left-0 ipad:left-[17vh] ipad:h-[38vh] laptop:ml-[3vh] ipad:w[30vh] laptop:h-[85vh] mt-[10vh] bg-newcolor1">
+                        <div class="rounded-t-md h-[6vh] w-full">
                             <p class="font-medium mt-4 text-2xl text-center align-middle">{{ .Username }}'s comments</p>
                         </div>
                         {{ $User := .}}
                         <ul class="mt-[2vh] overflow-y-auto whitespace-nowrap flex-col w-[55vh]">
                             {{ range $k, $v := .MessagesSend }}
-                            <p class="ml-[2vh] mb-[1vh] w-[51vh] h-[6vh] bg-newcolor6 rounded-md text-center align-center truncate">{{ $v.MessageSendByUser }} in - <a href="../{{ $v.TopicSentInName}}">{{ $v.TopicSentInName }}</a></p>
+                            <p class="relative ml-[2vh] mb-[1vh] big:w-[40vh] big:left-[60px] iphone:left-[45px] laptop:w-[40vh] laptop:left-[40px] ipad:w-[40vh] iphone:w-[40vh] h-[6vh] bg-newcolor6 rounded-md text-center align-center truncate">{{ $v.MessageSendByUser }} in - <a href="../{{ $v.TopicSentInName}}">{{ $v.TopicSentInName }}</a></p>
                             {{ end }}
-                          </ul>
+                        </ul>
                         
                     </div>
         
-                    <div  class="flex rounded-xl shadow-md flex-col justify-start items-center big:ml-[10vh] 2xl:ml-[5vh] xl:ml-[3vh] w-[50vh] h-[85vh] mt-[10vh] bg-newcolor1">
-                        <div class="rounded-t-md h-[6vh] w-full ">
+                    <div class="flex relative big:top-0 big:left-[3vh] ipad:top-[43vh] iphone:h-[35vh] ipad:h-[40vh] ipad:right-[38vh] iphone:top-[119vh] iphone:w-[42vh] ipad:w-[55vh] big:w-[52vh] laptop:w-[52vh] iphone:right-[88vh]  laptop:top-0 laptop:left-[3vh] rounded-xl shadow-md flex-col justify-start items-center laptop:h-[85vh] mt-[10vh] bg-newcolor1">
+                        <div class="rounded-t-md h-[6vh] w-full">
                             <p class="font-medium mt-4 text-2xl text-center align-middle">{{ .Username }}'s topics</p>
                         </div>
                         
                         <ul class=" mt-[2vh] overflow-y-auto whitespace-nowrap flex-col w-[55vh]">
                             {{ range $k, $v := .TopicsCreated }}
-                            <p class="ml-[6vh] mb-[1vh] w-[44vh] h-[6vh] bg-newcolor6 rounded-md text-center align-center truncate"><a href="../topics/{{ $v }}">{{ $v }}</a> </p>
+                            <p class="relative ml-[2vh] mb-[1vh] big:w-[40vh] big:left-[60px] iphone:left-[45px] laptop:w-[40vh] laptop:left-[40px] ipad:w-[40vh] iphone:w-[40vh] h-[6vh] bg-newcolor6 rounded-md text-center align-center truncat"><a href="../topics/{{ $v }}">{{ $v }}</a> </p>
                             {{ end }}
-                          </ul>
+                        </ul>
                         
                     </div>
                 </div>
         </div>
-       
+    
         
 
         

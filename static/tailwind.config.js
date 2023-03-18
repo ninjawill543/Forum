@@ -24,6 +24,9 @@ module.exports = {
       },
       screens: {
         'big': '1920px',
+        'laptop': '1280px',
+        'ipad': '1080px',
+        'iphone': '375px',
       }
     },
   },
