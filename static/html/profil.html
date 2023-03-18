@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../css/output.css">
 
-  <title>Document</title>
+  <title>your profil</title>
 </head>
 
 <body class="h-screen w-screen bg-newcolor2">
@@ -15,15 +15,13 @@
   <header>
     <div class="fixed flex justify-around w-full h-16 shadow-md bg-newcolor1">
       <h1 id="h1Title"
-        class="relative uppercase my-[20px] big:right-72 2xl:right-60 xl:right-44 font-bold text-center  text-newcolor4">
+        class="relative uppercase my-[20px] iphone:left-5 big:bottom-0 ipad:bottom-0 iphone:bottom-[14px] ipad:left-10 font-bold text-center text-newcolor4">
         CS forums</h1>
-      <div class="grid w-96 self-center items-center grid-cols-3">
-        <!-- <button onclick="openPassword()" value="psd"  class=" font-medium rounded-lg shadow-xl flex relative w-36 left-[43vh] cursor-pointer focus:ring-blue-300 text-sm text-center  text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
-                    <p class="w-fit text-xs uppercase p-3">Forgot Password</p>
-                </button>  -->
+      <div
+        class="relative iphone:left-24 ipad:left-28 laptop:left-28 big:left-28 grid w-[150vh] self-center items-center grid-cols-3">
         <form>
           <button type="submit" value="logout" name="logOutButton"
-            class=" font-medium rounded-lg shadow-xl flex relative w-24 left-[60vh] cursor-pointer focus:ring-blue-300 text-sm text-center text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+            class="font-medium rounded-lg shadow-xl flex relative laptop:left-[65vh] ipad:right-0 big:right-0 laptop:right-0 iphone:right-[260px] ipad:left-[36vh] big:left-[80vh] w-24 cursor-pointer focus:ring-blue-300 text-sm text-center text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
             <p class="w-fit text-xs uppercase p-3">LogOut</p>
             <svg class="relative top-2 right-1" fill="#000000" width="24px" height="24px" viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg">
@@ -159,11 +157,12 @@
 
       <div id="container" class="flex align-start  ">
         <a href="/index">
-          <img src="https://img.icons8.com/ios/50/null/circled-left-2.png" class="h-12 w-12 ml-[6vh]  mt-[10vh] " />
+          <img src="https://img.icons8.com/ios/50/null/circled-left-2.png"
+            class="relative ipad:top-0 ipad:left-0 iphone:top-3 iphone:left-[15vh] laptop:right-2 laptop:top-2 h-12 w-12 ml-[6vh] mt-[10vh]" />
         </a>
 
 
-        <div class="flex rounded-xl shadow-md flex-col justify-start ml-[5vh] w-[45vh] h-[40vh] mt-[10vh] bg-newcolor1">
+        <div class="flex relative rounded-xl ipad:left-20 iphone:mt-[22vh] iphone:h-[35vh] iphone:right-[7vh] iphone:w-[42vh] laptop:left-0 big:left-0 shadow-md flex-col justify-start ipad:w-[48vh] ipad:h-[42vh] big:h-[32vh] laptop:mt-[10vh] ipad:mt-[10vh] big:mt-[10vh] bg-newcolor1">
 
           <div class="rounded-t-md h-[6vh] w-full  ">
             <p class="font-medium mt-4 text-2xl text-center align-middle">Welcome back, {{ .Username }}</p>
@@ -181,11 +180,11 @@
             </p>
           </button>
           <button id="toblur2" onclick="openEmail()"
-            class=" font-medium rounded-lg shadow-xl flex relative w-20 2xl:left-[35vh] xl:left-[30vh] 2xl:mt-[-26vh] xl:mt-[-26vh] cursor-pointer focus:ring-blue-300 text-sm text-center text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+            class=" font-medium rounded-lg shadow-xl flex relative big:top-16 w-20 big:left-[35vh] laptop:left-[30vh] big:mt-[-26vh] xl:mt-[-26vh] cursor-pointer focus:ring-blue-300 text-sm text-center text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
             <p class="w-fit text-xs uppercase p-3">Change</p>
           </button>
           <button id="toblur3" onclick="openUsername()"
-            class=" font-medium rounded-lg shadow-xl flex relative w-20 2xl:left-[35vh] xl:left-[30vh] 2xl:mt-[3vh] xl:mt-[3vh] cursor-pointer focus:ring-blue-300 text-sm text-center text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+            class=" font-medium rounded-lg shadow-xl flex relative big:top-10 w-20 2xl:left-[35vh] xl:left-[30vh] 2xl:mt-[3vh] xl:mt-[3vh] cursor-pointer focus:ring-blue-300 text-sm text-center text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
             <p class="w-fit text-xs uppercase p-3">Change</p>
           </button>
 
@@ -194,8 +193,25 @@
           <!-- <img class="ml-[40vh] mt-[26vh]" src="https://img.icons8.com/ios-filled/50/null/circled-right-2.png"/> -->
         </div>
 
+        
+
+        </div>
+
         <div
-          class="flex rounded-xl shadow-md flex-col justify-start items-center ml-[-45vh] w-[45vh] h-[40vh] mt-[55vh] bg-newcolor1">
+          class="flex relative rounded-xl shadow-md flex-col justify-start iphone:h-[35vh] items-center iphone:top-[78vh] iphone:right-[370px] iphone:w-[42vh] ipad:w-[55vh] big:w-[52vh] laptop:w-[52vh] ipad:right-0 big:right-0 laptop:right-0 big:top-0 laptop:top-0 ipad:top-0 big:ml-[3vh] laptop:left-0 ipad:left-[17vh] ipad:h-[38vh] laptop:ml-[3vh] ipad:w[30vh] laptop:h-[85vh] mt-[10vh] bg-newcolor1">
+          <div class="rounded-t-md h-[6vh] w-full">
+            <p class="font-medium mt-4 text-2xl text-center align-middle">Your comments</p>
+          </div>
+
+          <ul class="mt-[2vh] overflow-y-auto whitespace-nowrap flex-col w-[55vh]">
+            {{ range $k, $v := .MessagesSend }}
+            <p class="ml-[2vh] mb-[1vh] w-[51vh] h-[6vh] bg-newcolor6 rounded-md text-center align-center truncate">{{
+              $v.MessageSendByUser }} in - <a href="../{{ $v.TopicSentInName}}">{{ $v.TopicSentInName }}</a></p>
+            {{ end }}
+          </ul>
+        </div>
+
+        <div class="flex relative big:top-0 big:left-[3vh] ipad:top-[43vh] iphone:h-[35vh] ipad:h-[40vh] ipad:right-[38vh] iphone:top-[119vh] iphone:w-[42vh] ipad:w-[55vh] big:w-[52vh] laptop:w-[52vh] iphone:right-[88vh]  laptop:top-0 laptop:left-[3vh] rounded-xl shadow-md flex-col justify-start items-center laptop:h-[85vh] mt-[10vh] bg-newcolor1">
           <div class="rounded-t-md h-[6vh] w-full ">
             <p class="font-medium mt-4 text-2xl text-center align-middle">Your Topics</p>
           </div>
@@ -209,25 +225,7 @@
             {{ end }}
           </ul>
 
-        </div>
-
-        <div
-          class="flex rounded-xl shadow-md flex-col justify-start items-center big:ml-[10vh] 2xl:ml-[5vh] xl:ml-[3vh] w-[55vh] h-[85vh] mt-[10vh] bg-newcolor1">
-          <div class="rounded-t-md h-[6vh] w-full">
-            <p class="font-medium mt-4 text-2xl text-center align-middle">Your s</p>
-          </div>
-
-          <ul class="mt-[2vh] overflow-y-auto whitespace-nowrap flex-col w-[55vh]">
-            {{ range $k, $v := .MessagesSend }}
-            <p class="ml-[2vh] mb-[1vh] w-[51vh] h-[6vh] bg-newcolor6 rounded-md text-center align-center truncate">{{
-              $v.MessageSendByUser }} in - <a href="../{{ $v.TopicSentInName}}">{{ $v.TopicSentInName }}</a></p>
-            {{ end }}
-          </ul>
-
-        </div>
-
-        <div
-          class="flex rounded-xl shadow-md flex-col justify-start items-center big:ml-[10vh] 2xl:ml-[5vh] xl:ml-[3vh] w-[50vh] h-[85vh] mt-[10vh] bg-newcolor1">
+        <div class="flex relative rounded-xl ipad:right-[50vh] big:right-[107vh] laptop:right-[107vh] shadow-md flex-col justify-start items-center w-[46vh] laptop:h-[51vh] big:h-[51vh] ipad:h-[50vh] iphone:bottom-0 laptop:bottom-0 big:bottom-0 ipad:mt-0 laptop:mt-[35vh] big:mt-[25vh] bg-newcolor1">
           <div class="rounded-t-md h-[6vh] w-full">
             <p class="font-medium mt-4 text-2xl text-center align-middle">Your messages</p>
           </div>
