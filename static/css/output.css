@@ -2442,6 +2442,30 @@ video {
     bottom: 15vh;
   }
 
+  .iphone\:top-11 {
+    top: 2.75rem;
+  }
+
+  .iphone\:top-10 {
+    top: 2.5rem;
+  }
+
+  .iphone\:left-\[10vh\] {
+    left: 10vh;
+  }
+
+  .iphone\:left-\[7vh\] {
+    left: 7vh;
+  }
+
+  .iphone\:left-\[5vh\] {
+    left: 5vh;
+  }
+
+  .iphone\:left-\[2vh\] {
+    left: 2vh;
+  }
+
   .iphone\:mt-\[22vh\] {
     margin-top: 22vh;
   }
