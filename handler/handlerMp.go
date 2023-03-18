@@ -21,5 +21,5 @@ func Handler_Mp(w http.ResponseWriter, r *http.Request) {
 
 	t.DisplayMp(r, databaseForum)
 
-	tmpl.Execute(w, t.MPS)
+	tmpl.Execute(w, t.MPSANDTOWHO)
 }

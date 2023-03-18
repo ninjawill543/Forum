@@ -3,9 +3,9 @@ package forum
 import (
 	"database/sql"
 	"fmt"
+	t3 "forum/mp"
 	t "forum/profil"
 	t2 "forum/report"
-	t3 "forum/users"
 	"html/template"
 	"net/http"
 	"strings"
@@ -20,6 +20,11 @@ func Handler_publicProfil(w http.ResponseWriter, r *http.Request) {
 		t2.Ban(r, databaseForum)
 	} else if r.FormValue("report") != "" {
 		t2.ReportUser(r, databaseForum)
+	}
+
+	if r.FormValue("mpMessage") != "" {
+		t3.AddMp(r, databaseForum)
+
 	}
 
 	query := `SELECT username FROM users`
@@ -50,7 +55,6 @@ func Handler_publicProfil(w http.ResponseWriter, r *http.Request) {
 
 	if exists {
 		t.PublicProfil(r, databaseForum)
-		t.PUBLICUSER.Username = t3.USER.Username
 		tmpl.Execute(w, t.PUBLICUSER)
 	} else {
 		tmpl2.Execute(w, nil)

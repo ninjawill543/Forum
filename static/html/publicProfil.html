@@ -103,22 +103,15 @@
                         <p class="font-medium mt-4 text-2xl text-center align-middle">Send {{ .Username }} a message</p>
                     </div>
                     <!-- <div class="flex items-start"> -->
-                    <textarea
-                        class="relative resize-none bg-newcolor6 w-[43vh] ipad:h-[20vh] iphone:top-4 ipad:top-10 laptop:top-4 iphone:h-[10vh] laptop:h-[22vh] big:h-[35vh] big:mt-0 laptop:mt-2 rounded-md"></textarea>
-                    <div class="flex">
-                        <a href="../private-message/{{ .Username }}">
-                            <button value="psd"
-                                class="relative font-medium rounded-lg big:top-0 shadow-xl iphone:top-[6vh] ipad:top-[10vh] ipad:left-[2vh] laptop:left-[2vh] laptop:w-[17vh] w-[15vh] big:mt-[3vh] laptop:mt-[3vh] big:ml-[-2vh] xl:ml-[vh] cursor-pointer focus:ring-blue-300 text-center  text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
-                                <p class="w-fit text-xs uppercase p-3 ">View Conversation</p>
-                            </button>
-                        </a>
-                        <a href="../private-message/{{ .Username }}">
-                            <button value="psd"
-                                class="relative laptop:right-6 big:top-0 ipad:right-6 iphone:top-[6vh] ipad:top-[10vh] font-medium rounded-lg shadow-xl ml-[20vh] big:mt-[3vh] xl:mt-[4vh] cursor-pointer focus:ring-blue-300 text-sm text-center  text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
-                                <p class="w-fit text-xs uppercase p-3">Send</p>
-                            </button>
-                        </a>
-                    </div>
+                    <form method="POST">
+
+                    <input type="text" name="mpMessage" placeholder="write your message">
+                        <div class="mt-4">
+                            <a href="../private-message/{{ .Username }}">view conversation</a>
+                            <br>
+                            <input type="submit" value="send">
+                        </div>
+                    </form>
 
 
                     <!-- </div> -->
