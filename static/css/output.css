@@ -969,6 +969,10 @@ video {
   margin-top: 24vh;
 }
 
+.ml-\[4vh\] {
+  margin-left: 4vh;
+}
+
 .block {
   display: block;
 }
@@ -2466,6 +2470,86 @@ video {
     left: 2vh;
   }
 
+  .iphone\:top-\[115vh\] {
+    top: 115vh;
+  }
+
+  .iphone\:right-\[86vh\] {
+    right: 86vh;
+  }
+
+  .iphone\:right-\[85vh\] {
+    right: 85vh;
+  }
+
+  .iphone\:right-\[8vh\] {
+    right: 8vh;
+  }
+
+  .iphone\:right-\[87vh\] {
+    right: 87vh;
+  }
+
+  .iphone\:right-\[87\.5vh\] {
+    right: 87.5vh;
+  }
+
+  .iphone\:top-\[118vh\] {
+    top: 118vh;
+  }
+
+  .iphone\:top-\[117vh\] {
+    top: 117vh;
+  }
+
+  .iphone\:top-\[116vh\] {
+    top: 116vh;
+  }
+
+  .iphone\:right-\[10vh\] {
+    right: 10vh;
+  }
+
+  .iphone\:right-\[12vh\] {
+    right: 12vh;
+  }
+
+  .iphone\:right-\[15vh\] {
+    right: 15vh;
+  }
+
+  .iphone\:right-\[30vh\] {
+    right: 30vh;
+  }
+
+  .iphone\:left-\[-10vh\] {
+    left: -10vh;
+  }
+
+  .iphone\:left-\[-20vh\] {
+    left: -20vh;
+  }
+
+  .iphone\:left-\[-40vh\] {
+    left: -40vh;
+  }
+
+  .iphone\:left-\[-45vh\] {
+    left: -45vh;
+  }
+
+  .iphone\:left-\[-43vh\] {
+    left: -43vh;
+  }
+
+  .iphone\:left-\[-48vh\] {
+    left: -48vh;
+  }
+
+  .iphone\:left-\[-50vh\] {
+    left: -50vh;
+  }
+
   .iphone\:mt-\[22vh\] {
     margin-top: 22vh;
   }
@@ -3282,6 +3366,10 @@ video {
 
   .laptop\:top-\[20px\] {
     top: 20px;
+  }
+
+  .laptop\:right-4 {
+    right: 1rem;
   }
 
   .laptop\:mt-\[10vh\] {
