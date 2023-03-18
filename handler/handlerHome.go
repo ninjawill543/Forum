@@ -15,6 +15,10 @@ func Handler_Home(w http.ResponseWriter, r *http.Request) {
 
 	t4.GetCookieHandler(w, r)
 
+	if r.FormValue("input_mail") != "" {
+		t4.EMAILSTORAGE.Email = r.FormValue("input_mail")
+	}
+
 	if r.FormValue("input_loginusername") != "" && r.FormValue("input_loginpassword") != "" {
 		t5.Login(r, databaseForum, w)
 	}

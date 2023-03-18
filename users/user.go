@@ -25,12 +25,6 @@ func UserEdit(r *http.Request, db *sql.DB) {
 					db.Exec(query)
 				}
 			}
-			if r.FormValue("password") != "" {
-				if t.CheckPassword(r.FormValue("password")) {
-					query := fmt.Sprintf("UPDATE users SET password = '%s' WHERE uuid = '%s'", t.Hash(r.FormValue("password")), USER.Uuid)
-					db.Exec(query)
-				}
-			}
 			if r.FormValue("email") != "" {
 				if t.CheckMail(r.FormValue("email")) {
 					query := fmt.Sprintf("UPDATE users SET email = '%s' WHERE uuid = '%s'", r.FormValue("email"), USER.Uuid)

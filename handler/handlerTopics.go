@@ -24,7 +24,7 @@ func Handler_topics(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if r.FormValue("input_mail") != "" {
-		t2.EmailStorage(r)
+		t2.EMAILSTORAGE.Email = r.FormValue("input_mail")
 	}
 
 	if r.FormValue("input_loginusername") != "" && r.FormValue("input_loginpassword") != "" {

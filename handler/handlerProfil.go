@@ -27,5 +27,7 @@ func Handler_profil(w http.ResponseWriter, r *http.Request) {
 	t.MessagesSendByUser(databaseForum)
 	t.TopicCreatedByUser(databaseForum)
 
+	t.GetCookieHandler(w, r)
+
 	tmpl.Execute(w, t.USER)
 }

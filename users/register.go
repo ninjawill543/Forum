@@ -3,10 +3,13 @@ package forum
 import (
 	"database/sql"
 	"fmt"
+	t2 "forum/structs"
 	t "forum/views"
 	"net/http"
 	"time"
 )
+
+var EMAILSTORAGE t2.EmailStorage
 
 func Register(r *http.Request, database *sql.DB) {
 	if r.Method == "POST" {
@@ -18,7 +21,7 @@ func Register(r *http.Request, database *sql.DB) {
 		password2 := r.FormValue("input_password2")
 		creationDate := time.Now()
 		birthDay := r.FormValue("input_birthDay")
-		mail := EMAILSTORAGE.email
+		mail := EMAILSTORAGE.Email
 
 		if password != password2 {
 			fmt.Println("passowrds dont match")

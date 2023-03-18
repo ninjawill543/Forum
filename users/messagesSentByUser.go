@@ -12,7 +12,6 @@ func MessagesSendByUser(db *sql.DB) {
 	var name string
 	USER.MessagesSend = nil
 	query := fmt.Sprintf("SELECT message, uuidPath FROM messages WHERE owner = '%s'", USER.Username)
-	fmt.Println("test messagesSent", USER.MessagesSend)
 	row, err := db.Query(query)
 	if err != nil {
 		fmt.Println(err)
