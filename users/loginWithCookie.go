@@ -26,7 +26,7 @@ func LoginWithCookie(uuidUser string) {
 		USER.Username = username
 		USER.Uuid = uuidUser
 		USER.Email = email
-		USER.CreationDate = t.DisplayTime(creationDate, " ")
+		USER.CreationDate = t.DisplayTime(creationDate)
 		USER.Admin = admin
 		USER.BirthDate = birthDate
 	}

@@ -4,12 +4,11 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
-	"time"
 
 	"github.com/google/uuid"
 )
 
-func AddUsers(db *sql.DB, username string, password string, email string, creationDate time.Time, birthDate string) {
+func AddUsers(db *sql.DB, username string, password string, email string, creationDate string, birthDate string) {
 	var testBool bool
 	newUsername := username
 	newEmail := email

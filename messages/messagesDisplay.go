@@ -75,7 +75,7 @@ func MessagesPageDisplay(db *sql.DB, r *http.Request) {
 				MESSAGES.Messages = append(MESSAGES.Messages, t3.Message{})
 				MESSAGES.Messages[messageIndex].Id = id
 				MESSAGES.Messages[messageIndex].Message = message
-				MESSAGES.Messages[messageIndex].CreationDate = t4.DisplayTime(creationDate, " ")
+				MESSAGES.Messages[messageIndex].CreationDate = t4.DisplayTime(creationDate)
 				MESSAGES.Messages[messageIndex].Owner = owner
 				MESSAGES.Messages[messageIndex].Report = report
 				MESSAGES.Messages[messageIndex].Uuid = uuid

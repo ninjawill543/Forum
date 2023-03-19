@@ -41,7 +41,7 @@ func NewMessage(db *sql.DB, r *http.Request) {
 		} else if t.USER.Username == "" {
 			fmt.Println("you need to be login to post a message")
 		} else {
-			creationDate := time.Now()
+			creationDate := time.Now().String()
 
 			newMessageQuery := `INSERT INTO messages(message, creationDate, owner, report, uuidPath, like, edited, uuid) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`
 			queryMessage, err := db.Prepare(newMessageQuery)

@@ -19,7 +19,7 @@ func Register(r *http.Request, database *sql.DB) {
 		username := r.FormValue("input_username")
 		password := r.FormValue("input_password")
 		password2 := r.FormValue("input_password2")
-		creationDate := time.Now()
+		creationDate := time.Now().String()
 		birthDay := r.FormValue("input_birthDay")
 		mail := EMAILSTORAGE.Email
 

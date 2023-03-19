@@ -85,7 +85,7 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 				TOPICSANDSESSION.Topics = append(TOPICSANDSESSION.Topics, t.Topic{})
 				TOPICSANDSESSION.Topics[topicIndex].Name = name
 				TOPICSANDSESSION.Topics[topicIndex].Likes = likes
-				TOPICSANDSESSION.Topics[topicIndex].CreationDate = t2.DisplayTime(creationDate, "T")
+				TOPICSANDSESSION.Topics[topicIndex].CreationDate = t2.DisplayTime(creationDate)
 				TOPICSANDSESSION.Topics[topicIndex].Owner = owner
 				TOPICSANDSESSION.Topics[topicIndex].NmbPosts = nmbPosts
 				TOPICSANDSESSION.Topics[topicIndex].Uuid = uuid

@@ -42,7 +42,7 @@ func AddTopic(r *http.Request, database *sql.DB) {
 			}
 
 			if !topicNameTaken {
-				creationDate := time.Now()
+				creationDate := time.Now().String()
 				topicInfo := `INSERT INTO topics(name, firstMessage, creationDate, owner, likes, nmbPosts, lastPost, category, uuid) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`
 				uuid := uuid.New()
 				query, err := database.Prepare(topicInfo)

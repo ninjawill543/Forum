@@ -3,12 +3,11 @@ package forum
 import (
 	"database/sql"
 	"fmt"
-	"time"
 
 	"github.com/google/uuid"
 )
 
-func AddFirstMessageInMessages(firstMessage string, creationDate time.Time, owner string, uuidPath uuid.UUID, db *sql.DB) {
+func AddFirstMessageInMessages(firstMessage string, creationDate string, owner string, uuidPath uuid.UUID, db *sql.DB) {
 	uuid := uuid.New()
 	addInMessages := `INSERT INTO messages(message, creationDate, owner, report, uuidPath, like, edited, uuid) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`
 	query, err := db.Prepare(addInMessages)
