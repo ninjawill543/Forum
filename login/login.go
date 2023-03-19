@@ -9,6 +9,7 @@ import (
 )
 
 func Login(r *http.Request, db *sql.DB, w http.ResponseWriter) {
+	//all login info
 	var email string
 	var username string
 	var password string
@@ -17,7 +18,6 @@ func Login(r *http.Request, db *sql.DB, w http.ResponseWriter) {
 	var creationDate string
 	var admin int
 	var ban int
-	fmt.Println("big test")
 
 	if r.Method == "POST" {
 		if t2.USER.Username != "" {
@@ -39,6 +39,7 @@ func Login(r *http.Request, db *sql.DB, w http.ResponseWriter) {
 						fmt.Println(err)
 					} else if ban == 1 {
 						fmt.Println("you have been banned ask admin to get unbanned")
+
 					} else {
 						if usernameInput == username || usernameInput == email && passwordInput == password {
 							fmt.Println("LOGIN!")

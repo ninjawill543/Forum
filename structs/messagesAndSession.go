@@ -11,6 +11,7 @@ type Messages struct {
 	UuidPath     string
 	SessionUser  string
 	Category     string
+	Error        string
 	Messages     []Message `Message`
 }
 

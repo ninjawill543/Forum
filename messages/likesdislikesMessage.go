@@ -8,6 +8,7 @@ import (
 )
 
 func LikesDislikes(r *http.Request, db *sql.DB) {
+	//to know who liked what
 	if t.USER.Username != "" {
 		var newLike int
 		var uuid string

@@ -10,8 +10,10 @@ import (
 )
 
 func main() {
+	//creating the db forum
 	t1.CreatingDatabases()
 
+	//every handlefunc
 	http.HandleFunc("/404", t3.Handler_404)
 	http.HandleFunc("/topics/", t3.Handler_topics)
 	http.HandleFunc("/messages/", t3.Handler_Messages)

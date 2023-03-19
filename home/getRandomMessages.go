@@ -25,6 +25,7 @@ func GetRandomMessages(db *sql.DB, r *http.Request) {
 	TOPICSANDSESSION.Topics = nil
 	allTopics = nil
 
+	//to get cookie.Value which is the uuid of current user
 	cookie, err := r.Cookie("session")
 	if err != nil {
 		fmt.Println(err)
@@ -43,6 +44,7 @@ func GetRandomMessages(db *sql.DB, r *http.Request) {
 		}
 	}
 
+	//getting this amount of random topic
 	for i := 0; i < 10; i++ {
 		query := "SELECT name, firstMessage, creationDate, owner, likes, category FROM topics ORDER BY RANDOM() LIMIT 1"
 		row, err := db.Query(query)

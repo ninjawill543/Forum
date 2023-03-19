@@ -15,8 +15,10 @@ func Handler_Home(w http.ResponseWriter, r *http.Request) {
 	tmpl1 := template.Must(template.ParseFiles("../static/html/home.html"))
 	databaseForum, _ := sql.Open("sqlite3", "../forum.db")
 
+	//getting cookies to auto-login
 	t4.GetCookieHandler(w, r)
 
+	//checking if a button is sued
 	if r.FormValue("like") != "" || r.FormValue("dislike") != "" {
 		t2.LikesDislikes(r, databaseForum)
 	}
@@ -37,6 +39,7 @@ func Handler_Home(w http.ResponseWriter, r *http.Request) {
 		t4.Register(r, databaseForum)
 	}
 
+	//displaying a certain amount of random messages in home page
 	t.GetRandomMessages(databaseForum, r)
 
 	t.TOPICSANDSESSION.SessionUser = t4.USER.Username

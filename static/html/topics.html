@@ -249,11 +249,10 @@
                     </div>
                   </div>
                 </div>
-              {{ end }}
                 
                 
                 <!-- <div class="shadow-lg w-[90vh] h-[12vh] bg-newcolor1 mt-[3vh] rounded-md">
-                    
+                  
                 </div>
                 <div class="shadow-lg w-[90vh] h-[12vh] bg-newcolor1 mt-[3vh] rounded-md">
                 </div>
@@ -268,36 +267,37 @@
                 <div class="shadow-lg w-[90vh] h-[12vh] bg-newcolor1 mt-[3vh] rounded-md">
                 </div> -->
             </div>
-
-
-
-
-    
             
-        </div>
-        
-        
-    </main>
-    <div class="hidden" id="login">
-      <div class="fixed rounded-lg sm:top-1/2 sm:left-1/2 sm:-translate-y-1/2 sm:-translate-x-1/2 top-[15vh] left-[12vw] big:h-[400px] 2xl:h-[400px] 2xl:w-[18vw] xl:w-[22vw] lg:w-[28vw] max-sm:w-[80vw] bg-newcolor4 flex flex-col items-center justify-center ">
-          <button class="pl-[30vh] pb-2 text-xl font-medium" onclick="closeRegister()">X</button>
-          <p>Login</p>
-          <form method="post" class="mt-8 mb-4">
-          <div class="mb-4">
-            <label for="userEmail" class="sr-only">Email address</label>
-            <input name="input_loginusername" class="border-solid border border-gray-400 rounded px-2 py-3" type="text" id="userEmail" placeholder="Email address / Username" required />
+            
+            
+            
+            
+            
           </div>
-        <div class="mb-[5vh]">
-          <label for="userEmail" class="sr-only">Password</label>
-          <input name="input_loginpassword" class="border-solid border border-gray-400 rounded px-2 py-3" type="password" id="userPass" placeholder="Password" required />
-      </div>
+          
+          
+        </main>
+        <div class="hidden" id="login">
+          <div class="fixed rounded-lg sm:top-1/2 sm:left-1/2 sm:-translate-y-1/2 sm:-translate-x-1/2 top-[15vh] left-[12vw] big:h-[400px] 2xl:h-[400px] 2xl:w-[18vw] xl:w-[22vw] lg:w-[28vw] max-sm:w-[80vw] bg-newcolor4 flex flex-col items-center justify-center ">
+            <button class="pl-[30vh] pb-2 text-xl font-medium" onclick="closeRegister()">X</button>
+            <p>Login</p>
+            <form method="post" class="mt-8 mb-4">
+              <div class="mb-4">
+                <label for="userEmail" class="sr-only">Email address</label>
+                <input name="input_loginusername" class="border-solid border border-gray-400 rounded px-2 py-3" type="text" id="userEmail" placeholder="Email address / Username" required />
+              </div>
+              <div class="mb-[5vh]">
+                <label for="userEmail" class="sr-only">Password</label>
+                <input name="input_loginpassword" class="border-solid border border-gray-400 rounded px-2 py-3" type="password" id="userPass" placeholder="Password" required />
+              </div>
           <button onClick="refreshPage()" class="rounded-lg bg-newcolor3 hover:bg-gray-600 text-white font-bold w-full py-3 mb-4" type="submit">Sign in</button>
+          {{ end }}
           <p class="rounded-lg bg-newcolor3 hover:bg-gray-600 text-white font-bold w-full py-3 text-center" onclick="openRegister()">Register</p>
           <!-- <button class="rounded-lg bg-newcolor3 hover:bg-gray-600 text-white font-bold w-full py-3 " type="submit" onclick="openRegister()">Click here to register</button> -->
           </form>
+        </div>
       </div>
-    </div>
-
+      
         <div class="hidden" id="register">
           <div class="fixed rounded-lg sm:top-1/2 sm:left-1/2 sm:-translate-y-1/2 sm:-translate-x-1/2 top-[15vh] left-[12vw] big:h-[300px] 2xl:h-[300px] 2xl:w-[18vw] xl:w-[22vw] lg:w-[28vw] max-sm:w-[80vw] bg-newcolor4 flex flex-col items-center justify-center ">
             <button class="pl-[30vh] pb-2 text-xl font-medium" onclick="closeRegister()">X</button>

@@ -13,6 +13,7 @@ import (
 )
 
 func NewMessage(db *sql.DB, r *http.Request) {
+	//adding new message
 	uuidMessage := uuid.New()
 	var uuid string
 	topicName := strings.Split(r.URL.Path, "/")

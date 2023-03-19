@@ -12,6 +12,7 @@ import (
 var TOPICSANDSESSION t.TopicsAndSession
 
 func DisplayTopic(r *http.Request, db *sql.DB) {
+	//displays all topics of the current category
 	var name string
 	var likes int
 	var creationDate string

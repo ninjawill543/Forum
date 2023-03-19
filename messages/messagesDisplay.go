@@ -14,6 +14,7 @@ import (
 var MESSAGES t3.Messages
 
 func MessagesPageDisplay(db *sql.DB, r *http.Request) {
+	//displaying all messages of current topic
 	MESSAGES.SessionUser = t2.USER.Username
 	var creationDate string
 	var owner string

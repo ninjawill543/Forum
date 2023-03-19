@@ -8,6 +8,7 @@ import (
 )
 
 func AddFirstMessageInMessages(firstMessage string, creationDate string, owner string, uuidPath uuid.UUID, db *sql.DB) {
+	//this is the firt message posted by owner of topic (optional)
 	uuid := uuid.New()
 	addInMessages := `INSERT INTO messages(message, creationDate, owner, report, uuidPath, like, edited, uuid) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`
 	query, err := db.Prepare(addInMessages)

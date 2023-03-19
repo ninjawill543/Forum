@@ -12,6 +12,7 @@ import (
 )
 
 func AddTopic(r *http.Request, database *sql.DB) {
+	//creating new topic
 	if r.Method == "POST" {
 		var name string
 		var topicNameTaken bool

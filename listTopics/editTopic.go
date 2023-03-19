@@ -9,6 +9,7 @@ import (
 )
 
 func EditTopic(r *http.Request, db *sql.DB) {
+	//edit current topic only if admin or owner
 	if r.FormValue("edit") != "" {
 		newName := r.FormValue("newName")
 		if len(newName) < 2 {
@@ -29,7 +30,6 @@ func EditTopic(r *http.Request, db *sql.DB) {
 					}
 				}
 			}
-			fmt.Println(t.USER.Username, owner, "owner and username")
 			if t.USER.Username == owner {
 				query := fmt.Sprintf("UPDATE topics SET name = '%s' WHERE uuid = '%s'", newName, uuid[2])
 				db.Exec(query)
