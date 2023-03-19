@@ -19,9 +19,10 @@
 <body class="h-screen w-screen bg-newcolor2">
     <header >
         <div class="fixed flex justify-around w-full h-16 shadow-md bg-newcolor1">
-            <h1 id="h1Title"
-        class="relative uppercase my-[20px] big:left-[-15vw] 2xl:left-[-15vw] xl:left-[-12vw]  font-bold text-center text-newcolor4">
-        CS forums</h1>
+            <a href="/"><h1 id="h1Title"
+                class="relative uppercase my-[20px] big:left-[-15vw] 2xl:left-[-15vw] xl:left-[-12vw]  font-bold text-center text-newcolor4">
+                CS forums</h1></a>
+            
             <div class="grid w-96 self-center items-center grid-cols-3">
                 <a href="/your-profil/">
                     <button  value="psd"  class=" font-medium rounded-lg shadow-xl flex relative w-22 big:right-[-25vw] 2xl:right-[-25vw] xl:right-[-25vw] sm:right-[-25vw]  cursor-pointer focus:ring-blue-300 text-sm text-center  text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
@@ -55,7 +56,7 @@
                         </form>  -->
             <div id="container" class="flex align-start  ">
         
-                    <a href="/index">
+                    <a href="/">
                         <img src="https://img.icons8.com/ios/50/null/circled-left-2.png" class="h-12 w-12 ml-[3vw]  mt-[10vh] "/>
                       </a>
         
@@ -77,7 +78,7 @@
                                 </svg>
                         </button>  -->
                         <form method="POST">
-                            <button name="report" value="{{ .Username }}">report</button>
+                            <button class="text-xs uppercase p-3 font-medium rounded-lg shadow-xl flex relative w-24 left-[25vh] top-[1vh] cursor-pointer focus:ring-blue-300 text-sm text-center  text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none" name="report" value="{{ .Username }}">report</button>
                         </form>
                         <!-- <button onclick="" value="psd"  class=" font-medium rounded-lg shadow-xl flex relative w-24 left-[25vh] top-[1vh] cursor-pointer focus:ring-blue-300 text-sm text-center  text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
                             <p class="w-fit text-xs uppercase p-3">Ban</p>
@@ -100,23 +101,22 @@
                         <!-- <div class="flex items-start"> -->
                             <!-- <textarea class="resize-none bg-newcolor6 xl:w-[20vw] 2xl:h-[35vh] xl:h-[30vh] 2xl:mt-0 xl:mt-2 md:w-[38vw] md:h-[30vh] rounded-md"></textarea> -->
                             <!-- <div class="flex"> -->
-                                <a href="../private-message/{{ .Username }}">
-                                    <!-- <button  value="psd"  class=" font-medium rounded-lg shadow-xl mb-4 xl:w-[8vw] md:w-[15vw] big:mt-[3vh] 2xl:mt-[1vh] xl:mt-[3vh] 2xl:ml-[-2vh] big:ml-[1vw] xl:ml-[vh] cursor-pointer focus:ring-blue-300 text-sm text-center  text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
-                                        <p  class="w-fit text-xs uppercase p-3 ">View Conversation</p>
-                                    </button>  -->
-                                    <span>
-                                        view conversation
-                                    </span>
-                                </a>
+
                                     <!-- <button  value="psd"  class=" font-medium rounded-lg shadow-xl ml-[8vw] big:mt-[3vh] 2xl:mt-[2vh] xl:mt-[4vh] cursor-pointer focus:ring-blue-300 text-sm text-center  text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
                                         <p  class="w-fit text-xs uppercase p-3">Send</p>
                                     </button>  -->
-                                    <br>
                                     <form method="POST">
-                                        <input type="text" placeholder="write message" name="mpMessage">
-                                        <br>
-                                        <input type="submit" value="send">
+                                        <input class="ml-4 bg-newcolor6 xl:w-[20vw] 2xl:h-[20vh] xl:h-[20vh] 2xl:mt-0 xl:mt-2 md:w-[38vw] md:h-[20vh] rounded-md" type="text" placeholder="Write your message here" name="mpMessage">
+                                        <input class="uppercase p-3 font-medium rounded-lg shadow-xl ml-[18vw] big:mt-[1vh] 2xl:mt-[2vh] xl:mt-[4vh] cursor-pointer focus:ring-blue-300 text-sm text-center  text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none" type="submit" value="send">
                                     </form>
+                                    <a href="../private-message/{{ .Username }}" class="uppercase p-3 font-medium rounded-lg shadow-xl mb-4 xl:w-[8vw] md:w-[15vw] big:mt-[-5vh] lg:mt-[-6vh]  2xl:ml-[-8vw] lg:ml-[-10vw] md:ml-[-20vw] md:mt-[10vh] cursor-pointer focus:ring-blue-300 text-sm text-center  text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+                                        <!-- <button  value="psd"  class=" font-medium rounded-lg shadow-xl mb-4 xl:w-[8vw] md:w-[15vw] big:mt-[3vh] 2xl:mt-[1vh] xl:mt-[3vh] 2xl:ml-[-2vh] big:ml-[1vw] xl:ml-[vh] cursor-pointer focus:ring-blue-300 text-sm text-center  text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+                                            <p  class="w-fit text-xs uppercase p-3 ">View Conversation</p>
+                                        </button>  -->
+                                        <span >
+                                            view conversation
+                                        </span>
+                                    </a>
                             <!-- </div> -->
                             
                             

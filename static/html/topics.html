@@ -12,9 +12,12 @@
 <body onload="test('{{ .SessionUser }}');" class="h-screen w-screen bg-newcolor2">
 <header >
   <div class="fixed flex justify-around w-full h-16 shadow-md bg-newcolor1">
+    <a href="/">
       <h1 id="h1Title"
           class="relative uppercase my-[20px] big:left-[-15vw] 2xl:left-[-15vw] xl:left-[-12vw]  font-bold text-center text-newcolor4">
           CS forums</h1>
+    </a>
+      
       <div class="grid w-96 self-center items-center grid-cols-3">
           <p class="font-bold text-center relative 2xl:left-[-50vw] xl:left-[-40vw] lg:left-[-30vw]">c/{{ .Category }}</p>
           <div id="logbutton" class="hidden">
@@ -219,15 +222,13 @@
                                 <span class="text-slate-900">{{ $v.Likes }}</span>
                               </div>
                             </button>
-                          </form>
-                          <form method="POST">
+
                             <button type="submit" value="{{ .Uuid }}" name="dislike">
                               <div class="flex cursor-pointer items-center transition hover:text-slate-600">
                                 {{ if $v.IsDisliked }}
-                                <img src="../css/dislike_plein.svg" width="21px" height="21px">
+                                  <img src="../css/dislike_plein.svg" width="21px" height="21px">
                                 {{ else }}
                                 <img src="../css/dislike_vide.svg" width="21px" height="21px">
-                                {{ end }}
                               </div>
                             </button>
                           </form>
@@ -240,6 +241,7 @@
                                 <img src="../css/corbeille.svg" width="21px" height="21px">
                               </div>
                             </form>
+                            {{ end }}
                         </div>
                       </div>
                     </div>
