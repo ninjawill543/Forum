@@ -29,6 +29,7 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 	// var lastPost string
 
 	filter = r.FormValue("filter")
+	DESCOASC := "DESC"
 
 	if filter == "" {
 		filter = "creationDate"
@@ -37,11 +38,18 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 	categoryUrl := strings.Split(r.URL.Path, "/")
 	categoryUrl = strings.Split(categoryUrl[2], "=")
 
-	query = fmt.Sprintf("SELECT id, name, firstMessage, creationDate, owner, likes, nmbPosts, category, uuid FROM topics WHERE category = '%s' ORDER BY %s DESC ", categoryUrl[1], filter)
+	if r.FormValue("filter") == "mostRecent" {
+		filter = "creationDate"
+	} else if r.FormValue("filter") == "oldest" {
+		filter = "creationDate"
+		DESCOASC = "ASC"
+	}
+
+	query = fmt.Sprintf("SELECT id, name, firstMessage, creationDate, owner, likes, nmbPosts, category, uuid FROM topics WHERE category = '%s' ORDER BY %s %s ", categoryUrl[1], filter, DESCOASC)
 
 	if r.FormValue("searchbar") != "" {
 		searchName = "%" + r.FormValue("searchbar") + "%"
-		query = fmt.Sprintf("SELECT id, name, firstMessage, creationDate, owner, likes, nmbPosts, category, uuid FROM topics WHERE name LIKE '%s' AND category = '%s' ORDER BY %s DESC", searchName, categoryUrl[1], filter)
+		query = fmt.Sprintf("SELECT id, name, firstMessage, creationDate, owner, likes, nmbPosts, category, uuid FROM topics WHERE name LIKE '%s' AND category = '%s' ORDER BY %s %s", searchName, categoryUrl[1], filter, DESCOASC)
 	}
 
 	cookie, err := r.Cookie("session")
