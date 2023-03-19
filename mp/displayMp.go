@@ -23,7 +23,6 @@ type Mp struct {
 var MPSANDTOWHO MpAndToWho
 
 func DisplayMp(r *http.Request, db *sql.DB) {
-	fmt.Println(t.USER.Username)
 	var message string
 	var creationDate string
 	var user1 string

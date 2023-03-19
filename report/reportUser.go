@@ -36,7 +36,8 @@ func ReportUser(r *http.Request, db *sql.DB) {
 				db.Exec(query)
 				report := "reports"
 				query = fmt.Sprintf("UPDATE users SET %s = %s + 1 WHERE username = '%s'", report, report, uuid)
-
+				fmt.Println(query)
+				fmt.Println("reported")
 				db.Exec(query)
 			}
 		} else {

@@ -167,7 +167,7 @@
                         {{ $User := .}}
                         {{ range $k, $v := .TopicsCreated }}
                         <!-- <p class=" font-normal mt-2 text-xl ml-4 "><a href="../topics/{{ $v }}">{{ $v }}</a></p> -->
-                        <div class="ml-[2vh] mb-[1vh] w-[40vh] h-[3vh] bg-newcolor6 rounded-md text-center align-center truncate"><a class="align-center w-full" href="../topics/{{ $v }}">{{ $v }}</a></div>
+                        <div class="ml-[2vh] mb-[1vh] w-[40vh] h-[3vh] bg-newcolor6 rounded-md text-center align-center truncate"><a class="align-center w-full" href="../messages/{{ $v }}">{{ $v }}</a></div>
                         {{ end }}
                       </ul>
                    
@@ -175,12 +175,12 @@
     
                 <div  class="flex rounded-xl shadow-md flex-col justify-start items-center big:ml-[10vh] 2xl:ml-[5vh] xl:ml-[3vh] w-[55vh] h-[85vh] mt-[10vh] bg-newcolor1">
                     <div class="rounded-t-md h-[6vh] w-full ">
-                        <p class="font-medium mt-4 text-2xl text-center align-middle">Your  s</p>
+                        <p class="font-medium mt-4 text-2xl text-center align-middle">Your comments</p>
                     </div>
                     
                     <ul class="mt-[2vh] overflow-y-auto whitespace-nowrap flex-col w-[55vh]">
                         {{ range $k, $v := .MessagesSend }}
-                        <p class="ml-[2vh] mb-[1vh] w-[51vh] h-[6vh] bg-newcolor6 rounded-md text-center align-center truncate">{{ $v.MessageSendByUser }} in - <a href="../{{ $v.TopicSentInName}}">{{ $v.TopicSentInName }}</a></p>
+                        <p class="ml-[2vh] mb-[1vh] w-[51vh] h-[6vh] bg-newcolor6 rounded-md text-center align-center truncate"><a href="../messages/{{ $v.TopicSentInName}}">{{ $v.MessageSendByUser }} in - {{ $v.TopicSentInName }}</a></p>
                         {{ end }}
                       </ul>
                     
@@ -188,12 +188,12 @@
     
                 <div  class="flex rounded-xl shadow-md flex-col justify-start items-center big:ml-[10vh] 2xl:ml-[5vh] xl:ml-[3vh] w-[50vh] h-[85vh] mt-[10vh] bg-newcolor1">
                     <div class="rounded-t-md h-[6vh] w-full ">
-                        <p class="font-medium mt-4 text-2xl text-center align-middle">Your messages</p>
+                        <p class="font-medium mt-4 text-2xl text-center align-middle">Your private messages</p>
                     </div>
                     
                     <ul class="mt-[2vh] overflow-y-auto whitespace-nowrap flex-col w-[45vh]">
                         {{ range $k, $v := .PrivateMessages }}
-                        <p class=" mb-[1vh] w-[45vh] h-[6vh] bg-newcolor6 rounded-md text-center align-center truncate"><a href="../private-message/{{ $v.PrivateMessage2ndUser }}">{{ $v.PrivateMessage }}</a> <a>with - {{ $v.PrivateMessage2ndUser }}</a> </p>
+                        <p class=" mb-[1vh] w-[45vh] h-[6vh] bg-newcolor6 rounded-md text-center align-center truncate"><a href="../private-message/{{ $v.PrivateMessage2ndUser }}">{{ $v.PrivateMessage }}</a> <a href="../profil/{{ $v.PrivateMessage2ndUser }}">with - {{ $v.PrivateMessage2ndUser }}</a> </p>
                         {{ end }}
                       </ul>
                     
