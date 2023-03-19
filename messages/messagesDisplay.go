@@ -27,6 +27,7 @@ func MessagesPageDisplay(db *sql.DB, r *http.Request) {
 	var edited int
 	var uuidPath string
 	var ascDesc string
+	var admin int
 
 	cookie, err := r.Cookie("session")
 	if err != nil {
@@ -89,8 +90,28 @@ func MessagesPageDisplay(db *sql.DB, r *http.Request) {
 				MESSAGES.Messages[messageIndex].Like = like
 				MESSAGES.Messages[messageIndex].Edited = edited
 
+				queryGetIfAdmin := fmt.Sprintf("SELECT admin FROM users WHERE username = '%s'", MESSAGES.SessionUser)
+				fmt.Println(queryGetIfAdmin)
+
+				row, err := db.Query(queryGetIfAdmin)
+				if err != nil {
+					fmt.Println(err)
+				} else {
+					for row.Next() {
+						defer row.Close()
+						err = row.Scan(&admin)
+						if err != nil {
+							fmt.Println(err)
+						}
+					}
+				}
+
+				if owner == MESSAGES.SessionUser || admin == 1 {
+					MESSAGES.Messages[messageIndex].IsOwnerOrAdmin = 1
+				}
+
 				checkIfLiked := fmt.Sprintf("SELECT likeOrDislike FROM likesFromUser WHERE uuidUser = '%s' AND uuidLiked = '%s'", cookie.Value, uuid)
-				row, err := db.Query(checkIfLiked)
+				row, err = db.Query(checkIfLiked)
 				if err != nil {
 					fmt.Println(err)
 				} else {

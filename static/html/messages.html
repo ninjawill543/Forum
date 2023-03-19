@@ -207,6 +207,7 @@
                   </button>
                 </form>
                 <a>
+                  {{ if $v.IsOwnerOrAdmin }}
                   <div class="flex cursor-pointer items-center transition hover:text-slate-600 ml-[54vh]">
                     <img src="../files/images/edit.svg" width="21" height="21">
                   </div>
@@ -217,8 +218,9 @@
                       <button type="submit" name="delete" value="{{ $v.Uuid }}">
                         <img src="../files/images/corbeille.svg" width="21px" height="21px">
                     </div>
+                    {{ end }}
+                  </form>
                   </a>
-                </form>
               </div>
             </div>
           </div>
