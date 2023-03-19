@@ -6,6 +6,7 @@ import (
 	t "forum/listTopics"
 	t3 "forum/structs"
 	t2 "forum/users"
+	t5 "forum/users"
 	t4 "forum/views"
 	"net/http"
 	"strings"
@@ -35,6 +36,22 @@ func MessagesPageDisplay(db *sql.DB, r *http.Request) {
 	// 	fmt.Println(err)
 	// }
 
+	queryNew := fmt.Sprintf("SELECT uuid FROM users WHERE username = '%s'", t5.USER.Username)
+	row, err := db.Query(queryNew)
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		for row.Next() {
+			defer row.Close()
+			err = row.Scan(&uuid)
+			if err != nil {
+				fmt.Println(err)
+			}
+		}
+	}
+
+	uuidUserSession := uuid
+
 	ascDesc = "DESC"
 
 	filter = r.FormValue("filter")
@@ -48,7 +65,7 @@ func MessagesPageDisplay(db *sql.DB, r *http.Request) {
 
 	topicName := strings.Split(r.URL.Path, "/")
 	queryTopicName := fmt.Sprintf("SELECT uuid FROM topics WHERE name = '%s'", topicName[2])
-	row, err := db.Query(queryTopicName)
+	row, err = db.Query(queryTopicName)
 	if err != nil {
 		fmt.Println(err)
 	} else {
@@ -117,7 +134,7 @@ func MessagesPageDisplay(db *sql.DB, r *http.Request) {
 						MESSAGES.Messages[messageIndex].IsOwnerOrAdmin = 1
 					}
 
-					checkIfLiked := fmt.Sprintf("SELECT likeOrDislike FROM likesFromUser WHERE uuidUser = '%s' AND uuidLiked = '%s'", "cookie.Value", uuid)
+					checkIfLiked := fmt.Sprintf("SELECT likeOrDislike FROM likesFromUser WHERE uuidUser = '%s' AND uuidLiked = '%s'", uuidUserSession, uuid)
 					row, err = db.Query(checkIfLiked)
 					if err != nil {
 						fmt.Println(err)
@@ -132,7 +149,6 @@ func MessagesPageDisplay(db *sql.DB, r *http.Request) {
 									MESSAGES.Messages[messageIndex].IsLiked = 1
 								} else if likeOrDislike == -1 {
 									MESSAGES.Messages[messageIndex].IsDisliked = 1
-
 								}
 							}
 						}
