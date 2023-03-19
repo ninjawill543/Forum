@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../css/output.css">
+  <link rel="stylesheet" href="../files/css/output.css">
   <title>Document</title>
 </head>
 {{ $Topic := .}}
@@ -189,9 +189,9 @@
                   <button class="mr-2" type="submit" value="{{ .Uuid }}" name="like">
                     <div class="flex cursor-pointer items-center transition hover:text-slate-600">
                       {{ if $v.IsLiked }}
-                      <img src="../css/like_plein.svg" width="21px" height="21px">
+                      <img src="../files/images/like_plein.svg" width="21px" height="21px">
                       {{ else }}
-                      <img src="../css/videPlan de travail 1.svg" width="21px" height="21px">
+                      <img src="../files/images/videPlan de travail 1.svg" width="21px" height="21px">
                       {{ end }}
                       <span class="text-slate-900">{{ $v.Like }}</span>
                     </div>
@@ -199,23 +199,23 @@
                   <button type="submit" value="{{ .Uuid }}" name="dislike">
                     <div class="flex cursor-pointer items-center transition hover:text-slate-600">
                       {{ if $v.IsDisliked }}
-                      <img src="../css/dislike_plein.svg" width="21px" height="21px">
+                      <img src="../files/images/dislike_plein.svg" width="21px" height="21px">
                       {{ else }}
-                      <img src="../css/dislike_vide.svg" width="21px" height="21px">
+                      <img src="../files/images/dislike_vide.svg" width="21px" height="21px">
                       {{ end }}
                     </div>
                   </button>
                 </form>
                 <a>
                   <div class="flex cursor-pointer items-center transition hover:text-slate-600 ml-[54vh]">
-                    <img src="../css/edit.svg" width="21" height="21">
+                    <img src="../files/images/edit.svg" width="21" height="21">
                   </div>
                 </a>
                 <form method="POST">
                   <a>
                     <div class="flex cursor-pointer items-center transition hover:text-slate-600 ml-[2vh]">
                       <button type="submit" name="delete" value="{{ $v.Uuid }}">
-                        <img src="../css/corbeille.svg" width="21px" height="21px">
+                        <img src="../files/images/corbeille.svg" width="21px" height="21px">
                     </div>
                   </a>
                 </form>
@@ -322,7 +322,7 @@
       </form>
     </div>
   </div>
-  <script src="../css/popups.js">
+  <script src="../files/js/popups.js">
         // const struct = {{ . }};
   </script>
 </body>
