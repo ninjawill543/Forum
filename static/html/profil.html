@@ -1,262 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../css/output.css">
-
-  <title>your profil</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/output.css">
+    <title>Document</title>
 </head>
-
 <body class="h-screen w-screen bg-newcolor2">
-
-  <header>
-    <div class="fixed flex justify-around w-full h-16 shadow-md bg-newcolor1">
-      <h1 id="h1Title"
-        class="relative uppercase my-[20px] iphone:left-5 big:bottom-0 ipad:bottom-0 ipad:left-10 font-bold text-center text-newcolor4">
-        CS forums</h1>
-      <div
-        class="relative iphone:left-24 ipad:left-28 laptop:left-28 big:left-28 grid w-[150vh] self-center items-center grid-cols-3">
-        <form>
-          <button type="submit" value="logout" name="logOutButton"
-            class="font-medium rounded-lg shadow-xl flex relative iphone:left-[2vh] laptop:left-[65vh] ipad:right-0 big:right-0 laptop:right-0 iphone:right-[260px] ipad:left-[36vh] big:left-[80vh] w-24 cursor-pointer focus:ring-blue-300 text-sm text-center text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
-            <p class="w-fit text-xs uppercase p-3">LogOut</p>
-            <svg class="relative top-2 right-1" fill="#000000" width="24px" height="24px" viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M20,21V3H13a1,1,0,0,1,0-2h8a1,1,0,0,1,1,1V22a1,1,0,0,1-1,1H13a1,1,0,0,1,0-2ZM2,12a1,1,0,0,0,1,1H14.586l-2.293,2.293a1,1,0,1,0,1.414,1.414l4-4a1,1,0,0,0,0-1.414l-4-4a1,1,0,1,0-1.414,1.414L14.586,11H3A1,1,0,0,0,2,12Z" />
-            </svg>
-          </button>
-        </form>
-
-
-
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <div class="flex">
-      <div id="blur" class="hidden backdrop-blur-sm fixed top-0 left-0 w-[10000px] h-[10000px]"></div>
-
-      <!-- <form method="POST">
+    <header >
+        <div class="fixed flex justify-around w-full h-16 shadow-md bg-newcolor1">
+            <h1 id="h1Title"
+                class="relative uppercase my-[20px] big:right-72 2xl:right-60 xl:right-44 font-bold text-center  text-newcolor4">
+                Dread Forums</h1>
+            <div class="grid w-96 self-center items-center grid-cols-3">
+                <!-- <button onclick="openPassword()" value="psd"  class=" font-medium rounded-lg shadow-xl flex relative w-36 left-[43vh] cursor-pointer focus:ring-blue-300 text-sm text-center  text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+                    <p class="w-fit text-xs uppercase p-3">Forgot Password</p>
+                </button>  -->
+                <form>
+                    <button type="submit" value="logout" name="logOutButton" class=" font-medium rounded-lg shadow-xl flex relative w-24 left-[60vh] cursor-pointer focus:ring-blue-300 text-sm text-center text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+                        <p class="w-fit text-xs uppercase p-3">LogOut</p>
+                        <svg class="relative top-2 right-1" fill="#000000" width="24px" height="24px" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M20,21V3H13a1,1,0,0,1,0-2h8a1,1,0,0,1,1,1V22a1,1,0,0,1-1,1H13a1,1,0,0,1,0-2ZM2,12a1,1,0,0,0,1,1H14.586l-2.293,2.293a1,1,0,1,0,1.414,1.414l4-4a1,1,0,0,0,0-1.414l-4-4a1,1,0,1,0-1.414,1.414L14.586,11H3A1,1,0,0,0,2,12Z" />
+                        </svg>
+                    </button>
+                </form>
+                  
+            
+                
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="flex">
+          <div id="blur" class="hidden backdrop-blur-sm  fixed top-0 left-0 w-[10000px] h-[10000px]"></div>
+               <!-- <form method="POST">
                             <input placeholder="Enter a new username and hit edit" class="font-normal mt-4 text-lg ml-4 bg-newcolor3 w-[30vh]" type="text" name="username">
                             <input placeholder="Enter a new email and hit edit" class="font-normal mt-4 text-lg ml-4 bg-newcolor3 w-[30vh]" type="text" name="email">
                             <input placeholder="Enter a new password and hit edit" class="font-normal mt-4 text-lg ml-4 bg-newcolor3 w-[30vh]"  type="text" name="password">
                             <input type="submit" value="edit" name="edit">
                         </form>  -->
-
-      <div class="hidden" id="pChange">
-        <div
-          class="shadow-md fixed rounded-lg top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 h-[38vh] w-[35vh] bg-newcolor1 flex flex-col items-center   ">
-          <button class="pl-[30vh] text-xl font-medium" onclick="closeAll()">X</button>
-          <p class="font-medium ml-4 text-2xl text-left align-middle">Hey, {{ .Username }}. Wanna change your password?
-          </p>
-          <div class="flex flex-col align-center mt-8">
-            <div class="mb-8 flex justify-center">
-              <input class="w-[30vh] rounded-md px-2 py-3 bg-newcolor6" placeholder="New password" required />
+            <div class="hidden" id="pChange">
+                <div class="shadow-md fixed rounded-lg top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 h-[38vh] w-[35vh] bg-newcolor1 flex flex-col items-center   ">
+                  <button class="pl-[30vh] text-xl font-medium" onclick="closeAll()" >X</button>
+                  <p class="font-medium ml-4 text-2xl text-left align-middle">Hey, {{ .Username }}. Wanna change your password?</p>
+                  <div class="flex flex-col align-center mt-8">
+                    <div class="mb-8 flex justify-center" >
+                        <input  class="w-[30vh] rounded-md px-2 py-3 bg-newcolor6"  placeholder="New password" required/>
+                      </div>
+                      <form method="POST">
+                        <div class="mb-8 flex justify-center">
+                            <input type="text" name="password" class="w-[30vh] rounded-md px-2 py-3 bg-newcolor6"  placeholder="Confirm new password" required/>
+                          </div>
+                        <div class="flex justify-center">
+                          <button type="submit" value="edit" name="edit" class=" text-center rounded-lg bg-newcolor4 hover:bg-color3 text-white font-bold w-[25vh] py-3" >Reset Password</button>
+                          
+                        </div>
+                      </form>
+                      
+                  </div>
+                    
+                </div>
+              </div>
+              <div class="hidden" id="eChange">
+                <div class="shadow-md fixed rounded-lg top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 h-[33vh] w-[35vh] bg-newcolor1 flex flex-col items-center   ">
+                  <button class="pl-[30vh] text-xl font-medium" onclick="closeAll()" >X</button>
+                  <p class="font-medium ml-4 text-2xl text-left align-middle">Hey, {{ .Username }}. Wanna change your email address?</p>
+                  <div class="flex flex-col align-center mt-12">
+                    <form method="POST">
+                        <div class="mb-8 flex justify-center" >
+                            <input  class="w-[30vh] rounded-md px-2 py-3 bg-newcolor6"  placeholder="New email address" required/>
+                          </div>
+                          <div class="flex justify-center">
+                            <button type="submit" value="edit" name="edit" class=" text-center rounded-lg bg-newcolor4 hover:bg-color3 text-white font-bold w-[25vh] py-3" >Change Email</button>
+                            
+                          </div>
+                    </form>
+                    
+                  </div>
+                    
+                </div>
+              </div>
+              <div class="hidden" id="uChange">
+                <div class="shadow-md fixed rounded-lg top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 h-[33vh] w-[35vh] bg-newcolor1 flex flex-col items-center   ">
+                  <button class="pl-[30vh] text-xl font-medium" onclick="closeAll()" >X</button>
+                  <p class="font-medium ml-4 text-2xl text-left align-middle">Hey, {{ .Username }}. Wanna change your username?</p>
+                  <div class="flex flex-col align-center mt-12">
+                    <form method="POST">
+                        <div class="mb-8 flex justify-center" >
+                            <input  class="w-[30vh] rounded-md px-2 py-3 bg-newcolor6"  placeholder="New username" required/>
+                          </div>
+                          <div class="flex justify-center">
+                            <button type="submit" value="edit" name="edit" class=" text-center rounded-lg bg-newcolor4 hover:bg-color3 text-white font-bold w-[25vh] py-3" >Change Username</button>
+                            
+                          </div>
+                    </form>
+                    
+                  </div>
+                    
+                </div>
+              </div>
+              <div class="hidden" id="DELETE">
+                <div class="shadow-md fixed rounded-lg top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 h-[38vh] w-[35vh] bg-newcolor1 flex flex-col items-center   ">
+                  <button onclick="closeAll()" class="pl-[30vh] text-xl font-medium"  >X</button>
+                  <div class="flex flex-col align-center text-center">
+                    <p class="font-medium text-2xl ">Are you sure you would like to delete your account?</p>
+                  <p class="font-medium mt-2 text-2xl ">THIS CANNOT BE UNDONE!</p>
+                  </div>
+                  
+                  <div class="flex flex-col align-center mt-8">
+                    <div class="mb-8 flex justify-center" >
+                        <input  class="w-[30vh] rounded-md px-2 py-3 bg-newcolor6"  placeholder="Please enter your username" required/>
+                      </div>
+                      <div class="flex justify-center">
+                        <button class=" text-center rounded-lg bg-newcolor4 hover:bg-color3 text-white font-bold w-[25vh] py-3" onclick="closeAll()">Cancel</button>
+                        
+                      </div>
+                      <div class="flex justify-center mt-8">
+                        <button class=" text-center rounded-lg bg-newcolor4 hover:bg-color3 text-white font-medium w-[15vh] h-[2vh]" >DELETE ACCOUNT</button>
+                        
+                      </div>
+                  </div>
+                    
+                </div>
+              </div>
+              
+              <div id="container" class="flex align-start  ">
+                <a href="/index">
+                    <img src="https://img.icons8.com/ios/50/null/circled-left-2.png" class="h-12 w-12 ml-[6vh]  mt-[10vh] "/>
+                  </a>
+    
+                <div  class="flex rounded-xl shadow-md flex-col justify-start ml-[5vh] w-[45vh] h-[40vh] mt-[10vh] bg-newcolor1">
+                    <div class="rounded-t-md h-[6vh] w-full  ">
+                        <p class="font-medium mt-4 text-2xl text-center align-middle">Welcome back, {{ .Username }}</p>
+                    </div>
+                    <p class="font-medium mt-6 text-xl ml-4">Email address </p>
+                    
+                    <p class="font-light text-normal ml-4"> {{ .Email }}</p>
+                    <p class="font-medium mt-4 text-xl ml-4">Username </p>
+                    <p class="font-light text-normal ml-4"> {{ .Username }}</p>
+                    <p class="font-medium mt-4 text-xl ml-4">Member since: </p>
+                    <p class="font-light text-sm ml-4"> {{ .CreationDate }}</p>
+                    <button id="toblur1" onclick="openDelete()" class="font-medium rounded-lg shadow-xl flex relative w-44 2xl:left-[15vh] 2xl:mt-[5vh] xl:left-[13vh] xl:mt-[vh] xl:max-2xl:h-6 cursor-pointer focus:ring-blue-300 text-sm text-center text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+                        <p class="w-fit text-xs uppercase 2xl:p-3 xl:max-2xl:pt-1 xl:max-2xl:pl-3 ml-[0.5vh]">DELETE YOUR ACCOUNT</p>
+                    </button> 
+                    <button id="toblur2" onclick="openEmail()" class=" font-medium rounded-lg shadow-xl flex relative w-20 2xl:left-[35vh] xl:left-[30vh] 2xl:mt-[-26vh] xl:mt-[-26vh] cursor-pointer focus:ring-blue-300 text-sm text-center text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+                        <p class="w-fit text-xs uppercase p-3">Change</p>
+                    </button> 
+                    <button id="toblur3" onclick="openUsername()"class=" font-medium rounded-lg shadow-xl flex relative w-20 2xl:left-[35vh] xl:left-[30vh] 2xl:mt-[3vh] xl:mt-[3vh] cursor-pointer focus:ring-blue-300 text-sm text-center text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
+                        <p class="w-fit text-xs uppercase p-3">Change</p>
+                    </button> 
+    
+                 
+    
+                    <!-- <img class="ml-[40vh] mt-[26vh]" src="https://img.icons8.com/ios-filled/50/null/circled-right-2.png"/> -->
+                </div>
+    
+                <div  class="flex rounded-xl shadow-md flex-col justify-start items-center ml-[-45vh] w-[45vh] h-[40vh] mt-[55vh] bg-newcolor1">
+                    <div class="rounded-t-md h-[6vh] w-full ">
+                        <p class="font-medium mt-4 text-2xl text-center align-middle">Your Topics</p>
+                    </div>
+                    
+                    <ul class="overflow-y-auto whitespace-nowrap w-[45vh] py-4 align-center ">
+                        {{ $User := .}}
+                        {{ range $k, $v := .TopicsCreated }}
+                        <!-- <p class=" font-normal mt-2 text-xl ml-4 "><a href="../topics/{{ $v }}">{{ $v }}</a></p> -->
+                        <div class="ml-[2vh] mb-[1vh] w-[40vh] h-[3vh] bg-newcolor6 rounded-md text-center align-center truncate"><a class="align-center w-full" href="../topics/{{ $v }}">{{ $v }}</a></div>
+                        {{ end }}
+                      </ul>
+                   
+                </div>
+    
+                <div  class="flex rounded-xl shadow-md flex-col justify-start items-center big:ml-[10vh] 2xl:ml-[5vh] xl:ml-[3vh] w-[55vh] h-[85vh] mt-[10vh] bg-newcolor1">
+                    <div class="rounded-t-md h-[6vh] w-full ">
+                        <p class="font-medium mt-4 text-2xl text-center align-middle">Your  s</p>
+                    </div>
+                    
+                    <ul class="mt-[2vh] overflow-y-auto whitespace-nowrap flex-col w-[55vh]">
+                        {{ range $k, $v := .MessagesSend }}
+                        <p class="ml-[2vh] mb-[1vh] w-[51vh] h-[6vh] bg-newcolor6 rounded-md text-center align-center truncate">{{ $v.MessageSendByUser }} in - <a href="../{{ $v.TopicSentInName}}">{{ $v.TopicSentInName }}</a></p>
+                        {{ end }}
+                      </ul>
+                    
+                </div>
+    
+                <div  class="flex rounded-xl shadow-md flex-col justify-start items-center big:ml-[10vh] 2xl:ml-[5vh] xl:ml-[3vh] w-[50vh] h-[85vh] mt-[10vh] bg-newcolor1">
+                    <div class="rounded-t-md h-[6vh] w-full ">
+                        <p class="font-medium mt-4 text-2xl text-center align-middle">Your messages</p>
+                    </div>
+                    
+                    <ul class="mt-[2vh] overflow-y-auto whitespace-nowrap flex-col w-[45vh]">
+                        {{ range $k, $v := .PrivateMessages }}
+                        <p class=" mb-[1vh] w-[45vh] h-[6vh] bg-newcolor6 rounded-md text-center align-center truncate"><a href="../private-message/{{ $v.PrivateMessage2ndUser }}">{{ $v.PrivateMessage }}</a> <a>with - {{ $v.PrivateMessage2ndUser }}</a> </p>
+                        {{ end }}
+                      </ul>
+                    
+                </div>
             </div>
-            <form method="POST">
-              <div class="mb-8 flex justify-center">
-                <input type="text" name="password" class="w-[30vh] rounded-md px-2 py-3 bg-newcolor6"
-                  placeholder="Confirm new password" required />
-              </div>
-              <div class="flex justify-center">
-                <button type="submit" value="edit" name="edit"
-                  class=" text-center rounded-lg bg-newcolor4 hover:bg-color3 text-white font-bold w-[25vh] py-3">Reset
-                  Password</button>
-
-              </div>
-            </form>
-
-          </div>
-
+            
         </div>
-      </div>
-      <div class="hidden" id="eChange">
-        <div
-          class="shadow-md fixed rounded-lg top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 h-[33vh] w-[35vh] bg-newcolor1 flex flex-col items-center   ">
-          <button class="pl-[30vh] text-xl font-medium" onclick="closeAll()">X</button>
-          <p class="font-medium ml-4 text-2xl text-left align-middle">Hey, {{ .Username }}. Wanna change your email
-            address?</p>
-          <div class="flex flex-col align-center mt-12">
-            <form method="POST">
-              <div class="mb-8 flex justify-center">
-                <input name="email" class="w-[30vh] rounded-md px-2 py-3 bg-newcolor6" placeholder="New email address"
-                  required />
-              </div>
-              <div class="flex justify-center">
-                <button type="submit" value="edit" name="edit"
-                  class=" text-center rounded-lg bg-newcolor4 hover:bg-color3 text-white font-bold w-[25vh] py-3">Change
-                  Email</button>
-
-              </div>
-            </form>
-
-          </div>
-
-        </div>
-      </div>
-      <div class="hidden" id="uChange">
-        <div
-          class="shadow-md fixed rounded-lg top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 h-[33vh] w-[35vh] bg-newcolor1 flex flex-col items-center   ">
-          <button class="pl-[30vh] text-xl font-medium" onclick="closeAll()">X</button>
-          <p class="font-medium ml-4 text-2xl text-left align-middle">Hey, {{ .Username }}. Wanna change your username?
-          </p>
-          <div class="flex flex-col align-center mt-12">
-            <form method="POST">
-              <div class="mb-8 flex justify-center">
-                <input name="username" class="w-[30vh] rounded-md px-2 py-3 bg-newcolor6" placeholder="New username"
-                  required />
-              </div>
-              <div class="flex justify-center">
-                <button type="submit" value="edit" name="edit"
-                  class=" text-center rounded-lg bg-newcolor4 hover:bg-color3 text-white font-bold w-[25vh] py-3">Change
-                  Username</button>
-
-              </div>
-            </form>
-
-          </div>
-
-        </div>
-      </div>
-      <div class="hidden" id="DELETE">
-        <div
-          class="shadow-md fixed rounded-lg top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 h-[38vh] w-[35vh] bg-newcolor1 flex flex-col items-center   ">
-          <button onclick="closeAll()" class="pl-[30vh] text-xl font-medium">X</button>
-          <div class="flex flex-col align-center text-center">
-            <p class="font-medium text-2xl ">Are you sure you would like to delete your account?</p>
-            <p class="font-medium mt-2 text-2xl ">THIS CANNOT BE UNDONE!</p>
-          </div>
-
-          <div class="flex flex-col align-center mt-8">
-            <div class="mb-8 flex justify-center">
-              <form method="POST">
-                <input name="delete" class="w-[30vh] rounded-md px-2 py-3 bg-newcolor6"
-                  placeholder="Please enter your username" required />
-            </div>
-
-            <div class="flex justify-center">
-              <button class=" text-center rounded-lg bg-newcolor4 hover:bg-color3 text-white font-bold w-[25vh] py-3"
-                onclick="closeAll()">Cancel</button>
-
-            </div>
-            <div class="flex justify-center mt-8">
-              <button type="submit"
-                class=" text-center rounded-lg bg-newcolor4 hover:bg-color3 text-white font-medium w-[15vh] h-[$vh]">DELETE
-                ACCOUNT</button>
-            </div>
-            </form>
-          </div>
-
-        </div>
-      </div>
-
-      <div id="container" class="flex align-start  ">
-        <a href="/index">
-          <img src="https://img.icons8.com/ios/50/null/circled-left-2.png"
-            class="relative ipad:top-0 ipad:left-0 iphone:top-3 iphone:left-[15vh] laptop:right-4 laptop:top-2 h-12 w-12 ml-[6vh] mt-[10vh]" />
-        </a>
-
-
-        <div class="flex relative rounded-xl ipad:left-[95px] iphone:mt-[22vh] iphone:h-[35vh] iphone:right-[7vh] iphone:w-[42vh] laptop:left-0 big:left-0 shadow-md flex-col justify-start ipad:w-[50vh] ipad:h-[46vh] big:h-[32vh] laptop:mt-[10vh] ipad:mt-[10vh] big:mt-[10vh] bg-newcolor1">
-
-          <div class="rounded-t-md h-[6vh] w-full  ">
-            <p class="font-medium mt-4 text-2xl text-center align-middle">Welcome back, {{ .Username }}</p>
-          </div>
-          <p class="font-medium mt-6 text-xl ml-4">Email address </p>
-
-          <p class="font-light text-normal ml-4"> {{ .Email }}</p>
-          <p class="font-medium mt-4 text-xl ml-4">Username </p>
-          <p class="font-light text-normal ml-4"> {{ .Username }}</p>
-          <p class="font-medium mt-4 text-xl ml-4">Member since: </p>
-          <p class="font-light text-sm ml-4"> {{ .CreationDate }}</p>
-          <button id="toblur1" onclick="openDelete()"
-            class="font-medium rounded-lg shadow-xl flex relative w-44 iphone:left-7 iphone:top-10 big:left-[15vh] ipad:top-[15vh] ipad:left-[6vh] big:mt-[5vh] laptop:left-[13vh] laptop:mt-[vh] xl:max-2xl:h-6 cursor-pointer focus:ring-blue-300 text-sm text-center text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
-            <p class="w-fit text-xs uppercase 2xl:p-3 xl:max-2xl:pt-1 laptop:max-big:pl-3 ml-[0.5vh]">DELETE YOUR ACCOUNT
-            </p>
-          </button>
-          <button id="toblur2" onclick="openEmail()"
-            class=" font-medium rounded-lg shadow-xl flex relative iphone:left-[25vh] iphone:bottom-[17vh] ipad:left-[32vh] ipad:bottom-[17.5vh] big:top-16 w-20 laptop:bottom-0 laptop:top-10 big:left-[35vh] laptop:left-[30vh] big:mt-[-26vh] laptop:mt-[-26vh] cursor-pointer focus:ring-blue-300 text-sm text-center text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
-            <p class="w-fit text-xs uppercase p-3">Change</p>
-          </button>
-          <button id="toblur3" onclick="openUsername()"
-            class=" font-medium rounded-lg shadow-xl flex relative iphone:left-[25vh] iphone:bottom-[16vh] ipad:left-[32vh] ipad:bottom-[16.5vh] big:top-10 w-20 laptop:bottom-0 laptop:top-[20px] big:left-[35vh] laptop:left-[30vh] big:mt-[3vh] laptop:mt-[3vh] cursor-pointer focus:ring-blue-300 text-sm text-center text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none">
-            <p class="w-fit text-xs uppercase p-3">Change</p>
-          </button>
-
-
-
-          <!-- <img class="ml-[40vh] mt-[26vh]" src="https://img.icons8.com/ios-filled/50/null/circled-right-2.png"/> -->
-        </div>
+       
         
-      </div>
-
-
-        <div
-          class="flex relative rounded-xl shadow-md flex-col justify-start iphone:h-[35vh] items-center iphone:top-[78vh] iphone:right-[370px] iphone:w-[42vh] ipad:w-[55vh] big:w-[52vh] laptop:w-[52vh] ipad:right-0 big:right-0 laptop:right-0 big:top-0 laptop:top-0 ipad:top-0 big:ml-[3vh] laptop:left-0 ipad:left-[17vh] ipad:h-[38vh] laptop:ml-[3vh] ipad:w[30vh] laptop:h-[85vh] mt-[10vh] bg-newcolor1">
-          <div class="rounded-t-md h-[6vh] w-full">
-            <p class="font-medium mt-4 text-2xl text-center align-middle">Your comments</p>
-          </div>
-
-          <ul class="mt-[2vh] overflow-y-auto whitespace-nowrap flex-col w-[55vh]">
-            {{ range $k, $v := .MessagesSend }}
-            <p class="ml-[2vh] mb-[1vh] w-[51vh] h-[6vh] bg-newcolor6 rounded-md text-center align-center truncate">{{
-              $v.MessageSendByUser }} in - <a href="../{{ $v.TopicSentInName}}">{{ $v.TopicSentInName }}</a></p>
-            {{ end }}
-          </ul>
-        </div>
-
-
-
-        <div class="flex relative big:top-0 big:left-[3vh] ipad:top-[43vh] iphone:h-[35vh] ipad:h-[40vh] ipad:right-[38vh] ipad:w-[60vh] laptop:left-[4vh] iphone:top-[116vh] iphone:w-[42vh] big:w-[52vh] laptop:w-[52vh] iphone:right-[87.5vh] laptop:top-0 rounded-xl shadow-md flex-col justify-start items-center laptop:h-[85vh] mt-[10vh] bg-newcolor1">
-          <div class="rounded-t-md h-[6vh] w-full ">
-            <p class="font-medium mt-4 text-2xl text-center align-middle">Your Topics</p>
-          </div>
-
-          <ul class="overflow-y-auto whitespace-nowrap w-[45vh] py-4 align-center ">
-            {{ $User := .}}
-            {{ range $k, $v := .TopicsCreated }}
-            <!-- <p class=" font-normal mt-2 text-xl ml-4 "><a href="../topics/{{ $v }}">{{ $v }}</a></p> -->
-            <div class="ml-[2vh] mb-[1vh] w-[40vh] h-[3vh] bg-newcolor6 rounded-md text-center align-center truncate"><a
-                class="align-center w-full" href="../topics/{{ $v }}">{{ $v }}</a></div>
-            {{ end }}
-          </ul>
-        </div>
-
-
-
-        <div class="flex relative rounded-xl iphone:w-[40vh] ipad:w-[46vh] iphone:top-0 ipad:top-0 big:top-0 laptop:top-0 iphone:right-[129vh] ipad:right-[133.5vh] big:right-[145vh] laptop:right-[145vh] shadow-md flex-col justify-start items-center w-[46vh] laptop:h-[34.5vh] iphone:h-[25vh] big:h-[50vh] ipad:h-[33.5vh] iphone:bottom-0 laptop:bottom-0 big:bottom-0 iphone:mt-[60vh] ipad:mt-[60vh] laptop:mt-[60vh] big:mt-[45vh] bg-newcolor1">
-          <div class="rounded-t-md h-[6vh] w-full">
-            <p class="font-medium mt-4 text-2xl text-center align-middle">Your messages</p>
-          </div>
-
-          <ul class="mt-[2vh] overflow-y-auto whitespace-nowrap flex-col w-[45vh]">
-            {{ range $k, $v := .PrivateMessages }}
-            <p class=" mb-[1vh] w-[45vh] h-[6vh] bg-newcolor6 rounded-md text-center align-center truncate"><a
-                href="../private-message/{{ $v.PrivateMessage2ndUser }}">{{ $v.PrivateMessage }}</a> <a>with - {{
-                $v.PrivateMessage2ndUser }}</a> </p>
-            {{ end }}
-          </ul>
-
-        </div>
-      </div>
-
-    </div>
-
-
-
-
-
-  </main>
-
-
-
-
-  <script src="../css/popups2.js"></script>
+        
+    </main>
+    
+    
+    <script src="../css/popups2.js"></script>
 </body>
-
 </html>
