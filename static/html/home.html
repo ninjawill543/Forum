@@ -124,44 +124,9 @@
                 <div class="flex">
                   <a class="mr-2 z-50" href="../messages/{{ .Name }}">
                     <div class="flex cursor-pointer items-center transition hover:text-slate-600">
-                      <span class="text-slate-900 inline-flex relative">
-                        <img src="../css/comments.svg" width="21px" height="21px">
-                        {{ $v.NmbPosts }}
-                      </span>
-                    </div>
-                  </a>
-                  <form class="flex" method="POST">
-                    <button class="mr-2" type="submit" value="{{ .Uuid }}" name="like">
-                      <div class="flex cursor-pointer items-center transition hover:text-slate-600">
-                        {{ if $v.IsLiked }}
-                        <img src="../css/like_plein.svg" width="21px" height="21px">
-                        {{ else }}
-                        <img src="../css/videPlan de travail 1.svg" width="21px" height="21px">
-                        {{ end }}
-                        <span class="text-slate-900">{{ $v.Likes }}</span>
-                      </div>
-                    </button>
-                    <button type="submit" value="{{ .Uuid }}" name="dislike">
-                      <div class="flex cursor-pointer items-center transition hover:text-slate-600">
-                        {{ if $v.IsDisliked }}
-                        <img src="../css/dislike_plein.svg" width="21px" height="21px">
-                        {{ else }}
-                        <img src="../css/dislike_vide.svg" width="21px" height="21px">
-                        {{ end }}
-                      </div>
-                    </button>
-                  </form>
-                  <a>
-                    <div onclick="edit()"
-                      class="flex cursor-pointer items-center transition hover:text-slate-600 ml-[52vh]">
-                      <img src="../css/edit.svg" width="21px" height="21px">
 
                     </div>
                   </a>
-                  <a>
-                    <div class="flex cursor-pointer items-center transition hover:text-slate-600 ml-[2vh]">
-                      <img src="../css/corbeille.svg" width="21px" height="21px">
-                    </div>
                   </a>
                 </div>
               </div>
