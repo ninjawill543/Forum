@@ -233,6 +233,7 @@
                               </div>
                             </button>
                           </form>
+                          {{ if $v.IsOwnerOrAdmin }}
                           <div id="edit{{ $k }}" onclick="edit('{{ $k }}')" class="flex cursor-pointer items-center transition hover:text-slate-600 ml-[52vh]">
                             <img src="../files/images/edit.svg" width="21px" height="21px">
                           </div>
@@ -242,6 +243,7 @@
                                 <img src="../files/images/corbeille.svg" width="21px" height="21px">
                               </div>
                             </form>
+                            {{ end }}
                         </div>
                       </div>
                     </div>

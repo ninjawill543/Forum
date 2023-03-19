@@ -26,6 +26,7 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 	var username string
 	var likeOrDislike int
 	var category string
+	var admin int
 	// var lastPost string
 
 	filter = r.FormValue("filter")
@@ -36,6 +37,7 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 	}
 
 	categoryUrl := strings.Split(r.URL.Path, "/")
+	categoryUrl = strings.Split(categoryUrl[2], "=")
 
 	if r.FormValue("filter") == "mostRecent" {
 		filter = "creationDate"
@@ -90,6 +92,27 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 				TOPICSANDSESSION.Topics[topicIndex].Uuid = uuid
 				TOPICSANDSESSION.Topics[topicIndex].Id = id
 				TOPICSANDSESSION.Topics[topicIndex].FirstMessage = firstMessage
+
+				queryGetIfAdmin := fmt.Sprintf("SELECT admin FROM users WHERE username = '%s'", TOPICSANDSESSION.SessionUser)
+				fmt.Println(queryGetIfAdmin)
+
+				row, err := db.Query(queryGetIfAdmin)
+				if err != nil {
+					fmt.Println(err)
+				} else {
+					for row.Next() {
+						defer row.Close()
+						err = row.Scan(&admin)
+						if err != nil {
+							fmt.Println(err)
+						}
+					}
+				}
+
+				if owner == TOPICSANDSESSION.SessionUser || admin == 1 {
+					TOPICSANDSESSION.Topics[topicIndex].IsOwnerOrAdmin = 1
+				}
+
 				TOPICSANDSESSION.Category = category
 				if cookie.Value != "" {
 					checkIfLiked := fmt.Sprintf("SELECT likeOrDislike FROM likesFromUser WHERE uuidUser = '%s' AND uuidLiked = '%s'", cookie.Value, uuid)

@@ -7,16 +7,17 @@ type TopicsAndSession struct {
 }
 
 type Topic struct {
-	Id           int
-	Name         string
-	Likes        int
-	CreationDate string
-	Owner        string
-	Uuid         string
-	FirstMessage string
-	NmbPosts     int
-	LastPost     string
-	IsLiked      int
-	IsDisliked   int
-	Category     string
+	Id             int
+	Name           string
+	Likes          int
+	CreationDate   string
+	Owner          string
+	Uuid           string
+	FirstMessage   string
+	NmbPosts       int
+	LastPost       string
+	IsLiked        int
+	IsDisliked     int
+	Category       string
+	IsOwnerOrAdmin int
 }

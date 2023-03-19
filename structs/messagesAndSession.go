@@ -15,14 +15,15 @@ type Messages struct {
 }
 
 type Message struct {
-	Message      string
-	CreationDate string
-	Owner        string
-	Report       int
-	Uuid         string
-	Id           int
-	Like         int
-	Edited       int
-	IsLiked      int
-	IsDisliked   int
+	Message        string
+	CreationDate   string
+	Owner          string
+	Report         int
+	Uuid           string
+	Id             int
+	Like           int
+	Edited         int
+	IsLiked        int
+	IsDisliked     int
+	IsOwnerOrAdmin int
 }
