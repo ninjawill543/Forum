@@ -30,10 +30,10 @@ func MessagesPageDisplay(db *sql.DB, r *http.Request) {
 	var ascDesc string
 	var admin int
 
-	cookie, err := r.Cookie("session")
-	if err != nil {
-		fmt.Println(err)
-	}
+	// cookie, err := r.Cookie("session")
+	// if err != nil {
+	// 	fmt.Println(err)
+	// }
 
 	ascDesc = "DESC"
 
@@ -117,7 +117,7 @@ func MessagesPageDisplay(db *sql.DB, r *http.Request) {
 						MESSAGES.Messages[messageIndex].IsOwnerOrAdmin = 1
 					}
 
-					checkIfLiked := fmt.Sprintf("SELECT likeOrDislike FROM likesFromUser WHERE uuidUser = '%s' AND uuidLiked = '%s'", cookie.Value, uuid)
+					checkIfLiked := fmt.Sprintf("SELECT likeOrDislike FROM likesFromUser WHERE uuidUser = '%s' AND uuidLiked = '%s'", "cookie.Value", uuid)
 					row, err = db.Query(checkIfLiked)
 					if err != nil {
 						fmt.Println(err)
