@@ -1,17 +1,47 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="utf-8">
+    <title>Private Messages</title>
+    <meta name="description" content="Description Goes Here">
+    <link rel="stylesheet" href="../files/css/output.css">
 </head>
-<body>
-    EDIT TOPIC
-    <a href="../../index">back to index</a>
-    <form method="POST">
-        <input type="text" name="newName">
-        <input type="submit" value="edit" name="edit">
-    </form>
+<body class="h-screen w-screen bg-newcolor2">
+    <div class="min-h-screen h-screen flex flex-col bg-newcolor2">
+      <header>
+        <div class="fixed flex justify-items-start w-full h-16 shadow-md bg-newcolor1">
+          <a href="/"><h1 id="h1Title"
+            class="relative uppercase my-[20px] ml-[5vw] font-bold text-center text-newcolor4">
+            CS forums</h1></a>
+          
+     
+        </div>
+      </header>
+      <div id="container" class="flex ">
+               
+        
+        
+        
+        <div id="list" class="bg-newcolor2 flex flex-col justify-start items-center sm:ml-[-30vw] w-[100vw] h-[100vw] mt-[10vh] ">
+          <a href="/">
+            <img src="https://img.icons8.com/ios/50/null/circled-left-2.png" class="h-12 w-12 mr-[30vw]  mt-[2vh] "/>
+          </a>
+          <div>
+
+            <form method="POST">
+                <input class="border-solid border border-gray-400 rounded px-2 py-3 w-[40vw] h-[vh] ml-[20vw]" type="text" placeholder="Edit your message" name="newName">
+                <input class=" font-medium flex rounded-lg relative h-8 w-32 left-[65vw] top-[-4vh] cursor-pointer focus:ring-blue-300 text-sm text-center text-white bg-newcolor4 hover:bg-color3 focus:ring-2 focus:outline-none" type="submit" value="edit" name="edit">
+            </form>
+        </div>
+          
+
+        </div>
+        
+        
+
+    </div>
+      </div>
+       
+    <script src="../files/js/popups.js"></script>
 </body>
 </html>
