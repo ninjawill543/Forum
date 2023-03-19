@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 	t "forum/users"
+	t2 "forum/views"
 	"net/http"
 	"strings"
 )
@@ -44,7 +45,7 @@ func DisplayMp(r *http.Request, db *sql.DB) {
 				mpIndex := len(MPSANDTOWHO.Mps)
 				MPSANDTOWHO.Mps = append(MPSANDTOWHO.Mps, Mp{})
 				MPSANDTOWHO.Mps[mpIndex].PrivateMessage = message
-				MPSANDTOWHO.Mps[mpIndex].CreationDate = creationDate
+				MPSANDTOWHO.Mps[mpIndex].CreationDate = t2.DisplayTime(creationDate, " ")
 				MPSANDTOWHO.Mps[mpIndex].User1 = user1
 			}
 		}

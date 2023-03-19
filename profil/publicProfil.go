@@ -3,6 +3,7 @@ package forum
 import (
 	"database/sql"
 	"fmt"
+	t "forum/views"
 	"net/http"
 	"strings"
 )
@@ -50,7 +51,7 @@ func PublicProfil(r *http.Request, db *sql.DB) {
 			}
 		}
 		PUBLICUSER.Username = username
-		PUBLICUSER.CreationDate = creationDate
+		PUBLICUSER.CreationDate = t.DisplayTime(creationDate, " ")
 		PUBLICUSER.Admin = admin
 		PUBLICUSER.BirthDate = birthDate
 		PUBLICUSER.Reports = reports

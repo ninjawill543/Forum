@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 	t "forum/structs"
+	t2 "forum/views"
 	"net/http"
 	"strings"
 )
@@ -28,7 +29,6 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 	// var lastPost string
 
 	filter = r.FormValue("filter")
-	fmt.Println(filter)
 
 	if filter == "" {
 		filter = "creationDate"
@@ -77,14 +77,13 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 				TOPICSANDSESSION.Topics = append(TOPICSANDSESSION.Topics, t.Topic{})
 				TOPICSANDSESSION.Topics[topicIndex].Name = name
 				TOPICSANDSESSION.Topics[topicIndex].Likes = likes
-				TOPICSANDSESSION.Topics[topicIndex].CreationDate = creationDate
+				TOPICSANDSESSION.Topics[topicIndex].CreationDate = t2.DisplayTime(creationDate, "T")
 				TOPICSANDSESSION.Topics[topicIndex].Owner = owner
 				TOPICSANDSESSION.Topics[topicIndex].NmbPosts = nmbPosts
 				TOPICSANDSESSION.Topics[topicIndex].Uuid = uuid
 				TOPICSANDSESSION.Topics[topicIndex].Id = id
 				TOPICSANDSESSION.Topics[topicIndex].FirstMessage = firstMessage
 				TOPICSANDSESSION.Category = category
-				fmt.Println(TOPICSANDSESSION.Category)
 				checkIfLiked := fmt.Sprintf("SELECT likeOrDislike FROM likesFromUser WHERE uuidUser = '%s' AND uuidLiked = '%s'", "", uuid)
 				row, err := db.Query(checkIfLiked)
 				if err != nil {

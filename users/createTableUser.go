@@ -11,7 +11,7 @@ func CreateTableUsers(db *sql.DB) {
 		"username" TEXT,
 		"password" TEXT,
 		"email" TEXT,
-		"creationDate" TEXT,
+		"creationDate" DATETIME,
 		"birthDate" TEXT,
 		"admin" INTEGER,
 		"reports" INTEGER,

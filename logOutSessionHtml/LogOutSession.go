@@ -5,5 +5,5 @@ import (
 )
 
 func LogOutSession() {
-	t.Messages.SessionUser = ""
+	t.MESSAGES.SessionUser = ""
 }
