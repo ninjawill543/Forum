@@ -16,7 +16,7 @@ func GetCookieHandler(w http.ResponseWriter, r *http.Request) {
 		USER.Username = ""
 		USER.Uuid = ""
 		USER.Email = ""
-		// USER.CreationDate = 0
+		USER.CreationDate = ""
 		USER.Admin = 0
 		USER.BirthDate = ""
 	} else {

@@ -8,6 +8,7 @@ import (
 
 func DeleteAccount(r *http.Request, db *sql.DB, w http.ResponseWriter) {
 	if r.Method == "POST" {
+		fmt.Println("delete account")
 		if USER.Username == r.FormValue("delete") {
 			fmt.Println("account deleted", USER.Username)
 			query2 := fmt.Sprintf("DELETE FROM messages WHERE owner = '%s'", USER.Username)
