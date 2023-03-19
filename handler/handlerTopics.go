@@ -50,9 +50,8 @@ func Handler_topics(w http.ResponseWriter, r *http.Request) {
 		category := strings.Split(r.URL.Path, "/")[2]
 		t.TOPICSANDSESSION.Category = strings.Split(category, "=")[1]
 		t2.GetCookieHandler(w, r)
-
 		tmpl1.Execute(w, t.TOPICSANDSESSION)
 	} else {
-		tmpl2.Execute(w, t.TOPICSANDSESSION)
+		tmpl2.Execute(w, nil)
 	}
 }

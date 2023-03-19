@@ -36,7 +36,6 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 	}
 
 	categoryUrl := strings.Split(r.URL.Path, "/")
-	categoryUrl = strings.Split(categoryUrl[2], "=")
 
 	if r.FormValue("filter") == "mostRecent" {
 		filter = "creationDate"
@@ -92,26 +91,27 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 				TOPICSANDSESSION.Topics[topicIndex].Id = id
 				TOPICSANDSESSION.Topics[topicIndex].FirstMessage = firstMessage
 				TOPICSANDSESSION.Category = category
-				checkIfLiked := fmt.Sprintf("SELECT likeOrDislike FROM likesFromUser WHERE uuidUser = '%s' AND uuidLiked = '%s'", cookie.Value, uuid)
-				row, err := db.Query(checkIfLiked)
-				if err != nil {
-					fmt.Println(err)
-				} else {
-					for row.Next() {
-						defer row.Close()
-						err = row.Scan(&likeOrDislike)
-						if err != nil {
-							fmt.Println(err)
-						} else {
-							if likeOrDislike == 1 {
-								TOPICSANDSESSION.Topics[topicIndex].IsLiked = 1
-							} else if likeOrDislike == -1 {
-								TOPICSANDSESSION.Topics[topicIndex].IsDisliked = 1
+				if cookie.Value != "" {
+					checkIfLiked := fmt.Sprintf("SELECT likeOrDislike FROM likesFromUser WHERE uuidUser = '%s' AND uuidLiked = '%s'", cookie.Value, uuid)
+					row, err := db.Query(checkIfLiked)
+					if err != nil {
+						fmt.Println(err)
+					} else {
+						for row.Next() {
+							defer row.Close()
+							err = row.Scan(&likeOrDislike)
+							if err != nil {
+								fmt.Println(err)
+							} else {
+								if likeOrDislike == 1 {
+									TOPICSANDSESSION.Topics[topicIndex].IsLiked = 1
+								} else if likeOrDislike == -1 {
+									TOPICSANDSESSION.Topics[topicIndex].IsDisliked = 1
+								}
 							}
 						}
 					}
 				}
-
 				// if lastPost == "" {
 				// 	lastPost = creationDate
 				// }
