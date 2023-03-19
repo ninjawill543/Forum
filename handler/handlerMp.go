@@ -21,5 +21,7 @@ func Handler_Mp(w http.ResponseWriter, r *http.Request) {
 
 	t.DisplayMp(r, databaseForum)
 
+	t2.GetCookieHandler(w, r)
+
 	tmpl.Execute(w, t.MPSANDTOWHO)
 }

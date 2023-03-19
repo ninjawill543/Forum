@@ -16,6 +16,8 @@ func Handler_topics(w http.ResponseWriter, r *http.Request) {
 	tmpl1 := template.Must(template.ParseFiles("../static/html/topics.html"))
 	tmpl2 := template.Must(template.ParseFiles("../static/html/404.html"))
 
+	t2.GetCookieHandler(w, r)
+
 	databaseForum, _ := sql.Open("sqlite3", "../forum.db")
 
 	if r.FormValue("topic_name") != "" {

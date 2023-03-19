@@ -17,6 +17,8 @@ func Handler_Messages(w http.ResponseWriter, r *http.Request) {
 	tmpl := template.Must(template.ParseFiles("../static/html/messages.html"))
 	tmpl2 := template.Must(template.ParseFiles("../static/html/404.html"))
 
+	t4.GetCookieHandler(w, r)
+
 	databaseForum, _ := sql.Open("sqlite3", "../forum.db")
 
 	if r.FormValue("input_mail") != "" {

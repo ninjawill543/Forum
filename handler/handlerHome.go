@@ -15,6 +15,8 @@ func Handler_Home(w http.ResponseWriter, r *http.Request) {
 	tmpl1 := template.Must(template.ParseFiles("../static/html/home.html"))
 	databaseForum, _ := sql.Open("sqlite3", "../forum.db")
 
+	t4.GetCookieHandler(w, r)
+
 	if r.FormValue("like") != "" || r.FormValue("dislike") != "" {
 		t2.LikesDislikes(r, databaseForum)
 	}
