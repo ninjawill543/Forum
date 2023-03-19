@@ -12,8 +12,6 @@ func Handler_profil(w http.ResponseWriter, r *http.Request) {
 	tmpl := template.Must(template.ParseFiles("../static/html/profil.html"))
 	databaseForum, _ := sql.Open("sqlite3", "../forum.db")
 
-	t.GetCookieHandler(w, r)
-
 	if r.FormValue("logOutButton") == "logout" {
 		t.Logout(r)
 		t.LogOutCookie(r, w)

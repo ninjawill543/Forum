@@ -15,8 +15,6 @@ func Handler_Home(w http.ResponseWriter, r *http.Request) {
 	tmpl1 := template.Must(template.ParseFiles("../static/html/home.html"))
 	databaseForum, _ := sql.Open("sqlite3", "../forum.db")
 
-	t4.GetCookieHandler(w, r)
-
 	if r.FormValue("like") != "" || r.FormValue("dislike") != "" {
 		t2.LikesDislikes(r, databaseForum)
 	}
@@ -40,6 +38,7 @@ func Handler_Home(w http.ResponseWriter, r *http.Request) {
 	t.GetRandomMessages(databaseForum, r)
 
 	t.TOPICSANDSESSION.SessionUser = t4.USER.Username
+	t4.GetCookieHandler(w, r)
 
 	tmpl1.Execute(w, t.TOPICSANDSESSION)
 }

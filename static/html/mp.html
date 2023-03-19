@@ -1,28 +1,41 @@
 <!doctype html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <title>Private Messages</title>
     <meta name="description" content="Description Goes Here">
     <link rel="stylesheet" href="../css/output.css">
 </head>
-
-<body>
-    <div class="min-h-screen h-screen flex flex-col">
-        <header>
-            <div class="flex sticky justify-around w-full h-16 shadow-md bg-newcolor2">
-                <h1 id="h1Title"
-                    class="relative uppercase my-[20px] big:left-[-15vw] 2xl:left-[-15vw] xl:left-[-12vw]  font-bold text-center text-newcolor4">
-                    CS forums</h1>
-            </div>
-        </header>
-        {{ $MpAndToWho := . }}        
+<body class="h-screen w-screen bg-newcolor2">
+    <div class="min-h-screen h-screen flex flex-col bg-newcolor2">
+      {{ $MpAndToWho := . }} 
+      <header>
+        <div class="fixed flex justify-items-start w-full h-16 shadow-md bg-newcolor1">
+          <a href="/"><h1 id="h1Title"
+            class="relative uppercase my-[20px] ml-[5vw] font-bold text-center text-newcolor4">
+            CS forums</h1></a>
+          
+            <div class="relative  my-[20px] ml-[5vw] font-medium text-center ">Conversation with  {{ .ToWho }}</div>
+    
+        </div>
+      </header>
+      <div id="container" class="flex ">
+               
         
-        <div>Conversation with  {{ .ToWho }}</div>
-
-        {{ range $k, $v := .Mps}}
-        <div class="sm:w-[50vw] w-[100vw] flex items-center justify-center mb-[1vh]">
+        
+        
+        <div id="list" class="bg-newcolor2 flex flex-col justify-start items-center sm:ml-[-20vw] w-[100vw] h-[100vw] mt-[10vh] ">
+          <a href="/">
+            <img src="https://img.icons8.com/ios/50/null/circled-left-2.png" class="h-12 w-12 mr-[50vw]  mt-[2vh] "/>
+          </a>
+          <div>
+            <form method="POST" class="mb-8">
+                <input name="mpMessage" class="border-solid border border-gray-400 rounded px-2 py-3" type="text" placeholder="New message"/>
+                <input type="submit" hidden>
+            </form>
+        </div>
+          {{ range $k, $v := .Mps}}
+          <div class="sm:w-[50vw] w-[100vw] flex items-center justify-center mb-[1vh]">
             <div class="rounded-xl border p-5 shadow-md w-9/12 bg-white">
               <div class="flex w-full items-center justify-between border-b pb-3">
                 <div class="flex items-center space-x-3">
@@ -40,16 +53,13 @@
         </div>
         {{ end }}
 
-        <div>
-            <form method="POST">
-                <input name="mpMessage" class="border-solid border border-gray-400 rounded px-2 py-3" type="text" placeholder="send message"/>
-                <input type="submit" hidden>
-            </form>
         </div>
+        
+        
+
     </div>
-
-
+      </div>
+       
     <script src="../css/popups.js"></script>
 </body>
-
 </html>

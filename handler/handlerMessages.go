@@ -19,8 +19,6 @@ func Handler_Messages(w http.ResponseWriter, r *http.Request) {
 
 	databaseForum, _ := sql.Open("sqlite3", "../forum.db")
 
-	t4.GetCookieHandler(w, r)
-
 	if r.FormValue("input_mail") != "" {
 		t4.EMAILSTORAGE.Email = r.FormValue("input_mail")
 	}
@@ -79,6 +77,7 @@ func Handler_Messages(w http.ResponseWriter, r *http.Request) {
 
 	if exists {
 		t.MESSAGES.SessionUser = t4.USER.Username
+		t4.GetCookieHandler(w, r)
 		tmpl.Execute(w, t.MESSAGES)
 	} else {
 		tmpl2.Execute(w, nil)

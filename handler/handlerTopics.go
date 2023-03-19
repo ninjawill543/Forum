@@ -18,8 +18,6 @@ func Handler_topics(w http.ResponseWriter, r *http.Request) {
 
 	databaseForum, _ := sql.Open("sqlite3", "../forum.db")
 
-	t2.GetCookieHandler(w, r)
-
 	if r.FormValue("topic_name") != "" {
 		t.AddTopic(r, databaseForum)
 	}
@@ -49,6 +47,7 @@ func Handler_topics(w http.ResponseWriter, r *http.Request) {
 		t.TOPICSANDSESSION.SessionUser = t2.USER.Username
 		category := strings.Split(r.URL.Path, "/")[2]
 		t.TOPICSANDSESSION.Category = strings.Split(category, "=")[1]
+		t2.GetCookieHandler(w, r)
 
 		tmpl1.Execute(w, t.TOPICSANDSESSION)
 	} else {

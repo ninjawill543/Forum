@@ -37,9 +37,15 @@ function test(userName) {
     if (userName == "") {
         document.getElementById("logbutton").style.display = "block";
         document.getElementById("profbutton").style.display = "none";
+        document.getElementById("lock").disabled = true;
+        document.getElementById("lock1").disabled = true;
+        document.getElementById("lock2").disabled = true;
     } else{
         document.getElementById("logbutton").style.display = "none";
         document.getElementById("profbutton").style.display = "block";
+        document.getElementById("lock").disabled = false;
+        document.getElementById("lock1").disabled = false;
+        document.getElementById("lock2").disabled = false;
     }
 } 
 
