@@ -92,7 +92,7 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 				TOPICSANDSESSION.Topics[topicIndex].Id = id
 				TOPICSANDSESSION.Topics[topicIndex].FirstMessage = firstMessage
 				TOPICSANDSESSION.Category = category
-				checkIfLiked := fmt.Sprintf("SELECT likeOrDislike FROM likesFromUser WHERE uuidUser = '%s' AND uuidLiked = '%s'", "", uuid)
+				checkIfLiked := fmt.Sprintf("SELECT likeOrDislike FROM likesFromUser WHERE uuidUser = '%s' AND uuidLiked = '%s'", cookie.Value, uuid)
 				row, err := db.Query(checkIfLiked)
 				if err != nil {
 					fmt.Println(err)
@@ -104,9 +104,9 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 							fmt.Println(err)
 						} else {
 							if likeOrDislike == 1 {
-								TOPICSANDSESSION.Topics[topicIndex].IsLiked = likeOrDislike
+								TOPICSANDSESSION.Topics[topicIndex].IsLiked = 1
 							} else if likeOrDislike == -1 {
-								TOPICSANDSESSION.Topics[topicIndex].IsDisliked = likeOrDislike
+								TOPICSANDSESSION.Topics[topicIndex].IsDisliked = 1
 							}
 						}
 					}

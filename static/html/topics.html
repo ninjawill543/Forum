@@ -219,13 +219,15 @@
                                 <span class="text-slate-900">{{ $v.Likes }}</span>
                               </div>
                             </button>
-
+                          </form>
+                          <form method="POST">
                             <button type="submit" value="{{ .Uuid }}" name="dislike">
                               <div class="flex cursor-pointer items-center transition hover:text-slate-600">
                                 {{ if $v.IsDisliked }}
-                                  <img src="../css/dislike_plein.svg" width="21px" height="21px">
+                                <img src="../css/dislike_plein.svg" width="21px" height="21px">
                                 {{ else }}
                                 <img src="../css/dislike_vide.svg" width="21px" height="21px">
+                                {{ end }}
                               </div>
                             </button>
                           </form>
@@ -238,7 +240,6 @@
                                 <img src="../css/corbeille.svg" width="21px" height="21px">
                               </div>
                             </form>
-                            {{ end }}
                         </div>
                       </div>
                     </div>

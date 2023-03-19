@@ -19,6 +19,7 @@ func MessagesPageDisplay(db *sql.DB, r *http.Request) {
 	var owner string
 	var report int
 	var uuid string
+	var likeOrDislike int
 	var message string
 	var id int
 	var like int
@@ -26,6 +27,11 @@ func MessagesPageDisplay(db *sql.DB, r *http.Request) {
 	var edited int
 	var uuidPath string
 	var ascDesc string
+
+	cookie, err := r.Cookie("session")
+	if err != nil {
+		fmt.Println(err)
+	}
 
 	filter = r.FormValue("filter")
 	if filter == "" {
@@ -66,6 +72,7 @@ func MessagesPageDisplay(db *sql.DB, r *http.Request) {
 	} else {
 		MESSAGES.Messages = nil
 		for row.Next() {
+			defer row.Close()
 			err = row.Scan(&id, &message, &creationDate, &owner, &report, &like, &edited, &uuid)
 			if err != nil {
 				fmt.Println(err)
@@ -81,8 +88,28 @@ func MessagesPageDisplay(db *sql.DB, r *http.Request) {
 				MESSAGES.Messages[messageIndex].Uuid = uuid
 				MESSAGES.Messages[messageIndex].Like = like
 				MESSAGES.Messages[messageIndex].Edited = edited
+
+				checkIfLiked := fmt.Sprintf("SELECT likeOrDislike FROM likesFromUser WHERE uuidUser = '%s' AND uuidLiked = '%s'", cookie.Value, uuid)
+				row, err := db.Query(checkIfLiked)
+				if err != nil {
+					fmt.Println(err)
+				} else {
+					for row.Next() {
+						defer row.Close()
+						err = row.Scan(&likeOrDislike)
+						if err != nil {
+							fmt.Println(err)
+						} else {
+							if likeOrDislike == 1 {
+								MESSAGES.Messages[messageIndex].IsLiked = 1
+							} else if likeOrDislike == -1 {
+								MESSAGES.Messages[messageIndex].IsDisliked = 1
+
+							}
+						}
+					}
+				}
 			}
 		}
-		row.Close()
 	}
 }
