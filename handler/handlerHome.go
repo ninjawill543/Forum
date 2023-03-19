@@ -2,7 +2,9 @@ package forum
 
 import (
 	"database/sql"
+	t3 "forum/delete"
 	t "forum/home"
+	t2 "forum/listTopics"
 	t5 "forum/login"
 	t4 "forum/users"
 	"html/template"
@@ -14,6 +16,14 @@ func Handler_Home(w http.ResponseWriter, r *http.Request) {
 	databaseForum, _ := sql.Open("sqlite3", "../forum.db")
 
 	t4.GetCookieHandler(w, r)
+
+	if r.FormValue("like") != "" || r.FormValue("dislike") != "" {
+		t2.LikesDislikes(r, databaseForum)
+	}
+
+	if r.FormValue("delete") != "" {
+		t3.DeleteTopic(r, databaseForum)
+	}
 
 	if r.FormValue("input_mail") != "" {
 		t4.EMAILSTORAGE.Email = r.FormValue("input_mail")
