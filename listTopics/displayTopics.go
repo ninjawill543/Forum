@@ -38,6 +38,7 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 
 	categoryUrl := strings.Split(r.URL.Path, "/")
 	categoryUrl = strings.Split(categoryUrl[2], "=")
+	urlCat := categoryUrl[1]
 
 	if r.FormValue("filter") == "mostRecent" {
 		filter = "creationDate"
@@ -46,11 +47,11 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 		DESCOASC = "ASC"
 	}
 
-	query = fmt.Sprintf("SELECT id, name, firstMessage, creationDate, owner, likes, nmbPosts, category, uuid FROM topics WHERE category = '%s' ORDER BY %s %s ", categoryUrl[1], filter, DESCOASC)
+	query = fmt.Sprintf("SELECT id, name, firstMessage, creationDate, owner, likes, nmbPosts, category, uuid FROM topics WHERE category = '%s' ORDER BY %s %s ", urlCat, filter, DESCOASC)
 
 	if r.FormValue("searchbar") != "" {
 		searchName = "%" + r.FormValue("searchbar") + "%"
-		query = fmt.Sprintf("SELECT id, name, firstMessage, creationDate, owner, likes, nmbPosts, category, uuid FROM topics WHERE name LIKE '%s' AND category = '%s' ORDER BY %s %s", searchName, categoryUrl[1], filter, DESCOASC)
+		query = fmt.Sprintf("SELECT id, name, firstMessage, creationDate, owner, likes, nmbPosts, category, uuid FROM topics WHERE name LIKE '%s' AND category = '%s' ORDER BY %s %s", searchName, urlCat, filter, DESCOASC)
 	}
 
 	cookie, err := r.Cookie("session")
@@ -93,52 +94,54 @@ func DisplayTopic(r *http.Request, db *sql.DB) {
 				TOPICSANDSESSION.Topics[topicIndex].Id = id
 				TOPICSANDSESSION.Topics[topicIndex].FirstMessage = firstMessage
 
-				queryGetIfAdmin := fmt.Sprintf("SELECT admin FROM users WHERE username = '%s'", TOPICSANDSESSION.SessionUser)
-				fmt.Println(queryGetIfAdmin)
+				if TOPICSANDSESSION.SessionUser != "" {
 
-				row, err := db.Query(queryGetIfAdmin)
-				if err != nil {
-					fmt.Println(err)
-				} else {
-					for row.Next() {
-						defer row.Close()
-						err = row.Scan(&admin)
-						if err != nil {
-							fmt.Println(err)
-						}
-					}
-				}
+					queryGetIfAdmin := fmt.Sprintf("SELECT admin FROM users WHERE username = '%s'", TOPICSANDSESSION.SessionUser)
 
-				if owner == TOPICSANDSESSION.SessionUser || admin == 1 {
-					TOPICSANDSESSION.Topics[topicIndex].IsOwnerOrAdmin = 1
-				}
-
-				TOPICSANDSESSION.Category = category
-				if cookie.Value != "" {
-					checkIfLiked := fmt.Sprintf("SELECT likeOrDislike FROM likesFromUser WHERE uuidUser = '%s' AND uuidLiked = '%s'", cookie.Value, uuid)
-					row, err := db.Query(checkIfLiked)
+					row, err := db.Query(queryGetIfAdmin)
 					if err != nil {
 						fmt.Println(err)
 					} else {
 						for row.Next() {
 							defer row.Close()
-							err = row.Scan(&likeOrDislike)
+							err = row.Scan(&admin)
 							if err != nil {
 								fmt.Println(err)
-							} else {
-								if likeOrDislike == 1 {
-									TOPICSANDSESSION.Topics[topicIndex].IsLiked = 1
-								} else if likeOrDislike == -1 {
-									TOPICSANDSESSION.Topics[topicIndex].IsDisliked = 1
+							}
+						}
+					}
+
+					if owner == TOPICSANDSESSION.SessionUser || admin == 1 {
+						TOPICSANDSESSION.Topics[topicIndex].IsOwnerOrAdmin = 1
+					}
+
+					TOPICSANDSESSION.Category = category
+					if cookie.Value != "" {
+						checkIfLiked := fmt.Sprintf("SELECT likeOrDislike FROM likesFromUser WHERE uuidUser = '%s' AND uuidLiked = '%s'", cookie.Value, uuid)
+						row, err := db.Query(checkIfLiked)
+						if err != nil {
+							fmt.Println(err)
+						} else {
+							for row.Next() {
+								defer row.Close()
+								err = row.Scan(&likeOrDislike)
+								if err != nil {
+									fmt.Println(err)
+								} else {
+									if likeOrDislike == 1 {
+										TOPICSANDSESSION.Topics[topicIndex].IsLiked = 1
+									} else if likeOrDislike == -1 {
+										TOPICSANDSESSION.Topics[topicIndex].IsDisliked = 1
+									}
 								}
 							}
 						}
 					}
+					// if lastPost == "" {
+					// 	lastPost = creationDate
+					// }
+					// TOPICSANDSESSION.Topics[topicIndex].LastPost = lastPost
 				}
-				// if lastPost == "" {
-				// 	lastPost = creationDate
-				// }
-				// TOPICSANDSESSION.Topics[topicIndex].LastPost = lastPost
 			}
 		}
 	}

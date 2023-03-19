@@ -34,12 +34,15 @@ func MessagesPageDisplay(db *sql.DB, r *http.Request) {
 		fmt.Println(err)
 	}
 
+	ascDesc = "DESC"
+
 	filter = r.FormValue("filter")
+	fmt.Println(filter, "filter")
 	if filter == "" {
 		filter = "creationDate"
+	} else if filter == "oldest" {
+		filter = "creationDate"
 		ascDesc = "ASC"
-	} else {
-		ascDesc = "DESC"
 	}
 
 	topicName := strings.Split(r.URL.Path, "/")
@@ -66,7 +69,8 @@ func MessagesPageDisplay(db *sql.DB, r *http.Request) {
 		MESSAGES.Id = t.TOPICSANDSESSION.Topics[i].Id
 		MESSAGES.UuidPath = t.TOPICSANDSESSION.Topics[i].Uuid
 	}
-	query := fmt.Sprintf("SELECT id, message, creationDate, owner, report, like, edited, uuid FROM messages WHERE uuidPath = '%s' ORDER BY %s %s", uuidPath, filter, ascDesc)
+
+	query := fmt.Sprintf("SELECT id, message, creationDate, owner, report, like, edited, uuid FROM messages WHERE uuidPath = '%s' ORDER BY %s %s ", uuidPath, filter, ascDesc)
 	row, err = db.Query(query)
 	if err != nil {
 		fmt.Println(err)
@@ -90,42 +94,45 @@ func MessagesPageDisplay(db *sql.DB, r *http.Request) {
 				MESSAGES.Messages[messageIndex].Like = like
 				MESSAGES.Messages[messageIndex].Edited = edited
 
-				queryGetIfAdmin := fmt.Sprintf("SELECT admin FROM users WHERE username = '%s'", MESSAGES.SessionUser)
-				fmt.Println(queryGetIfAdmin)
+				if MESSAGES.SessionUser != "" {
 
-				row, err := db.Query(queryGetIfAdmin)
-				if err != nil {
-					fmt.Println(err)
-				} else {
-					for row.Next() {
-						defer row.Close()
-						err = row.Scan(&admin)
-						if err != nil {
-							fmt.Println(err)
+					queryGetIfAdmin := fmt.Sprintf("SELECT admin FROM users WHERE username = '%s'", MESSAGES.SessionUser)
+					fmt.Println(queryGetIfAdmin)
+
+					row, err := db.Query(queryGetIfAdmin)
+					if err != nil {
+						fmt.Println(err)
+					} else {
+						for row.Next() {
+							defer row.Close()
+							err = row.Scan(&admin)
+							if err != nil {
+								fmt.Println(err)
+							}
 						}
 					}
-				}
 
-				if owner == MESSAGES.SessionUser || admin == 1 {
-					MESSAGES.Messages[messageIndex].IsOwnerOrAdmin = 1
-				}
+					if owner == MESSAGES.SessionUser || admin == 1 {
+						MESSAGES.Messages[messageIndex].IsOwnerOrAdmin = 1
+					}
 
-				checkIfLiked := fmt.Sprintf("SELECT likeOrDislike FROM likesFromUser WHERE uuidUser = '%s' AND uuidLiked = '%s'", cookie.Value, uuid)
-				row, err = db.Query(checkIfLiked)
-				if err != nil {
-					fmt.Println(err)
-				} else {
-					for row.Next() {
-						defer row.Close()
-						err = row.Scan(&likeOrDislike)
-						if err != nil {
-							fmt.Println(err)
-						} else {
-							if likeOrDislike == 1 {
-								MESSAGES.Messages[messageIndex].IsLiked = 1
-							} else if likeOrDislike == -1 {
-								MESSAGES.Messages[messageIndex].IsDisliked = 1
+					checkIfLiked := fmt.Sprintf("SELECT likeOrDislike FROM likesFromUser WHERE uuidUser = '%s' AND uuidLiked = '%s'", cookie.Value, uuid)
+					row, err = db.Query(checkIfLiked)
+					if err != nil {
+						fmt.Println(err)
+					} else {
+						for row.Next() {
+							defer row.Close()
+							err = row.Scan(&likeOrDislike)
+							if err != nil {
+								fmt.Println(err)
+							} else {
+								if likeOrDislike == 1 {
+									MESSAGES.Messages[messageIndex].IsLiked = 1
+								} else if likeOrDislike == -1 {
+									MESSAGES.Messages[messageIndex].IsDisliked = 1
 
+								}
 							}
 						}
 					}
