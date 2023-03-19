@@ -52,8 +52,6 @@
                       </button>
                     </a>
                   </div>
-                  
-                  
                 </div>
               </div>
             </header>
@@ -234,11 +232,13 @@
                             </button>
                           </form>
                           {{ if $v.IsOwnerOrAdmin }}
-                          <div id="edit{{ $k }}" onclick="edit('{{ $k }}')" class="flex cursor-pointer items-center transition hover:text-slate-600 ml-[52vh]">
-                            <img src="../files/images/edit.svg" width="21px" height="21px">
-                          </div>
+                          <a href="../edit-topic/{{ .Uuid }}">
+                            <div id="edit{{ $k }}" onclick="edit('{{ $k }}')" class="flex cursor-pointer items-center transition hover:text-slate-600 ml-[52vh]">
+                              <img src="../files/images/edit.svg" width="21px" height="21px">
+                            </div>
+                          </a>
                           <form method="POST">
-                            <div  class="flex cursor-pointer items-center transition hover:text-slate-600 ml-[2vh]">
+                            <div class="flex cursor-pointer items-center transition hover:text-slate-600 ml-[2vh]">
                               <button type="submit" name="delete" value="{{ $v.Uuid }}">
                                 <img src="../files/images/corbeille.svg" width="21px" height="21px">
                               </div>

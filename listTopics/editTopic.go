@@ -11,7 +11,7 @@ import (
 func EditTopic(r *http.Request, db *sql.DB) {
 	if r.FormValue("edit") != "" {
 		newName := r.FormValue("newName")
-		if len(newName) < 5 {
+		if len(newName) < 2 {
 			fmt.Println("not enough char")
 		} else {
 			var owner string
@@ -29,6 +29,7 @@ func EditTopic(r *http.Request, db *sql.DB) {
 					}
 				}
 			}
+			fmt.Println(t.USER.Username, owner, "owner and username")
 			if t.USER.Username == owner {
 				query := fmt.Sprintf("UPDATE topics SET name = '%s' WHERE uuid = '%s'", newName, uuid[2])
 				db.Exec(query)

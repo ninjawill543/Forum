@@ -208,9 +208,11 @@
                 </form>
                 <a>
                   {{ if $v.IsOwnerOrAdmin }}
-                  <div class="flex cursor-pointer items-center transition hover:text-slate-600 ml-[54vh]">
-                    <img src="../files/images/edit.svg" width="21" height="21">
-                  </div>
+                  <a href="../edit-message/{{ .Uuid }}">
+                    <div class="flex cursor-pointer items-center transition hover:text-slate-600 ml-[54vh]">
+                      <img src="../files/images/edit.svg" width="21" height="21">
+                    </div>
+                  </a>
                 </a>
                 <form method="POST">
                   <a>
