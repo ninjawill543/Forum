@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../files/css/output.css">
-    <title>Document</title>
+    <title>Bing Bong</title>
 </head>
-<body class="h-screen w-screen bg-newcolor2">
+<body onload="logOut('{{ .Username }}');" class="h-screen w-screen bg-newcolor2">
     <header >
         <div class="fixed flex justify-around w-full h-16 shadow-md bg-newcolor1">
           <a href="/">
             <h1 id="h1Title"
                 class="relative uppercase my-[20px] big:right-72 2xl:right-60 xl:right-44 font-bold text-center  text-newcolor4">
-                CS Forums</h1>
+                Bing Bong Forums</h1>
           </a>
             
             <div class="grid w-96 self-center items-center grid-cols-3">
@@ -86,7 +86,7 @@
               </div>
               <div class="hidden" id="DELETE">
                 <div class="shadow-md fixed rounded-lg top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 h-[38vh] w-[35vh] bg-newcolor1 flex flex-col items-center   ">
-                  <button onclick="closeAll()" class="pl-[30vh] text-xl font-medium"  >X</button>
+                  <button onclick="closeAll()" class="pl-[30vh] text-xl font-medium">X</button>
                   <div class="flex flex-col align-center text-center">
                     <p class="font-medium text-2xl ">Are you sure you would like to delete your account?</p>
                   <p class="font-medium mt-2 text-2xl ">THIS CANNOT BE UNDONE!</p>

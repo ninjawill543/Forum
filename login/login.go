@@ -5,6 +5,8 @@ import (
 	"fmt"
 	t2 "forum/users"
 	t "forum/views"
+	t3 "forum/messages"
+	t4 "forum/listTopics"
 	"net/http"
 )
 
@@ -53,6 +55,8 @@ func Login(r *http.Request, db *sql.DB, w http.ResponseWriter) {
 							t2.SetCookieHandler(w, r)
 						} else {
 							fmt.Println("no0b")
+							t4.TOPICSANDSESSION.Error = "Invalid credentials"
+							t3.MESSAGES.Error = "Invalid credentials"
 							fmt.Println(username, password, email, usernameInput, passwordInput)
 						}
 					}

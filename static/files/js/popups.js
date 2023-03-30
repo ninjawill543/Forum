@@ -49,13 +49,47 @@ function test(userName) {
     }
 } 
 
-function refreshPage() {
-    window.location.reload();
-}   
-
-function edit(nmb) {
-    console.log(nmb);
+function loginButton() {
+    var passValid =  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+    var password = document.getElementById("loginPass").value;
+    if (passValid.test(password)){
+        document.getElementById("loginLogin").disabled = false;
+    }else {
+        document.getElementById("loginLogin").disabled = true;
+    }
+    
 }
+
+function registerButton() {
+    var emailValid = /\S+@\S+\.\S+/;
+    var email = document.getElementById("registerEmail").value;
+    if (emailValid.test(email)){
+        document.getElementById("continueRegister").disabled = false;
+    }else {
+        document.getElementById("continueRegister").disabled = true;
+    }
+    
+}
+
+function register2Button() {
+    var passValid =  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+    var password = document.getElementById("register2pass").value;
+    var password2 = document.getElementById("register2pass2").value;
+    if (passValid.test(password) && password === password2){
+        document.getElementById("register2Register").disabled = false;
+    }else {
+        document.getElementById("register2Register").disabled = true;;
+    }
+    
+}
+
+// function reloadPage(){
+//     window.location.reload();
+// }
+
+// function edit(nmb) {
+//     console.log(nmb);
+// }
 
 function blur(){
     document.getElementById("blurrr").style.display = "block";

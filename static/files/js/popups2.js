@@ -1,6 +1,5 @@
 function openEmail() {
     document.getElementById("eChange").style.display = "block";
-    document.getElementById("pChange").style.display = "none";
     document.getElementById("uChange").style.display = "none";
     document.getElementById("DELETE").style.display = "none";
     blur();
@@ -10,7 +9,6 @@ function openEmail() {
 
 function openUsername() {
     document.getElementById("eChange").style.display = "none";
-    document.getElementById("pChange").style.display = "none";
     document.getElementById("uChange").style.display = "block";
     document.getElementById("DELETE").style.display = "none";
     blur();
@@ -19,19 +17,8 @@ function openUsername() {
 
 
 
-function openPassword() {
-    document.getElementById("eChange").style.display = "none";
-    document.getElementById("pChange").style.display = "block";
-    document.getElementById("uChange").style.display = "none";
-    document.getElementById("DELETE").style.display = "none";
-    blur();
-
-}
-
-
 function openDelete() {
     document.getElementById("eChange").style.display = "none";
-    document.getElementById("pChange").style.display = "none";
     document.getElementById("uChange").style.display = "none";
     document.getElementById("DELETE").style.display = "block";
     blur();
@@ -42,7 +29,6 @@ function openDelete() {
 
 function closeAll() {
     document.getElementById("eChange").style.display = "none";
-    document.getElementById("pChange").style.display = "none";
     document.getElementById("uChange").style.display = "none";
     document.getElementById("DELETE").style.display = "none";
     unblur();
@@ -61,6 +47,14 @@ function unblur(){
     document.getElementById("toblur2").style.filter = "blur(0px)";
     document.getElementById("toblur3").style.filter = "blur(0px)";
 }
+
+function logOut(username){
+    if (username == "") {
+        window.location.replace("/");
+    }
+}
+
+
 
 // function edit(nmb) {
 //     console.log(nmb);

@@ -1,6 +1,7 @@
 package forum
 
 type TopicsAndSession struct {
+	Error string
 	SessionUser string
 	Category    string
 	Topics      []Topic `Topic`

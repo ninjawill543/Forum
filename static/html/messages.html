@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../files/css/output.css">
-  <title>Document</title>
+  <title>Bing Bong</title>
 </head>
 {{ $Topic := .}}
 
@@ -15,7 +15,7 @@
     <div class="fixed flex justify-around w-full h-16 shadow-md bg-newcolor1">
       <a href="/"><h1 id="h1Title"
         class="relative uppercase my-[20px] big:left-[-15vw] 2xl:left-[-15vw] xl:left-[-12vw]  font-bold text-center text-newcolor4">
-        CS forums</h1></a>
+        Bing Bong forums</h1></a>
       
       <div class="grid w-96 self-center items-center grid-cols-3">
         <div id="logbutton" class="hidden">
@@ -259,19 +259,18 @@
       class="fixed rounded-lg sm:top-1/2 sm:left-1/2 sm:-translate-y-1/2 sm:-translate-x-1/2 top-[15vh] left-[12vw] big:h-[400px] 2xl:h-[400px] 2xl:w-[18vw] xl:w-[22vw] lg:w-[28vw] max-sm:w-[80vw] bg-newcolor4 flex flex-col items-center justify-center ">
       <button class="pl-[30vh] pb-2 text-xl font-medium" onclick="closeRegister()">X</button>
       <p>Login</p>
-      <form method="post" class="mt-8 mb-4">
-        <div class="mb-4">
-          <label for="userEmail" class="sr-only">Email address</label>
-          <input name="input_loginusername" class="border-solid border border-gray-400 rounded px-2 py-3" type="text"
-            id="userEmail" placeholder="Email address / Username" required />
+      <form method="post" class="flex flex-col align-middle mt-8 mb-4">
+        <div class="mb-4 self-center align-middle">
+          <input oninput="loginButton()" name="input_loginusername" class="border-solid border border-gray-400 rounded px-2 py-3" type="text"
+            id="loginEmail" placeholder="Email address / Username"  required/>
         </div>
-        <div class="mb-[5vh]">
-          <label for="userEmail" class="sr-only">Password</label>
-          <input name="input_loginpassword" class="border-solid border border-gray-400 rounded px-2 py-3"
-            type="password" id="userPass" placeholder="Password" required />
+        <div class="mb-[1vh] self-center align-middle items-center">
+          <input oninput="loginButton()" name="input_loginpassword" class="self-center align-middle border-solid border border-gray-400 rounded px-2 py-3"
+            type="password" id="loginPass" placeholder="Password"  />
         </div>
-        <button onClick="refreshPage()"
-          class="rounded-lg bg-newcolor3 hover:bg-gray-600 text-white font-bold w-full py-3 mb-4" type="submit">Sign
+        <!-- <p class=" text-center ">Password must contain at least 8 characters, 1 lowercase and uppercase, 1 number and 1 special character</p> -->
+
+        <button id="loginLogin" disabled class="mt-[1vh] rounded-lg bg-newcolor3 hover:bg-gray-600 text-white font-bold w-full py-3 mb-4" type="submit">Sign
           in</button>
         <p class="rounded-lg bg-newcolor3 hover:bg-gray-600 text-white font-bold w-full py-3 text-center"
           onclick="openRegister()">Register</p>
@@ -286,42 +285,38 @@
       <p>Register</p>
       <form method="POST" class="mt-8 mb-4">
         <div class="mb-4">
-          <label for="userEmail" class="sr-only">Email address</label>
-          <input name="input_mail" class="border-solid border border-gray-400 rounded px-2 py-3" type="email"
-            id="userEmail" placeholder="Email address" required />
+          <input oninput="registerButton()" name="input_mail" class="border-solid border border-gray-400 rounded px-2 py-3" type="email"
+            id="registerEmail" placeholder="Email address" required />
         </div>
         <div>
-          <p class="text-center rounded-lg bg-newcolor3 hover:bg-gray-600 text-white font-bold w-full py-3"
-            onclick="openRegister2()">Continue</p>
+          <button disabled id="continueRegister" class="text-center rounded-lg bg-newcolor3 hover:bg-gray-600 text-white font-bold w-full py-3"
+            onclick="openRegister2()">Continue</button>
           <!-- <button class="rounded-lg bg-newcolor3 hover:bg-gray-600 text-white font-bold w-full py-3" onclick="openRegister2()">Continue</button> -->
         </div>
     </div>
   </div>
   <div class="hidden" id="register2">
     <div
-      class="fixed rounded-lg sm:top-1/2 sm:left-1/2 sm:-translate-y-1/2 sm:-translate-x-1/2 top-[15vh] left-[12vw] big:h-[400px] 2xl:h-[400px] 2xl:w-[18vw] xl:w-[22vw] lg:w-[28vw] max-sm:w-[80vw] max-sm:h-[420px] bg-newcolor4 flex flex-col items-center justify-center ">
+      class="fixed rounded-lg sm:top-1/2 sm:left-1/2 sm:-translate-y-1/2 sm:-translate-x-1/2 top-[15vh] left-[12vw] big:h-[450px] 2xl:h-[450px] 2xl:w-[18vw] xl:w-[22vw] lg:w-[28vw] max-sm:w-[80vw] max-sm:h-[420px] bg-newcolor4 flex flex-col items-center justify-center ">
       <button class="pl-[30vh] pb-2 text-xl font-medium" onclick="closeRegister()">X</button>
       <p>Register</p>
       <div class="mb-4">
-        <label for="userEmail" class="sr-only">Username</label>
-        <input name="input_username" class="border-solid border border-gray-400 rounded px-2 py-3" type="Username"
+        <input oninput="registerButton()" name="input_username" class="border-solid border border-gray-400 rounded px-2 py-3" type="Username"
           id="userName" placeholder="Username" required />
       </div>
       <div class="flex mb-4 justify-center">
-        <label for="userEmail" class="sr-only">Birthday</label>
         <input name="input_birthDay" type="date" id="birthday" name="birthday" required>
       </div>
       <div class="mb-4">
-        <label for="userPass" class="sr-only">Password</label>
-        <input name="input_password" class="border-solid border border-gray-400 rounded px-2 py-3" type="password"
-          id="userPass" placeholder="Password" required />
+        <input oninput="registerButton()" name="input_password" class="border-solid border border-gray-400 rounded px-2 py-3" type="password"
+          id="register2pass" placeholder="Password" required />
       </div>
       <div class="mb-4">
-        <label for="userPass2" class="sr-only">Confirm your password</label>
-        <input name="input_password2" class="border-solid border border-gray-400 rounded px-2 py-3" type="password"
-          id="userPass" placeholder="Confirm your password" required />
+        <input oninput="registerButton()" name="input_password2" class="border-solid border border-gray-400 rounded px-2 py-3" type="password"
+          id="register2pass2" placeholder="Confirm your password" required />
       </div>
-      <button class="bg-newcolor3 rounded-lg hover:bg-gray-600 text-white font-bold w-full py-3" type="submit"
+      <p class=" text-center ">Password must contain at least 8 characters, 1 lowercase and uppercase, 1 number and 1 special character</p>
+      <button disabled class="bg-newcolor3 rounded-lg hover:bg-gray-600 text-white font-bold w-full py-3" type="submit"
         onclick="closeRegister()">Register</button>
       </form>
     </div>
