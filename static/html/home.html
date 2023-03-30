@@ -186,22 +186,22 @@
       <button class="pl-[30vh] pb-2 text-xl font-medium" onclick="closeRegister()">X</button>
       <p>Register</p>
       <div class="mb-4">
-        <input oninput="registerButton()" name="input_username" class="border-solid border border-gray-400 rounded px-2 py-3" type="Username"
+        <input oninput="register2Button()" name="input_username" class="border-solid border border-gray-400 rounded px-2 py-3" type="Username"
           id="userName" placeholder="Username" required />
       </div>
       <div class="flex mb-4 justify-center">
         <input name="input_birthDay" type="date" id="birthday" name="birthday" required>
       </div>
       <div class="mb-4">
-        <input oninput="registerButton()" name="input_password" class="border-solid border border-gray-400 rounded px-2 py-3" type="password"
+        <input oninput="register2Button()" name="input_password" class="border-solid border border-gray-400 rounded px-2 py-3" type="password"
           id="register2pass" placeholder="Password" required />
       </div>
       <div class="mb-4">
-        <input oninput="registerButton()" name="input_password2" class="border-solid border border-gray-400 rounded px-2 py-3" type="password"
+        <input oninput="register2Button()" name="input_password2" class="border-solid border border-gray-400 rounded px-2 py-3" type="password"
           id="register2pass2" placeholder="Confirm your password" required />
       </div>
       <p class=" text-center ">Password must contain at least 8 characters, 1 lowercase and uppercase, 1 number and 1 special character</p>
-      <button disabled class="bg-newcolor3 rounded-lg hover:bg-gray-600 text-white font-bold w-full py-3" type="submit"
+      <button id="register2Register" disabled class="bg-newcolor3 rounded-lg hover:bg-gray-600 text-white font-bold w-full py-3" type="submit"
         onclick="closeRegister()">Register</button>
       </form>
     </div>
